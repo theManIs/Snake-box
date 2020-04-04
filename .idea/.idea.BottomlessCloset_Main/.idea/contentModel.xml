@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Любовь\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Любовь\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_BottomlessCloset_Main.-2038760126.00" t="ExcludeRecursive" />
+    <e p="E:\Проекты\LightGame\BottomlessCloset_Main" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="AssetsPath" t="Include">
+            <e p="AssetsPathGameObject.cs" t="Include" />
+            <e p="AssetsPathItem.cs" t="Include" />
+            <e p="AssetsPathLocation.cs" t="Include" />
+            <e p="AssetsPathScreen.cs" t="Include" />
+          </e>
+          <e p="Controllers" t="Include">
+            <e p="Controllers.cs" t="Include" />
+            <e p="GameController.cs" t="Include" />
+            <e p="Interfaces" t="Include">
+              <e p="ICleanUp.cs" t="Include" />
+              <e p="IExecute.cs" t="Include" />
+              <e p="IInitialization.cs" t="Include" />
+            </e>
+            <e p="Item" t="Include">
+              <e p="ItemCleanUp.cs" t="Include" />
+              <e p="ItemExtensions.cs" t="Include" />
+            </e>
+            <e p="Location" t="Include">
+              <e p="LocationInitialization.cs" t="Include" />
+            </e>
+            <e p="MoveItem" t="Include">
+              <e p="MoveController.cs" t="Include" />
+            </e>
+            <e p="TimeRemaining" t="Include">
+              <e p="ITimeRemaining.cs" t="Include" />
+              <e p="TimeRemaining.cs" t="Include" />
+              <e p="TimeRemainingCleanUp.cs" t="Include" />
+              <e p="TimeRemainingController.cs" t="Include" />
+              <e p="TimeRemainingExtensions.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Data" t="Include">
+            <e p="Data.cs" t="Include" />
+            <e p="Items" t="Include">
+              <e p="ItemData.cs" t="Include" />
+            </e>
+            <e p="Locations" t="Include">
+              <e p="LocationData.cs" t="Include" />
+              <e p="LocationInfo.cs" t="Include" />
+            </e>
+            <e p="Shakes" t="Include">
+              <e p="SerializeShakeData.cs" t="Include" />
+              <e p="ShakeInfo.cs" t="Include" />
+              <e p="ShakesData.cs" t="Include" />
+            </e>
+            <e p="Type" t="Include">
+              <e p="ShakeType.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Helper" t="Include">
+            <e p="Ciphers" t="Include">
+              <e p="CaesarCipher.cs" t="Include" />
+              <e p="Crypto.cs" t="Include" />
+              <e p="ICipher.cs" t="Include" />
+            </e>
+            <e p="Customs" t="Include">
+              <e p="CustomDebug.cs" t="Include" />
+              <e p="CustomPlayerPrefs.cs" t="Include" />
+              <e p="CustomResources.cs" t="Include" />
+            </e>
+            <e p="Extensions" t="Include">
+              <e p="ArrayExtensions.cs" t="Include" />
+              <e p="AsyncOperationExtensions.cs" t="Include" />
+              <e p="Color32Extensions.cs" t="Include" />
+              <e p="ColorExtensions.cs" t="Include" />
+              <e p="ComponentExtensions.cs" t="Include" />
+              <e p="DateTimeExtensions.cs" t="Include" />
+              <e p="HashSetExtensions.cs" t="Include" />
+              <e p="ListExtensions.cs" t="Include" />
+              <e p="NumericExtensions.cs" t="Include" />
+              <e p="ObjectExtensions.cs" t="Include" />
+              <e p="StringExtensions.cs" t="Include" />
+              <e p="TransformExtensions.cs" t="Include" />
+              <e p="Vector2Extensions.cs" t="Include" />
+              <e p="Vector3Extensions.cs" t="Include" />
+            </e>
+            <e p="Manageres" t="Include">
+              <e p="AxisManager.cs" t="Include" />
+              <e p="LayerManager.cs" t="Include" />
+              <e p="NameManager.cs" t="Include" />
+              <e p="TagManager.cs" t="Include" />
+              <e p="TagType.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Model" t="Include">
+            <e p="Item" t="Include">
+              <e p="ItemBehaviour.cs" t="Include" />
+              <e p="ItemPhysics.cs" t="Include" />
+            </e>
+            <e p="Type" t="Include">
+              <e p="ItemType.cs" t="Include" />
+              <e p="LocationType.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Services" t="Include">
+            <e p="CameraService" t="Include">
+              <e p="CameraServices.cs" t="Include" />
+            </e>
+            <e p="LocalizationService" t="Include">
+              <e p="ILocalization.cs" t="Include" />
+            </e>
+            <e p="LocationService" t="Include">
+              <e p="LocationService.cs" t="Include" />
+            </e>
+            <e p="PhysicsService" t="Include">
+              <e p="PhysicsService.cs" t="Include" />
+            </e>
+            <e p="SaveService" t="Include">
+              <e p="ISaveData.cs" t="Include" />
+              <e p="JsonService.cs" t="Include" />
+              <e p="PrefsService.cs" t="Include" />
+            </e>
+            <e p="Service.cs" t="Include" />
+            <e p="Services.cs" t="Include" />
+            <e p="TimeService" t="Include">
+              <e p="ITimeService.cs" t="Include" />
+              <e p="UnityTimeService.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Type" t="Include">
+            <e p="GameObjectType.cs" t="Include" />
+          </e>
+          <e p="UI" t="Include">
+            <e p="BaseUi.cs" t="Include" />
+            <e p="Interfaces" t="Include">
+              <e p="IListenerScreen.cs" t="Include" />
+              <e p="IPartUI.cs" t="Include" />
+            </e>
+            <e p="Screen" t="Include">
+              <e p="GameMenu" t="Include">
+                <e p="GameMenuBehaviour.cs" t="Include" />
+              </e>
+              <e p="MainMenu" t="Include">
+                <e p="MainMenuBehaviour.cs" t="Include" />
+              </e>
+              <e p="ScreenFactory.cs" t="Include" />
+              <e p="ScreenInterface.cs" t="Include" />
+            </e>
+            <e p="Type" t="Include">
+              <e p="ScreenElementType.cs" t="Include" />
+              <e p="ScreenType.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="BottomlessCloset_Main.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
