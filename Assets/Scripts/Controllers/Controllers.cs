@@ -1,4 +1,4 @@
-﻿namespace BottomlessCloset
+﻿namespace ExampleTemplate
 {
     public sealed class Controllers : IInitialization, ICleanUp
     {
@@ -24,16 +24,13 @@
         
         public Controllers()
         {
-            _initializations = new IInitialization[1];
-            _initializations[0] = new LocationInitialization();
-            
+            _initializations = new IInitialization[0];
             _executeControllers = new IExecute[2];
             _executeControllers[0] = new TimeRemainingController();
-            _executeControllers[1] = new MoveController();
+            _executeControllers[1] = new InputController();
 
-            _cleanUps = new ICleanUp[2];
+            _cleanUps = new ICleanUp[1];
             _cleanUps[0] = new TimeRemainingCleanUp();
-            _cleanUps[1] = new ItemCleanUp();
         }
         
         #endregion

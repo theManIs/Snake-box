@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     public sealed class AssetsPathGameObject
     {
@@ -11,6 +11,9 @@ namespace BottomlessCloset
         {
             {
                 GameObjectType.Canvas, "GUI/GUI_Canvas"
+            },
+            {                
+                GameObjectType.Character, "Prefabs/Character/Prefabs_Character_SphereCharacter"
             }
         };
 

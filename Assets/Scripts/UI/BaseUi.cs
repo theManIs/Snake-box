@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     public abstract class BaseUi : MonoBehaviour
     {

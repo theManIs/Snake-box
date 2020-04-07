@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     public sealed class Services
     {
@@ -30,7 +30,6 @@ namespace BottomlessCloset
         public PhysicsService PhysicsService { get; private set; }
         public ISaveData SaveData { get; private set; }
         public JsonService JsonService { get; private set; }
-        public LocationService LocationService { get; private set; }
         
         #endregion
         
@@ -44,7 +43,6 @@ namespace BottomlessCloset
             PhysicsService = new PhysicsService(CameraServices);
             SaveData = new PrefsService();
             JsonService = new JsonService();
-            LocationService = new LocationService(SaveData);
         }
         
         #endregion

@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     public static partial class DateTimeExtensions
     {

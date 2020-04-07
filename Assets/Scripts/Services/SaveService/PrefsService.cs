@@ -2,7 +2,7 @@
 using System.Text;
 
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     public sealed class PrefsService : Service, ISaveData
     {        

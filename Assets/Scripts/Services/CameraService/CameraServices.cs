@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     public sealed class CameraServices : Service
     {

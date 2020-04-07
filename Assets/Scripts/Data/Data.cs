@@ -5,7 +5,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     [CreateAssetMenu(fileName = "Data", menuName = "Data/Data")]
     public sealed class Data : ScriptableObject
@@ -13,11 +13,9 @@ namespace BottomlessCloset
         #region Fields
         
         [SerializeField] private string _shakeDataPath;
-        [SerializeField] private string _locationPath;
-        [SerializeField] private string _itemDataPath;
+        [SerializeField] private string _characterDataPath;
         private static ShakesData _shake;
-        private static LocationData _location;
-        private static ItemData _itemData;
+        private static CharacterData _characterData;
         private static readonly Lazy<Data> _instance = new Lazy<Data>(() => Load<Data>("Data/" + typeof(Data).Name));
         
         #endregion
@@ -40,29 +38,16 @@ namespace BottomlessCloset
             }
         }
 
-        public LocationData Location
+        public CharacterData Character
         {
             get
             {
-                if (_location == null)
+                if (_characterData == null)
                 {
-                    _location = Load<LocationData>("Data/" + Instance._locationPath);
+                    _characterData = Load<CharacterData>("Data/" + Instance._characterDataPath);
                 }
 
-                return _location;
-            }
-        }
-
-        public ItemData ItemData
-        {
-            get
-            {
-                if (_itemData == null)
-                {
-                    _itemData = Load<ItemData>("Data/" + Instance._itemDataPath);
-                }
-
-                return _itemData;
+                return _characterData;
             }
         }
 
@@ -73,16 +58,6 @@ namespace BottomlessCloset
 
         private static T Load<T>(string resourcesPath) where T : Object =>
             CustomResources.Load<T>(Path.ChangeExtension(resourcesPath, null));
-        
-        
-        
-        // [InitializeOnLoadMethod]
-        private static void CustomSetup()
-        {
-            _shake = null;
-            _location = null;
-            _itemData = null;
-        }
     
         #endregion
     }

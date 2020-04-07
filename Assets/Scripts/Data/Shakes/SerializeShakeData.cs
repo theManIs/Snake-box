@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     [Serializable]
     public sealed class SerializeShakeData

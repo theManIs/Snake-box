@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     public static partial class TimeRemainingExtensions
     {

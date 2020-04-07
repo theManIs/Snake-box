@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     public static partial class ArrayExtensions
     {

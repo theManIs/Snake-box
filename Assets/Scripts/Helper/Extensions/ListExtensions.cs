@@ -2,7 +2,7 @@
 using System.Linq;
 
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     public static partial class ListExtensions
     {

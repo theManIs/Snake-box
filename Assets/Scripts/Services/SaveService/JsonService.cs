@@ -3,7 +3,7 @@ using System.IO;
 using UnityEngine;
 
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     public sealed class JsonService : Service
     {

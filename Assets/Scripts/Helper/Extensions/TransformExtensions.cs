@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     public static partial class TransformExtensions
     {

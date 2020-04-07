@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     public sealed class GameController : MonoBehaviour
     {
@@ -18,7 +18,7 @@ namespace BottomlessCloset
         {
             _controllers = new Controllers();
             Initialization();
-            ScreenInterface.GetInstance().Execute(ScreenType.MainMenu);
+            //ScreenInterface.GetInstance().Execute(ScreenType.MainMenu);
         }
 
         private void Update()

@@ -1,4 +1,4 @@
-﻿namespace BottomlessCloset
+﻿namespace ExampleTemplate
 {
     public static class NameManager
     {

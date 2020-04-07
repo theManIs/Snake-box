@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     public interface IPartUI
     {

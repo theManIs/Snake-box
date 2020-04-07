@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     public sealed class MainMenuBehaviour : BaseUi
     {
@@ -21,7 +21,6 @@ namespace BottomlessCloset
 
         private void OnEnable()
         {
-            _locationService = Services.Instance.LocationService;
             _startGameButton.onClick.AddListener(StartGameButtonClick);
             _settingsButton.onClick.AddListener(ShowSettingsButtonClick);
         }
@@ -39,7 +38,6 @@ namespace BottomlessCloset
 
         public override void Show()
         {
-            _currentLevelLabel.text = $"Level {_locationService.CurrentLocation + 1}";
             gameObject.SetActive(true);
             ShowUI.Invoke();
         }

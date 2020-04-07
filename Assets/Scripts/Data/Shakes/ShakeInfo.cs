@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace BottomlessCloset
+namespace ExampleTemplate
 {
     [Serializable]
     public struct ShakeInfo
