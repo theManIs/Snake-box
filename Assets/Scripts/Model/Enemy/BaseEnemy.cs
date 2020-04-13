@@ -1,24 +1,36 @@
+using UnityEngine;
+
 namespace ExampleTemplate
 {
     public abstract class BaseEnemy : IEnemy
     {
         #region PrivateData
 
-        private float _hp;
+        protected float _hp;
+        protected Transform _transform;
+        protected Transform _target;
 
         #endregion
 
         #region Properties
 
-        public EnemyType Type { get; private set; }
+        public EnemyType Type { get; protected set; }
 
         #endregion
 
         #region Methods
 
         public abstract void Move();
-        public abstract void Spawn();
+
+        public virtual void Spawn()
+        {
+            var enemy =  Object.Instantiate((GameObject)Resources.Load(AssetsPathGameObject.EnemyObjects[Type]));
+            _transform = enemy.transform;
+        }
 
         #endregion
+
+        public abstract void OnUpdate();
+
     }
 }

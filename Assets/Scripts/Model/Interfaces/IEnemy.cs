@@ -2,7 +2,7 @@ namespace ExampleTemplate
 {
     public interface IEnemy
     {
-        void Move();
+        void OnUpdate();
         void Spawn();
     }
 }

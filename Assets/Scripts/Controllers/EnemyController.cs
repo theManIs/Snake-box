@@ -18,7 +18,7 @@ namespace ExampleTemplate
         {
             for (int i = 0; i < _enemies.Count; i++)
             {
-                _enemies[i].Move();
+                _enemies[i].OnUpdate();
             }
         }
         

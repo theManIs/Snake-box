@@ -17,6 +17,13 @@ namespace ExampleTemplate
             }
         };
 
+        public static readonly Dictionary<EnemyType, string> EnemyObjects = new Dictionary<EnemyType, string>
+        {
+            {
+                EnemyType.Simple, "Prefabs/Enemies/SimpleEnemy"
+            }
+        };
+
         #endregion
     }
 }

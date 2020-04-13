@@ -6,9 +6,6 @@ namespace ExampleTemplate
     {
         #region PrivateData
 
-        private GameObject Prefab; //TODO Вынести в SO;
-        private Transform _transform;
-        private Transform _target; //TODO для тестов, после заменить с использованием NavMesh; 
         private float _speed = 10.0f;
         private float _damage;
 
@@ -18,7 +15,7 @@ namespace ExampleTemplate
 
         public SimpleEnemy() //TODO переделать по человечески
         {
-            Prefab = (GameObject) Resources.Load("Prefabs/Enemies/SimpleEnemy");
+            Type = EnemyType.Simple;
             GetTarget();
         }
 
@@ -28,20 +25,39 @@ namespace ExampleTemplate
 
         public override void Move()
         {
-            _transform.rotation = Quaternion.Slerp(_transform.rotation,
-                Quaternion.LookRotation(_target.position - _transform.position), Time.deltaTime);
-            _transform.position += Time.deltaTime * _speed * _transform.forward;
+            if (_transform.position.CalcDistance(_target.position) > 3.0f)
+            {
+                _transform.rotation = Quaternion.Slerp(_transform.rotation,
+                    Quaternion.LookRotation(_target.position - _transform.position), 0.3f);
+                _transform.position += Time.deltaTime * _speed * _transform.forward;
+            }
+        }
+
+        public override void OnUpdate()
+        {
+            Move();
+            HitCheck();
+        }
+
+        public void HitCheck()
+        {
+            Collider[] colliders = new Collider[10];
+            Physics.OverlapSphereNonAlloc(_transform.position, 3.1f, colliders);
+
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                if (colliders[i] != null)
+                    if (colliders[i].CompareTag("Target"))
+                    {
+                        Debug.Log("I Found It!");
+                        Object.Destroy(colliders[i]);
+                    }
+            }
         }
 
         private void GetTarget()
         {
             _target = GameObject.FindWithTag("Target").transform;
-        }
-
-        public override void Spawn() //TODO Вынести в базовый класс
-        {
-            var obj =  Object.Instantiate(Prefab);
-            _transform = obj.transform;
         }
 
         #endregion
