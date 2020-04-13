@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace ExampleTemplate
 {
@@ -17,26 +18,28 @@ namespace ExampleTemplate
         {
             Type = EnemyType.Simple;
             GetTarget();
+            _needSetupNavMesh = true;
+
         }
 
         #endregion
 
         #region Methods
 
-        public override void Move()
-        {
-            if (_transform.position.CalcDistance(_target.position) > 3.0f)
-            {
-                _transform.rotation = Quaternion.Slerp(_transform.rotation,
-                    Quaternion.LookRotation(_target.position - _transform.position), 0.3f);
-                _transform.position += Time.deltaTime * _speed * _transform.forward;
-            }
-        }
-
         public override void OnUpdate()
         {
-            Move();
+            if (_needSetupNavMesh)
+            {
+                NavMeshSetup();
+            }
             HitCheck();
+        }
+
+        public void NavMeshSetup()
+        {
+            _navMeshAgent.SetDestination(_target.transform.position);
+            _navMeshAgent.speed = _speed;
+            _navMeshAgent.stoppingDistance = 2.5f;
         }
 
         public void HitCheck()

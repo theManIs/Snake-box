@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace ExampleTemplate
 {
@@ -9,6 +10,8 @@ namespace ExampleTemplate
         protected float _hp;
         protected Transform _transform;
         protected Transform _target;
+        protected NavMeshAgent _navMeshAgent;
+        protected bool _needSetupNavMesh;
 
         #endregion
 
@@ -20,11 +23,10 @@ namespace ExampleTemplate
 
         #region Methods
 
-        public abstract void Move();
-
         public virtual void Spawn()
         {
             var enemy =  Object.Instantiate((GameObject)Resources.Load(AssetsPathGameObject.EnemyObjects[Type]));
+            _navMeshAgent = enemy.GetComponent<NavMeshAgent>();
             _transform = enemy.transform;
         }
 
