@@ -27,8 +27,7 @@
             _initializations = new IInitialization[0];
             _executeControllers = new IExecute[2];
             _executeControllers[0] = new TimeRemainingController();
-            _executeControllers[1] = new InputController();
-
+            _executeControllers[1] = new InputController();            
             _cleanUps = new ICleanUp[1];
             _cleanUps[0] = new TimeRemainingCleanUp();
         }

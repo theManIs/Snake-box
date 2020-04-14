@@ -14,6 +14,9 @@ namespace ExampleTemplate
             },
             {                
                 GameObjectType.Character, "Prefabs/Character/Prefabs_Character_SphereCharacter"
+            },
+            {
+                GameObjectType.BlockSnake, "Prefabs/BlockSnake/Prefabs_Character_BlockSnake"
             }
         };
 

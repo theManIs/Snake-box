@@ -14,8 +14,10 @@ namespace ExampleTemplate
         
         [SerializeField] private string _shakeDataPath;
         [SerializeField] private string _characterDataPath;
+        [SerializeField] private string _blockSnakeDataPath;
         private static ShakesData _shake;
         private static CharacterData _characterData;
+        private static BlockSnakeData _blockSnake;
         private static readonly Lazy<Data> _instance = new Lazy<Data>(() => Load<Data>("Data/" + typeof(Data).Name));
         
         #endregion
@@ -24,6 +26,19 @@ namespace ExampleTemplate
         #region Properties
 
         public static Data Instance => _instance.Value;
+
+        public BlockSnakeData BlockSnake
+        {
+            get
+            {
+                if (_blockSnake == null)
+                {
+                    _blockSnake = Load<BlockSnakeData>("Data/" + Instance._blockSnakeDataPath);
+                }
+
+                return _blockSnake;
+            }
+        }
 
         public ShakesData Shakes
         {

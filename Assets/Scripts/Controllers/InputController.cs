@@ -10,7 +10,7 @@ namespace ExampleTemplate
         public InputController()
         {
             _characterData = Data.Instance.Character;
-            _characterData.Initialization();
+            _characterData.Initialization();           
         }
 
         #region IExecute
@@ -20,11 +20,14 @@ namespace ExampleTemplate
             Vector2 inputAxis;
             inputAxis.x = Input.GetAxis("Horizontal");
             inputAxis.y = Input.GetAxis("Vertical");
-
             if (inputAxis.x != 0 || inputAxis.y != 0)
             {
                 _characterData.CharacterBehaviour.Move(inputAxis);
-            }            
+            }
+            if (Input.GetKeyDown("space"))
+            {
+                _characterData.CharacterBehaviour.AddBlock();
+            }
         }
 
         #endregion

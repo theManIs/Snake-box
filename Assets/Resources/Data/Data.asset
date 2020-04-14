@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Data
   m_EditorClassIdentifier: 
   _shakeDataPath: 
-  _locationPath: Locations/LocationData
-  _itemDataPath: Items/ItemData
+  _characterDataPath: Character/CharacterData
+  _blockSnakeDataPath: BlockSnake/BlockSnakeData
