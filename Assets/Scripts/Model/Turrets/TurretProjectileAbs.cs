@@ -17,7 +17,7 @@ namespace Assets.Scripts.Model.Turrets
 
             Debug.Log(collideInfo.gameObject.name);
             Destroy(gameObject);
-            Destroy(collideInfo.gameObject, 1);
+            Destroy(collideInfo.gameObject, 0.5f);
 
             damageTarget?.RegisterDamage(GetCarryingDamage(), GetArmorType());
         } 

@@ -20,6 +20,7 @@ namespace Assets.Scripts.Model.Turrets
         public ArmorTypes PreferredArmorType = ArmorTypes.None;
         public float Cooldown = 250;
         private float _frameRateLock = 0;
+        private Quaternion _haltTurretRotation;
 
         #endregion
 
@@ -30,10 +31,9 @@ namespace Assets.Scripts.Model.Turrets
         {
             TurretSprite = Resources.Load<TurretBehaviour>(TurretSpritePath);
             ProjectileInstance = Resources.Load<GameObject>(TurretFireballPath);
-            Debug.Log(TurretSpritePath);
-            Debug.Log(TurretSprite);
             TurretInstance = Instantiate(TurretSprite.gameObject, DescartesPosition, Quaternion.identity);
             TurretSprite = TurretInstance.GetComponent<TurretBehaviour>();
+            _haltTurretRotation = TurretInstance.transform.rotation;
         }
 
         void Update()
@@ -41,6 +41,7 @@ namespace Assets.Scripts.Model.Turrets
 //            TakeAim();
             LockTarget();
             ContinueShooting();
+            HaltTurret();
         }
 
         #endregion
@@ -48,7 +49,13 @@ namespace Assets.Scripts.Model.Turrets
 
         #region Methods
 
-        private void ContinueShooting()
+        public void SetParentTransform(Transform parentTransform)
+        {
+            TurretInstance.transform.parent = parentTransform;
+            TurretInstance.transform.position = Vector3.zero;
+        }
+
+        public void ContinueShooting()
         {
             if (Time.frameCount - _frameRateLock > Cooldown)
             {
@@ -105,19 +112,37 @@ namespace Assets.Scripts.Model.Turrets
 
             IDummyEnemy nearestEnemy = null;
             float closestDistance = TurretRange;
+            ArmorTypes enemyArmorType = ArmorTypes.None;
 
             foreach (IDummyEnemy enemy in DummyEnemies)
             {
                 float checkingDistance = Vector2.Distance(enemy.GetPosition(), DescartesPosition);
 
-                if (checkingDistance < closestDistance)
+                if (checkingDistance > TurretRange)
+                {
+                    continue;
+                }
+                else if (enemyArmorType == PreferredArmorType && enemy.GetArmorType() != PreferredArmorType)
+                {
+                    continue;
+                }
+                
+                if (checkingDistance < closestDistance || enemyArmorType != PreferredArmorType && enemy.GetArmorType() == PreferredArmorType)
                 {
                     closestDistance = checkingDistance;
                     nearestEnemy = enemy;
+                    enemyArmorType = enemy.GetArmorType();
                 }
             }
 
             return nearestEnemy;
+        }
+        private void HaltTurret()
+        {
+            IDummyEnemy nearestEnemy = NearestEnemy();
+
+            if (nearestEnemy == null)
+                TurretInstance.transform.rotation = _haltTurretRotation;
         }
 
         #endregion
