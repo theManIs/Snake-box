@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 
 namespace Snake_box
 {
@@ -37,10 +39,13 @@ namespace Snake_box
         {
             if (_IsSpawnNeed)
             {
-                for (int i = 0; i < _enemies.Count; i++)
+                while (_enemies.Count>0)
                 {
-                    _enemies[i].Spawn();
-                    Spawned(_enemies[i]);
+                    var rnd = Random.Range(0, _enemies.Count);
+                    _enemies[rnd].Spawn();
+                    Spawned(_enemies[rnd]);
+                    _enemies.RemoveAt(rnd);
+                    Debug.Log(_enemies.Count);
                 }
 
                 _IsSpawnNeed = false;
@@ -59,6 +64,21 @@ namespace Snake_box
             for (int i = 0; i < wavesettings[0].SimpleEnemyCount; i++)
             {
                 _list.Add(new SimpleEnemy());
+            }
+
+            for (int i = 0; i < wavesettings[0].FastEnemyCount; i++)
+            {
+                //TODO Add Enemy to list
+            }
+
+            for (int i = 0; i < wavesettings[0].SlowEnemyCount; i++)
+            {
+                //TODO Add Enemy to list
+            }
+
+            for (int i = 0; i < wavesettings[0].FlyingEnemyCount; i++)
+            {
+                //TODO Add Enemy to list
             }
 
             return _list;

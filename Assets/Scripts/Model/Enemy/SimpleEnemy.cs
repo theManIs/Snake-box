@@ -45,7 +45,6 @@ namespace Snake_box
         {
             if (_isNeedNavMeshUpdate)
             {
-                Debug.Log("1");
                 _navMeshAgent.SetDestination(_target.transform.position);
 
                 
@@ -78,12 +77,8 @@ namespace Snake_box
 
         private Vector3 GetSpawnPoint(Vector3 center, float distance)
         {
-            Debug.Log(center);
-            Debug.Log(distance);
             Vector3 randomPos = Random.insideUnitSphere * distance + center;
-            Debug.Log(randomPos);
             NavMesh.SamplePosition(randomPos, out var hit, distance,NavMesh.GetAreaFromName("Spawn"));
-            Debug.Log(hit.position);
             return hit.position;
         }
 
