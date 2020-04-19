@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public static partial class Vector3Extensions
     {

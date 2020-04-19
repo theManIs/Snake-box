@@ -2,15 +2,19 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public class EnemySpawnController : IInitialization, IExecute
     {
         public static event Action<IEnemy> Spawned;
-        
+
         #region PrivateData
 
-        private List<IEnemy> _enemies = new List<IEnemy>();
+        private List<BaseEnemy> _enemies = new List<BaseEnemy>();
+        private EnemySpawnData _enemySpawnData;
+        private int level;
+        private int wave;
+
 
         private bool _IsSpawnNeed;
         //private PoolObject _pool; //TODO добавить пул 
@@ -47,10 +51,16 @@ namespace ExampleTemplate
 
         #region Methods
 
-        private List<IEnemy> FillEnemyList()
+        private List<BaseEnemy> FillEnemyList()
         {
-            List<IEnemy> _list = new List<IEnemy>();
-            _list.Add(new SimpleEnemy());
+            List<BaseEnemy> _list = new List<BaseEnemy>();
+            _enemySpawnData = Data.Instance.EnemySpawn;
+            var wavesettings = _enemySpawnData.LevelSpawnDatas[wave].WaveSettings;
+            for (int i = 0; i < wavesettings[0].SimpleEnemyCount; i++)
+            {
+                _list.Add(new SimpleEnemy());
+            }
+
             return _list;
         }
 

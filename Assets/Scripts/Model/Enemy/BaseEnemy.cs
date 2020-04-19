@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Object = UnityEngine.Object;
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public abstract class BaseEnemy : IEnemy
     {
@@ -10,9 +12,11 @@ namespace ExampleTemplate
         protected float _hp;
         protected Transform _transform;
         protected Transform _target;
+        protected Vector3 _SpawnCenter;
+        protected float _spawnRadius;
         protected NavMeshAgent _navMeshAgent;
-        protected bool _needSetupNavMesh;
-
+        protected bool _isNeedNavMeshUpdate = false;
+        protected GameObject prefab;
         #endregion
 
         #region Properties
@@ -23,12 +27,7 @@ namespace ExampleTemplate
 
         #region Methods
 
-        public virtual void Spawn()
-        {
-            var enemy =  Object.Instantiate((GameObject)Resources.Load(AssetsPathGameObject.EnemyObjects[Type]));
-            _navMeshAgent = enemy.GetComponent<NavMeshAgent>();
-            _transform = enemy.transform;
-        }
+        public abstract void Spawn();
 
         #endregion
 

@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public static partial class ArrayExtensions
     {

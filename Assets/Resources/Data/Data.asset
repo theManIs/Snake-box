@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b35a38e01754311b96a8bea7176388e, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  _shakeDataPath: Snake/ShakesData.asset
-  _characterDataPath: Character/CharacterData.asset
-  _EnemyDataPath: 
+  _shakeDataPath: Snake/ShakesData
+  _characterDataPath: Character/CharacterData
+  _enemySpawnDataPath: Enemy/EnemySpawnData
+  _levelSpawnDataPath: Enemy/LevelSpawnData
+  _simpleEnemyDataPath: Enemy/SimpleEnemyData

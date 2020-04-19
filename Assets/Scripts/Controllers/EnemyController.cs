@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using UnityEngine;
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public class EnemyController : IExecute, IInitialization
     {
@@ -19,6 +20,7 @@ namespace ExampleTemplate
             for (int i = 0; i < _enemies.Count; i++)
             {
                 _enemies[i].OnUpdate();
+                
             }
         }
         

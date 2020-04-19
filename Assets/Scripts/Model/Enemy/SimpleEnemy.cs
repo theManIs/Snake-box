@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public sealed class SimpleEnemy : BaseEnemy
     {
         #region PrivateData
 
-        private float _speed = 10.0f;
+        private SimpleEnemyData _data;
+        private float _speed;
         private float _damage;
 
         #endregion
@@ -16,9 +17,15 @@ namespace ExampleTemplate
 
         public SimpleEnemy() //TODO переделать по человечески
         {
+            _data = Data.Instance.SimpleEnemy;
             Type = EnemyType.Simple;
+            prefab = _data.prefab;
+            _SpawnCenter = _data.SpawnCenter.transform.position;
+            _spawnRadius = _data.SpawnRadius;
+            _speed = _data.speed;
+            _hp = _data.hp;
+            _damage = _data.damage;
             GetTarget();
-            _needSetupNavMesh = true;
 
         }
 
@@ -26,20 +33,26 @@ namespace ExampleTemplate
 
         #region Methods
 
-        public override void OnUpdate()
+        public override void Spawn()
         {
-            if (_needSetupNavMesh)
-            {
-                NavMeshSetup();
-            }
-            HitCheck();
+            var enemy = GameObject.Instantiate(prefab,GetSpawnPoint(_SpawnCenter,_spawnRadius),Quaternion.identity);
+            _navMeshAgent = enemy.GetComponent<NavMeshAgent>();
+            _transform = enemy.transform;
+            _isNeedNavMeshUpdate = true;
         }
 
-        public void NavMeshSetup()
+        public override void OnUpdate()
         {
-            _navMeshAgent.SetDestination(_target.transform.position);
-            _navMeshAgent.speed = _speed;
-            _navMeshAgent.stoppingDistance = 2.5f;
+            if (_isNeedNavMeshUpdate)
+            {
+                Debug.Log("1");
+                _navMeshAgent.SetDestination(_target.transform.position);
+
+                
+                    _isNeedNavMeshUpdate = false;
+                
+            }
+            HitCheck();
         }
 
         public void HitCheck()
@@ -61,6 +74,17 @@ namespace ExampleTemplate
         private void GetTarget()
         {
             _target = GameObject.FindWithTag("Target").transform;
+        }
+
+        private Vector3 GetSpawnPoint(Vector3 center, float distance)
+        {
+            Debug.Log(center);
+            Debug.Log(distance);
+            Vector3 randomPos = Random.insideUnitSphere * distance + center;
+            Debug.Log(randomPos);
+            NavMesh.SamplePosition(randomPos, out var hit, distance,NavMesh.GetAreaFromName("Spawn"));
+            Debug.Log(hit.position);
+            return hit.position;
         }
 
         #endregion

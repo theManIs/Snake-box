@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public sealed class GameController : MonoBehaviour
     {

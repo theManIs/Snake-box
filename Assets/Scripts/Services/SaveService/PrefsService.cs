@@ -2,7 +2,7 @@
 using System.Text;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public sealed class PrefsService : Service, ISaveData
     {        
