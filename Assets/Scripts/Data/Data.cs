@@ -17,11 +17,17 @@ namespace Snake_box
         [SerializeField] private string _enemySpawnDataPath;
         [SerializeField] private string _levelSpawnDataPath;
         [SerializeField] private string _simpleEnemyDataPath;
+        [SerializeField] private string _slowEnemyDataPath;
+        [SerializeField] private string _fastEnemyDataPath;
+        [SerializeField] private string _flyingEnemyDataPath;
         private static EnemySpawnData _enemySpawnData;
         private static LevelSpawnData _levelSpawnData;
         private static ShakesData _shake;
         private static CharacterData _characterData;
         private static SimpleEnemyData _simpleEnemyData;
+        private static SlowEnemyData _slowEnemyData;
+        private static FastEnemyData _fastEnemyData;
+        private static FlyingEnemyData _flyingEnemyData;
         private static readonly Lazy<Data> _instance = new Lazy<Data>(() => Load<Data>("Data/" + typeof(Data).Name));
         
         #endregion
@@ -82,6 +88,47 @@ namespace Snake_box
                 return _simpleEnemyData;
             }
         }
+        
+        public SlowEnemyData SlowEnemy
+        {
+            get
+            {
+                if (_slowEnemyData == null)
+                {
+                    _slowEnemyData = Load<SlowEnemyData>("Data/" + Instance._slowEnemyDataPath);
+                }
+
+                return _slowEnemyData;
+            }
+        }
+        
+        public FastEnemyData FastEnemy
+        {
+            get
+            {
+                if (_fastEnemyData == null)
+                {
+                    _fastEnemyData = Load<FastEnemyData>("Data/" + Instance._fastEnemyDataPath);
+                }
+
+                return _fastEnemyData;
+            }
+        }
+
+        public FlyingEnemyData FlyingEnemy
+        {
+            get
+            {
+                if (_flyingEnemyData == null)
+                {
+                    _flyingEnemyData = Load<FlyingEnemyData>("Data/" + Instance._flyingEnemyDataPath);
+                }
+
+                return _flyingEnemyData;
+            }
+        }
+
+
 
         #endregion
 

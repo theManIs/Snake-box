@@ -54,7 +54,10 @@
             <e p="Data.cs" t="Include" />
             <e p="Enemy" t="Include">
               <e p="BaseEnemyData.cs" t="Include" />
+              <e p="FastEnemyData.cs" t="Include" />
+              <e p="FlyingEnemyData.cs" t="Include" />
               <e p="SimpleEnemyData.cs" t="Include" />
+              <e p="SlowEnemyData.cs" t="Include" />
             </e>
             <e p="EnemySpawn" t="Include">
               <e p="EnemySpawnData.cs" t="Include" />
@@ -112,7 +115,10 @@
             </e>
             <e p="Enemy" t="Include">
               <e p="BaseEnemy.cs" t="Include" />
+              <e p="FastEnemy.cs" t="Include" />
+              <e p="FlyingEnemy.cs" t="Include" />
               <e p="SimpleEnemy.cs" t="Include" />
+              <e p="SlowEnemy.cs" t="Include" />
             </e>
             <e p="Interfaces" t="Include">
               <e p="IEnemy.cs" t="Include" />

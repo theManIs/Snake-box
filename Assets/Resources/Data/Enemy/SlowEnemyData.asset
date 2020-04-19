@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8737b7df8bc2402186dcd19545774bb4, type: 3}
-  m_Name: SimpleEnemyData
+  m_Script: {fileID: 11500000, guid: e274a759a6ce48f98d2eb2334dba3d06, type: 3}
+  m_Name: SlowEnemyData
   m_EditorClassIdentifier: 
   SpawnCenter: {fileID: 5067107991294809042, guid: f0c6579eff748814fb9376a7c0e527c4,
     type: 3}
-  prefab: {fileID: 5058968977680414830, guid: b6238541d2a656c458b3e004d9cab7a0, type: 3}
-  hp: 10
+  prefab: {fileID: 5058968977680414830, guid: 8b1e04e9e5cf9524fa0ec36547145237, type: 3}
+  hp: 20
   speed: 5
-  damage: 2
+  damage: 5
   SpawnRadius: 50
-  sizepack: 1
-  packvalue: 1
+  sizepack: 0
+  packvalue: 0

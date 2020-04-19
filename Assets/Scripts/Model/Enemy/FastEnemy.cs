@@ -1,19 +1,19 @@
 namespace Snake_box
 {
-    public sealed class SimpleEnemy : BaseEnemy
+    public sealed class FastEnemy: BaseEnemy
     {
         #region PrivateData
 
-        private SimpleEnemyData _data;
+        private FastEnemyData _data;
 
         #endregion
 
-        #region ClassLifeCycles
+        #region ClassLifeCycle
 
-        public SimpleEnemy()
+        public FastEnemy()
         {
-            _data = Data.Instance.SimpleEnemy;
-            Type = EnemyType.Simple;
+            _data = Data.Instance.FastEnemy;
+            Type = EnemyType.Fast;
             prefab = _data.prefab;
             _SpawnCenter = _data.SpawnCenter.transform.position;
             _spawnRadius = _data.SpawnRadius;

@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c5f67e0b75644529922faeff58e82b9, type: 3}
   m_Name: LevelSpawnData
   m_EditorClassIdentifier: 
-  UseRandomSpawn: 1
-  PackValue: 0
+  UseRandomSpawn: 0
+  WaveSettings:
+  - SimpleEnemyCount: 10
+    SlowEnemyCount: 10
+    FastEnemyCount: 10
+    FlyingEnemyCount: 0

@@ -17,3 +17,6 @@ MonoBehaviour:
   _enemySpawnDataPath: Enemy/EnemySpawnData
   _levelSpawnDataPath: Enemy/LevelSpawnData
   _simpleEnemyDataPath: Enemy/SimpleEnemyData
+  _slowEnemyDataPath: Enemy/SlowEnemyData
+  _fastEnemyDataPath: Enemy/FastEnemyData
+  _flyingEnemyDataPath: Enemy/FlyingEnemyData

@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8737b7df8bc2402186dcd19545774bb4, type: 3}
-  m_Name: SimpleEnemyData
+  m_Script: {fileID: 11500000, guid: 685f99e7652e453f8d92a5d8b1895279, type: 3}
+  m_Name: FlyingEnemyData
   m_EditorClassIdentifier: 
   SpawnCenter: {fileID: 5067107991294809042, guid: f0c6579eff748814fb9376a7c0e527c4,
     type: 3}
-  prefab: {fileID: 5058968977680414830, guid: b6238541d2a656c458b3e004d9cab7a0, type: 3}
-  hp: 10
-  speed: 5
-  damage: 2
-  SpawnRadius: 50
-  sizepack: 1
-  packvalue: 1
+  prefab: {fileID: 5058968977680414830, guid: ae92a8340f4b11c4e91c1947d523534a, type: 3}
+  hp: 0
+  speed: 0
+  damage: 0
+  SpawnRadius: 0
+  sizepack: 0
+  packvalue: 0

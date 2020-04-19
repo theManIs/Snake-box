@@ -68,19 +68,20 @@ namespace Snake_box
 
             for (int i = 0; i < wavesettings[0].FastEnemyCount; i++)
             {
-                //TODO Add Enemy to list
+                _list.Add(new FastEnemy());
             }
 
             for (int i = 0; i < wavesettings[0].SlowEnemyCount; i++)
             {
-                //TODO Add Enemy to list
+                _list.Add(new SlowEnemy());
             }
 
             for (int i = 0; i < wavesettings[0].FlyingEnemyCount; i++)
             {
-                //TODO Add Enemy to list
+                _list.Add(new FlyingEnemy());
             }
 
+            //TODO Переделать через Switch когда будет добавлен пул
             return _list;
         }
 
