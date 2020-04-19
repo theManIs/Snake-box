@@ -16,18 +16,18 @@ namespace ExampleTemplate
 
         private void Awake()
         {               
-            for (int i = 0; i < _blocksSnakes.Count; i++)
+            for (int i = 0; i < _blocksSnakes.Count; i++)// проверяем и создоем хвост если есть
             {
                 AddBlock();
             }
-            _sizeBlock = (gameObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.magnitude) / 2;
+            _sizeBlock = (gameObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.magnitude) / 2;// размер
             _characterData = Data.Instance.Character;
             _positions.Add(gameObject.transform.position);//позиция головы             
         }
 
         private void FixedUpdate()
         {
-            Collision();
+            Collision();///проверка на столкновение
         }
 
         public void ResetPosition()///выставление блока
@@ -67,16 +67,16 @@ namespace ExampleTemplate
             {
                 if (_hit.collider.CompareTag(TagManager.GetTag(_tagType = TagType.Bonus)))
                 {
-                    Debug.Log("Bonus");
+                    Debug.Log("Bonus");/// добавить что должно произойти
                     Destroy(_hit.transform.gameObject);
                 }
                 if (_hit.collider.CompareTag(TagManager.GetTag(_tagType = TagType.Base)))
                 {
-                    Debug.Log("Base");
+                    Debug.Log("Base");/// добавить что должно произойти
                 }
                 if (_hit.collider.CompareTag(TagManager.GetTag(_tagType = TagType.Wall)))
                 {
-                    Debug.Log("Wall");
+                    Debug.Log("Wall");/// добавить что должно произойти
                 }
             }
         }

@@ -23,7 +23,7 @@ namespace ExampleTemplate
 
             if (Input.GetKeyDown(AxisManager.SPACE))
             {
-                _characterData.CharacterBehaviour.AddBlock();
+                _characterData.CharacterBehaviour.AddBlock();/// добавление ячейки - хвост
             }
         }
 
