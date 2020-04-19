@@ -17,14 +17,11 @@ namespace ExampleTemplate
 
         public void Execute()
         {
-            Vector2 inputAxis;
-            inputAxis.x = Input.GetAxis("Horizontal");
-            inputAxis.y = Input.GetAxis("Vertical");
-            if (inputAxis.x != 0 || inputAxis.y != 0)
-            {
-                _characterData.CharacterBehaviour.Move(inputAxis);
-            }
-            if (Input.GetKeyDown("space"))
+            float inputAxis;
+            inputAxis = Input.GetAxisRaw(AxisManager.HORIZONTAL);
+            _characterData.CharacterBehaviour.Move(inputAxis);
+
+            if (Input.GetKeyDown(AxisManager.SPACE))
             {
                 _characterData.CharacterBehaviour.AddBlock();
             }

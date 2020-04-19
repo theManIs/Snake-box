@@ -8,8 +8,8 @@ namespace ExampleTemplate
         private BlockSnakeData _blockSnakeData;
 
         private void Awake() 
-        {  
+        {             
             _blockSnakeData = Data.Instance.BlockSnake;           
-        }        
+        }
     }
 }

@@ -6,8 +6,9 @@ namespace ExampleTemplate
     [CreateAssetMenu(fileName = "CharacterData", menuName = "Data/Character/CharacterData")]
     public sealed class CharacterData : ScriptableObject
     {
-        [SerializeField] private float _speed;// скорость
-        [SerializeField] private float _blockDistance;// расстояние между блоками
+        [SerializeField] private float _hp;
+        [SerializeField] private float _speedRotation;// скорость поворота
+        [SerializeField] private float _speed;// скорость      
         [Range(0, 1000)] [SerializeField] private float _slowSpeed; //Замедление
         [HideInInspector] public CharacterBehaviour CharacterBehaviour;  
         private ITimeService _timeService;
@@ -23,16 +24,15 @@ namespace ExampleTemplate
         public float GetSpeed()
         { 
             return _speed * _timeService.DeltaTime();
-        }
-
-        public float GetDistance()
-        {
-            return _blockDistance;
-        }
+        }       
 
         public float GetSlow()
         {
             return _slowSpeed;
+        }
+        public float GetSpeedRotation()
+        {
+            return _speedRotation;
         }
     }
 }
