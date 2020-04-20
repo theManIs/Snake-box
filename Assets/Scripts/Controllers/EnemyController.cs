@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,6 +6,7 @@ namespace Snake_box
 {
     public class EnemyController : IExecute, IInitialization
     {
+        
         
         #region Fields
 
@@ -20,7 +22,6 @@ namespace Snake_box
             for (int i = 0; i < _enemies.Count; i++)
             {
                 _enemies[i].OnUpdate();
-                
             }
         }
         
@@ -32,6 +33,7 @@ namespace Snake_box
         public void Initialization()
         {
             EnemySpawnController.Spawned += AddEnemy;
+            BaseEnemy.Despawned += DelEnemy;
         }
 
         #endregion
@@ -41,6 +43,11 @@ namespace Snake_box
         private void AddEnemy(IEnemy enemy)
         {
             _enemies.Add(enemy);
+        }
+
+        private void DelEnemy(IEnemy enemy)
+        {
+            _enemies.Remove(enemy);
         }
 
         #endregion

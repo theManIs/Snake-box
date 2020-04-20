@@ -7,6 +7,7 @@ namespace Snake_box
     public sealed class LevelSpawnData : ScriptableObject
     {
         public bool UseRandomSpawn;
+        public float Delay;
         // [Header("Not For Random")]
         public List<EnemyCount> WaveSettings;
         // [Header("Only For Random")] 

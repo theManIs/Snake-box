@@ -14,10 +14,9 @@ namespace Snake_box
 
         private List<BaseEnemy> _enemies = new List<BaseEnemy>();
         private EnemySpawnData _enemySpawnData;
-        private int level;
-        private int wave;
-
-
+        private float _delay;
+        private int _level;
+        private int _wave;
         private bool _IsSpawnNeed;
         //private PoolObject _pool; //TODO добавить пул 
 
@@ -27,8 +26,12 @@ namespace Snake_box
 
         public void Initialization()
         {
+            _enemySpawnData = Data.Instance.EnemySpawn;
             _enemies = FillEnemyList();
             _IsSpawnNeed = true;
+            _delay = _enemySpawnData.LevelSpawnDatas[_wave].Delay;
+            _wave = 0;// Волная в уровне
+            _level = 0;// Задел на множество уровней
         }
 
         #endregion
@@ -39,16 +42,24 @@ namespace Snake_box
         {
             if (_IsSpawnNeed)
             {
-                while (_enemies.Count>0)
+                if (_enemies.Count > 0)
                 {
-                    var rnd = Random.Range(0, _enemies.Count);
-                    _enemies[rnd].Spawn();
-                    Spawned(_enemies[rnd]);
-                    _enemies.RemoveAt(rnd);
-                    Debug.Log(_enemies.Count);
+                    if (_delay <= 0.0f)
+                    {
+                        _delay = _enemySpawnData.LevelSpawnDatas[_level].Delay;
+                        var rnd = Random.Range(0, _enemies.Count);
+                        _enemies[rnd].Spawn();
+                        Spawned(_enemies[rnd]);
+                        _enemies.RemoveAt(rnd);
+                    }
+                    else
+                        _delay -= Services.Instance.TimeService.DeltaTime();
                 }
-
-                _IsSpawnNeed = false;
+                else
+                {
+                    _IsSpawnNeed = false;
+                    _wave++;
+                }
             }
         }
 
@@ -59,24 +70,24 @@ namespace Snake_box
         private List<BaseEnemy> FillEnemyList()
         {
             List<BaseEnemy> _list = new List<BaseEnemy>();
-            _enemySpawnData = Data.Instance.EnemySpawn;
-            var wavesettings = _enemySpawnData.LevelSpawnDatas[wave].WaveSettings;
-            for (int i = 0; i < wavesettings[0].SimpleEnemyCount; i++)
+            
+            var wavesettings = _enemySpawnData.LevelSpawnDatas[_level].WaveSettings;
+            for (int i = 0; i < wavesettings[_wave].SimpleEnemyCount; i++)
             {
                 _list.Add(new SimpleEnemy());
             }
 
-            for (int i = 0; i < wavesettings[0].FastEnemyCount; i++)
+            for (int i = 0; i < wavesettings[_wave].FastEnemyCount; i++)
             {
                 _list.Add(new FastEnemy());
             }
 
-            for (int i = 0; i < wavesettings[0].SlowEnemyCount; i++)
+            for (int i = 0; i < wavesettings[_wave].SlowEnemyCount; i++)
             {
                 _list.Add(new SlowEnemy());
             }
 
-            for (int i = 0; i < wavesettings[0].FlyingEnemyCount; i++)
+            for (int i = 0; i < wavesettings[_wave].FlyingEnemyCount; i++)
             {
                 _list.Add(new FlyingEnemy());
             }

@@ -1,11 +1,16 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 
 namespace Snake_box
 {
     public abstract class BaseEnemy : IEnemy
     {
+        public static event Action<IEnemy> Despawned;
+        
         #region PrivateData
 
         protected float _hp;
@@ -45,9 +50,8 @@ namespace Snake_box
         {
             if (_isNeedNavMeshUpdate)
             {
-                _navMeshAgent.SetDestination(_target.transform.position);
-
-
+                if(_target!= null)
+                    _navMeshAgent.SetDestination(_target.transform.position);
                 _isNeedNavMeshUpdate = false;
             }
 
@@ -87,6 +91,7 @@ namespace Snake_box
             _hp -= damage;
             if (_hp <= 0)
             {
+                Despawned.Invoke(this);
                 Object.Destroy(_transform.gameObject);
             }
         }
