@@ -5,14 +5,13 @@ using UnityEngine;
 namespace ExampleTemplate
 {
     public sealed class CharacterBehaviour : MonoBehaviour
-    {        
+    {
+        [SerializeField] private float _rayDistantion;
         private CharacterData _characterData;
         private BlockSnakeData _blockSnakeData;
-        private List<BlockSnake> _blocksSnakes = new List<BlockSnake>();//блоки
-        private List<Vector2> _positions = new List<Vector2>();// позиции блоков 
-        private float _sizeBlock;
-        private RaycastHit _hit;
-        [SerializeField] private TagType _tagType;
+        private readonly List<BlockSnake> _blocksSnakes = new List<BlockSnake>();//блоки
+        private readonly List<Vector2> _positions = new List<Vector2>();// позиции блоков 
+        private float _sizeBlock;        
 
         private void Awake()
         {               
@@ -23,12 +22,7 @@ namespace ExampleTemplate
             _sizeBlock = (gameObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.magnitude) / 2;// размер
             _characterData = Data.Instance.Character;
             _positions.Add(gameObject.transform.position);//позиция головы             
-        }
-
-        private void FixedUpdate()
-        {
-            Collision();///проверка на столкновение
-        }
+        }               
 
         public void ResetPosition()///выставление блока
         {
@@ -63,29 +57,31 @@ namespace ExampleTemplate
 
         public void Collision()
         {
-            if (Physics.Raycast(transform.position, -Vector3.right, out _hit, 1.0f))
-            {
-                if (_hit.collider.CompareTag(TagManager.GetTag(_tagType = TagType.Bonus)))
+            var tagCollider = Services.Instance.PhysicsService.GetCollisionTag(transform.position,transform.forward,_rayDistantion);           
+
+            if (tagCollider)
+            {                
+                if (tagCollider.CompareTag(TagManager.GetTag(TagType.Bonus)))
                 {
-                    Debug.Log("Bonus");/// добавить что должно произойти
-                    Destroy(_hit.transform.gameObject);
+                    Destroy(tagCollider.transform.gameObject);
                 }
-                if (_hit.collider.CompareTag(TagManager.GetTag(_tagType = TagType.Base)))
+                if (tagCollider.CompareTag(TagManager.GetTag(TagType.Base)))
                 {
-                    Debug.Log("Base");/// добавить что должно произойти
+                    
                 }
-                if (_hit.collider.CompareTag(TagManager.GetTag(_tagType = TagType.Wall)))
+                if (tagCollider.CompareTag(TagManager.GetTag(TagType.Wall)))
                 {
-                    Debug.Log("Wall");/// добавить что должно произойти
+                    
                 }
             }
         }
 
         public void Move(float inputAxis)//движение
-        {            
+        {           
             ResetPosition();
-            transform.Rotate(0,0, inputAxis * (_characterData.GetSpeed() * _characterData.GetSpeedRotation())*90);
-            transform.position += transform.right*(_characterData.GetSpeed() / (_positions.Count + _characterData.GetSlow()));            
+            transform.Rotate(0,0, inputAxis*90);// переделать!!!!!!!!!!!!
+            transform.position += transform.right*(_characterData.GetSpeed() / (_positions.Count + _characterData.GetSlow()));
+            Collision();
         }
     }
 }

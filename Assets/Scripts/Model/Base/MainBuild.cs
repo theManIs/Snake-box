@@ -3,7 +3,7 @@
 
 namespace ExampleTemplate
 {
-    public class Base : MonoBehaviour
+    public class MainBuild : MonoBehaviour
     {
         [SerializeField] private float _hp;
 

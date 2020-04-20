@@ -3,7 +3,7 @@
 
 namespace ExampleTemplate
 {
-    public class BlockSnake : MonoBehaviour
+    public sealed class BlockSnake : MonoBehaviour
     {
         private BlockSnakeData _blockSnakeData;
 
