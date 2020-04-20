@@ -68,7 +68,6 @@ namespace Snake_box
                 if (colliders[i] != null)
                     if (colliders[i].CompareTag(TagManager.GetTag(TagType.Target)))
                     {
-                        Debug.Log("I Found It!");
                         Object.Destroy(colliders[i].gameObject);
                     }
             }

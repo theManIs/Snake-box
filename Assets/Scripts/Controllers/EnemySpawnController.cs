@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace Snake_box
 {
-    public class EnemySpawnController : IInitialization, IExecute
+    public sealed class EnemySpawnController : IInitialization, IExecute
     {
         public static event Action<IEnemy> Spawned;
 
@@ -91,8 +91,6 @@ namespace Snake_box
             {
                 _list.Add(new FlyingEnemy());
             }
-
-            //TODO Переделать через Switch когда будет добавлен пул
             return _list;
         }
 

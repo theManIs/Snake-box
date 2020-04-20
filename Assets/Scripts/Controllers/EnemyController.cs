@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Snake_box
 {
-    public class EnemyController : IExecute, IInitialization
+    public sealed class EnemyController : IExecute, IInitialization
     {
         
         
