@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public sealed class GameMenuBehaviour : BaseUi
     {

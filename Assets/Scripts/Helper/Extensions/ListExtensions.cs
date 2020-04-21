@@ -2,7 +2,7 @@
 using System.Linq;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public static partial class ListExtensions
     {

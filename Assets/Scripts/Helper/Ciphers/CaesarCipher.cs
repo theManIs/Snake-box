@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public sealed class CaesarCipher : ICipher
     {
