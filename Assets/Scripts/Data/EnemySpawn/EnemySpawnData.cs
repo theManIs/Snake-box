@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Snake_box
 {
     [CreateAssetMenu(fileName = "EnemySpawnData",menuName = "Data/Enemy/EnemySpawnData")]
