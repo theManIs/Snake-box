@@ -13,25 +13,27 @@ namespace Snake_box
         
         #region PrivateData
 
-        protected float _hp;
+        protected NavMeshAgent _navMeshAgent;
+        protected GameObject prefab;
         protected Transform _transform;
         protected Transform _target;
         protected Vector3 _SpawnCenter;
+        protected float _hp;
         protected float _spawnRadius;
-        protected NavMeshAgent _navMeshAgent;
-        protected bool _isNeedNavMeshUpdate = false;
-        protected GameObject prefab;
         protected float _speed;
         protected float _damage;
+        protected bool _isNeedNavMeshUpdate = false;
 
         #endregion
 
+        
         #region Properties
 
         public EnemyType Type { get; protected set; }
 
         #endregion
 
+        
         #region Methods
 
         public virtual void Spawn()
@@ -41,21 +43,6 @@ namespace Snake_box
             _navMeshAgent.speed = _speed;
             _transform = enemy.transform;
             _isNeedNavMeshUpdate = true;
-        }
-
-        #endregion
-
-        public virtual void OnUpdate()
-
-        {
-            if (_isNeedNavMeshUpdate)
-            {
-                if(_target!= null)
-                    _navMeshAgent.SetDestination(_target.transform.position);
-                _isNeedNavMeshUpdate = false;
-            }
-
-            HitCheck();
         }
 
         public void HitCheck()
@@ -94,5 +81,19 @@ namespace Snake_box
                 Object.Destroy(_transform.gameObject);
             }
         }
+        
+        public virtual void OnUpdate()
+
+        {
+            if (_isNeedNavMeshUpdate)
+            {
+                if(_target!= null)
+                    _navMeshAgent.SetDestination(_target.transform.position);
+                _isNeedNavMeshUpdate = false;
+            }
+
+            HitCheck();
+        }
+        #endregion
     }
 }

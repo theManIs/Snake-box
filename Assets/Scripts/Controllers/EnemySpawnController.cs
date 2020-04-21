@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using Random = UnityEngine.Random;
 
 
@@ -10,6 +9,7 @@ namespace Snake_box
     {
         public static event Action<IEnemy> Spawned;
 
+        
         #region PrivateData
 
         private List<BaseEnemy> _enemies = new List<BaseEnemy>();
@@ -22,6 +22,7 @@ namespace Snake_box
 
         #endregion
 
+        
         #region IInitialization
 
         public void Initialization()
@@ -36,6 +37,7 @@ namespace Snake_box
 
         #endregion
 
+        
         #region IExecute
 
         public void Execute()
@@ -65,6 +67,7 @@ namespace Snake_box
 
         #endregion
 
+        
         #region Methods
 
         private List<BaseEnemy> FillEnemyList()

@@ -8,6 +8,7 @@ namespace Snake_box
 
         #endregion
 
+        
         #region ClassLifeCycle
 
         public SlowEnemy()

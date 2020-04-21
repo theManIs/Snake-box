@@ -11,6 +11,7 @@ namespace Snake_box
 
         #endregion
 
+        
         #region IExecute
 
         public void Execute()
@@ -23,6 +24,7 @@ namespace Snake_box
 
         #endregion
 
+        
         #region IInitialization
 
         public void Initialization()
@@ -33,6 +35,7 @@ namespace Snake_box
 
         #endregion
 
+        
         #region Methods
 
         private void AddEnemy(IEnemy enemy)
