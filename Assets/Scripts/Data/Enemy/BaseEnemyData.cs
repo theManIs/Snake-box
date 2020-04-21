@@ -1,17 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Snake_box
 {
     public class BaseEnemyData : ScriptableObject
     {
         public GameObject SpawnCenter;
-        public GameObject prefab;
-        public float hp;
-        public float speed;
-        public float damage;
+        public GameObject Prefab;
+        public float Hp;
+        public float Speed;
+        public float Damage;
         public float SpawnRadius;
-        public float sizepack;
-        public float packvalue;
+        public float SizePack;
+        public float PackValue;
     }
 }

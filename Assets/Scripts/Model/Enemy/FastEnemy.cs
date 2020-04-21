@@ -14,12 +14,12 @@ namespace Snake_box
         {
             _data = Data.Instance.FastEnemy;
             Type = EnemyType.Fast;
-            prefab = _data.prefab;
+            prefab = _data.Prefab;
             _SpawnCenter = _data.SpawnCenter.transform.position;
             _spawnRadius = _data.SpawnRadius;
-            _speed = _data.speed;
-            _hp = _data.hp;
-            _damage = _data.damage;
+            _speed = _data.Speed;
+            _hp = _data.Hp;
+            _damage = _data.Damage;
             GetTarget();
         }
 
