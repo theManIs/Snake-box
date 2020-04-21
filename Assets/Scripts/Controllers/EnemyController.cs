@@ -1,21 +1,17 @@
-using System;
 using System.Collections.Generic;
-using UnityEngine;
+
 
 namespace Snake_box
 {
     public sealed class EnemyController : IExecute, IInitialization
     {
-        
-        
         #region Fields
 
-        private List<IEnemy> _enemies = new List<IEnemy>();
+        private readonly List<IEnemy> _enemies = new List<IEnemy>();
 
         #endregion
 
         #region IExecute
-
 
         public void Execute()
         {
@@ -24,7 +20,6 @@ namespace Snake_box
                 _enemies[i].OnUpdate();
             }
         }
-        
 
         #endregion
 
@@ -42,12 +37,14 @@ namespace Snake_box
 
         private void AddEnemy(IEnemy enemy)
         {
-            _enemies.Add(enemy);
+            if (!_enemies.Contains(enemy))
+                _enemies.Add(enemy);
         }
 
         private void DelEnemy(IEnemy enemy)
         {
-            _enemies.Remove(enemy);
+            if (_enemies.Contains(enemy))
+                _enemies.Remove(enemy);
         }
 
         #endregion
