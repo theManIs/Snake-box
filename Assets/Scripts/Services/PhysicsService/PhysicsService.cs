@@ -108,10 +108,14 @@ namespace ExampleTemplate
             return result;
         }
 
-        public Collider GetCollisionTag(Vector3 position, Vector3 vector3,float rayDistance)
+        public Collider GetCollider(Vector3 position, Vector3 vector3,float rayDistance)
         {            
             Physics.Raycast(position, vector3, out var _hit,rayDistance);
-            return _hit.collider;
+            if (_hit.collider)
+            {
+                return _hit.collider;
+            }
+            return null;
         }
 
         public int GetIdObject(Vector2 position)

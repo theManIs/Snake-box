@@ -57,7 +57,7 @@ namespace ExampleTemplate
 
         public void Collision()
         {
-            var tagCollider = Services.Instance.PhysicsService.GetCollisionTag(transform.position,transform.forward,_rayDistantion);           
+            var tagCollider = Services.Instance.PhysicsService.GetCollider(transform.position,transform.forward,_rayDistantion);           
 
             if (tagCollider)
             {                
