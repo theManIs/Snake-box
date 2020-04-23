@@ -11,68 +11,50 @@ namespace Snake_box
         #region PrivateData
 
         private List<BaseEnemy> _enemies = new List<BaseEnemy>();
+        private TimeRemaining _spawnInvoker;
         private EnemySpawnData _enemySpawnData;
-        private ITimeService _timer;
         private float _delay;
         private int _level;
+
         private int _wave;
-        private bool _IsSpawnNeed;
         //private PoolObject _pool; //TODO добавить пул 
 
         #endregion
 
-        
+
         #region IInitialization
 
         public void Initialization()
         {
             _enemySpawnData = Data.Instance.EnemySpawn;
-            _enemies = FillEnemyList();
-            _IsSpawnNeed = true;
             _delay = _enemySpawnData.LevelSpawnDatas[_wave].Delay;
             _level = Services.Instance.LevelService.CurrentLevel;
-            _timer = Services.Instance.TimeService;
-            _wave = 0;// Волная в уровне
+            _wave = 0; // Волная в уровне
         }
 
         #endregion
 
-        
+
         #region IExecute
 
         public void Execute()
         {
-            if (_IsSpawnNeed)
+            if (Services.Instance.LevelService.IsSpawnNeed)
             {
-                if (_enemies.Count > 0)
-                {
-                    if (_delay <= 0.0f)
-                    {
-                        _delay = _enemySpawnData.LevelSpawnDatas[_level].Delay;
-                        var rnd = Random.Range(0, _enemies.Count);
-                        _enemies[rnd].Spawn();
-                        _enemies.RemoveAt(rnd);
-                    }
-                    else
-                        _delay -= _timer.DeltaTime();
-                }
-                else
-                {
-                    _IsSpawnNeed = false;
-                    _wave++;
-                }
+                _spawnInvoker = new TimeRemaining(SpawnEnemy, _delay,true);
+                SpawnEnemy();
             }
         }
 
         #endregion
 
-        
+
         #region Methods
 
         private List<BaseEnemy> FillEnemyList()
         {
             List<BaseEnemy> _list = new List<BaseEnemy>();
-            
+
             var wavesettings = _enemySpawnData.LevelSpawnDatas[_level].WaveSettings;
             for (int i = 0; i < wavesettings[_wave].SimpleEnemyCount; i++)
             {
@@ -93,7 +75,31 @@ namespace Snake_box
             {
                 _list.Add(new FlyingEnemy());
             }
+
             return _list;
+        }
+
+        private void SpawnEnemy()
+        {
+            if (Services.Instance.LevelService.IsSpawnNeed)
+            {
+                _enemies = FillEnemyList();
+                Services.Instance.LevelService.IsSpawnNeed = false;
+                _spawnInvoker.AddTimeRemaining();
+            }
+
+            if (_enemies.Count > 0)
+            {
+                Debug.Log("Spawn");
+                var rnd = Random.Range(0, _enemies.Count);
+                _enemies[rnd].Spawn();
+                _enemies.RemoveAt(rnd);
+            }
+            else
+            {
+                _spawnInvoker.RemoveTimeRemaining();
+                _wave++;
+            }
         }
 
         #endregion

@@ -12,6 +12,7 @@ namespace Snake_box
         private LevelData _levelData;
         private GameObject _target;
         private GameObject _spawn;
+        private bool _isSpawnNeed;
 
 
         #endregion
@@ -23,6 +24,12 @@ namespace Snake_box
         public GameObject Target => _target;
         public GameObject Spawn => _spawn;
 
+        public bool IsSpawnNeed
+        {
+            get => _isSpawnNeed;
+            set => _isSpawnNeed = value;
+        }
+
         #endregion
 
         #region ClassLifeCycles
@@ -31,6 +38,8 @@ namespace Snake_box
         {
             _levelData = Data.Instance.LevelData;
             FindGameObject();
+            if (SceneManager.GetActiveScene().name != Data.Instance.LevelData.Menu.name)
+                _isSpawnNeed = true;
         }
 
 
@@ -44,6 +53,7 @@ namespace Snake_box
             _currentLevel = lvl;
             SceneManager.LoadScene(_levelData.Level[lvl].name);
             FindGameObject();
+            _isSpawnNeed = true;
         }
 
         public void LoadMenu()
