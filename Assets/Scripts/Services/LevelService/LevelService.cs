@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +7,13 @@ namespace Snake_box
 {
     public sealed class LevelService : Service
     {
+        #region Fields
+
+        public List<IEnemy> ActiveEnemies = new List<IEnemy>();
+        
+        #endregion
+        
+        
         #region PrivateData
 
         private readonly LevelData _levelData;
@@ -58,7 +66,7 @@ namespace Snake_box
 
         public void EndLevel()
         {
-            //TODO добавить сохранение прогресса, перед завершением уровня
+            LoadMenu();
         }
 
         private void FindGameObject()

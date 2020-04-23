@@ -111,6 +111,7 @@ namespace Snake_box
                 else
                 {
                     _levelService.IsLevelEnded = true;
+                    _levelService.EndLevel();//TODO Переделать, когда будет меню
                 }
             }
 

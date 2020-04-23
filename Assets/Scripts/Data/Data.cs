@@ -31,7 +31,6 @@ namespace Snake_box
         private static FastEnemyData _fastEnemyData;
         private static FlyingEnemyData _flyingEnemyData;
         private static LevelData _levelData;
-        private static List<IEnemy> _activeEnemy;
         private static readonly Lazy<Data> _instance = new Lazy<Data>(() => Load<Data>("Data/" + typeof(Data).Name));
         
         #endregion
@@ -155,17 +154,6 @@ namespace Snake_box
                 }
 
                 return _levelData;
-            }
-        }
-        
-
-        public List<IEnemy> ActiveEnemy
-        {
-            get
-            {
-                if(_activeEnemy ==null)
-                    _activeEnemy = new List<IEnemy>();
-                return _activeEnemy;
             }
         }
 
