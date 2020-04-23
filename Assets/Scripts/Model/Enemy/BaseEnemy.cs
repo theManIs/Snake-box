@@ -13,10 +13,10 @@ namespace Snake_box
         #region PrivateData
 
         protected NavMeshAgent _navMeshAgent;
-        protected GameObject prefab;
+        protected GameObject _prefab;
+        protected GameObject _spawnCenter = Services.Instance.LevelService.Spawn;
         protected Transform _transform;
-        protected Transform _target;
-        protected Vector3 _SpawnCenter;
+        protected Transform _target = Services.Instance.LevelService.Target.transform;
         protected float _hp;
         protected float _spawnRadius;
         protected float _speed;
@@ -37,7 +37,7 @@ namespace Snake_box
 
         public virtual void Spawn()
         {
-            var enemy = GameObject.Instantiate(prefab, GetSpawnPoint(_SpawnCenter, _spawnRadius), Quaternion.identity);
+            var enemy = GameObject.Instantiate(_prefab, GetSpawnPoint(_spawnCenter), Quaternion.identity);
             _navMeshAgent = enemy.GetComponent<NavMeshAgent>();
             _navMeshAgent.speed = _speed;
             _transform = enemy.transform;
@@ -65,10 +65,14 @@ namespace Snake_box
             _target = GameObject.FindWithTag(TagManager.GetTag(TagType.Target)).transform;
         }
 
-        private Vector3 GetSpawnPoint(Vector3 center, float distance)
+        private Vector3 GetSpawnPoint(GameObject center)
         {
-            Vector3 randomPos = Random.insideUnitSphere * distance + center;
-            NavMesh.SamplePosition(randomPos, out var hit, distance, NavMesh.GetAreaFromName("Spawn"));
+            var volume = center.GetComponent<NavMeshModifierVolume>();
+            var sizeX = volume.size.x;
+            var sizeZ = volume.size.z;
+            var position = volume.transform.position;
+            var randomPos = new Vector3(position.x-Random.Range(-sizeX/2,sizeX/2),position.y,position.z-Random.Range(-sizeZ/2,sizeZ/2));
+            NavMesh.SamplePosition(randomPos, out var hit, _spawnRadius, NavMesh.GetAreaFromName("Spawn"));
             return hit.position;
         }
 

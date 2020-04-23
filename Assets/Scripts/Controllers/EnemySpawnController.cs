@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 
@@ -7,13 +8,11 @@ namespace Snake_box
 {
     public sealed class EnemySpawnController : IInitialization, IExecute
     {
-        public static event Action<IEnemy> Spawned;
-
-        
         #region PrivateData
 
         private List<BaseEnemy> _enemies = new List<BaseEnemy>();
         private EnemySpawnData _enemySpawnData;
+        private ITimeService _timer;
         private float _delay;
         private int _level;
         private int _wave;
@@ -31,8 +30,9 @@ namespace Snake_box
             _enemies = FillEnemyList();
             _IsSpawnNeed = true;
             _delay = _enemySpawnData.LevelSpawnDatas[_wave].Delay;
+            _level = Services.Instance.LevelService.CurrentLevel;
+            _timer = Services.Instance.TimeService;
             _wave = 0;// Волная в уровне
-            _level = 0;// Задел на множество уровней
         }
 
         #endregion
@@ -54,7 +54,7 @@ namespace Snake_box
                         _enemies.RemoveAt(rnd);
                     }
                     else
-                        _delay -= Services.Instance.TimeService.DeltaTime();
+                        _delay -= _timer.DeltaTime();
                 }
                 else
                 {

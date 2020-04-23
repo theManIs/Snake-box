@@ -21,6 +21,7 @@ namespace Snake_box
         [SerializeField] private string _slowEnemyDataPath;
         [SerializeField] private string _fastEnemyDataPath;
         [SerializeField] private string _flyingEnemyDataPath;
+        [SerializeField] private string _LevelDataPath;
         private static EnemySpawnData _enemySpawnData;
         private static LevelSpawnData _levelSpawnData;
         private static ShakesData _shake;
@@ -29,6 +30,7 @@ namespace Snake_box
         private static SlowEnemyData _slowEnemyData;
         private static FastEnemyData _fastEnemyData;
         private static FlyingEnemyData _flyingEnemyData;
+        private static LevelData _levelData;
         private static List<IEnemy> _activeEnemy;
         private static readonly Lazy<Data> _instance = new Lazy<Data>(() => Load<Data>("Data/" + typeof(Data).Name));
         
@@ -129,6 +131,33 @@ namespace Snake_box
                 return _flyingEnemyData;
             }
         }
+
+        public LevelSpawnData LevelSpawn
+        {
+            get
+            {
+                if (_levelSpawnData == null)
+                {
+                    _levelSpawnData = Load<LevelSpawnData>("Data/" + Instance._levelSpawnDataPath);
+                }
+
+                return _levelSpawnData;
+            }
+        }
+
+        public LevelData LevelData
+        {
+            get
+            {
+                if (_levelData == null)
+                {
+                    _levelData = Load<LevelData>("Data/" + Instance._LevelDataPath);
+                }
+
+                return _levelData;
+            }
+        }
+        
 
         public static List<IEnemy> ActiveEnemy
         {

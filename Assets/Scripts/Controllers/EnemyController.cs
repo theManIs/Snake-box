@@ -35,25 +35,7 @@ namespace Snake_box
 
         
         #region Methods
-
-        // private void AddEnemy(IEnemy enemy)
-        // {
-        //     if (!_enemies.Contains(enemy)&& !Data.ActiveEnemy.Contains(enemy))
-        //     {
-        //         _enemies.Add(enemy);
-        //         Data.ActiveEnemy.Add(enemy);
-        //     }
-        //     
-        // }
-
-        // private void DelEnemy(IEnemy enemy)
-        // {
-        //     if (_enemies.Contains(enemy)&& Data.ActiveEnemy.Contains(enemy))
-        //     {
-        //         _enemies.Remove(enemy);
-        //         Data.ActiveEnemy.Remove(enemy);
-        //     }
-        // }
+        
 
         #endregion
     }

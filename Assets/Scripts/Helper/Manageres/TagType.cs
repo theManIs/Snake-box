@@ -5,6 +5,7 @@
         None   = 0,
         Player = 1,
         Floor  = 2,
-        Target = 3
+        Target = 3,
+        Spawn  = 4
     }
 }
