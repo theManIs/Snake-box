@@ -6,29 +6,21 @@ namespace Snake_box
 {
     public sealed class LevelService : Service
     {
-        #region Fields
+        #region PrivateData
 
-        private int _currentLevel;
-        private LevelData _levelData;
-        private GameObject _target;
-        private GameObject _spawn;
-        private bool _isSpawnNeed;
-
+        private readonly LevelData _levelData;
 
         #endregion
 
 
         #region Properties
 
-        public int CurrentLevel => _currentLevel;
-        public GameObject Target => _target;
-        public GameObject Spawn => _spawn;
-
-        public bool IsSpawnNeed
-        {
-            get => _isSpawnNeed;
-            set => _isSpawnNeed = value;
-        }
+        public GameObject Target { get; private set; }
+        public GameObject Spawn { get; private set; }
+        public int CurrentLevel { get; private set; }
+        public bool IsSpawnNeed { get; set; }
+        public bool IsWaveEnded { get; set; }
+        public bool IsLevelEnded { get; set; }
 
         #endregion
 
@@ -37,9 +29,11 @@ namespace Snake_box
         public LevelService()
         {
             _levelData = Data.Instance.LevelData;
+            IsWaveEnded = false;
+            IsLevelEnded = false;
             FindGameObject();
             if (SceneManager.GetActiveScene().name != Data.Instance.LevelData.Menu.name)
-                _isSpawnNeed = true;
+                IsSpawnNeed = true;
         }
 
 
@@ -50,15 +44,15 @@ namespace Snake_box
         
         public void LoadLevel(int lvl)
         {
-            _currentLevel = lvl;
+            CurrentLevel = lvl;
             SceneManager.LoadScene(_levelData.Level[lvl].name);
             FindGameObject();
-            _isSpawnNeed = true;
+            IsSpawnNeed = true;
         }
 
         public void LoadMenu()
         {
-            _currentLevel = -1;
+            CurrentLevel = -1;
             SceneManager.LoadScene(Data.Instance.LevelData.Menu.name);
         }
 
@@ -69,8 +63,8 @@ namespace Snake_box
 
         private void FindGameObject()
         {
-            _target = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Target));
-            _spawn = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Spawn));
+            Target = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Target));
+            Spawn = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Spawn));
         }
 
         #endregion

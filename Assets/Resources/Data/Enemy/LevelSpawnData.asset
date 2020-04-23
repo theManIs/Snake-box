@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: LevelSpawnData
   m_EditorClassIdentifier: 
   UseRandomSpawn: 0
-  Delay: 1
+  SpawnDelay: 1
+  WaveDelay: 60
   WaveSettings:
-  - SimpleEnemyCount: 10
-    SlowEnemyCount: 10
-    FastEnemyCount: 10
+  - SimpleEnemyCount: 1
+    SlowEnemyCount: 0
+    FastEnemyCount: 0
+    FlyingEnemyCount: 0
+  - SimpleEnemyCount: 0
+    SlowEnemyCount: 1
+    FastEnemyCount: 0
     FlyingEnemyCount: 0
