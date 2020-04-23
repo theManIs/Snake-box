@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UseRandomSpawn: 0
   SpawnDelay: 1
-  WaveDelay: 60
+  WaveDelay: 5
   WaveSettings:
   - SimpleEnemyCount: 1
     SlowEnemyCount: 0

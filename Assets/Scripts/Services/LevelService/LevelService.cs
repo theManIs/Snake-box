@@ -24,6 +24,7 @@ namespace Snake_box
 
         #endregion
 
+        
         #region ClassLifeCycles
 
         public LevelService()
@@ -35,7 +36,6 @@ namespace Snake_box
             if (SceneManager.GetActiveScene().name != Data.Instance.LevelData.Menu.name)
                 IsSpawnNeed = true;
         }
-
 
         #endregion
 
