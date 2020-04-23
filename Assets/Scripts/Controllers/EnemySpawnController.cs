@@ -51,7 +51,6 @@ namespace Snake_box
                         _delay = _enemySpawnData.LevelSpawnDatas[_level].Delay;
                         var rnd = Random.Range(0, _enemies.Count);
                         _enemies[rnd].Spawn();
-                        Spawned(_enemies[rnd]);
                         _enemies.RemoveAt(rnd);
                     }
                     else

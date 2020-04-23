@@ -7,7 +7,7 @@ namespace Snake_box
     {
         #region Fields
 
-        private readonly List<IEnemy> _enemies = new List<IEnemy>();
+        private readonly List<IEnemy> _enemies = Data.ActiveEnemy;
 
         #endregion
 
@@ -29,8 +29,6 @@ namespace Snake_box
 
         public void Initialization()
         {
-            EnemySpawnController.Spawned += AddEnemy;
-            BaseEnemy.Despawned += DelEnemy;
         }
 
         #endregion
@@ -38,17 +36,24 @@ namespace Snake_box
         
         #region Methods
 
-        private void AddEnemy(IEnemy enemy)
-        {
-            if (!_enemies.Contains(enemy))
-                _enemies.Add(enemy);
-        }
+        // private void AddEnemy(IEnemy enemy)
+        // {
+        //     if (!_enemies.Contains(enemy)&& !Data.ActiveEnemy.Contains(enemy))
+        //     {
+        //         _enemies.Add(enemy);
+        //         Data.ActiveEnemy.Add(enemy);
+        //     }
+        //     
+        // }
 
-        private void DelEnemy(IEnemy enemy)
-        {
-            if (_enemies.Contains(enemy))
-                _enemies.Remove(enemy);
-        }
+        // private void DelEnemy(IEnemy enemy)
+        // {
+        //     if (_enemies.Contains(enemy)&& Data.ActiveEnemy.Contains(enemy))
+        //     {
+        //         _enemies.Remove(enemy);
+        //         Data.ActiveEnemy.Remove(enemy);
+        //     }
+        // }
 
         #endregion
     }

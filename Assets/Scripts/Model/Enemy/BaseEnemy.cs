@@ -9,8 +9,7 @@ namespace Snake_box
 {
     public abstract class BaseEnemy : IEnemy
     {
-        public static event Action<IEnemy> Despawned;
-        
+
         #region PrivateData
 
         protected NavMeshAgent _navMeshAgent;
@@ -43,6 +42,7 @@ namespace Snake_box
             _navMeshAgent.speed = _speed;
             _transform = enemy.transform;
             _isNeedNavMeshUpdate = true;
+            Data.ActiveEnemy.Add(this);
         }
 
         public void HitCheck()
@@ -77,7 +77,7 @@ namespace Snake_box
             _hp -= damage;
             if (_hp <= 0)
             {
-                Despawned.Invoke(this);
+                Data.ActiveEnemy.Remove(this);
                 Object.Destroy(_transform.gameObject);
             }
         }
