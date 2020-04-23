@@ -159,7 +159,7 @@ namespace Snake_box
         }
         
 
-        public static List<IEnemy> ActiveEnemy
+        public List<IEnemy> ActiveEnemy
         {
             get
             {

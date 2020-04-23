@@ -42,7 +42,7 @@ namespace Snake_box
             _navMeshAgent.speed = _speed;
             _transform = enemy.transform;
             _isNeedNavMeshUpdate = true;
-            Data.ActiveEnemy.Add(this);
+            Data.Instance.ActiveEnemy.Add(this);
         }
 
         public void HitCheck()
@@ -81,7 +81,7 @@ namespace Snake_box
             _hp -= damage;
             if (_hp <= 0)
             {
-                Data.ActiveEnemy.Remove(this);
+                Data.Instance.ActiveEnemy.Remove(this);
                 Object.Destroy(_transform.gameObject);
             }
         }
