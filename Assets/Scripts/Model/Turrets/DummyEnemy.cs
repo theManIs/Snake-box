@@ -7,31 +7,34 @@ namespace Assets.Scripts.Model.Turrets
     {
         #region Fields
 
-        public Vector2 DescartesPosition = Vector2.zero;
         public ArmorTypes ArmorType = ArmorTypes.Bare;
-
-        #endregion
-
-        #region MonoBehaviour
-
-        public void Start()
-        {
-            DescartesPosition = transform.position;
-        }
+        private bool _amIDestroyed = false;
 
         #endregion
 
 
         #region IDummyEnemy
 
-        public Vector2 GetPosition() => DescartesPosition;
+        public Vector3 GetPosition() => transform.position;
+
         public ArmorTypes GetArmorType() => ArmorType;
+
+        public Transform GetTransform() => transform;
+
+        public bool AmIDestroyed() => _amIDestroyed;
 
         #endregion
 
+
+        #region IDamageAddressee
+
         public void RegisterDamage(float damageAmount, ArmorTypes damageType)
         {
-            throw new System.NotImplementedException("RegisterDamage has not been implemented yet.");
-        }
+            _amIDestroyed = true;
+
+            Destroy(gameObject);
+        } 
+
+        #endregion
     }
 }

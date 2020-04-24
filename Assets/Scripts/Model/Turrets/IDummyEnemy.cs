@@ -7,9 +7,13 @@ namespace Assets.Scripts.Model.Turrets
     {
         #region Methods
 
-        Vector2 GetPosition();
+        Vector3 GetPosition();
 
         ArmorTypes GetArmorType();
+
+        Transform GetTransform();
+
+        bool AmIDestroyed();
 
         #endregion
     }

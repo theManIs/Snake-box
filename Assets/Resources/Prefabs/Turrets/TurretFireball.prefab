@@ -90,7 +90,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8501904073594982361}
-  - component: {fileID: 8253806929849441310}
   - component: {fileID: -4285476389975150714}
   m_Layer: 0
   m_Name: TurretFireball
@@ -114,18 +113,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8253806929849441310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7805747859644559747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a287439be4d308b4eaa90231b629b1c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &-4285476389975150714
 BoxCollider2D:
   m_ObjectHideFlags: 0

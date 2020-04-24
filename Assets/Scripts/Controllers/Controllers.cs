@@ -1,4 +1,6 @@
-﻿namespace ExampleTemplate
+﻿using Assets.Scripts.Controllers;
+
+namespace ExampleTemplate
 {
     public sealed class Controllers : IInitialization, ICleanUp
     {
@@ -25,9 +27,10 @@
         public Controllers()
         {
             _initializations = new IInitialization[0];
-            _executeControllers = new IExecute[2];
+            _executeControllers = new IExecute[3];
             _executeControllers[0] = new TimeRemainingController();
-            _executeControllers[1] = new InputController();
+            _executeControllers[1] = new TurretController();
+            _executeControllers[2] = new TurretProjectileController();
 
             _cleanUps = new ICleanUp[1];
             _cleanUps[0] = new TimeRemainingCleanUp();

@@ -1,23 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Controllers;
+using ExampleTemplate;
 using UnityEngine;
+using Object = UnityEngine.Object;
+
 
 namespace Assets.Scripts.Model.Turrets
 {
-    public sealed class TurretInitializer : MonoBehaviour
+    public sealed class TurretInitializer : IExecute, IInitialization
     {
         #region Fields
 
         public TurretBehaviour TurretSprite;
-        public Vector2 DescartesPosition = Vector2.zero;
         public string TurretSpritePath = "Prefabs/Turrets/DummyTurret";
         public string TurretFireballPath = "Prefabs/Turrets/TurretFireball";
-        public DummyEnemy[] DummyEnemies = new DummyEnemy[3];
-        public float TurretRange = 5;
+        private IDummyEnemy[] _dummyEnemies = new IDummyEnemy[3];
+        public float TurretRange = 6;
         public GameObject TurretInstance;
         public GameObject ProjectileInstance;
-        public ArmorTypes PreferredArmorType = ArmorTypes.None;
+        public ArmorTypes PreferredArmorType = ArmorTypes.Heavy;
         public float Cooldown = 250;
         private float _frameRateLock = 0;
         private Quaternion _haltTurretRotation;
@@ -25,34 +27,25 @@ namespace Assets.Scripts.Model.Turrets
         #endregion
 
 
-        #region MonoBehaviour
+        #region ClassLifeCycle
 
-        void Awake()
+        public TurretInitializer()
         {
-            TurretSprite = Resources.Load<TurretBehaviour>(TurretSpritePath);
-            ProjectileInstance = Resources.Load<GameObject>(TurretFireballPath);
-            TurretInstance = Instantiate(TurretSprite.gameObject, DescartesPosition, Quaternion.identity);
-            TurretSprite = TurretInstance.GetComponent<TurretBehaviour>();
-            _haltTurretRotation = TurretInstance.transform.rotation;
-        }
-
-        void Update()
-        {
-//            TakeAim();
-            LockTarget();
-            ContinueShooting();
-            HaltTurret();
-        }
+            Initialization();
+        } 
 
         #endregion
 
 
         #region Methods
 
+        public void SetEnemies(IDummyEnemy[] dummyEnemies) => _dummyEnemies = dummyEnemies;
+
+
         public void SetParentTransform(Transform parentTransform)
         {
             TurretInstance.transform.parent = parentTransform;
-            TurretInstance.transform.position = Vector3.zero;
+            TurretInstance.transform.localPosition = Vector3.zero;
         }
 
         public void ContinueShooting()
@@ -64,14 +57,16 @@ namespace Assets.Scripts.Model.Turrets
                 if (nearestEnemy == null)
                     return;
 
-                GameObject newProjectile = Instantiate(ProjectileInstance, TurretSprite.FirePoint.position, TurretInstance.transform.rotation);
+                TurretProjectileController.SpawnRegularBullet(TurretSprite.FirePoint, nearestEnemy.GetTransform()); //todo Replace
+//                GameObject newProjectile = Object.Instantiate(ProjectileInstance, TurretSprite.FirePoint.position, TurretInstance.transform.rotation);
 
-                Rigidbody2D rb2d = newProjectile.AddComponent<Rigidbody2D>();
-                rb2d.isKinematic = true;
-                rb2d.velocity = TurretInstance.transform.right * 15;
+//                Rigidbody2D rb2d = newProjectile.AddComponent<Rigidbody2D>();
+//                rb2d.isKinematic = true;
+//                rb2d.velocity = TurretInstance.transform.right * 15;
+
                 _frameRateLock = Time.frameCount;
 
-                Destroy(newProjectile, 5);
+//                Object.Destroy(newProjectile, 5);
             }
         }
 
@@ -79,11 +74,11 @@ namespace Assets.Scripts.Model.Turrets
         {
             IDummyEnemy nearestEnemy = NearestEnemy();
 
-            if (NearestEnemy() == null)
+            if (nearestEnemy == null)
                 return;
 
-            Vector2 direction2d = nearestEnemy.GetPosition() - DescartesPosition;
-            float angle = Mathf.Atan2(direction2d.y, direction2d.x) * Mathf.Rad2Deg;
+            Vector3 direction3d = nearestEnemy.GetPosition() - TurretInstance.transform.position;
+            float angle = Mathf.Atan2(direction3d.y, direction3d.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             TurretInstance.transform.rotation = Quaternion.Slerp(TurretInstance.transform.rotation, rotation, 1);
         }
@@ -100,29 +95,33 @@ namespace Assets.Scripts.Model.Turrets
 
         private void CollectKilledEnemies()
         {
-            DummyEnemies = DummyEnemies.Where((element) => element ? true : false).ToArray();
+            _dummyEnemies = _dummyEnemies.Where((element) => !element.AmIDestroyed()).ToArray();
         }
 
         private IDummyEnemy NearestEnemy()
         {
             CollectKilledEnemies();
 
-            if (DummyEnemies.Length < 1)
+            if (_dummyEnemies.Length < 1)
                 return null;
 
             IDummyEnemy nearestEnemy = null;
             float closestDistance = TurretRange;
             ArmorTypes enemyArmorType = ArmorTypes.None;
 
-            foreach (IDummyEnemy enemy in DummyEnemies)
+            foreach (IDummyEnemy enemy in _dummyEnemies)
             {
-                float checkingDistance = Vector2.Distance(enemy.GetPosition(), DescartesPosition);
+                float checkingDistance = Vector3.Distance(
+                    enemy.GetPosition(),
+                    TurretInstance.transform.position);
 
                 if (checkingDistance > TurretRange)
                 {
                     continue;
                 }
-                else if (enemyArmorType == PreferredArmorType && enemy.GetArmorType() != PreferredArmorType)
+                else if (enemyArmorType == PreferredArmorType 
+                         && enemy.GetArmorType() != PreferredArmorType 
+                         && PreferredArmorType != ArmorTypes.None)
                 {
                     continue;
                 }
@@ -137,6 +136,7 @@ namespace Assets.Scripts.Model.Turrets
 
             return nearestEnemy;
         }
+
         private void HaltTurret()
         {
             IDummyEnemy nearestEnemy = NearestEnemy();
@@ -144,6 +144,53 @@ namespace Assets.Scripts.Model.Turrets
             if (nearestEnemy == null)
                 TurretInstance.transform.rotation = _haltTurretRotation;
         }
+
+        public void AddEnemy(IDummyEnemy newDummyEnemy)
+        {
+            List<IDummyEnemy> temporaryList = _dummyEnemies.ToList();
+
+            temporaryList.Add(newDummyEnemy);
+
+            _dummyEnemies = temporaryList.ToArray();
+        }
+
+        public void RemoveEnemy(IDummyEnemy newDummyEnemy)
+        {
+            CollectKilledEnemies();
+
+            List<IDummyEnemy> temporaryList = _dummyEnemies.ToList();
+
+            temporaryList.Remove(newDummyEnemy);
+
+            _dummyEnemies = temporaryList.ToArray();
+        }
+
+        #endregion
+
+
+        #region IInitialization
+
+        public void Initialization()
+        {
+            TurretSprite = Resources.Load<TurretBehaviour>(TurretSpritePath);
+            ProjectileInstance = Resources.Load<GameObject>(TurretFireballPath);
+            TurretInstance = Object.Instantiate(TurretSprite.gameObject, Vector3.zero, Quaternion.identity);
+            TurretSprite = TurretInstance.GetComponent<TurretBehaviour>();
+            _haltTurretRotation = TurretInstance.transform.rotation;
+        }
+
+
+        #endregion
+
+
+        #region IExecute
+
+        public void Execute()
+        {
+            LockTarget();
+            ContinueShooting();
+            HaltTurret();
+        } 
 
         #endregion
     }
