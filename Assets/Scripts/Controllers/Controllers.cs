@@ -1,4 +1,4 @@
-﻿namespace Snake_box
+namespace Snake_box
 {
     public sealed class Controllers : IInitialization, ICleanUp
     {
@@ -25,11 +25,13 @@
         public Controllers()
         {
             _initializations = new IInitialization[0];
-            _executeControllers = new IExecute[4];
+            _executeControllers = new IExecute[6];
             _executeControllers[0] = new TimeRemainingController();
             _executeControllers[1] = new InputController();
             _executeControllers[2] = new EnemySpawnController();
             _executeControllers[3] = new EnemyController();
+            _executeControllers[1] = new TurretController();
+            _executeControllers[2] = new TurretProjectileController();
 
             _cleanUps = new ICleanUp[1];
             _cleanUps[0] = new TimeRemainingCleanUp();
