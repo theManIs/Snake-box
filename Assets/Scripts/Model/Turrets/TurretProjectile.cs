@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Model.Turrets
+﻿namespace Snake_box
 {
     public sealed class TurretProjectile : TurretProjectileAbs
     {

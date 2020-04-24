@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace Assets.Scripts.Model.Turrets
+namespace Snake_box
 {
     public interface IDummyEnemy
     {

@@ -1,28 +1,28 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Controllers;
+using Assets.Scripts.Model.Turrets;
 using ExampleTemplate;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 
-namespace Assets.Scripts.Model.Turrets
+namespace Snake_box
 {
-    public sealed class TurretInitializer : IExecute, IInitialization
+    public sealed class TurretInitializer : TurretBaseAbs, IInitialization
     {
         #region Fields
 
-        public TurretBehaviour TurretSprite;
-        public string TurretSpritePath = "Prefabs/Turrets/DummyTurret";
-        public string TurretFireballPath = "Prefabs/Turrets/TurretFireball";
-        private IDummyEnemy[] _dummyEnemies = new IDummyEnemy[3];
-        public float TurretRange = 6;
         public GameObject TurretInstance;
-        public GameObject ProjectileInstance;
-        public ArmorTypes PreferredArmorType = ArmorTypes.Heavy;
-        public float Cooldown = 250;
-        private float _frameRateLock = 0;
         private Quaternion _haltTurretRotation;
+        public string TurretSpritePath = "Prefabs/Turrets/DummyTurret";
+        public float TurretRange = 6;
+        public float Cooldown = 250;
+        //todo use TimeRemaining
+        private float _frameRateLock = 0;
+
+        public ArmorTypes PreferredArmorType = ArmorTypes.Heavy;
+        private IDummyEnemy[] _dummyEnemies = new IDummyEnemy[3];
+        public TurretBehaviour TurretBehaviour;
 
         #endregion
 
@@ -32,21 +32,46 @@ namespace Assets.Scripts.Model.Turrets
         public TurretInitializer()
         {
             Initialization();
-        } 
+        }
+
+        #endregion
+
+
+        #region IInitialization
+
+        public void Initialization()
+        {
+            //todo move that to turret builder
+            TurretBehaviour = Resources.Load<TurretBehaviour>(TurretSpritePath);
+            TurretInstance = Object.Instantiate(TurretBehaviour.gameObject, Vector3.zero, Quaternion.identity);
+            _haltTurretRotation = TurretInstance.transform.rotation;
+            TurretBehaviour = TurretInstance.GetComponent<TurretBehaviour>();
+        }
+
+
+        #endregion
+
+
+        #region TurretBaseAbs
+
+        public override void SetEnemies(IDummyEnemy[] dummyEnemies) => _dummyEnemies = dummyEnemies;
+
+        public override void SetParentTransform(Transform parentTransform)
+        {
+            TurretInstance.transform.parent = parentTransform;
+            TurretInstance.transform.localPosition = Vector3.zero;
+        }
+        public override void Execute()
+        {
+            LockTarget();
+            ContinueShooting();
+            HaltTurret();
+        }
 
         #endregion
 
 
         #region Methods
-
-        public void SetEnemies(IDummyEnemy[] dummyEnemies) => _dummyEnemies = dummyEnemies;
-
-
-        public void SetParentTransform(Transform parentTransform)
-        {
-            TurretInstance.transform.parent = parentTransform;
-            TurretInstance.transform.localPosition = Vector3.zero;
-        }
 
         public void ContinueShooting()
         {
@@ -57,18 +82,13 @@ namespace Assets.Scripts.Model.Turrets
                 if (nearestEnemy == null)
                     return;
 
-                TurretProjectileController.SpawnRegularBullet(TurretSprite.FirePoint, nearestEnemy.GetTransform()); //todo Replace
-//                GameObject newProjectile = Object.Instantiate(ProjectileInstance, TurretSprite.FirePoint.position, TurretInstance.transform.rotation);
-
-//                Rigidbody2D rb2d = newProjectile.AddComponent<Rigidbody2D>();
-//                rb2d.isKinematic = true;
-//                rb2d.velocity = TurretInstance.transform.right * 15;
+                GetProjectile().Build(TurretBehaviour.FirePoint, nearestEnemy.GetTransform());
 
                 _frameRateLock = Time.frameCount;
-
-//                Object.Destroy(newProjectile, 5);
             }
         }
+
+        private ProjectileBuilderAbs GetProjectile() => new CannonShellBuilder();
 
         public void LockTarget()
         {
@@ -164,33 +184,6 @@ namespace Assets.Scripts.Model.Turrets
 
             _dummyEnemies = temporaryList.ToArray();
         }
-
-        #endregion
-
-
-        #region IInitialization
-
-        public void Initialization()
-        {
-            TurretSprite = Resources.Load<TurretBehaviour>(TurretSpritePath);
-            ProjectileInstance = Resources.Load<GameObject>(TurretFireballPath);
-            TurretInstance = Object.Instantiate(TurretSprite.gameObject, Vector3.zero, Quaternion.identity);
-            TurretSprite = TurretInstance.GetComponent<TurretBehaviour>();
-            _haltTurretRotation = TurretInstance.transform.rotation;
-        }
-
-
-        #endregion
-
-
-        #region IExecute
-
-        public void Execute()
-        {
-            LockTarget();
-            ContinueShooting();
-            HaltTurret();
-        } 
 
         #endregion
     }

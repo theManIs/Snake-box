@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Controllers;
+﻿using Snake_box;
 
 namespace ExampleTemplate
 {

@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using ExampleTemplate;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 
-namespace Assets.Scripts.Model.Turrets
+namespace Snake_box
 {
     public abstract class TurretProjectileAbs : IExecute
     {
@@ -13,7 +12,6 @@ namespace Assets.Scripts.Model.Turrets
 
         private Transform _targetToPursue;
         private float _timeStart;
-
         private GameObject _projectileInstance;
         private Transform _firePoint;
         private float _timeToBeDestructedAfter = 10;
@@ -34,34 +32,6 @@ namespace Assets.Scripts.Model.Turrets
         public abstract void Execute();
 
         public abstract int GetBulletSpeed();
-
-
-//        public TurretProjectileAbs Instantiate()
-//        {
-//            _timeStart = Time.time;
-//
-//            _projectileInstance = Resources.Load<GameObject>("Prefabs/Turrets/TurretFireball"); //todo move it in constructor or in static way
-//
-//            GameObject projectileInstance = Object.Instantiate(_projectileInstance, _firePoint.position, _firePoint.rotation);
-//            TurretProjectileAbs _projectileClass = projectileInstance.GetComponent<TurretProjectileAbs>();
-//
-//            _projectileClass._firePoint = _firePoint;
-//            _projectileClass._projectileInstance = projectileInstance;
-//
-//            return _projectileClass;
-//        }
-
-
-//        public void OnTriggerEnter2D(Collider2D collideInfo)
-//        {
-//            IDamageAddressee damageTarget = collideInfo.GetComponent<IDamageAddressee>();
-//
-////            Debug.Log(collideInfo.gameObject.name);
-////            Destroy(gameObject);
-////            Destroy(collideInfo.gameObject, 0.5f);
-//
-//            damageTarget?.RegisterDamage(GetCarryingDamage(), GetArmorType());
-//        }
 
         public void SetTarget(Transform enemyTransform)
         {
@@ -114,12 +84,13 @@ namespace Assets.Scripts.Model.Turrets
                 || Math.Abs(_journeyDistance) <= 0.0f)
                 return;
 
-            float coveredDistance = (Time.time - _timeStart) * GetBulletSpeed();
+            float projectileLifespan = Time.time - _timeStart;
+            float coveredDistance = projectileLifespan * GetBulletSpeed();
             float interpolation = coveredDistance / _journeyDistance;
 
             _projectileInstance.transform.position = Vector3.Lerp(_firePoint.transform.position, _targetToPursue.position, interpolation);
 
-            if (interpolation >= 1)
+            if (interpolation >= 1 || _timeToBeDestructedAfter < projectileLifespan)
                 Decommission();
         }
 
@@ -127,8 +98,6 @@ namespace Assets.Scripts.Model.Turrets
 
         protected void Decommission()
         {
-//            Debug.Log("Decommission");
-
             if (_targetToPursue)
             {
                 IDamageAddressee ida = _targetToPursue.GetComponent<IDamageAddressee>();
@@ -142,6 +111,5 @@ namespace Assets.Scripts.Model.Turrets
         }
 
         #endregion
-
     }
 }

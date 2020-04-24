@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Model.Turrets;
+using UnityEngine;
 
 
-namespace Assets.Scripts.Model.Turrets
+namespace Snake_box
 {
     public class DummyEnemy : MonoBehaviour, IDummyEnemy, IDamageAddressee
     {
@@ -28,6 +29,7 @@ namespace Assets.Scripts.Model.Turrets
 
         #region IDamageAddressee
 
+        //todo I should provide ProjectileType instead ArmorType 
         public void RegisterDamage(float damageAmount, ArmorTypes damageType)
         {
             _amIDestroyed = true;
