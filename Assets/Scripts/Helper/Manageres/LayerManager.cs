@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 { 
     public static class LayerManager
     {

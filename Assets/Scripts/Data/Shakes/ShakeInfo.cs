@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     [Serializable]
     public struct ShakeInfo

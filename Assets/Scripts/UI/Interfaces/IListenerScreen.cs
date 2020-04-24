@@ -1,4 +1,4 @@
-﻿namespace ExampleTemplate
+﻿namespace Snake_box
 {
     public interface IListenerScreen
     {

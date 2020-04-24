@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public abstract class BaseUi : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     [CreateAssetMenu(fileName = "CharacterData", menuName = "Data/Character/CharacterData")]
     public sealed class CharacterData : ScriptableObject
@@ -14,11 +14,11 @@ namespace ExampleTemplate
 
         public void Initialization()
         {
-            var characterBehaviour = CustomResources.Load<CharacterBehaviour>
-                (AssetsPathGameObject.GameObjects[GameObjectType.Character]);
-
-            CharacterBehaviour = Instantiate(characterBehaviour);
-            _timeService = Services.Instance.TimeService;
+            // var characterBehaviour = CustomResources.Load<CharacterBehaviour>
+            //     (AssetsPathGameObject.GameObjects[GameObjectType.Character]);
+            //
+            // CharacterBehaviour = Instantiate(characterBehaviour);
+            // _timeService = Services.Instance.TimeService;
         }
 
         public float GetSpeed()

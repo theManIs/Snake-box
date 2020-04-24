@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     [Serializable]
     public sealed class SerializeShakeData

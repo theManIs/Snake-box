@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public sealed class PhysicsService : Service
     {

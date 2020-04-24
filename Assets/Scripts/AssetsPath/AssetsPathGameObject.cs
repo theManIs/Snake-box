@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public sealed class AssetsPathGameObject
     {
@@ -14,6 +14,13 @@ namespace ExampleTemplate
             },
             {                
                 GameObjectType.Character, "Prefabs/Character/Prefabs_Character_SphereCharacter"
+            }
+        };
+
+        public static readonly Dictionary<EnemyType, string> EnemyObjects = new Dictionary<EnemyType, string>
+        {
+            {
+                EnemyType.Simple, "Prefabs/Enemies/SimpleEnemy"
             }
         };
 
