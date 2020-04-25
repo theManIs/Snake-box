@@ -12,7 +12,7 @@ namespace Snake_box
         private TimeRemaining _spawnInvoker;
         private TimeRemaining _waveInvoker;
         private EnemySpawnData _enemySpawnData;
-        private readonly LevelService _levelService = Services.Instance.LevelService;
+        private readonly LevelService _levelService;
         private float _spawnDelay;
         private float _waveDelay;
         private int _currentLevel;
@@ -23,6 +23,16 @@ namespace Snake_box
         #endregion
 
 
+        #region ClassLifeCycle
+
+        public EnemySpawnController()
+        {
+            _levelService = Services.Instance.LevelService;
+        }
+        
+
+        #endregion
+
         #region IInitialization
 
         public void Initialization()
@@ -32,6 +42,8 @@ namespace Snake_box
             _waveDelay = _enemySpawnData.LevelSpawnDatas[_currentLevel].WaveDelay;
             _currentLevel = _levelService.CurrentLevel;
             _wave = 0; // Волная в уровне
+            _spawnInvoker = new TimeRemaining(SpawnEnemy, _spawnDelay, true);
+            _waveInvoker = new TimeRemaining(NextWave, _waveDelay);
         }
 
         #endregion
@@ -43,8 +55,6 @@ namespace Snake_box
         {
             if (_levelService.IsSpawnNeed)
             {
-                _spawnInvoker = new TimeRemaining(SpawnEnemy, _spawnDelay, true);
-                _waveInvoker = new TimeRemaining(NextWave, _waveDelay);
                 SpawnEnemy();
             }
         }
@@ -109,7 +119,7 @@ namespace Snake_box
                 else
                 {
                     _levelService.IsLevelEnded = true;
-                    _levelService.EndLevel();//TODO Переделать, когда будет меню
+                    //_levelService.EndLevel();//TODO Переделать, когда будет меню
                 }
             }
 

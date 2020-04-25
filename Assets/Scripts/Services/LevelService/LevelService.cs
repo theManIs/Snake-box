@@ -31,11 +31,11 @@ namespace Snake_box
 
         public LevelService()
         {
+            SceneManager.sceneLoaded += (arg0, mode) => FindGameObject(); 
             _levelData = Data.Instance.LevelData;
             IsWaveEnded = false;
             IsLevelEnded = false;
-            FindGameObject();
-            if (SceneManager.GetActiveScene().name != Data.Instance.LevelData.Menu.name)
+            if (!SceneManager.GetActiveScene().name.Equals(Data.Instance.LevelData.Menu.name))
                 IsSpawnNeed = true;
         }
 
@@ -48,7 +48,6 @@ namespace Snake_box
         {
             CurrentLevel = lvl;
             SceneManager.LoadScene(_levelData.Level[lvl].name);
-            FindGameObject();
             IsSpawnNeed = true;
         }
 
@@ -68,6 +67,8 @@ namespace Snake_box
             Target = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Target));
             Spawn = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Spawn));
         }
+        
+        
 
         #endregion
 

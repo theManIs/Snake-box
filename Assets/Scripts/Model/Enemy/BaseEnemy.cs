@@ -12,9 +12,9 @@ namespace Snake_box
 
         protected NavMeshAgent _navMeshAgent;
         protected GameObject _prefab;
-        protected GameObject _spawnCenter = Services.Instance.LevelService.Spawn;
+        protected GameObject _spawnCenter;
         protected Transform _transform;
-        protected Transform _target = Services.Instance.LevelService.Target.transform;
+        protected Transform _target;
         protected LevelService _levelService = Services.Instance.LevelService;
         protected float _hp;
         protected float _spawnRadius;
@@ -36,6 +36,8 @@ namespace Snake_box
 
         public virtual void Spawn()
         {
+            _spawnCenter = _levelService.Spawn;
+            _target = _levelService.Target.transform;
             var enemy = GameObject.Instantiate(_prefab, GetSpawnPoint(_spawnCenter), Quaternion.identity);
             _navMeshAgent = enemy.GetComponent<NavMeshAgent>();
             _navMeshAgent.speed = _speed;
