@@ -2,14 +2,15 @@
 using UnityEngine.UI;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public sealed class GameMenuBehaviour : BaseUi
     {
         #region Fields
         
-        [SerializeField] private Button _button;
-        
+        [SerializeField] private Button _buttonAddBlocks;
+        [SerializeField] private Button _buttonAddTurel;
+
         #endregion
 
 
@@ -17,18 +18,27 @@ namespace ExampleTemplate
 
         private void OnEnable()
         {
-            _button.onClick.AddListener(Call);
-        }
+            _buttonAddTurel.onClick.AddListener(Call);
+            _buttonAddBlocks.onClick.AddListener(AddBlock);
+        }      
 
         private void OnDisable()
         {
-            _button.onClick.RemoveListener(Call);
+            _buttonAddTurel.onClick.RemoveListener(Call);
+            _buttonAddBlocks.onClick.RemoveListener(AddBlock);
+
         }
 
         #endregion
-        
+
 
         #region Methods
+
+        private void AddBlock()
+        {
+           var _characterData = Data.Instance.Character;
+            _characterData.CharacterBehaviour.AddBlock();
+        }
 
         public override void Show()
         {
@@ -44,7 +54,7 @@ namespace ExampleTemplate
 
         private void Call()
         {
-            ScreenInterface.GetInstance().Execute(ScreenType.MainMenu);
+           
         }
 
         #endregion

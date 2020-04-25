@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
-
-namespace ExampleTemplate
+namespace Snake_box
 {
     public sealed class InputController : IExecute
     {
@@ -31,6 +31,10 @@ namespace ExampleTemplate
             {
                 _characterData.CharacterBehaviour.AddBlock();/// добавление ячейки - хвост
             }
+            if (Input.GetKey(AxisManager.ESCAPE))
+            {
+                SceneManager.LoadScene(0);
+            } 
         }
 
         #endregion

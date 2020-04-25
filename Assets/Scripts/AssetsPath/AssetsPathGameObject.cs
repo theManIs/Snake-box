@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public sealed class AssetsPathGameObject
     {
@@ -17,6 +17,13 @@ namespace ExampleTemplate
             },
             {
                 GameObjectType.BlockSnake, "Prefabs/BlockSnake/Prefabs_BlockSnake_BlockSnake"
+            }
+        };
+
+        public static readonly Dictionary<EnemyType, string> EnemyObjects = new Dictionary<EnemyType, string>
+        {
+            {
+                EnemyType.Simple, "Prefabs/Enemies/SimpleEnemy"
             }
         };
 

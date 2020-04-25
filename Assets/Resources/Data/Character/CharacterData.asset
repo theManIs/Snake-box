@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 100
   _speedRotation: 8.43
-  _speed: 7.03
-  _slowSpeed: 0.5
+  _speed: 20
+  _slowSpeed: 1.5
   CharacterBehaviour: {fileID: 0}

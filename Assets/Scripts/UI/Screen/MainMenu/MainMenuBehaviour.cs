@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public sealed class MainMenuBehaviour : BaseUi
     {
@@ -11,7 +12,8 @@ namespace ExampleTemplate
         [SerializeField] private Button _startGameButton;
         [SerializeField] private Button _settingsButton;
         [SerializeField] private Text _currentLevelLabel;
-        
+        [SerializeField] private Button _exitButton;
+
         private LocationService _locationService;
         
         #endregion 
@@ -23,12 +25,14 @@ namespace ExampleTemplate
         {
             _startGameButton.onClick.AddListener(StartGameButtonClick);
             _settingsButton.onClick.AddListener(ShowSettingsButtonClick);
+            _exitButton.onClick.AddListener(ExitButtonClick);
         }
 
         private void OnDisable()
         {
             _startGameButton.onClick.RemoveListener(StartGameButtonClick);
             _settingsButton.onClick.RemoveListener(ShowSettingsButtonClick);
+            _exitButton.onClick.RemoveListener(ExitButtonClick);
         }
 
         #endregion
@@ -50,12 +54,16 @@ namespace ExampleTemplate
 
         private void StartGameButtonClick()
         {
-            ScreenInterface.GetInstance().Execute(ScreenType.GameMenu);
+            SceneManager.LoadScene(1);            
         }
 
         private void ShowSettingsButtonClick()
         {
             ScreenInterface.GetInstance().Execute(ScreenType.Settings);
+        }
+        private void ExitButtonClick()
+        {
+            Application.Quit();
         }
 
         #endregion

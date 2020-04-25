@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     [CreateAssetMenu(fileName = "CharacterData", menuName = "Data/Character/CharacterData")]
     public sealed class CharacterData : ScriptableObject
