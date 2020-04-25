@@ -1,9 +1,6 @@
-using UnityEngine;
-
-
 namespace Snake_box
 {
-    public sealed class FastEnemy: BaseEnemy
+    public sealed class FastEnemy : BaseEnemy
     {
         #region PrivateData
 

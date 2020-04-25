@@ -1,6 +1,6 @@
-﻿using System;
-using Snake_box;
+﻿using Snake_box;
 using UnityEngine;
+
 
 public class UiTest : MonoBehaviour
 {

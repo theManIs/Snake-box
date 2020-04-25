@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using UnityEngine;
 using Random = UnityEngine.Random;
 
 
@@ -8,7 +6,7 @@ namespace Snake_box
 {
     public sealed class EnemySpawnController : IInitialization, IExecute
     {
-        #region PrivateData
+        #region Fields
 
         private List<BaseEnemy> _enemies = new List<BaseEnemy>();
         private TimeRemaining _spawnInvoker;

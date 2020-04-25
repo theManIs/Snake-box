@@ -1,6 +1,3 @@
-using UnityEngine;
-
-
 namespace Snake_box
 {
     public sealed class SlowEnemy : BaseEnemy

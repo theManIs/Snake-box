@@ -1,8 +1,6 @@
-using UnityEngine;
-
 namespace Snake_box
 {
-    public sealed class FlyingEnemy: BaseEnemy
+    public sealed class FlyingEnemy : BaseEnemy
     {
         #region PrivateData
 

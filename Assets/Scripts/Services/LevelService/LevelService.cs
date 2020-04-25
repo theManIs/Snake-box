@@ -10,12 +10,6 @@ namespace Snake_box
         #region Fields
 
         public List<IEnemy> ActiveEnemies = new List<IEnemy>();
-        
-        #endregion
-        
-        
-        #region PrivateData
-
         private readonly LevelData _levelData;
 
         #endregion

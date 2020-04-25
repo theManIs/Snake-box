@@ -1,6 +1,3 @@
-using UnityEngine;
-using UnityEngine.AI;
-
 namespace Snake_box
 {
     public sealed class SimpleEnemy : BaseEnemy

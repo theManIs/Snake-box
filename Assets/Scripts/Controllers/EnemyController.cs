@@ -5,7 +5,7 @@ namespace Snake_box
 {
     public sealed class EnemyController : IExecute, IInitialization
     {
-        #region PrivateData
+        #region Fields
 
         private LevelService _levelService = Services.Instance.LevelService;
         private readonly List<IEnemy> _enemies = Services.Instance.LevelService.ActiveEnemies;
