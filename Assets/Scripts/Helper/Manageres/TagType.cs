@@ -3,9 +3,13 @@
     public enum TagType : byte
     {
         None   = 0,
-        Player = 1,
+        Player = 1, //Змейка
         Floor  = 2,
         Target = 3,
-        Spawn  = 4
+        Block  = 4,//Блоки из которых состоит Хвост
+        Bonus  = 5,// Бонус
+        Wall   = 6,//препятсвие : стены ,преграды и т.д.
+        Base   = 7,//База        
+        Spawn  = 8
     }
 }

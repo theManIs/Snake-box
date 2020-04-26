@@ -37,6 +37,16 @@ namespace Snake_box
                     Screen = "GUI/Screen/GameMenu/GUI_Screen_GameMenu",
                     Elements = new Dictionary<ScreenElementType, string>()
                 }
+            },
+            {
+                ScreenType.TestMenu, new ScreenPath
+                {
+                    Screen = "GUI/Screen/TestMenu/TestGUI_Screen_MainMenu",
+                    Elements = new Dictionary<ScreenElementType, string>()
+                    {
+                          { ScreenElementType.None, "" }
+                    }
+                }
             }
         };
 

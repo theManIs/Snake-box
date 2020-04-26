@@ -21,3 +21,4 @@ MonoBehaviour:
   _fastEnemyDataPath: Enemy/FastEnemyData
   _flyingEnemyDataPath: Enemy/FlyingEnemyData
   _LevelDataPath: Level/LevelData
+  _blockSnakeDataPath: BlockSnake/BlockSnakeData
