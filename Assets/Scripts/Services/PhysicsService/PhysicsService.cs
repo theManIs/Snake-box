@@ -14,10 +14,11 @@ namespace Snake_box
         private readonly RaycastHit2D[] _castBuffer;
         private readonly List<Collider2D> _triggeredObjects;
         private readonly CameraServices _cameraServices;
+        private readonly RaycastHit _raycastHit;
 
         #endregion
 
-        
+
         #region ClassLifeCycles
 
         public PhysicsService(CameraServices cameraServices) : base()
@@ -26,11 +27,12 @@ namespace Snake_box
             _collidedObjects = new Collider2D[COLLIDED_OBJECT_SIZE];
             _castBuffer = new RaycastHit2D[64];
             _triggeredObjects = new List<Collider2D>();
+            _raycastHit = new RaycastHit();
         }
 
         #endregion
 
-        
+
         #region Methods
 
         public bool CheckGround(Vector3 position, float distanceRay, out Vector3 hitPoint, int layerMask = LayerManager.DEFAULT_LAYER)
@@ -104,6 +106,16 @@ namespace Snake_box
             }
 
             return result;
+        }
+
+        public Collider GetCollider(Vector3 position, Vector3 vector3,float rayDistance)
+        {            
+            Physics.Raycast(position, vector3, out var _hit,rayDistance);
+            if (_hit.collider)
+            {
+                return _hit.collider;
+            }
+            return null;
         }
 
         public int GetIdObject(Vector2 position)
