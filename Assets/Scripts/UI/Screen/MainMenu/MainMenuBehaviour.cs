@@ -54,7 +54,7 @@ namespace Snake_box
 
         private void StartGameButtonClick()
         {
-            SceneManager.LoadScene(1);            
+            Services.Instance.LevelService.LoadLevel(0);           
         }
 
         private void ShowSettingsButtonClick()
