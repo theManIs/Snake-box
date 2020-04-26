@@ -12,7 +12,8 @@ namespace Snake_box
             {
                 {TagType.Player, "Player"},
                 {TagType.Floor, "Floor"},
-                {TagType.Target, "Target"}
+                {TagType.Target, "Target"},
+                {TagType.Spawn, "Spawn"}
             };
         }
 

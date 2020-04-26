@@ -63,6 +63,9 @@
               <e p="EnemySpawnData.cs" t="Include" />
               <e p="LevelSpawnData.cs" t="Include" />
             </e>
+            <e p="Level" t="Include">
+              <e p="LevelData.cs" t="Include" />
+            </e>
             <e p="Shakes" t="Include">
               <e p="SerializeShakeData.cs" t="Include" />
               <e p="ShakeInfo.cs" t="Include" />
@@ -123,10 +126,16 @@
             <e p="Interfaces" t="Include">
               <e p="IEnemy.cs" t="Include" />
             </e>
+            <e p="UiTest" t="Include">
+              <e p="UiTest.cs" t="Include" />
+            </e>
           </e>
           <e p="Services" t="Include">
             <e p="CameraService" t="Include">
               <e p="CameraServices.cs" t="Include" />
+            </e>
+            <e p="LevelService" t="Include">
+              <e p="LevelService.cs" t="Include" />
             </e>
             <e p="LocalizationService" t="Include">
               <e p="ILocalization.cs" t="Include" />

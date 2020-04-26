@@ -15,8 +15,7 @@ namespace Snake_box
         {
             _data = Data.Instance.SimpleEnemy;
             Type = EnemyType.Simple;
-            prefab = _data.Prefab;
-            _SpawnCenter = _data.SpawnCenter.transform.position;
+            _prefab = _data.Prefab;
             _spawnRadius = _data.SpawnRadius;
             _speed = _data.Speed;
             _hp = _data.Hp;
