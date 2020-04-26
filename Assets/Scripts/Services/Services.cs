@@ -30,6 +30,7 @@ namespace Snake_box
         public PhysicsService PhysicsService { get; private set; }
         public ISaveData SaveData { get; private set; }
         public JsonService JsonService { get; private set; }
+        public LevelService LevelService { get; private set; }
         
         #endregion
         
@@ -43,6 +44,7 @@ namespace Snake_box
             PhysicsService = new PhysicsService(CameraServices);
             SaveData = new PrefsService();
             JsonService = new JsonService();
+            LevelService = new LevelService();
         }
         
         #endregion

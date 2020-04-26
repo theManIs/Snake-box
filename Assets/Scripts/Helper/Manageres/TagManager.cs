@@ -12,11 +12,13 @@ namespace Snake_box
             {
                 {TagType.Player, "Player"},
                 {TagType.Floor, "Floor"},
-                {TagType.Target, "Target"},                                
+                                               
                 {TagType.Block, "Block"},               
                 {TagType.Bonus, "Bonus"},
                 {TagType.Base, "Base"},
-                {TagType.Wall, "Wall"}
+                {TagType.Wall, "Wall"},
+                {TagType.Target, "Target"},
+                {TagType.Spawn, "Spawn"}
             };
         }
 

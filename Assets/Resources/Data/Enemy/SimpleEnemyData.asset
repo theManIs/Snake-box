@@ -19,5 +19,5 @@ MonoBehaviour:
   Speed: 1
   Damage: 1
   SpawnRadius: 50
-  SizePack: 1
-  PackValue: 1
+  sizepack: 1
+  packvalue: 1
