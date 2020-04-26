@@ -37,6 +37,8 @@ namespace Snake_box
         public virtual void Spawn()
         {
             _spawnCenter = _levelService.Spawn;
+            Debug.Log(_target); Debug.Log(_levelService.Target.transform);
+
             _target = _levelService.Target.transform;
             var enemy = GameObject.Instantiate(_prefab, GetSpawnPoint(_spawnCenter), Quaternion.identity);
             _navMeshAgent = enemy.GetComponent<NavMeshAgent>();
