@@ -16,7 +16,8 @@ namespace Snake_box
                 {TagType.Block, "Block"},               
                 {TagType.Bonus, "Bonus"},
                 {TagType.Base, "Base"},
-                {TagType.Wall, "Wall"}
+                {TagType.Wall, "Wall"},               
+                {TagType.Spawn, "Spawn"}
             };
         }
 

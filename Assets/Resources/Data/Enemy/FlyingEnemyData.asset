@@ -18,6 +18,6 @@ MonoBehaviour:
   Hp: 1
   Speed: 1
   Damage: 1
-  SpawnRadius: 1
-  SizePack: 1
-  PackValue: 1
+  SpawnRadius: 50
+  SizePack: 0
+  PackValue: 0
