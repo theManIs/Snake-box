@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ExampleTemplate;
+
 
 namespace Snake_box
 {
@@ -29,6 +29,8 @@ namespace Snake_box
 
         public void Execute()
         {
+            SetTurretList(new List<TurretBaseAbs>());
+
             _turretList = _turretList.Where(x => x != null ? true : false).ToList();
 
             _turretList.ForEach(iExecutable => iExecutable.Execute());
@@ -39,9 +41,7 @@ namespace Snake_box
 
         #region Methods
 
-        public void SetTurretList(List<TurretBaseAbs> tl) => _turretList = tl;
-
-        public static TurretController GetInstance() => _hiddenInstance;
+        private void SetTurretList(List<TurretBaseAbs> tl) => _turretList = Data.Instance.TurretData.GetTurretList();
 
         #endregion
     }

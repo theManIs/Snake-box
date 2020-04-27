@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Model.Turrets;
-using ExampleTemplate;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -20,8 +19,8 @@ namespace Snake_box
         //todo use TimeRemaining
         private float _frameRateLock = 0;
 
-        public ArmorTypes PreferredArmorType = ArmorTypes.Heavy;
-        private IDummyEnemy[] _dummyEnemies = new IDummyEnemy[3];
+        public EnemyType PreferredArmorType = EnemyType.None;
+        private List<IEnemy> _dummyEnemies = new List<IEnemy>();
         public TurretBehaviour TurretBehaviour;
 
         #endregion
@@ -54,8 +53,6 @@ namespace Snake_box
 
         #region TurretBaseAbs
 
-        public override void SetEnemies(IDummyEnemy[] dummyEnemies) => _dummyEnemies = dummyEnemies;
-
         public override void SetParentTransform(Transform parentTransform)
         {
             TurretInstance.transform.parent = parentTransform;
@@ -63,6 +60,7 @@ namespace Snake_box
         }
         public override void Execute()
         {
+            RecoilEnemies();
             LockTarget();
             ContinueShooting();
             HaltTurret();
@@ -77,7 +75,7 @@ namespace Snake_box
         {
             if (Time.frameCount - _frameRateLock > Cooldown)
             {
-                IDummyEnemy nearestEnemy = NearestEnemy();
+                IEnemy nearestEnemy = NearestEnemy();
 
                 if (nearestEnemy == null)
                     return;
@@ -92,7 +90,7 @@ namespace Snake_box
 
         public void LockTarget()
         {
-            IDummyEnemy nearestEnemy = NearestEnemy();
+            IEnemy nearestEnemy = NearestEnemy();
 
             if (nearestEnemy == null)
                 return;
@@ -113,23 +111,20 @@ namespace Snake_box
             TurretInstance.transform.rotation = Quaternion.Slerp(TurretInstance.transform.rotation, rotation, 1);
         }
 
-        private void CollectKilledEnemies()
-        {
-            _dummyEnemies = _dummyEnemies.Where((element) => !element.AmIDestroyed()).ToArray();
-        }
+        private void CollectKilledEnemies() => _dummyEnemies = _dummyEnemies.Where((element) => !element.AmIDestroyed()).ToList();
 
-        private IDummyEnemy NearestEnemy()
+        private IEnemy NearestEnemy()
         {
             CollectKilledEnemies();
 
-            if (_dummyEnemies.Length < 1)
+            if (_dummyEnemies.Count < 1)
                 return null;
 
-            IDummyEnemy nearestEnemy = null;
+            IEnemy nearestEnemy = null;
             float closestDistance = TurretRange;
-            ArmorTypes enemyArmorType = ArmorTypes.None;
+            EnemyType enemyArmorType = EnemyType.None;
 
-            foreach (IDummyEnemy enemy in _dummyEnemies)
+            foreach (IEnemy enemy in _dummyEnemies)
             {
                 float checkingDistance = Vector3.Distance(
                     enemy.GetPosition(),
@@ -140,17 +135,17 @@ namespace Snake_box
                     continue;
                 }
                 else if (enemyArmorType == PreferredArmorType 
-                         && enemy.GetArmorType() != PreferredArmorType 
-                         && PreferredArmorType != ArmorTypes.None)
+                         && enemy.GetEnemyType() != PreferredArmorType 
+                         && PreferredArmorType != EnemyType.None)
                 {
                     continue;
                 }
                 
-                if (checkingDistance < closestDistance || enemyArmorType != PreferredArmorType && enemy.GetArmorType() == PreferredArmorType)
+                if (checkingDistance < closestDistance || enemyArmorType != PreferredArmorType && enemy.GetEnemyType() == PreferredArmorType)
                 {
                     closestDistance = checkingDistance;
                     nearestEnemy = enemy;
-                    enemyArmorType = enemy.GetArmorType();
+                    enemyArmorType = enemy.GetEnemyType();
                 }
             }
 
@@ -159,31 +154,17 @@ namespace Snake_box
 
         private void HaltTurret()
         {
-            IDummyEnemy nearestEnemy = NearestEnemy();
+            IEnemy nearestEnemy = NearestEnemy();
 
             if (nearestEnemy == null)
                 TurretInstance.transform.rotation = _haltTurretRotation;
         }
 
-        public void AddEnemy(IDummyEnemy newDummyEnemy)
-        {
-            List<IDummyEnemy> temporaryList = _dummyEnemies.ToList();
+        public void AddEnemy(IEnemy newDummyEnemy) => _dummyEnemies.Add(newDummyEnemy);
 
-            temporaryList.Add(newDummyEnemy);
+        public void RemoveEnemy(IEnemy newDummyEnemy) => _dummyEnemies.Remove(newDummyEnemy);
 
-            _dummyEnemies = temporaryList.ToArray();
-        }
-
-        public void RemoveEnemy(IDummyEnemy newDummyEnemy)
-        {
-            CollectKilledEnemies();
-
-            List<IDummyEnemy> temporaryList = _dummyEnemies.ToList();
-
-            temporaryList.Remove(newDummyEnemy);
-
-            _dummyEnemies = temporaryList.ToArray();
-        }
+        private void RecoilEnemies() => _dummyEnemies = Services.Instance.LevelService.ActiveEnemies;
 
         #endregion
     }
