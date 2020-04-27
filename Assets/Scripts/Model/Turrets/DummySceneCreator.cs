@@ -1,4 +1,5 @@
-﻿using ExampleTemplate;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Snake_box
@@ -18,17 +19,10 @@ namespace Snake_box
         {
             if (_initLocker)
             {
-                TurretController tc = TurretController.GetInstance();
-                TurretBaseAbs newTurret = tc.AddNewTurret();
+                Data.Instance.TurretData.AddNewWithParent(GameObject.Find("TurretPlace1").transform);
+                Data.Instance.TurretData.AddNewWithParent(GameObject.Find("TurretPlace2").transform);
 
-                newTurret.SetEnemies(Object.FindObjectsOfType<DummyEnemy>());
-                newTurret.SetParentTransform(GameObject.Find("TurretPlace1").transform);
-
-                newTurret = tc.AddNewTurret();
-
-                newTurret.SetEnemies(Object.FindObjectsOfType<DummyEnemy>());
-                newTurret.SetParentTransform(GameObject.Find("TurretPlace2").transform);
-
+                Services.Instance.LevelService.ActiveEnemies = new List<IEnemy>(Object.FindObjectsOfType<DummyEnemy>());
                 _initLocker = false;
             }
         }

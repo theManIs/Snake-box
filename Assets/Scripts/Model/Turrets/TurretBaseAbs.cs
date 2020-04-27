@@ -1,4 +1,4 @@
-﻿using ExampleTemplate;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Snake_box
@@ -8,7 +8,6 @@ namespace Snake_box
         #region Methods
 
         public abstract void Execute();
-        public abstract void SetEnemies(IDummyEnemy[] findObjectsOfType);
         public abstract void SetParentTransform(Transform transform); 
 
         #endregion
