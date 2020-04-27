@@ -22,6 +22,7 @@ namespace Snake_box
         [SerializeField] private string _fastEnemyDataPath;
         [SerializeField] private string _flyingEnemyDataPath;
         [SerializeField] private string _LevelDataPath;
+        [SerializeField] private string _turretDataPath;
         private static EnemySpawnData _enemySpawnData;
         private static LevelSpawnData _levelSpawnData;
         [SerializeField] private string _blockSnakeDataPath;
@@ -33,6 +34,7 @@ namespace Snake_box
         private static FlyingEnemyData _flyingEnemyData;
         private static LevelData _levelData;
         private static BlockSnakeData _blockSnake;
+        private static TurretData _turretData;
         private static readonly Lazy<Data> _instance = new Lazy<Data>(() => Load<Data>("Data/" + typeof(Data).Name));
         
         #endregion
@@ -169,6 +171,19 @@ namespace Snake_box
                 }
 
                 return _levelData;
+            }
+        }
+
+        public TurretData TurretData
+        {
+            get
+            {
+                if (_turretData == null)
+                {
+                    _turretData = Load<TurretData>("Data/" + Instance._turretDataPath);
+                }
+
+                return _turretData;
             }
         }
 
