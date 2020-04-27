@@ -23,6 +23,15 @@
             <e p="NavMeshTeleport.cs" t="Include" />
           </e>
         </e>
+        <e p="Resources" t="Include">
+          <e p="GUI" t="Include">
+            <e p="Screen" t="Include">
+              <e p="TestMenu" t="Include">
+                <e p="TestMenu.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="AssetsPath" t="Include">
             <e p="AssetsPathGameObject.cs" t="Include" />
@@ -48,6 +57,9 @@
             </e>
           </e>
           <e p="Data" t="Include">
+            <e p="BlockSnake" t="Include">
+              <e p="BlockSnakeData.cs" t="Include" />
+            </e>
             <e p="Character" t="Include">
               <e p="CharacterData.cs" t="Include" />
             </e>
@@ -113,6 +125,12 @@
             </e>
           </e>
           <e p="Model" t="Include">
+            <e p="Base" t="Include">
+              <e p="MainBuild.cs" t="Include" />
+            </e>
+            <e p="BlockSnake" t="Include">
+              <e p="BlockSnake.cs" t="Include" />
+            </e>
             <e p="Character" t="Include">
               <e p="CharacterBehaviour.cs" t="Include" />
             </e>
@@ -125,6 +143,23 @@
             </e>
             <e p="Interfaces" t="Include">
               <e p="IEnemy.cs" t="Include" />
+            </e>
+            <e p="Turrets" t="Include">
+              <e p="ArmorTypes.cs" t="Include" />
+              <e p="CannonShellBuilder.cs" t="Include" />
+              <e p="DummyEnemy.cs" t="Include" />
+              <e p="DummySceneCreator.cs" t="Include" />
+              <e p="IDamageAddressee.cs" t="Include" />
+              <e p="IDummyEnemy.cs" t="Include" />
+              <e p="ProjectileBuilderAbs.cs" t="Include" />
+              <e p="TurretBaseAbs.cs" t="Include" />
+              <e p="TurretBehaviour.cs" t="Include" />
+              <e p="TurretController.cs" t="Include" />
+              <e p="TurretExtension.cs" t="Include" />
+              <e p="TurretInitializer.cs" t="Include" />
+              <e p="TurretProjectile.cs" t="Include" />
+              <e p="TurretProjectileAbs.cs" t="Include" />
+              <e p="TurretProjectileController.cs" t="Include" />
             </e>
             <e p="UiTest" t="Include">
               <e p="UiTest.cs" t="Include" />
