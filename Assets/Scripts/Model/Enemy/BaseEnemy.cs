@@ -68,6 +68,8 @@ namespace Snake_box
             return _enemyObject == null;
         }
 
+        public Vector3 GetPosition() => _transform.position;
+
         #endregion
 
 

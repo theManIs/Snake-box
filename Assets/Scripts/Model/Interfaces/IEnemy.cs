@@ -8,5 +8,6 @@ namespace Snake_box
         void Spawn();
         Transform GetTransform();
         bool AmIDestroyed();
+        Vector3 GetPosition();
     }
 }
