@@ -114,7 +114,7 @@ namespace Snake_box
             {
                 if (_levelService.ActiveEnemies.Contains(this))
                     _levelService.ActiveEnemies.Remove(this);
-                Object.Destroy(_transform.gameObject);
+                Object.Destroy(_enemyObject);
             }
         }
 
