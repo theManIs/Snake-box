@@ -1,6 +1,6 @@
 namespace Snake_box
 {
-    public sealed class FastEnemy: BaseEnemy
+    public sealed class FastEnemy : BaseEnemy
     {
         #region PrivateData
 
@@ -15,8 +15,7 @@ namespace Snake_box
         {
             _data = Data.Instance.FastEnemy;
             Type = EnemyType.Fast;
-            prefab = _data.Prefab;
-            _SpawnCenter = _data.SpawnCenter.transform.position;
+            _prefab = _data.Prefab;
             _spawnRadius = _data.SpawnRadius;
             _speed = _data.Speed;
             _hp = _data.Hp;

@@ -9,6 +9,7 @@ namespace Snake_box
 
         private GameMenuBehaviour _gameMenu;
         private MainMenuBehaviour _mainMenu;
+        private MainMenuBehaviour _testMenu;
         private Canvas _canvas;
 
         #endregion
@@ -28,9 +29,14 @@ namespace Snake_box
         #region Methods
 
         public GameMenuBehaviour GetGameMenu()
-        {
+        {          
             if (_gameMenu == null)
             {
+                if (_canvas == null)
+                {
+                    var resourcesCanvas = CustomResources.Load<Canvas>(AssetsPathGameObject.GameObjects[GameObjectType.Canvas]);
+                    _canvas = Object.Instantiate(resourcesCanvas, Vector3.one, Quaternion.identity);
+                }
                 var resources = CustomResources.Load<GameMenuBehaviour>(AssetsPathScreen.Screens[ScreenType.GameMenu].Screen);
                 _gameMenu = Object.Instantiate(resources, _canvas.transform.position, Quaternion.identity, _canvas.transform);
             }
@@ -45,6 +51,16 @@ namespace Snake_box
                 _mainMenu = Object.Instantiate(resources, _canvas.transform.position, Quaternion.identity, _canvas.transform);
             }
             return _mainMenu;
+        }
+
+        public MainMenuBehaviour GeTestMenu()
+        {
+            if (_testMenu == null)
+            {
+                var resources = CustomResources.Load<MainMenuBehaviour>(AssetsPathScreen.Screens[ScreenType.TestMenu].Screen);
+                _testMenu = Object.Instantiate(resources, _canvas.transform.position, Quaternion.identity, _canvas.transform);                
+            }
+            return _testMenu;
         }
 
         #endregion

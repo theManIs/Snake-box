@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Floor
   - Target
+  - Base
+  - Wall
+  - Bonus
+  - BlockSnacke
+  - Block
+  - Spawn
   layers:
   - Default
   - TransparentFX

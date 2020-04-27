@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 // using UnityEditor;
 using UnityEngine;
@@ -20,14 +21,18 @@ namespace Snake_box
         [SerializeField] private string _slowEnemyDataPath;
         [SerializeField] private string _fastEnemyDataPath;
         [SerializeField] private string _flyingEnemyDataPath;
+        [SerializeField] private string _LevelDataPath;
         private static EnemySpawnData _enemySpawnData;
         private static LevelSpawnData _levelSpawnData;
+        [SerializeField] private string _blockSnakeDataPath;
         private static ShakesData _shake;
         private static CharacterData _characterData;
         private static SimpleEnemyData _simpleEnemyData;
         private static SlowEnemyData _slowEnemyData;
         private static FastEnemyData _fastEnemyData;
         private static FlyingEnemyData _flyingEnemyData;
+        private static LevelData _levelData;
+        private static BlockSnakeData _blockSnake;
         private static readonly Lazy<Data> _instance = new Lazy<Data>(() => Load<Data>("Data/" + typeof(Data).Name));
         
         #endregion
@@ -36,6 +41,19 @@ namespace Snake_box
         #region Properties
 
         public static Data Instance => _instance.Value;
+
+        public BlockSnakeData BlockSnake
+        {
+            get
+            {
+                if (_blockSnake == null)
+                {
+                    _blockSnake = Load<BlockSnakeData>("Data/" + Instance._blockSnakeDataPath);
+                }
+
+                return _blockSnake;
+            }
+        }
 
         public ShakesData Shakes
         {
@@ -128,7 +146,31 @@ namespace Snake_box
             }
         }
 
+        public LevelSpawnData LevelSpawn
+        {
+            get
+            {
+                if (_levelSpawnData == null)
+                {
+                    _levelSpawnData = Load<LevelSpawnData>("Data/" + Instance._levelSpawnDataPath);
+                }
 
+                return _levelSpawnData;
+            }
+        }
+
+        public LevelData LevelData
+        {
+            get
+            {
+                if (_levelData == null)
+                {
+                    _levelData = Load<LevelData>("Data/" + Instance._LevelDataPath);
+                }
+
+                return _levelData;
+            }
+        }
 
         #endregion
 

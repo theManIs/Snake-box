@@ -11,8 +11,13 @@ namespace Snake_box
             _tags = new Dictionary<TagType, string>
             {
                 {TagType.Player, "Player"},
-                {TagType.Floor, "Floor"},
-                {TagType.Target, "Target"}
+                {TagType.Floor, "Floor"},                                               
+                {TagType.Block, "Block"},               
+                {TagType.Bonus, "Bonus"},
+                {TagType.Base, "Base"},
+                {TagType.Wall, "Wall"},
+                {TagType.Target, "Target"},
+                {TagType.Spawn, "Spawn"}
             };
         }
 

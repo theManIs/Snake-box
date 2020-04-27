@@ -53,6 +53,9 @@ namespace Snake_box
                 case ScreenType.MainMenu:
                     _currentWindow = _screenFactory.GetMainMenu();
                     break;
+                case ScreenType.TestMenu:
+                    _currentWindow = _screenFactory.GeTestMenu();
+                    break;
 
                 default:
                     break;
@@ -75,6 +78,11 @@ namespace Snake_box
                     _screenFactory.GetMainMenu().HideUI += listenerScreen.HideScreen;
                     _screenFactory.GetMainMenu().Hide();
                     break;
+                case ScreenType.TestMenu:
+                    _screenFactory.GeTestMenu().ShowUI += listenerScreen.ShowScreen;
+                    _screenFactory.GeTestMenu().HideUI += listenerScreen.HideScreen;
+                    _screenFactory.GeTestMenu().Hide();
+                    break;
 
                 default:
                     break;
@@ -94,6 +102,11 @@ namespace Snake_box
                     _screenFactory.GetMainMenu().ShowUI -= listenerScreen.ShowScreen;
                     _screenFactory.GetMainMenu().HideUI -= listenerScreen.HideScreen;
                     _screenFactory.GetMainMenu().Hide();
+                    break;
+                case ScreenType.TestMenu:
+                    _screenFactory.GeTestMenu().ShowUI -= listenerScreen.ShowScreen;
+                    _screenFactory.GeTestMenu().HideUI -= listenerScreen.HideScreen;
+                    _screenFactory.GeTestMenu().Hide();
                     break;
 
                 default:

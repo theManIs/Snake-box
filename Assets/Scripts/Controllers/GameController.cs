@@ -19,7 +19,7 @@ namespace Snake_box
         {
             _controllers = new Controllers();
             Initialization();
-            //ScreenInterface.GetInstance().Execute(ScreenType.MainMenu);
+            ScreenInterface.GetInstance().Execute(ScreenType.GameMenu);
         }
 
         private void Update()

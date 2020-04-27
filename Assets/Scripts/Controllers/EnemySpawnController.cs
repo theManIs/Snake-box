@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
@@ -7,74 +6,69 @@ namespace Snake_box
 {
     public sealed class EnemySpawnController : IInitialization, IExecute
     {
-        public static event Action<IEnemy> Spawned;
-
-        
-        #region PrivateData
+        #region Fields
 
         private List<BaseEnemy> _enemies = new List<BaseEnemy>();
+        private TimeRemaining _spawnInvoker;
+        private TimeRemaining _waveInvoker;
         private EnemySpawnData _enemySpawnData;
-        private float _delay;
-        private int _level;
+        private readonly LevelService _levelService;
+        private float _spawnDelay;
+        private float _waveDelay;
+        private int _currentLevel;
+
         private int _wave;
-        private bool _IsSpawnNeed;
         //private PoolObject _pool; //TODO добавить пул 
 
         #endregion
 
+
+        #region ClassLifeCycle
+
+        public EnemySpawnController()
+        {
+            _levelService = Services.Instance.LevelService;
+        }
         
+
+        #endregion
+
         #region IInitialization
 
         public void Initialization()
         {
             _enemySpawnData = Data.Instance.EnemySpawn;
-            _enemies = FillEnemyList();
-            _IsSpawnNeed = true;
-            _delay = _enemySpawnData.LevelSpawnDatas[_wave].Delay;
-            _wave = 0;// Волная в уровне
-            _level = 0;// Задел на множество уровней
+            _spawnDelay = _enemySpawnData.LevelSpawnDatas[_currentLevel].SpawnDelay;
+            _waveDelay = _enemySpawnData.LevelSpawnDatas[_currentLevel].WaveDelay;
+            _currentLevel = _levelService.CurrentLevel;
+            _wave = 0; // Волная в уровне
+            _spawnInvoker = new TimeRemaining(SpawnEnemy, _spawnDelay, true);
+            _waveInvoker = new TimeRemaining(NextWave, _waveDelay);
         }
 
         #endregion
 
-        
+
         #region IExecute
 
         public void Execute()
         {
-            if (_IsSpawnNeed)
+            if (_levelService.IsSpawnNeed)
             {
-                if (_enemies.Count > 0)
-                {
-                    if (_delay <= 0.0f)
-                    {
-                        _delay = _enemySpawnData.LevelSpawnDatas[_level].Delay;
-                        var rnd = Random.Range(0, _enemies.Count);
-                        _enemies[rnd].Spawn();
-                        Spawned(_enemies[rnd]);
-                        _enemies.RemoveAt(rnd);
-                    }
-                    else
-                        _delay -= Services.Instance.TimeService.DeltaTime();
-                }
-                else
-                {
-                    _IsSpawnNeed = false;
-                    _wave++;
-                }
+                SpawnEnemy();
             }
         }
 
         #endregion
 
-        
+
         #region Methods
 
         private List<BaseEnemy> FillEnemyList()
         {
             List<BaseEnemy> _list = new List<BaseEnemy>();
-            
-            var wavesettings = _enemySpawnData.LevelSpawnDatas[_level].WaveSettings;
+
+            var wavesettings = _enemySpawnData.LevelSpawnDatas[_currentLevel].WaveSettings;
             for (int i = 0; i < wavesettings[_wave].SimpleEnemyCount; i++)
             {
                 _list.Add(new SimpleEnemy());
@@ -94,7 +88,51 @@ namespace Snake_box
             {
                 _list.Add(new FlyingEnemy());
             }
+
             return _list;
+        }
+
+        private void SpawnEnemy()
+        {
+            if (_levelService.IsSpawnNeed)
+            {
+                _enemies = FillEnemyList();
+                _levelService.IsSpawnNeed = false;
+                _spawnInvoker.AddTimeRemaining();
+            }
+
+            if (_enemies.Count > 0)
+            {
+                var rnd = Random.Range(0, _enemies.Count);
+                _enemies[rnd].Spawn();
+                _enemies.RemoveAt(rnd);
+            }
+
+            if (_enemies.Count == 0)
+            {
+                _spawnInvoker.RemoveTimeRemaining();
+                _levelService.IsWaveEnded = true;
+                if (_enemySpawnData.LevelSpawnDatas[_currentLevel].WaveSettings.Count-1> _wave)
+                {
+                    _wave++;
+                }
+                else
+                {
+                    _levelService.IsLevelEnded = true;
+                    //_levelService.EndLevel();//TODO Переделать, когда будет меню
+                }
+            }
+
+            if (_levelService.IsWaveEnded && !_levelService.IsLevelEnded)
+            {
+                _waveInvoker.AddTimeRemaining();
+            }
+        }
+
+        private void NextWave()
+        {
+            _levelService.IsSpawnNeed = true;
+            _levelService.IsWaveEnded = false;
         }
 
         #endregion

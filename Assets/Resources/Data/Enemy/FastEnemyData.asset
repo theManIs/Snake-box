@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnCenter: {fileID: 5067107991294809042, guid: f0c6579eff748814fb9376a7c0e527c4,
     type: 3}
-  prefab: {fileID: 5058968977680414830, guid: 796c9aacf5d197246b8aff8236df6438, type: 3}
-  hp: 5
-  speed: 10
-  damage: 1
+  Prefab: {fileID: 5058968977680414830, guid: 796c9aacf5d197246b8aff8236df6438, type: 3}
+  Hp: 1
+  Speed: 50
+  Damage: 1
   SpawnRadius: 50
-  sizepack: 0
-  packvalue: 0
+  SizePack: 0
+  PackValue: 0
