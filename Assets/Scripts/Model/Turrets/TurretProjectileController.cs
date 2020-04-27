@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Model.Turrets;
-using ExampleTemplate;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 
