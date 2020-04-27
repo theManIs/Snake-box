@@ -6,12 +6,13 @@ using Random = UnityEngine.Random;
 
 namespace Snake_box
 {
-    public abstract class BaseEnemy : IEnemy
+    public abstract class BaseEnemy : IEnemy, IDamageAddressee
     {
         #region PrivateData
 
         protected NavMeshAgent _navMeshAgent;
         protected GameObject _prefab;
+        protected GameObject _enemyObject;
         protected GameObject _spawnCenter;
         protected Transform _transform;
         protected Transform _target;
@@ -31,23 +32,50 @@ namespace Snake_box
 
         #endregion
 
-
-        #region Methods
+        
+        #region IEnemy
 
         public virtual void Spawn()
         {
             _spawnCenter = _levelService.Spawn;
             _target = _levelService.Target.transform;
-            var enemy = GameObject.Instantiate(_prefab, GetSpawnPoint(_spawnCenter), Quaternion.identity);
-            _navMeshAgent = enemy.GetComponent<NavMeshAgent>();
+            _enemyObject = GameObject.Instantiate(_prefab, GetSpawnPoint(_spawnCenter), Quaternion.identity);
+            _navMeshAgent = _enemyObject.GetComponent<NavMeshAgent>();
             _navMeshAgent.speed = _speed;
-            _transform = enemy.transform;
+            _transform = _enemyObject.transform;
             _isNeedNavMeshUpdate = true;
             if (!_levelService.ActiveEnemies.Contains(this))
                 _levelService.ActiveEnemies.Add(this);
         }
 
-        public void HitCheck()
+        public virtual void OnUpdate()
+
+        {
+            if (_isNeedNavMeshUpdate)
+            {
+                if (_target != null)
+                    _navMeshAgent.SetDestination(_target.transform.position);
+                _isNeedNavMeshUpdate = false;
+            }
+
+            HitCheck();
+        }
+
+        public Transform GetTransform() => _transform;
+
+        public bool AmIDestroyed()
+        {
+            return _enemyObject == null;
+        }
+
+        public Vector3 GetPosition() => _transform.position;
+
+        #endregion
+
+
+        #region Methods
+
+        private void HitCheck()
         {
             Collider[] colliders = new Collider[10];
             Physics.OverlapSphereNonAlloc(_transform.position, 3.1f, colliders);
@@ -79,28 +107,25 @@ namespace Snake_box
             return hit.position;
         }
 
-        public void GetDamage(float damage)
+        private void GetDamage(float damage)
         {
             _hp -= damage;
             if (_hp <= 0)
             {
                 if (_levelService.ActiveEnemies.Contains(this))
                     _levelService.ActiveEnemies.Remove(this);
-                Object.Destroy(_transform.gameObject);
+                Object.Destroy(_enemyObject);
             }
         }
 
-        public virtual void OnUpdate()
+        #endregion
 
+
+        #region IDamageAdressee
+
+        public void RegisterDamage(float damageAmount, ArmorTypes damageType)
         {
-            if (_isNeedNavMeshUpdate)
-            {
-                if (_target != null)
-                    _navMeshAgent.SetDestination(_target.transform.position);
-                _isNeedNavMeshUpdate = false;
-            }
-
-            HitCheck();
+            GetDamage(damageAmount);
         }
 
         #endregion
