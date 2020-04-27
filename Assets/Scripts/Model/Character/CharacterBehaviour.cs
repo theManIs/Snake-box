@@ -14,6 +14,7 @@ namespace Snake_box
         private readonly List<BlockSnake> _blocksSnakes = new List<BlockSnake>();//блоки
         private readonly List<Vector3> _positions = new List<Vector3>();// позиции блоков 
         private float _sizeBlock;
+        
         #endregion
 
 
@@ -69,6 +70,7 @@ namespace Snake_box
                 _positions.Add(block.transform.position);
             }
         }
+       
 
         public void Collision()
         {
@@ -89,6 +91,15 @@ namespace Snake_box
                     
                 }
             }
+        }
+
+        public BlockSnake GetBlock(int indexBlock)
+        {
+            if (_blocksSnakes[indexBlock] != null)
+            {
+                return _blocksSnakes[indexBlock];
+            }
+            else return null;
         }
 
         public void Move(float inputAxis)//движение

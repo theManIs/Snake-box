@@ -34,7 +34,7 @@ namespace Snake_box
             if (Input.GetKey(AxisManager.ESCAPE))
             {
                 SceneManager.LoadScene(0);
-            } 
+            }           
         }
 
         #endregion
