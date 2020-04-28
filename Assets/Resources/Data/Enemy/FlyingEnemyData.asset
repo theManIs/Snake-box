@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685f99e7652e453f8d92a5d8b1895279, type: 3}
   m_Name: FlyingEnemyData
   m_EditorClassIdentifier: 
-  SpawnCenter: {fileID: 5067107991294809042, guid: f0c6579eff748814fb9376a7c0e527c4,
-    type: 3}
   Prefab: {fileID: 5058968977680414830, guid: ae92a8340f4b11c4e91c1947d523534a, type: 3}
   Hp: 1
-  Speed: 1
+  Speed: 7
   Damage: 1
   SpawnRadius: 50
   SizePack: 0
