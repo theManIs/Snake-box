@@ -64,7 +64,6 @@ namespace Snake_box
 
         private void FindGameObject()
         {
-            Debug.Log(GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Target)));
             Target = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Target));
             Spawn = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Spawn));
         }
