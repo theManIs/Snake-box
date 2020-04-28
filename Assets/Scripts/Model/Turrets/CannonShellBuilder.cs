@@ -24,9 +24,9 @@ namespace Snake_box
 
         #region ProjectileBuilderAbs
 
-        public override void Build(Transform firePoint, Transform enemy)
+        public override void Build(Transform firePoint, IEnemy enemy)
         {
-            GameObject prefabObject = Object.Instantiate(TurretShellPrefab, Vector3.zero, Quaternion.identity);
+            GameObject prefabObject = Object.Instantiate(TurretShellPrefab, Vector3.zero, TurretShellPrefab.transform.rotation);
             TurretProjectile turretProjectile = new TurretProjectile();
 
             turretProjectile.SetGameObject(prefabObject);

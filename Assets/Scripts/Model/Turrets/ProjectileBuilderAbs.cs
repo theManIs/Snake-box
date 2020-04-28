@@ -6,7 +6,7 @@ namespace Snake_box
     {
         #region Methods
 
-        public abstract void Build(Transform firePoint, Transform enemy); 
+        public abstract void Build(Transform firePoint, IEnemy enemy); 
 
         #endregion
     }
