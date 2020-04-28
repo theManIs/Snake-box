@@ -42,7 +42,7 @@ namespace Snake_box
         {
             //todo move that to turret builder
             TurretBehaviour = Resources.Load<TurretBehaviour>(TurretSpritePath);
-            TurretInstance = Object.Instantiate(TurretBehaviour.gameObject, Vector3.zero, Quaternion.identity);
+            TurretInstance = Object.Instantiate(TurretBehaviour.gameObject, Vector3.zero, TurretBehaviour.transform.rotation);
             _haltTurretRotation = TurretInstance.transform.rotation;
             TurretBehaviour = TurretInstance.GetComponent<TurretBehaviour>();
         }
@@ -80,7 +80,7 @@ namespace Snake_box
                 if (nearestEnemy == null)
                     return;
 
-                GetProjectile().Build(TurretBehaviour.FirePoint, nearestEnemy.GetTransform());
+                GetProjectile().Build(TurretBehaviour.FirePoint, nearestEnemy);
 
                 _frameRateLock = Time.frameCount;
             }
@@ -97,16 +97,6 @@ namespace Snake_box
 
             Vector3 direction3d = nearestEnemy.GetPosition() - TurretInstance.transform.position;
             float angle = Mathf.Atan2(direction3d.y, direction3d.x) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            TurretInstance.transform.rotation = Quaternion.Slerp(TurretInstance.transform.rotation, rotation, 1);
-        }
-
-        public void TakeAim()
-        {
-            Vector2 direction2d =
-                Camera.main.ScreenToWorldPoint(Input.mousePosition) - TurretInstance.transform.position;
-
-            float angle = Mathf.Atan2(direction2d.y, direction2d.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             TurretInstance.transform.rotation = Quaternion.Slerp(TurretInstance.transform.rotation, rotation, 1);
         }
