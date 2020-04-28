@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using Assets.Scripts.Model.Turrets;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 
 namespace Snake_box
@@ -14,7 +17,7 @@ namespace Snake_box
         public GameObject TurretInstance;
         private Quaternion _haltTurretRotation;
         public string TurretSpritePath = "Prefabs/Turrets/DummyTurret";
-        public float TurretRange = 6;
+        public float TurretRange = 15;
         public float Cooldown = 250;
         //todo use TimeRemaining
         private float _frameRateLock = 0;
@@ -88,6 +91,18 @@ namespace Snake_box
 
         private ProjectileBuilderAbs GetProjectile() => new CannonShellBuilder();
 
+        private Quaternion RotateAroundAxis(Vector3 pointA, Vector3 pointB, Quaternion startRotation)
+        {
+            Vector3 direction3d = pointA - pointB;
+            float angle = Mathf.Atan2(direction3d.z, direction3d.x) * Mathf.Rad2Deg;
+            Quaternion rotateAround = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            Quaternion rotation = Quaternion.Euler(rotateAround.eulerAngles);
+            Debug.Log(rotateAround.eulerAngles);
+
+            return rotation;
+        }
+
         public void LockTarget()
         {
             IEnemy nearestEnemy = NearestEnemy();
@@ -95,10 +110,18 @@ namespace Snake_box
             if (nearestEnemy == null)
                 return;
 
-            Vector3 direction3d = nearestEnemy.GetPosition() - TurretInstance.transform.position;
-            float angle = Mathf.Atan2(direction3d.y, direction3d.x) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            TurretInstance.transform.rotation = Quaternion.Slerp(TurretInstance.transform.rotation, rotation, 1);
+//            Vector3 direction3d = nearestEnemy.GetPosition() - TurretInstance.transform.position;
+//            float angle = Mathf.Atan2(direction3d.y, direction3d.x) * Mathf.Rad2Deg;
+//            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            TurretInstance.transform.rotation.SetLookRotation(nearestEnemy.GetPosition(), Vector3.up);
+//            Vector3 direction3d = nearestEnemy.GetPosition() - TurretInstance.transform.position;
+//            float angle = Mathf.Atan2(direction3d.y, direction3d.x) * Mathf.Rad2Deg;
+//            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+//            Quaternion rotation = RotateAroundAxis(nearestEnemy.GetPosition(), TurretInstance.transform.position, TurretInstance.transform.rotation);
+
+//            TurretInstance.transform.rotation = Quaternion.Slerp(TurretInstance.transform.rotation, rotation, 1);
         }
 
         private void CollectKilledEnemies() => _dummyEnemies = _dummyEnemies.Where((element) => !element.AmIDestroyed()).ToList();
