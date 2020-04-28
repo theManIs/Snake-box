@@ -66,9 +66,11 @@ namespace Snake_box
         {
             Target = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Target));
             Spawn = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Spawn));
+            Debug.Log(Target);
+
         }
-        
-        
+
+
 
         #endregion
 
