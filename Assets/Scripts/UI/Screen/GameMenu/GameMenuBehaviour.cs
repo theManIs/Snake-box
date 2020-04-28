@@ -22,19 +22,19 @@ namespace Snake_box
         private void OnEnable()
         {
             _buttonAddBlocks.onClick.AddListener(AddBlock);
-            _buttonAddTurel1.onClick.AddListener(delegate { Call(0);} );
-            _buttonAddTurel2.onClick.AddListener(delegate { Call(1);} );
-            _buttonAddTurel3.onClick.AddListener(delegate { Call(2);} );
-            _buttonAddTurel4.onClick.AddListener(delegate { Call(3);} );
+            _buttonAddTurel1.onClick.AddListener(delegate { AddTurrel(0);} );
+            _buttonAddTurel2.onClick.AddListener(delegate { AddTurrel(1);} );
+            _buttonAddTurel3.onClick.AddListener(delegate { AddTurrel(2);} );
+            _buttonAddTurel4.onClick.AddListener(delegate { AddTurrel(3);} );
         }       
 
         private void OnDisable()
         {
             _buttonAddBlocks.onClick.RemoveListener(AddBlock);
-            _buttonAddTurel1.onClick.RemoveListener(delegate { Call(0); });
-            _buttonAddTurel2.onClick.RemoveListener(delegate { Call(1); });
-            _buttonAddTurel3.onClick.RemoveListener(delegate { Call(2); });
-            _buttonAddTurel4.onClick.RemoveListener(delegate { Call(3); });
+            _buttonAddTurel1.onClick.RemoveListener(delegate { AddTurrel(0); });
+            _buttonAddTurel2.onClick.RemoveListener(delegate { AddTurrel(1); });
+            _buttonAddTurel3.onClick.RemoveListener(delegate { AddTurrel(2); });
+            _buttonAddTurel4.onClick.RemoveListener(delegate { AddTurrel(3); });
         }
 
         #endregion
@@ -60,10 +60,14 @@ namespace Snake_box
             HideUI.Invoke();
         }
 
-        private void Call(int numberButton)
+        private void AddTurrel(int numberButton)
         {
             var _characterData = Data.Instance.Character;
-            _characterData.CharacterBehaviour.GetBlock(numberButton).AddTurret();
+            if (_characterData.CharacterBehaviour.GetBlock(numberButton))
+            {               
+                _characterData.CharacterBehaviour.GetBlock(numberButton).AddTurret();
+            }
+            
         }
 
         #endregion

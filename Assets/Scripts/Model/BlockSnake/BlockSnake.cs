@@ -30,10 +30,16 @@ namespace Snake_box
 
         public void AddTurret()
         {
-            _turretController = TurretController.GetInstance();
-            TurretBaseAbs newTurret = _turretController.AddNewTurret();
-            newTurret.SetParentTransform(gameObject.transform);   
-            _turret = true;
+            if (!_turret)
+            {
+                Data.Instance.TurretData.AddNewWithParent(gameObject.transform);
+                _turret = true;
+            }
+        }
+
+        public bool GetHasTurrel()
+        {
+            return _turret;
         }
 
         #endregion
