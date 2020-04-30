@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 
@@ -32,7 +33,7 @@ namespace Snake_box
 
         public LevelService()
         {
-            SceneManager.sceneLoaded += (arg0, mode) => FindGameObject(); 
+            SceneManager.sceneLoaded += (arg0, mode) => LevelStart(); 
             _levelData = Data.Instance.LevelData;
             IsWaveEnded = false;
             IsLevelSpawnEnded = false;
@@ -49,11 +50,6 @@ namespace Snake_box
         {
             CurrentLevel = lvl;
             SceneManager.LoadScene(_levelData.Level[lvl].name);
-            IsLevelStarted = true;
-            IsSpawnNeed = true;
-            IsWaveEnded = false;
-            IsLevelSpawnEnded = false;
-
         }
 
         public void LoadMenu()
@@ -65,10 +61,24 @@ namespace Snake_box
         public void EndLevel()
         {
             ActiveEnemies.Clear();
+            Data.Instance.TurretData.ClearTurretList();
             LoadMenu();
         }
 
-        private void FindGameObject()
+        private void LevelStart()
+        {
+            FindGameObject();
+            IsLevelStarted = true;
+            IsSpawnNeed = true;
+            IsWaveEnded = false;
+            IsLevelSpawnEnded = false;
+            if (GameObject.FindObjectOfType<NavMeshSurface>())
+            {
+                var surface = GameObject.FindObjectOfType<NavMeshSurface>();
+                surface.BuildNavMesh();
+            }
+        }
+        public void FindGameObject()
         {
             Target = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Target));
             Spawn = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Spawn));

@@ -32,11 +32,15 @@ namespace Snake_box
 
         #endregion
 
-        
+
         #region IEnemy
 
         public virtual void Spawn()
         {
+            if (_levelService.Target == null || _levelService.Spawn == null)
+            {
+               _levelService.FindGameObject(); 
+            }
             _spawnCenter = _levelService.Spawn;
             _target = _levelService.Target.transform;
             _enemyObject = GameObject.Instantiate(_prefab, GetSpawnPoint(_spawnCenter), Quaternion.identity);
@@ -87,7 +91,7 @@ namespace Snake_box
                     if (colliders[i].CompareTag(TagManager.GetTag(TagType.Target)))
                     {
                         Object.Destroy(colliders[i].gameObject);
-                        _levelService.EndLevel();//TODO Переделать на получение урона базе, и вызывать EndLevel при уничтожении
+                        _levelService.EndLevel();
                     }
             }
         }
