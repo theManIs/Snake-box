@@ -92,7 +92,7 @@ namespace Snake_box
         }
 
         protected virtual void GetTarget()
-        {
+        {    
             _target = GameObject.FindWithTag(TagManager.GetTag(TagType.Target)).transform;
         }
 
@@ -126,7 +126,6 @@ namespace Snake_box
 
         public void RegisterDamage(float damageAmount, ArmorTypes damageType)
         {
-            Debug.Log("1");
             GetDamage(damageAmount);
         }
 
