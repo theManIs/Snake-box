@@ -9,7 +9,10 @@ namespace Snake_box
         #region Fields
         
         [SerializeField] private Button _buttonAddBlocks;
-        [SerializeField] private Button _buttonAddTurel;
+        [SerializeField] private Button _buttonAddTurel1;
+        [SerializeField] private Button _buttonAddTurel2;
+        [SerializeField] private Button _buttonAddTurel3;
+        [SerializeField] private Button _buttonAddTurel4;
 
         #endregion
 
@@ -18,15 +21,20 @@ namespace Snake_box
 
         private void OnEnable()
         {
-            _buttonAddTurel.onClick.AddListener(Call);
             _buttonAddBlocks.onClick.AddListener(AddBlock);
-        }      
+            _buttonAddTurel1.onClick.AddListener(delegate { AddTurrel(0);} );
+            _buttonAddTurel2.onClick.AddListener(delegate { AddTurrel(1);} );
+            _buttonAddTurel3.onClick.AddListener(delegate { AddTurrel(2);} );
+            _buttonAddTurel4.onClick.AddListener(delegate { AddTurrel(3);} );
+        }       
 
         private void OnDisable()
         {
-            _buttonAddTurel.onClick.RemoveListener(Call);
             _buttonAddBlocks.onClick.RemoveListener(AddBlock);
-
+            _buttonAddTurel1.onClick.RemoveListener(delegate { AddTurrel(0); });
+            _buttonAddTurel2.onClick.RemoveListener(delegate { AddTurrel(1); });
+            _buttonAddTurel3.onClick.RemoveListener(delegate { AddTurrel(2); });
+            _buttonAddTurel4.onClick.RemoveListener(delegate { AddTurrel(3); });
         }
 
         #endregion
@@ -52,9 +60,14 @@ namespace Snake_box
             HideUI.Invoke();
         }
 
-        private void Call()
+        private void AddTurrel(int numberButton)
         {
-           
+            var _characterData = Data.Instance.Character;
+            if (_characterData.CharacterBehaviour.GetBlock(numberButton))
+            {               
+                _characterData.CharacterBehaviour.GetBlock(numberButton).AddTurret();
+            }
+            
         }
 
         #endregion

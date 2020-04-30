@@ -1,10 +1,9 @@
-﻿using Assets.Scripts.Model.Turrets;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 namespace Snake_box
 {
-    public class DummyEnemy : MonoBehaviour, IDummyEnemy, IDamageAddressee
+    public class DummyEnemy : MonoBehaviour, IEnemy, IDamageAddressee
     {
         #region Fields
 
@@ -17,8 +16,19 @@ namespace Snake_box
         #region IDummyEnemy
 
         public Vector3 GetPosition() => transform.position;
+        public EnemyType GetEnemyType() => EnemyType.Fast;
 
         public ArmorTypes GetArmorType() => ArmorType;
+
+        public void OnUpdate()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Spawn()
+        {
+            throw new System.NotImplementedException();
+        }
 
         public Transform GetTransform() => transform;
 

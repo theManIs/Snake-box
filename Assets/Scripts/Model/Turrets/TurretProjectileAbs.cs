@@ -1,5 +1,4 @@
 ﻿using System;
-using ExampleTemplate;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -10,7 +9,7 @@ namespace Snake_box
     {
         #region Fields
 
-        private Transform _targetToPursue;
+        private IEnemy _targetToPursue;
         private float _timeStart;
         private GameObject _projectileInstance;
         private Transform _firePoint;
@@ -33,7 +32,7 @@ namespace Snake_box
 
         public abstract int GetBulletSpeed();
 
-        public void SetTarget(Transform enemyTransform)
+        public void SetTarget(IEnemy enemyTransform)
         {
             _targetToPursue = enemyTransform;
             _targetLocked = true;
@@ -41,8 +40,8 @@ namespace Snake_box
 
         public void CountDistance()
         {
-            if (_firePoint && _targetToPursue)
-                _journeyDistance = Vector3.Distance(_firePoint.position, _targetToPursue.position);
+            if (_firePoint && _targetToPursue != null)
+                _journeyDistance = Vector3.Distance(_firePoint.position, _targetToPursue.GetTransform().position);
         }
 
         public void SetFirePoint(Transform firePoint)
@@ -68,7 +67,7 @@ namespace Snake_box
 
         private void DecommissionIfTargetDown()
         {
-            if (_targetLocked && _targetToPursue == null)
+            if (_targetLocked && (_targetToPursue == null || _targetToPursue.AmIDestroyed()))
             {
                 Decommission();
             }
@@ -81,14 +80,16 @@ namespace Snake_box
             if (_projectileInstance == null 
                 || Math.Abs(GetBulletSpeed()) <= 0 
                 || _targetToPursue == null 
-                || Math.Abs(_journeyDistance) <= 0.0f)
+                || Math.Abs(_journeyDistance) <= 0.0f
+                || _targetToPursue.AmIDestroyed())
                 return;
 
             float projectileLifespan = Time.time - _timeStart;
             float coveredDistance = projectileLifespan * GetBulletSpeed();
             float interpolation = coveredDistance / _journeyDistance;
 
-            _projectileInstance.transform.position = Vector3.Lerp(_firePoint.transform.position, _targetToPursue.position, interpolation);
+            _projectileInstance.transform.position = 
+                Vector3.Lerp(_firePoint.transform.position, _targetToPursue.GetTransform().position, interpolation);
 
             if (interpolation >= 1 || _timeToBeDestructedAfter < projectileLifespan)
                 Decommission();
@@ -98,11 +99,10 @@ namespace Snake_box
 
         protected void Decommission()
         {
-            if (_targetToPursue)
+            if (!_targetToPursue.AmIDestroyed())
             {
-                IDamageAddressee ida = _targetToPursue.GetComponent<IDamageAddressee>();
-
-                ida?.RegisterDamage(GetCarryingDamage(), GetArmorType());
+                if (_targetToPursue is IDamageAddressee ida) 
+                    ida.RegisterDamage(GetCarryingDamage(), GetArmorType());
             }
 
             ToDispose = true;
