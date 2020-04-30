@@ -86,6 +86,7 @@ namespace Snake_box
                     if (colliders[i].CompareTag(TagManager.GetTag(TagType.Target)))
                     {
                         Object.Destroy(colliders[i].gameObject);
+                        _levelService.EndLevel();//TODO Переделать на получение урона базе, и вызывать EndLevel при уничтожении
                     }
             }
         }
@@ -115,6 +116,10 @@ namespace Snake_box
                 if (_levelService.ActiveEnemies.Contains(this))
                     _levelService.ActiveEnemies.Remove(this);
                 Object.Destroy(_enemyObject);
+                if (_levelService.ActiveEnemies.Count == 0)
+                {
+                    _levelService.EndLevel();
+                }
             }
         }
 
