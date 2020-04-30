@@ -35,6 +35,8 @@ namespace Snake_box
 
         public List<TurretBaseAbs> GetTurretList() => _turretList; 
 
+        public void ClearTurretList() => _turretList.Clear();
+
         #endregion
     }
 }

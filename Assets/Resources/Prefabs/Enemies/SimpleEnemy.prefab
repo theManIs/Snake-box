@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6294040586304189550}
   - component: {fileID: 854296062839104280}
   - component: {fileID: 1854439464274022654}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SimpleEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ NavMeshAgent:
   m_Height: 1
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &1854439464274022654
 MonoBehaviour:
   m_ObjectHideFlags: 0

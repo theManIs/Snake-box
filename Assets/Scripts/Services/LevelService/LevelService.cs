@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 
@@ -22,7 +23,8 @@ namespace Snake_box
         public int CurrentLevel { get; private set; }
         public bool IsSpawnNeed { get; set; }
         public bool IsWaveEnded { get; set; }
-        public bool IsLevelEnded { get; set; }
+        public bool IsLevelSpawnEnded { get; set; }
+        public bool IsLevelStarted { get; set; }
 
         #endregion
 
@@ -31,10 +33,10 @@ namespace Snake_box
 
         public LevelService()
         {
-            SceneManager.sceneLoaded += (arg0, mode) => FindGameObject(); 
+            SceneManager.sceneLoaded += (arg0, mode) => LevelStart(); 
             _levelData = Data.Instance.LevelData;
             IsWaveEnded = false;
-            IsLevelEnded = false;
+            IsLevelSpawnEnded = false;
             if (!SceneManager.GetActiveScene().name.Equals(Data.Instance.LevelData.Menu.name))
                 IsSpawnNeed = true;
         }
@@ -48,7 +50,6 @@ namespace Snake_box
         {
             CurrentLevel = lvl;
             SceneManager.LoadScene(_levelData.Level[lvl].name);
-            IsSpawnNeed = true;
         }
 
         public void LoadMenu()
@@ -59,10 +60,25 @@ namespace Snake_box
 
         public void EndLevel()
         {
+            ActiveEnemies.Clear();
+            Data.Instance.TurretData.ClearTurretList();
             LoadMenu();
         }
 
-        private void FindGameObject()
+        private void LevelStart()
+        {
+            FindGameObject();
+            IsLevelStarted = true;
+            IsSpawnNeed = true;
+            IsWaveEnded = false;
+            IsLevelSpawnEnded = false;
+            if (GameObject.FindObjectOfType<NavMeshSurface>())
+            {
+                var surface = GameObject.FindObjectOfType<NavMeshSurface>();
+                surface.BuildNavMesh();
+            }
+        }
+        public void FindGameObject()
         {
             Target = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Target));
             Spawn = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Spawn));
