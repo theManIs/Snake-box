@@ -6,6 +6,13 @@
     <e p="D:\Snake-box" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Materials" t="Include">
+          <e p="Particle" t="Include">
+            <e p="WhiteBomb" t="Include">
+              <e p="Lighting.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="NavMeshComponents" t="Include">
           <e p="Editor" t="Include">
             <e p="NavMeshAssetManager.cs" t="Include" />
@@ -83,6 +90,9 @@
               <e p="ShakeInfo.cs" t="Include" />
               <e p="ShakesData.cs" t="Include" />
             </e>
+            <e p="Turret" t="Include">
+              <e p="TurretData.cs" t="Include" />
+            </e>
             <e p="Type" t="Include">
               <e p="ShakeType.cs" t="Include" />
             </e>
@@ -155,7 +165,6 @@
               <e p="TurretBaseAbs.cs" t="Include" />
               <e p="TurretBehaviour.cs" t="Include" />
               <e p="TurretController.cs" t="Include" />
-              <e p="TurretExtension.cs" t="Include" />
               <e p="TurretInitializer.cs" t="Include" />
               <e p="TurretProjectile.cs" t="Include" />
               <e p="TurretProjectileAbs.cs" t="Include" />

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 
@@ -33,6 +34,7 @@ namespace Snake_box
 
         #endregion
 
+        
         #region IInitialization
 
         public void Initialization()
@@ -41,7 +43,6 @@ namespace Snake_box
             _spawnDelay = _enemySpawnData.LevelSpawnDatas[_currentLevel].SpawnDelay;
             _waveDelay = _enemySpawnData.LevelSpawnDatas[_currentLevel].WaveDelay;
             _currentLevel = _levelService.CurrentLevel;
-            _wave = 0; // Волная в уровне
             _spawnInvoker = new TimeRemaining(SpawnEnemy, _spawnDelay, true);
             _waveInvoker = new TimeRemaining(NextWave, _waveDelay);
         }
@@ -53,8 +54,14 @@ namespace Snake_box
 
         public void Execute()
         {
+            if (_levelService.IsLevelStarted)
+            {
+                CustomDebug.Log("Level Started");
+                LevelStart();
+            }
             if (_levelService.IsSpawnNeed)
             {
+                CustomDebug.Log("Spawn");
                 SpawnEnemy();
             }
         }
@@ -118,12 +125,11 @@ namespace Snake_box
                 }
                 else
                 {
-                    _levelService.IsLevelEnded = true;
-                    //_levelService.EndLevel();//TODO Переделать, когда будет меню
+                    _levelService.IsLevelSpawnEnded = true;
                 }
             }
 
-            if (_levelService.IsWaveEnded && !_levelService.IsLevelEnded)
+            if (_levelService.IsWaveEnded && !_levelService.IsLevelSpawnEnded)
             {
                 _waveInvoker.AddTimeRemaining();
             }
@@ -135,6 +141,12 @@ namespace Snake_box
             _levelService.IsWaveEnded = false;
         }
 
+        private void LevelStart()
+        {
+            _wave = 0;
+            _levelService.IsLevelStarted = false;
+        }
+        
         #endregion
     }
 }
