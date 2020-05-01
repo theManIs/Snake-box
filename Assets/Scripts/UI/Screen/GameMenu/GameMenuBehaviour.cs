@@ -65,7 +65,7 @@ namespace Snake_box
         private void Pause()
         {
             if (!_isPause)
-            {               
+            {
                 Services.Instance.TimeService.SetTimeScale(0);
                 _isPause = !_isPause;
             }
@@ -94,28 +94,22 @@ namespace Snake_box
             if (_characterData.CharacterBehaviour.GetBlock(numberButton))
             {               
                 _characterData.CharacterBehaviour.GetBlock(numberButton).AddTurret();
-            }
-            
+            }            
         }
 
         public void GetEndLevelText()
-        {
-
-            Debug.Log(Services.Instance.LevelService.IsTargetDestroed);           
+        {       
+                   
             if (Services.Instance.LevelService.IsTargetDestroed==true)
             {
-                _textEndGame.text = "Congratulations!You Loser!";
-                Debug.Log(_textEndGame.text);
+                _textEndGame.text = "Congratulations!You Loser!";               
             }
             if (Services.Instance.LevelService.ActiveEnemies.Count <= 0)
             {                
-                _textEndGame.text = "Congratulations!";
-                Debug.Log(_textEndGame.text);
+                _textEndGame.text = "Congratulations!";               
             }
             Services.Instance.TimeService.SetTimeScale(0);
-        }
-
-       
+        }       
 
         #endregion
     }
