@@ -39,7 +39,7 @@ namespace Snake_box
             IsWaveEnded = false;
             IsLevelSpawnEnded = false;
             IsTargetDestroed = false;
-            if (!SceneManager.GetActiveScene().name.Equals(Data.Instance.LevelData.Menu.name))
+            if (!SceneManager.GetActiveScene().name.Equals(Data.Instance.LevelData.Menu))
                 IsSpawnNeed = true;
         }
 
@@ -51,13 +51,13 @@ namespace Snake_box
         public void LoadLevel(int lvl)
         {
             CurrentLevel = lvl;
-            SceneManager.LoadScene(_levelData.Level[lvl].name);
+            SceneManager.LoadScene(_levelData.Level[lvl]);
         }
 
         public void LoadMenu()
         {
             CurrentLevel = -1;
-            SceneManager.LoadScene(Data.Instance.LevelData.Menu.name);
+            SceneManager.LoadScene(Data.Instance.LevelData.Menu);
         }
 
         public void EndLevel()
