@@ -101,9 +101,8 @@ namespace Snake_box
         public void GetEndLevelText()
         {
 
-            Debug.Log(_textEndGame.text);
-            var target = Services.Instance.LevelService.Target.gameObject;
-            if (Services.Instance.LevelService.Target.gameObject == null)
+            Debug.Log(Services.Instance.LevelService.IsTargetDestroed);           
+            if (Services.Instance.LevelService.IsTargetDestroed==true)
             {
                 _textEndGame.text = "Congratulations!You Loser!";
                 Debug.Log(_textEndGame.text);
