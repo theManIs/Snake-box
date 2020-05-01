@@ -10,6 +10,7 @@
         Bonus  = 5,// Бонус
         Wall   = 6,//препятсвие : стены ,преграды и т.д.
         Base   = 7,//База        
-        Spawn  = 8
+        Spawn  = 8,
+        PanelEndLevel =9
     }
 }

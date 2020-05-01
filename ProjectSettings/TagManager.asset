@@ -12,6 +12,7 @@ TagManager:
   - BlockSnacke
   - Block
   - Spawn
+  - PanelEndLevel
   layers:
   - Default
   - TransparentFX
