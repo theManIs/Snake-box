@@ -91,6 +91,7 @@ namespace Snake_box
                     if (colliders[i].CompareTag(TagManager.GetTag(TagType.Target)))
                     {
                         Object.Destroy(colliders[i].gameObject);
+                        _levelService.IsTargetDestroed = true;
                         _levelService.EndLevel();
                     }
             }
