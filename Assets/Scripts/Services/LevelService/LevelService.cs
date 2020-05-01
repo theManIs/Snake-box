@@ -25,6 +25,7 @@ namespace Snake_box
         public bool IsWaveEnded { get; set; }
         public bool IsLevelSpawnEnded { get; set; }
         public bool IsLevelStarted { get; set; }
+        public bool IsTargetDestroed { get; set; }
 
         #endregion
 
@@ -37,6 +38,7 @@ namespace Snake_box
             _levelData = Data.Instance.LevelData;
             IsWaveEnded = false;
             IsLevelSpawnEnded = false;
+            IsTargetDestroed = false;
             if (!SceneManager.GetActiveScene().name.Equals(Data.Instance.LevelData.Menu.name))
                 IsSpawnNeed = true;
         }
@@ -75,6 +77,7 @@ namespace Snake_box
             IsSpawnNeed = true;
             IsWaveEnded = false;
             IsLevelSpawnEnded = false;
+            IsTargetDestroed = false;
             if (GameObject.FindObjectOfType<NavMeshSurface>())
             {
                 var surface = GameObject.FindObjectOfType<NavMeshSurface>();
