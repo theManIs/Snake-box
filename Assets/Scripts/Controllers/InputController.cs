@@ -28,7 +28,8 @@ namespace Snake_box
             }
             _characterData.CharacterBehaviour.Move(inputAxis);
             if (Input.GetKeyDown(AxisManager.SPACE))
-            {               
+            {
+                Debug.Log(Services.Instance.LevelService.ActiveEnemies.Count);
                 _characterData.CharacterBehaviour.AddBlock();/// добавление ячейки - хвост
             }
             if (Input.GetKey(AxisManager.ESCAPE))

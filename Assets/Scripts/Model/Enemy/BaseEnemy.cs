@@ -136,6 +136,7 @@ namespace Snake_box
 
         public void RegisterDamage(float damageAmount, ArmorTypes damageType)
         {
+            Debug.Log("1");
             GetDamage(damageAmount);
         }
 

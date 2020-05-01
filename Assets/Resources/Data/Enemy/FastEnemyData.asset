@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 5058968977680414830, guid: 796c9aacf5d197246b8aff8236df6438, type: 3}
   Hp: 1
-  Speed: 12
+  Speed: 50
   Damage: 1
   SpawnRadius: 50
   SizePack: 0
