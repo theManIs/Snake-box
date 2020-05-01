@@ -60,9 +60,12 @@ namespace Snake_box
 
         public void EndLevel()
         {
+            var panel = GameObject.FindWithTag(TagManager.GetTag(TagType.PanelEndLevel));
+            panel.transform.GetChild(0).gameObject.SetActive(true);
+            panel.GetComponentInParent<GameMenuBehaviour>().GetEndLevelText();
             ActiveEnemies.Clear();
-            Data.Instance.TurretData.ClearTurretList();
-            LoadMenu();
+            Data.Instance.TurretData.ClearTurretList();          
+            
         }
 
         private void LevelStart()

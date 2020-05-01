@@ -23,23 +23,7 @@ namespace Snake_box
         private bool _isPause;
 
         #endregion
-        private void Update()///для теста
-        {
-            if (Services.Instance.LevelService.ActiveEnemies.Count<=0)
-            {
-                _endGamePanel.SetActive(true);
-                Services.Instance.TimeService.SetTimeScale(0);
-                _textEndGame.text = "Congratulations!";
-            }           
-            if (TagManager.GetTag(TagType.Target) == null)
-            {
-                _endGamePanel.SetActive(true);
-                Services.Instance.TimeService.SetTimeScale(0);
-                _textEndGame.text = "Congratulations!You Loser!";
-
-            }
-            //else _endGamePanel.SetActive(false);
-        }
+      
 
         #region UnityMethods
 
@@ -50,8 +34,8 @@ namespace Snake_box
             _buttonAddTurel2.onClick.AddListener(delegate { AddTurrel(1);} );
             _buttonAddTurel3.onClick.AddListener(delegate { AddTurrel(2);} );
             _buttonAddTurel4.onClick.AddListener(delegate { AddTurrel(3);} );
-            _mainMenu.onClick.AddListener(delegate { SceneManager.LoadScene(0); });
-            _reset.onClick.AddListener(delegate { SceneManager.LoadScene(1); });
+            _mainMenu.onClick.AddListener(delegate { Services.Instance.TimeService.SetTimeScale(1); Services.Instance.LevelService.LoadMenu(); });
+            _reset.onClick.AddListener(delegate { Services.Instance.TimeService.SetTimeScale(1); Services.Instance.LevelService.LoadLevel(0); });
             _pause.onClick.AddListener(Pause);
         }
 
@@ -62,8 +46,8 @@ namespace Snake_box
             _buttonAddTurel2.onClick.RemoveListener(delegate { AddTurrel(1); });
             _buttonAddTurel3.onClick.RemoveListener(delegate { AddTurrel(2); });
             _buttonAddTurel4.onClick.RemoveListener(delegate { AddTurrel(3); });
-            _mainMenu.onClick.RemoveListener(delegate { SceneManager.LoadScene(0); });
-            _reset.onClick.RemoveListener(delegate { SceneManager.LoadScene(0); });
+            _mainMenu.onClick.RemoveListener(delegate { Services.Instance.LevelService.LoadLevel(0); });
+            _reset.onClick.RemoveListener(delegate { Services.Instance.LevelService.LoadMenu(); });
             _pause.onClick.RemoveListener(Pause);
         }
 
@@ -113,6 +97,26 @@ namespace Snake_box
             }
             
         }
+
+        public void GetEndLevelText()
+        {
+
+            Debug.Log(_textEndGame.text);
+            var target = Services.Instance.LevelService.Target.gameObject;
+            if (Services.Instance.LevelService.Target.gameObject == null)
+            {
+                _textEndGame.text = "Congratulations!You Loser!";
+                Debug.Log(_textEndGame.text);
+            }
+            if (Services.Instance.LevelService.ActiveEnemies.Count <= 0)
+            {                
+                _textEndGame.text = "Congratulations!";
+                Debug.Log(_textEndGame.text);
+            }
+            Services.Instance.TimeService.SetTimeScale(0);
+        }
+
+       
 
         #endregion
     }
