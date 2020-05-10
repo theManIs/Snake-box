@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using Assets.Scripts.Model.Turrets;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Quaternion = UnityEngine.Quaternion;
+using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
 
@@ -16,7 +18,7 @@ namespace Snake_box
 
         public GameObject TurretInstance;
         private Quaternion _haltTurretRotation;
-        public string TurretSpritePath = "Prefabs/Turrets/DummyTurret";
+        public string TurretSpritePath = "Prefabs/Turrets/Turret3D";
         public float TurretRange = 15;
         public float Cooldown = 250;
         //todo use TimeRemaining
@@ -85,7 +87,7 @@ namespace Snake_box
 
                 GetProjectile().Build(TurretBehaviour.FirePoint, nearestEnemy);
 
-                _frameRateLock = Time.frameCount;
+                _frameRateLock = Time.frameCount + Mathf.Round(Random.value * 10);
             }
         }
 
