@@ -57,6 +57,11 @@ namespace Snake_box
         {
             if (_testMenu == null)
             {
+                if (_canvas == null)
+                {
+                    var resourcesCanvas = CustomResources.Load<Canvas>(AssetsPathGameObject.GameObjects[GameObjectType.Canvas]);
+                    _canvas = Object.Instantiate(resourcesCanvas, Vector3.one, Quaternion.identity);
+                }
                 var resources = CustomResources.Load<MainMenuBehaviour>(AssetsPathScreen.Screens[ScreenType.TestMenu].Screen);
                 _testMenu = Object.Instantiate(resources, _canvas.transform.position, Quaternion.identity, _canvas.transform);                
             }
