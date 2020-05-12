@@ -6,16 +6,15 @@ namespace Snake_box
 {
     public sealed class CharacterBehaviour : MonoBehaviour
     {
-        #region Fields
-
-        [SerializeField] private ParticleSystem _particle;
-        [SerializeField] private float _rayDistantion;
+        #region Fields       
+       
+        [SerializeField] private float _radius;
         private CharacterData _characterData;
         private BlockSnakeData _blockSnakeData;
         private readonly List<BlockSnake> _blocksSnakes = new List<BlockSnake>();//блоки
         private readonly List<Vector3> _positions = new List<Vector3>();// позиции блоков 
-        private float _sizeBlock;
-        
+        private float _sizeBlock;        
+
         #endregion
 
 
@@ -44,7 +43,6 @@ namespace Snake_box
             {
                 for (int i = 0; i < _blocksSnakes.Count; i++)// перебираем блоки
                 {
-
                     _blocksSnakes[i].transform.position = Vector3.Lerp(_positions[i + 1], _positions[i], distance / _sizeBlock);
                     _blocksSnakes[i].transform.rotation = transform.rotation;
                 }
@@ -57,40 +55,47 @@ namespace Snake_box
                 _positions.RemoveAt(_positions.Count - 1);
                 distance -= _sizeBlock;
             }
-        }
+        }        
 
         public void AddBlock()// добавление блока
         {
             if (_blocksSnakes.Count < 4)
             {
+               
                 _blockSnakeData = Data.Instance.BlockSnake;
                 var block = _blockSnakeData.Initialization();
                 block.transform.SetParent(gameObject.transform);
                 block.transform.position = _positions[_positions.Count - 1];
                 _blocksSnakes.Add(block);
                 _positions.Add(block.transform.position);
+                _characterData.SetHp(_blockSnakeData.GetHp());
             }
         }
        
 
         public void Collision()
         {
-            var tagCollider = Services.Instance.PhysicsService.GetCollider(transform.position,transform.forward,_rayDistantion);           
+            var tagCollider = Physics.OverlapSphere(transform.position, _radius);
 
-            if (tagCollider)
-            {                
-                if (tagCollider.CompareTag(TagManager.GetTag(TagType.Bonus)))
+            for (int i = 0; i < tagCollider.Length; i++)
+            {
+                if (tagCollider[i].CompareTag(TagManager.GetTag(TagType.Bonus)))
                 {
-                    Destroy(tagCollider.transform.gameObject);                   
-                    _particle.Play();
+                    Destroy(tagCollider[i].transform.gameObject);   
                 }
-                if (tagCollider.CompareTag(TagManager.GetTag(TagType.Base)))
+                //if (tagCollider[i].CompareTag(TagManager.GetTag(TagType.)))
+                //{
+                //    ///если соприкасается с врагом то отнимает силовое поле
+                //    ///как артем отслеживаает врагов в поле зрении по тегу или по типу чтобы  нанести урон врагам
+                //    //нанисение урона змейки от врага Олег должен сделать
+                //}
+                if (tagCollider[i].CompareTag(TagManager.GetTag(TagType.Base)))
                 {
                     
                 }
-                if (tagCollider.CompareTag(TagManager.GetTag(TagType.Wall)))
-                {                   
-                    _particle.Play();
+                if (tagCollider[i].CompareTag(TagManager.GetTag(TagType.Wall)))
+                {
+                   
                 }
             }
         }
@@ -110,7 +115,6 @@ namespace Snake_box
             transform.position += transform.right*(_characterData.GetSpeed() / (_positions.Count + _characterData.GetSlow()));
             Collision();
             ResetPosition();
-
         }
 
         #endregion
