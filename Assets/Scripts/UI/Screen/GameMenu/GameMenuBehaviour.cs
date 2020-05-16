@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ namespace Snake_box
 
         [SerializeField] private Sprite _spriteBlock;
         [SerializeField] private GameObject _panelTurretsType;
+        [SerializeField] private GameObject _panelPause;
         [SerializeField] private Button _headSnake; 
         [SerializeField] private Button _pause;
         [SerializeField] private Button _mainMenu;
@@ -86,11 +88,13 @@ namespace Snake_box
         {
             if (!_isPause)
             {
+                _panelPause.SetActive(true);
                 Services.Instance.TimeService.SetTimeScale(0);
                 _isPause = !_isPause;
             }
             else
             {
+                _panelPause.SetActive(false);
                 _isPause = !_isPause;
                 Services.Instance.TimeService.SetTimeScale(1);
             }
@@ -120,8 +124,8 @@ namespace Snake_box
         }
 
         public void GetEndLevelText()
-        {       
-                   
+        {
+            _pause.interactable = false;      
             if (Services.Instance.LevelService.IsTargetDestroed==true)
             {
                 _textEndGame.text = "Congratulations!You Loser!";               
@@ -131,7 +135,8 @@ namespace Snake_box
                 _textEndGame.text = "Congratulations!";               
             }
             Services.Instance.TimeService.SetTimeScale(0);
-        }       
+        }
+
 
         #endregion
     }
