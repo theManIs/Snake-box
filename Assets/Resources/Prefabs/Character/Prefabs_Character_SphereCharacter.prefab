@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particle: {fileID: 4182810801304287700}
-  _rayDistantion: 1
+  _radius: 1
 --- !u!54 &3544174065420750028
 Rigidbody:
   m_ObjectHideFlags: 0
