@@ -13,5 +13,6 @@ namespace Snake_box
         public float SpawnRadius;
         public float SizePack;
         public float PackValue;
+        public float MeleeHitRange;
     }
 }
