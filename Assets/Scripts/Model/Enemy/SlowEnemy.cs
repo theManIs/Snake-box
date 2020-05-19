@@ -20,6 +20,7 @@ namespace Snake_box
             _speed = _data.Speed;
             _hp = _data.Hp;
             _damage = _data.Damage;
+            _meleeHitRange = _data.MeleeHitRange;
             GetTarget();
         }
 
