@@ -93,18 +93,7 @@ namespace Snake_box
                     Destroy(tagCollider[i].transform.gameObject);   
                 }
                 if (tagCollider[i].CompareTag(TagManager.GetTag(TagType.Enemy)))
-                {                 
-
-                    //if (tagCollider[i] is IDamageAddressee ida)///не работает
-                    //{
-                    //    Debug.Log("enemy=idamage");
-                    //    ida.RegisterDamage(_damage, ArmorTypes.Bare);
-                    //}
-                       
-                    /////враг получает урон а змейка урон для силового поля
-
-                    ///////если соприкасается с врагом то отнимает силовое поле//нанисение урона змейки от врага Олег должен сделать при соприкосновении с блоком
-                    ///как артем отслеживаает врагов в поле зрении по тегу или по типу чтобы  нанести урон врагам
+                {             
 
                 }
                 if (tagCollider[i].CompareTag(TagManager.GetTag(TagType.Base)))
