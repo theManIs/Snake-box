@@ -19,3 +19,4 @@ MonoBehaviour:
   SpawnRadius: 50
   SizePack: 0
   PackValue: 0
+  MeleeHitRange: 1
