@@ -45,7 +45,8 @@ namespace Snake_box
             _amIDestroyed = true;
 
             Destroy(gameObject);
-        } 
+        }     
+       
 
         #endregion
     }

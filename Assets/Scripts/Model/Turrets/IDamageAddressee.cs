@@ -2,6 +2,6 @@
 {
     public interface IDamageAddressee
     {
-        void RegisterDamage(float damageAmount, ArmorTypes damageType);
+        void RegisterDamage(float damageAmount, ArmorTypes damageType);       
     }
 }

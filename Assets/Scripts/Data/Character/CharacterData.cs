@@ -39,17 +39,18 @@ namespace Snake_box
             return _speedRotation;
         }
 
-        public float SetHp(float hp)
+        public float GetHp()
         {
-            return _hp = _hp + hp+_armor;           
+            return _hp;           
         }
 
-        public void RegenerationArmor()
+        public float GetArmor()
         {
-            if (_armor < 100)
-            {
-              _armor = _armor + (_regenerationArmor* _timeService.DeltaTime());               
-            }            
+            return _armor;
+        }
+        public float GetDamage()
+        {
+            return _damage;
         }
     }
 }

@@ -9,9 +9,11 @@
             _characterData = Data.Instance.Character;
             _characterData.Initialization();
         }
+
         public void Execute()
         {           
-            _characterData.RegenerationArmor();
+            _characterData.CharacterBehaviour.RegenerationArmor();
+            _characterData.CharacterBehaviour.Collision();
         }       
     }
 }
