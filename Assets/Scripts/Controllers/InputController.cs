@@ -24,12 +24,10 @@ namespace Snake_box
             if (Input.GetKeyDown(KeyCode.D))
             {
                 inputAxis = 1;
-            }           
+            }     
+            
             _characterData.CharacterBehaviour.Move(inputAxis);
-            if (Input.GetKeyDown(AxisManager.SPACE))
-            {               
-                _characterData.CharacterBehaviour.AddBlock();/// добавление ячейки - хвост
-            }
+            
             if (Input.GetKey(AxisManager.ESCAPE))
             {
                 SceneManager.LoadScene(0);

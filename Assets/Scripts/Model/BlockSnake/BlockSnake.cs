@@ -34,7 +34,7 @@ namespace Snake_box
         {
             if (!_turret)
             {
-                Data.Instance.TurretData.AddNewWithParent(gameObject.transform);
+                Data.Instance.TurretData.AddNewWithParent(_spawnPoint);              
                 _turret = true;
             }
         }
