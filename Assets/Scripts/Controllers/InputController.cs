@@ -24,10 +24,19 @@ namespace Snake_box
             if (Input.GetKeyDown(KeyCode.D))
             {
                 inputAxis = 1;
+<<<<<<< HEAD
             }     
             
             _characterData.CharacterBehaviour.Move(inputAxis);
             
+=======
+            }           
+            _characterData.CharacterBehaviour.Move(inputAxis);
+            if (Input.GetKeyDown(AxisManager.SPACE))
+            {               
+                _characterData.CharacterBehaviour.AddBlock();/// добавление ячейки - хвост
+            }
+>>>>>>> parent of d17a243... Merge pull request #22 from Silvian-73/Code/Yuriy-K/ChangePCInput
             if (Input.GetKey(AxisManager.ESCAPE))
             {
                 SceneManager.LoadScene(0);

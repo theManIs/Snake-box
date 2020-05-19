@@ -13,6 +13,7 @@ namespace Snake_box
         private BlockSnakeData _blockSnakeData;
         private readonly List<BlockSnake> _blocksSnakes = new List<BlockSnake>();//блоки
         private readonly List<Vector3> _positions = new List<Vector3>();// позиции блоков 
+<<<<<<< HEAD
         private float _sizeBlock;
         private float _snakeHp;
         private float _snakeArmorCurrent;
@@ -21,6 +22,9 @@ namespace Snake_box
         private float _damage;
 
 
+=======
+        private float _sizeBlock;        
+>>>>>>> parent of d17a243... Merge pull request #22 from Silvian-73/Code/Yuriy-K/ChangePCInput
 
         #endregion
 
@@ -118,6 +122,7 @@ namespace Snake_box
 
         public void Move(float inputAxis)//движение
         {           
+<<<<<<< HEAD
             transform.Rotate(0,inputAxis*90,0);
             transform.position += transform.right*(_characterData.GetSpeed() / (_positions.Count + _characterData.GetSlow()));
             ResetPosition();           
@@ -138,6 +143,12 @@ namespace Snake_box
             {
                 Destroy(gameObject);
             }
+=======
+            transform.Rotate(0,inputAxis*90,0);// переделать!!!!!!!!!!!!
+            transform.position += transform.right*(_characterData.GetSpeed() / (_positions.Count + _characterData.GetSlow()));
+            Collision();
+            ResetPosition();
+>>>>>>> parent of d17a243... Merge pull request #22 from Silvian-73/Code/Yuriy-K/ChangePCInput
         }
 
         public void SetArmor(float damage)///нанесения урона с зашитой
