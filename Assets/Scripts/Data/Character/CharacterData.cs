@@ -6,9 +6,12 @@ namespace Snake_box
     [CreateAssetMenu(fileName = "CharacterData", menuName = "Data/Character/CharacterData")]
     public sealed class CharacterData : ScriptableObject
     {
-        [SerializeField] private float _hp;
+        [SerializeField] private float _hp; //здоровье змейки без блоков
+        [SerializeField] private float _armor;//силовое поле
+        [SerializeField] private float _regenerationArmor; //регенирация силового поля 
         [SerializeField] private float _speedRotation;// скорость поворота
-        [SerializeField] private float _speed;// скорость      
+        [SerializeField] private float _speed;// скорость 
+        [SerializeField] private float _damage;
         [Range(0, 1000)] [SerializeField] private float _slowSpeed; //Замедление
         [HideInInspector] public CharacterBehaviour CharacterBehaviour;  
         private ITimeService _timeService;
@@ -30,9 +33,23 @@ namespace Snake_box
         {
             return _slowSpeed;
         }
+        
         public float GetSpeedRotation()
         {
             return _speedRotation;
+        }
+
+        public float SetHp(float hp)
+        {
+            return _hp = _hp + hp+_armor;           
+        }
+
+        public void RegenerationArmor()
+        {
+            if (_armor < 100)
+            {
+              _armor = _armor + (_regenerationArmor* _timeService.DeltaTime());               
+            }            
         }
     }
 }

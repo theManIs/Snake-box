@@ -9,8 +9,7 @@ namespace Snake_box
 
         public InputController()
         {
-            _characterData = Data.Instance.Character;
-            _characterData.Initialization();           
+            _characterData = Data.Instance.Character;           
         }
 
         #region IExecute
@@ -25,11 +24,10 @@ namespace Snake_box
             if (Input.GetKeyDown(KeyCode.D))
             {
                 inputAxis = 1;
-            }
+            }           
             _characterData.CharacterBehaviour.Move(inputAxis);
             if (Input.GetKeyDown(AxisManager.SPACE))
-            {
-                Debug.Log(Services.Instance.LevelService.ActiveEnemies.Count);
+            {               
                 _characterData.CharacterBehaviour.AddBlock();/// добавление ячейки - хвост
             }
             if (Input.GetKey(AxisManager.ESCAPE))
