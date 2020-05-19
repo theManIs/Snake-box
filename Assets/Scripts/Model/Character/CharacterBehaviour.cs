@@ -7,13 +7,14 @@ namespace Snake_box
     public sealed class CharacterBehaviour : MonoBehaviour
     {
         #region Fields       
-       
+
         [SerializeField] private float _radius;
         private CharacterData _characterData;
         private BlockSnakeData _blockSnakeData;
         private readonly List<BlockSnake> _blocksSnakes = new List<BlockSnake>();//блоки
         private readonly List<Vector3> _positions = new List<Vector3>();// позиции блоков 
-        private float _sizeBlock;        
+        private float _sizeBlock;
+        private Direction _direction = Direction.Up;
 
         #endregion
 
@@ -109,10 +110,12 @@ namespace Snake_box
             else return null;
         }
 
-        public void Move(float inputAxis)//движение
-        {           
-            transform.Rotate(0,inputAxis*90,0);// переделать!!!!!!!!!!!!
-            transform.position += transform.right*(_characterData.GetSpeed() / (_positions.Count + _characterData.GetSlow()));
+        public void Move(Direction direction)//движение
+        {
+            if (direction != Direction.None && !direction.IsOpposite(_direction))
+                _direction = direction;
+            transform.rotation = _direction.ToQuaternion();
+            transform.position += transform.forward*(_characterData.GetSpeed() / (_positions.Count + _characterData.GetSlow()));
             Collision();
             ResetPosition();
         }

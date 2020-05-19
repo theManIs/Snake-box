@@ -16,16 +16,24 @@ namespace Snake_box
 
         public void Execute()
         {
-            float inputAxis=0;             
-            if (Input.GetKeyDown(KeyCode.A))
+            Direction direction = Direction.None;          
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                inputAxis = -1;
+                direction = Direction.Left;
             }
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
-                inputAxis = 1;
-            }           
-            _characterData.CharacterBehaviour.Move(inputAxis);
+                direction = Direction.Right;
+            }
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                direction = Direction.Up;
+            }
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                direction = Direction.Down;
+            }
+            _characterData.CharacterBehaviour.Move(direction);
             if (Input.GetKeyDown(AxisManager.SPACE))
             {               
                 _characterData.CharacterBehaviour.AddBlock();/// добавление ячейки - хвост
