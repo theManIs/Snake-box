@@ -5,6 +5,15 @@ namespace Snake_box
 {
     public sealed class InputController : IExecute
     {
+        #region Private Data
+
+        private KeyCode _left = KeyCode.A;
+        private KeyCode _right = KeyCode.D;
+        private KeyCode _up = KeyCode.W;
+        private KeyCode _down = KeyCode.S;
+
+        #endregion
+
         private readonly CharacterData _characterData;
 
         public InputController()
@@ -17,19 +26,19 @@ namespace Snake_box
         public void Execute()
         {
             Direction direction = Direction.None;          
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(_left))
             {
                 direction = Direction.Left;
             }
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(_right))
             {
                 direction = Direction.Right;
             }
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(_up))
             {
                 direction = Direction.Up;
             }
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(_down))
             {
                 direction = Direction.Down;
             }
