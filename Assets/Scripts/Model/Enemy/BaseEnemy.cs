@@ -21,6 +21,7 @@ namespace Snake_box
         protected float _spawnRadius;
         protected float _speed;
         protected float _damage;
+        protected float _meleeHitRange;
         protected bool _isNeedNavMeshUpdate = false;
 
         #endregion
@@ -83,7 +84,7 @@ namespace Snake_box
         private void HitCheck()
         {
             Collider[] colliders = new Collider[10];
-            Physics.OverlapSphereNonAlloc(_transform.position, 3.1f, colliders);
+            Physics.OverlapSphereNonAlloc(_transform.position, _meleeHitRange, colliders);
 
             for (int i = 0; i < colliders.Length; i++)
             {
