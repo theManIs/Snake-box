@@ -42,11 +42,10 @@ namespace Snake_box
         //todo I should provide ProjectileType instead ArmorType 
         public void RegisterDamage(float damageAmount, ArmorTypes damageType)
         {
-            _amIDestroyed = true;
+//            _amIDestroyed = true;
 
-            Destroy(gameObject);
-        }     
-       
+//            Destroy(gameObject);
+        } 
 
         #endregion
     }
