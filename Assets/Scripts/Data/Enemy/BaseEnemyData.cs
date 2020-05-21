@@ -6,6 +6,7 @@ namespace Snake_box
 {
     public class BaseEnemyData : ScriptableObject
     {
+        public ArmorType ArmorType;
         public GameObject Prefab;
         public float Hp;
         public float Speed;

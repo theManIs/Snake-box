@@ -17,6 +17,10 @@ namespace Snake_box
 
         public Vector3 GetPosition() => transform.position;
         public EnemyType GetEnemyType() => EnemyType.Fast;
+        public bool IsValidTarget()
+        {
+            throw new System.NotImplementedException();
+        }
 
         public ArmorTypes GetArmorType() => ArmorType;
 

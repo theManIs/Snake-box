@@ -12,15 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c5f67e0b75644529922faeff58e82b9, type: 3}
   m_Name: LevelSpawnData
   m_EditorClassIdentifier: 
-  UseRandomSpawn: 1
+  UseRandomSpawn: 0
   SpawnDelay: 1
   WaveDelay: 2.55
   WaveSettings:
-  - SimpleEnemyCount: 1
-    SlowEnemyCount: 3
-    FastEnemyCount: 3
-    FlyingEnemyCount: 3
-  - SimpleEnemyCount: 3
-    SlowEnemyCount: 1
-    FastEnemyCount: 4
-    FlyingEnemyCount: 6
+  - SimpleEnemyCount: 0
+    SlowEnemyCount: 0
+    FastEnemyCount: 0
+    FlyingEnemyCount: 0
+    AcceleratingEnemyCount: 0
+    InvisibleEnemyCount: 0
+    SpikedEnemyCount: 0
+    SpawningEnemyCount: 1
+  - SimpleEnemyCount: 0
+    SlowEnemyCount: 0
+    FastEnemyCount: 0
+    FlyingEnemyCount: 0
+    AcceleratingEnemyCount: 0
+    InvisibleEnemyCount: 0
+    SpikedEnemyCount: 0
+    SpawningEnemyCount: 0

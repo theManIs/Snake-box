@@ -1,3 +1,4 @@
+using ExampleTemplate;
 using UnityEngine;
 using UnityEngine.AI;
 using Object = UnityEngine.Object;
@@ -10,6 +11,7 @@ namespace Snake_box
     {
         #region PrivateData
 
+        protected ArmorType _armor;
         protected NavMeshAgent _navMeshAgent;
         protected GameObject _prefab;
         protected GameObject _enemyObject;
@@ -23,9 +25,26 @@ namespace Snake_box
         protected float _damage;
         protected float _meleeHitRange;
         protected bool _isNeedNavMeshUpdate = false;
+        protected bool _isValidTarget;
 
         #endregion
 
+
+        #region ClassLifeCycle
+
+        public BaseEnemy(BaseEnemyData data)
+        {
+            _prefab = data.Prefab;
+            _spawnRadius = data.SpawnRadius;
+            _speed = data.Speed;
+            _hp = data.Hp;
+            _damage = data.Damage;
+            _armor = data.ArmorType;
+            _meleeHitRange = data.MeleeHitRange;
+        }
+
+        #endregion
+        
 
         #region Properties
 
@@ -49,6 +68,7 @@ namespace Snake_box
             _navMeshAgent.speed = _speed;
             _transform = _enemyObject.transform;
             _isNeedNavMeshUpdate = true;
+            _isValidTarget = true;
             if (!_levelService.ActiveEnemies.Contains(this))
                 _levelService.ActiveEnemies.Add(this);
         }
@@ -75,6 +95,7 @@ namespace Snake_box
 
         public Vector3 GetPosition() => _transform.position;
         public EnemyType GetEnemyType() => Type;
+        public bool IsValidTarget() => _isValidTarget;
 
         #endregion
 
@@ -89,12 +110,18 @@ namespace Snake_box
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i] != null)
+                {
                     if (colliders[i].CompareTag(TagManager.GetTag(TagType.Target)))
                     {
-                        Object.Destroy(colliders[i].gameObject);
-                        _levelService.IsTargetDestroed = true;
-                        _levelService.EndLevel();
+                        var mainBuilding = colliders[i].GetComponent<MainBuild>();
+                        mainBuilding.GetDamage(_damage);
                     }
+                    else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Player)))
+                    {
+                        Data.Instance.Character.SetHp(-_damage);
+                    }
+                }
+
             }
         }
 
@@ -103,7 +130,7 @@ namespace Snake_box
             _target = GameObject.FindWithTag(TagManager.GetTag(TagType.Target)).transform;
         }
 
-        private Vector3 GetSpawnPoint(GameObject center)
+        protected virtual Vector3 GetSpawnPoint(GameObject center)
         {
             var volume = center.GetComponent<NavMeshModifierVolume>();
             var sizeX = volume.size.x;
@@ -115,7 +142,7 @@ namespace Snake_box
             return hit.position;
         }
 
-        private void GetDamage(float damage)
+        protected virtual void GetDamage(float damage)
         {
             _hp -= damage;
             if (_hp <= 0)

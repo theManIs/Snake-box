@@ -21,6 +21,11 @@ namespace Snake_box
         [SerializeField] private string _slowEnemyDataPath;
         [SerializeField] private string _fastEnemyDataPath;
         [SerializeField] private string _flyingEnemyDataPath;
+        [SerializeField] private string _acceleratingEnemyDataPath;
+        [SerializeField] private string _invisibleEnemyDataPath;
+        [SerializeField] private string _spawnedEnemyDataPath;
+        [SerializeField] private string _spawningEnemyDataPath;
+        [SerializeField] private string _spikedEnemyDataPath;
         [SerializeField] private string _LevelDataPath;
         [SerializeField] private string _turretDataPath;
         private static EnemySpawnData _enemySpawnData;
@@ -32,6 +37,11 @@ namespace Snake_box
         private static SlowEnemyData _slowEnemyData;
         private static FastEnemyData _fastEnemyData;
         private static FlyingEnemyData _flyingEnemyData;
+        private static AcceleratingEnemyData _acceleratingEnemyData;
+        private static InvisibleEnemyData _invisibleEnemyData;
+        private static SpawnedEnemyData _spawnedEnemyData;
+        private static SpawningEnemyData _spawningEnemyData;
+        private static SpikedEnemyData _spikedEnemyData;
         private static LevelData _levelData;
         private static BlockSnakeData _blockSnake;
         private static TurretData _turretData;
@@ -145,6 +155,71 @@ namespace Snake_box
                 }
 
                 return _flyingEnemyData;
+            }
+        }
+        
+        public AcceleratingEnemyData AcceleratingEnemy
+        {
+            get
+            {
+                if (_acceleratingEnemyData == null)
+                {
+                    _acceleratingEnemyData = Load<AcceleratingEnemyData>("Data/" + Instance._acceleratingEnemyDataPath);
+                }
+
+                return _acceleratingEnemyData;
+            }
+        }
+        
+        public InvisibleEnemyData InvisibleEnemy
+        {
+            get
+            {
+                if (_invisibleEnemyData == null)
+                {
+                    _invisibleEnemyData = Load<InvisibleEnemyData>("Data/" + Instance._invisibleEnemyDataPath);
+                }
+
+                return _invisibleEnemyData;
+            }
+        }
+        
+        public SpawnedEnemyData SpawnedEnemy
+        {
+            get
+            {
+                if (_spawnedEnemyData == null)
+                {
+                    _spawnedEnemyData = Load<SpawnedEnemyData>("Data/" + Instance._spawnedEnemyDataPath);
+                }
+
+                return _spawnedEnemyData;
+            }
+        }
+        
+        public SpawningEnemyData SpawningEnemy
+        {
+            get
+            {
+                if (_spawningEnemyData == null)
+                {
+                    _spawningEnemyData = Load<SpawningEnemyData>("Data/" + Instance._spawningEnemyDataPath);
+                }
+
+                return _spawningEnemyData;
+            }
+        }
+        
+        public SpikedEnemyData SpikedEnemy
+        {
+            get
+            {
+                if (_spikedEnemyData == null)
+                {
+                    _spikedEnemyData = Load<SpikedEnemyData>("Data/" + Instance._spikedEnemyDataPath);
+                }
+
+                return _spikedEnemyData;
             }
         }
 
