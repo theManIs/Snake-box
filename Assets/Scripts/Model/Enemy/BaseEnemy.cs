@@ -118,7 +118,7 @@ namespace Snake_box
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Player)))
                     {
-                        Data.Instance.Character.SetHp(-_damage);
+                        //Data.Instance.Character.SetHp(-_damage);
                     }
                 }
 
