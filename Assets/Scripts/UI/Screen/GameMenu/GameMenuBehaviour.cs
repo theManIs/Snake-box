@@ -19,6 +19,8 @@ namespace Snake_box
         [SerializeField] private Button _mainMenu;
         [SerializeField] private Button _reset;
         [SerializeField] private Text _textEndGame;
+        [SerializeField] private Button _hpBar;
+        [SerializeField] private Button _forceFieldBar;
         [SerializeField] private Button [] _buttonPlus;
         [SerializeField] private Button[] _buttonTurretsType;
         private int _selectButtonsIndex;
@@ -59,6 +61,12 @@ namespace Snake_box
             _mainMenu.onClick.RemoveListener(delegate { Services.Instance.LevelService.LoadLevel(0); });
             _reset.onClick.RemoveListener(delegate { Services.Instance.LevelService.LoadMenu(); });
             _pause.onClick.RemoveListener(Pause);
+        }
+
+        private void Update()
+        {
+            ShowCount(_hpBar,Data.Instance.Character.CharacterBehaviour._snakeHp,  Color.green, Color.red);
+            ShowCount(_forceFieldBar, Data.Instance.Character.CharacterBehaviour._snakeArmorCurrent, Color.blue, Color.blue);
         }
 
         #endregion
@@ -135,6 +143,20 @@ namespace Snake_box
                 _textEndGame.text = "Congratulations!";               
             }
             Services.Instance.TimeService.SetTimeScale(0);
+        }
+
+        public void ShowCount(Button _button, float count, Color fullColor, Color halfColor)
+        {
+            _button.image.fillAmount = count / 100;
+            if (count > 60)
+            {
+                _button.image.color = fullColor;
+            }
+
+            else
+            {
+                _button.image.color = halfColor;
+            }
         }
 
 

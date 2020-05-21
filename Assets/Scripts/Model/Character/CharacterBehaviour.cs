@@ -7,20 +7,21 @@ namespace Snake_box
     public sealed class CharacterBehaviour : MonoBehaviour
     {
         #region Fields       
-       
+
         [SerializeField] private float _radius;
         private CharacterData _characterData;
         private BlockSnakeData _blockSnakeData;
         private readonly List<BlockSnake> _blocksSnakes = new List<BlockSnake>();//блоки
         private readonly List<Vector3> _positions = new List<Vector3>();// позиции блоков 
-        private float _sizeBlock;
-        private float _snakeHp;
-        private float _snakeArmorCurrent;
-        private float _snakeArmorMax=100;
-        private float _snakeArmorGeneration=1;
+        private float _sizeBlock;  /// <summary>
+        /// перенести все даныые в дату!!!!!!!!!!!!!!!!!!!
+        /// </summary>
+        public float _snakeHp;
+        public float _snakeArmorCurrent;
+        private float _snakeArmorMax = 100;
+        private float _snakeArmorGeneration = 1;
         private float _damage;
-             
-
+        private Direction _direction = Direction.Up;
 
         #endregion
 
@@ -35,7 +36,7 @@ namespace Snake_box
             }
             _sizeBlock = (gameObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.sqrMagnitude);// размер
             _characterData = Data.Instance.Character;
-            _positions.Add(gameObject.transform.position);//позиция головы 
+            _positions.Add(gameObject.transform.position);//позиция головы
             _snakeArmorCurrent = _characterData.GetArmor();
             _snakeHp = _characterData.GetHp();
             _damage = _characterData.GetDamage();
@@ -70,7 +71,7 @@ namespace Snake_box
         public void AddBlock()// добавление блока
         {
             if (_blocksSnakes.Count < 4)
-            {
+            {               
                 _blockSnakeData = Data.Instance.BlockSnake;
                 var block = _blockSnakeData.Initialization();
                 block.transform.SetParent(gameObject.transform);
@@ -91,11 +92,7 @@ namespace Snake_box
                 if (tagCollider[i].CompareTag(TagManager.GetTag(TagType.Bonus)))
                 {
                     Destroy(tagCollider[i].transform.gameObject);   
-                }
-                if (tagCollider[i].CompareTag(TagManager.GetTag(TagType.Enemy)))
-                {             
-
-                }
+                }               
                 if (tagCollider[i].CompareTag(TagManager.GetTag(TagType.Base)))
                 {
                     
@@ -116,19 +113,21 @@ namespace Snake_box
             else return null;
         }
 
-        public void Move(float inputAxis)//движение
-        {           
-
-            transform.Rotate(0,inputAxis*90,0);
-            transform.position += transform.right*(_characterData.GetSpeed() / (_positions.Count + _characterData.GetSlow()));
-            ResetPosition();           
+        public void Move(Direction direction)//движение
+        {
+            if (direction != Direction.None && !direction.IsOpposite(_direction))
+                _direction = direction;
+            transform.rotation = _direction.ToQuaternion();
+            transform.position += transform.forward*(_characterData.GetSpeed() / (_positions.Count + _characterData.GetSlow()));
+            Collision();
+            ResetPosition();
         }
 
         public void RegenerationArmor()
         {
             if (_snakeArmorCurrent < _snakeArmorMax)
             {
-                _snakeArmorCurrent = _snakeArmorCurrent + ( _snakeArmorGeneration * Services.Instance.TimeService.DeltaTime());
+                _snakeArmorCurrent = _snakeArmorCurrent + (_snakeArmorGeneration * Services.Instance.TimeService.DeltaTime());
             }
         }
 
@@ -143,14 +142,12 @@ namespace Snake_box
 
         public void SetArmor(float damage)///нанесения урона с зашитой
         {
-            _snakeArmorCurrent -= damage; 
+            _snakeArmorCurrent -= damage;
             if (_snakeArmorCurrent < 0)// если защита отрицательная 
             {
                 SetDamage(_snakeArmorCurrent); /// то урон переносится на HP
             }
         }
-
-
         #endregion
     }
 }

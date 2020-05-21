@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 
 
-namespace Snake_box
+namespace ExampleTemplate
 {
     public class MainBuild : MonoBehaviour
     {
         #region Fields
 
         [SerializeField] private float _hp;
-        
+
         #endregion
     }
 }

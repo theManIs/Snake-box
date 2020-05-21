@@ -41,7 +41,7 @@ namespace Snake_box
 
         public float GetHp()
         {
-            return _hp;           
+            return _hp;
         }
 
         public float GetArmor()

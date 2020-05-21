@@ -11,7 +11,6 @@
         Wall   = 6,//препятсвие : стены ,преграды и т.д.
         Base   = 7,//База        
         Spawn  = 8,
-        Enemy  = 9,
-        PanelEndLevel =10
+        PanelEndLevel =9
     }
 }
