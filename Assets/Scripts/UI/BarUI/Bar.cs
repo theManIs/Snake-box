@@ -2,32 +2,18 @@
 using UnityEngine.UI;
 
 
-
 namespace Snake_box
 {
-    public class Bar : MonoBehaviour
+    public sealed class Bar : MonoBehaviour
     {
-        #region Fields    
-
-        private Image _image;
-
-        #endregion
-
 
         #region Methods
 
-        public Color ShowCount(float count,Color fullColor,Color halfColor)
+        public static void ShowCount(Button button, float currentCount, float maxCount, Color fullColor, Color halfColor)
         {
-            _image.fillAmount = count / 100;
-            if (count > 60)
-            {               
-                return fullColor;
-            }
-           
-            else
-            {
-                return halfColor;
-            }
+            currentCount = currentCount / maxCount;
+            button.image.fillAmount = currentCount;
+            button.image.color = (currentCount >= 0.6) ? fullColor : halfColor;
         }
 
         #endregion

@@ -13,6 +13,7 @@
         {
             _characterData._characterBehaviour.RegenerationArmor();
             _characterData._characterBehaviour.Collision();
+            _characterData._characterBehaviour.ResetPosition();
         }       
     }
 }

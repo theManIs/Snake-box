@@ -1,7 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -23,7 +20,7 @@ namespace Snake_box
         [SerializeField] private Button _forceFieldBar;
         [SerializeField] private Button [] _buttonPlus;
         [SerializeField] private Button[] _buttonTurretsType;
-        CharacterBehaviour _characterData = Data.Instance.Character._characterBehaviour;
+        CharacterBehaviour _characterBehaviour = Data.Instance.Character._characterBehaviour;
         private int _selectButtonsIndex;
         private bool _isPause;
 
@@ -66,22 +63,22 @@ namespace Snake_box
 
         private void Update()
         {
-            ShowCount(_hpBar, _characterData.SnakeHp, _characterData.SnakeHpMax,  Color.green, Color.red);
-            ShowCount(_forceFieldBar, _characterData.SnakeArmorCurrent, _characterData.SnakeArmorMax, Color.blue, Color.blue);
+           Bar.ShowCount(_hpBar, _characterBehaviour.SnakeHp, _characterBehaviour.SnakeHpMax, Color.green, Color.red);
+           Bar.ShowCount(_forceFieldBar, _characterBehaviour.SnakeArmorCurrent, _characterBehaviour.SnakeArmorMax, Color.blue, Color.blue);
         }
 
         #endregion
 
 
-        #region Methods               
-
+        #region Methods  
 
         private void AddTurret(int i)
         {
-            _characterData.GetBlock(_selectButtonsIndex).AddTurret();
+            _characterBehaviour.GetBlock(_selectButtonsIndex).AddTurret();
             _buttonPlus[_selectButtonsIndex].image.sprite = _buttonTurretsType[i].image.sprite;
             _panelTurretsType.SetActive(false);
         }
+
         private void ChangeSprite(int numberButton)//меняем спрайт плюса на спрайт блока и активируем след кнопку плусик
         {
             if (_buttonPlus.Length > numberButton+1)
@@ -89,7 +86,7 @@ namespace Snake_box
              _buttonPlus[numberButton + 1].interactable = true;// включаем след. кнопку
             }
             _buttonPlus[numberButton].image.sprite = _spriteBlock;// меняем спрайт плюса на спрайт блока    
-            _characterData.AddBlock();
+            _characterBehaviour.AddBlock();
         }
 
         private void Pause()
@@ -110,7 +107,7 @@ namespace Snake_box
 
         private void AddBlock(int numberButton)//метод добавления турели если его нет то  
         {           
-            if (_characterData.GetBlock(numberButton))// если есть блок то активируем панель для выбопв турели
+            if (_characterBehaviour.GetBlock(numberButton))// если есть блок то активируем панель для выбопв турели
             {
                 _panelTurretsType.SetActive (true);
                 _selectButtonsIndex = numberButton;
@@ -142,27 +139,9 @@ namespace Snake_box
                 _textEndGame.text = "Congratulations!";               
             }
             Services.Instance.TimeService.SetTimeScale(0);
-        }
-
-        public void ShowCount(Button button, float currentCount,float maxCount, Color fullColor, Color halfColor)
-        {
-            Debug.Log(currentCount);
-            currentCount = currentCount/ maxCount;
-            Debug.Log(currentCount);
-
-            button.image.fillAmount = currentCount;
-            if (currentCount > 60)
-            {
-                button.image.color = fullColor;
-            }
-
-            else
-            {
-                button.image.color = halfColor;
-            }
-        }
-
+        }        
 
         #endregion
+
     }
 }

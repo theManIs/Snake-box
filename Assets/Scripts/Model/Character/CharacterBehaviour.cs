@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Snake_box
 {
-    public sealed class CharacterBehaviour : MonoBehaviour
+    public sealed class CharacterBehaviour : BaseCharacter
     {
         #region Fields       
 
@@ -13,28 +13,11 @@ namespace Snake_box
         private BlockSnakeData _blockSnakeData;
         private readonly List<BlockSnake> _blocksSnakes = new List<BlockSnake>();//блоки
         private readonly List<Vector3> _positions = new List<Vector3>();// позиции блоков 
-        private float _sizeBlock;
-        private float _snakeHp;
-        private float _snakeArmorCurrent;
-        private float _armorMax;
-        private float _snakeHpMax;
-        private float _snakeArmorGeneration = 1;
-        private float _damage;
-        private float _speed;
-        private float _slowSpeed;
-        private ITimeService _timeService;
+        private float _sizeBlock;       
         private Direction _direction = Direction.Up;
+        private ITimeService _timeService;
 
-        #endregion
-
-
-        #region Properties
-        public float SnakeHp { get { return _snakeHp; } }
-        public float SnakeHpMax { get { return _snakeHpMax; } }
-        public float SnakeArmorCurrent { get { return _snakeArmorCurrent; } }
-        public float SnakeArmorMax { get { return _armorMax; } }
-
-        #endregion
+        #endregion      
 
 
         #region Unity Method
@@ -82,6 +65,7 @@ namespace Snake_box
 
         public void AddBlock()// добавление блока
         {
+            Debug.Log(_blocksSnakes.Count);
             if (_blocksSnakes.Count < 4)
             {
                 _blockSnakeData = Data.Instance.BlockSnake;
@@ -94,24 +78,17 @@ namespace Snake_box
             }
         }
 
-
         public void Collision()
         {
             var tagCollider = Physics.OverlapSphere(transform.position, _radius);
-
             for (int i = 0; i < tagCollider.Length; i++)
             {
                 if (tagCollider[i].CompareTag(TagManager.GetTag(TagType.Bonus)))
                 {
                     Destroy(tagCollider[i].transform.gameObject);
-                }
-                if (tagCollider[i].CompareTag(TagManager.GetTag(TagType.Base)))
-                {
-
-                }
+                }               
                 if (tagCollider[i].CompareTag(TagManager.GetTag(TagType.Wall)))
                 {
-
                 }
             }
         }
@@ -130,43 +107,17 @@ namespace Snake_box
             if (direction != Direction.None && !direction.IsOpposite(_direction))
                 _direction = direction;
             transform.rotation = _direction.ToQuaternion();
-            transform.position += transform.forward * ((_speed * _timeService.DeltaTime()) / (_positions.Count + _slowSpeed));
-            Collision();
-            ResetPosition();
-        }
+            transform.position += transform.forward * ((_speed * _timeService.DeltaTime()) / (_positions.Count + _slowSpeed));           
+        }  
 
         public void RegenerationArmor()
         {
             if (_snakeArmorCurrent < _armorMax)
             {
-                _snakeArmorCurrent = _snakeArmorCurrent + (_snakeArmorGeneration * Services.Instance.TimeService.DeltaTime());
+                _snakeArmorCurrent = _snakeArmorCurrent + (_snakeArmorGeneration * _timeService.DeltaTime());
             }
         }
 
-        public void SetDamage(float damage)///нанесения урона без зашиты
-        {
-            _snakeHp -= damage;
-            if (_snakeHp <= 0)
-            {
-                Die();
-            }
-        }
-
-        public void Die()
-        {
-            gameObject.SetActive(false);
-            Services.Instance.LevelService.IsSnakeAlive = false;
-            Services.Instance.LevelService.EndLevel();
-        }
-
-        public void SetArmor(float damage)///нанесения урона с зашитой
-        {
-            _snakeArmorCurrent -= damage;
-            if (_snakeArmorCurrent < 0)// если защита отрицательная 
-            {
-                SetDamage(_snakeArmorCurrent); /// то урон переносится на HP
-            }
-        }
         #endregion
     }
 }
