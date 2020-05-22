@@ -2,7 +2,7 @@
 {
     public sealed class CharacterController : IExecute
     {
-        private readonly CharacterData _characterData;
+        private readonly CharacterData _characterData;     
 
         public CharacterController()
         {
@@ -10,8 +10,10 @@
             _characterData.Initialization();
         }
         public void Execute()
-        {           
-            _characterData.RegenerationArmor();
+        {            
+            _characterData._characterBehaviour.RegenerationArmor();
+            _characterData._characterBehaviour.Collision();
+            _characterData._characterBehaviour.ResetPosition();
         }       
     }
 }

@@ -46,7 +46,7 @@ namespace Snake_box
             _characterData.CharacterBehaviour.TeleportIfOutOfBorder();
             if (Input.GetKeyDown(AxisManager.SPACE))
             {               
-                _characterData.CharacterBehaviour.AddBlock();/// добавление ячейки - хвост
+                _characterData._characterBehaviour.SetDamage(50);/// добавление ячейки - хвост
             }
             if (Input.GetKey(AxisManager.ESCAPE))
             {
