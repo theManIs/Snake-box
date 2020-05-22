@@ -43,6 +43,7 @@ namespace Snake_box
                 direction = Direction.Down;
             }
             _characterData.CharacterBehaviour.Move(direction);
+            _characterData.CharacterBehaviour.TeleportIfOutOfBorder();
             if (Input.GetKeyDown(AxisManager.SPACE))
             {               
                 _characterData.CharacterBehaviour.AddBlock();/// добавление ячейки - хвост

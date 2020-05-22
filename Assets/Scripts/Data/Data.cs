@@ -23,6 +23,7 @@ namespace Snake_box
         [SerializeField] private string _flyingEnemyDataPath;
         [SerializeField] private string _LevelDataPath;
         [SerializeField] private string _turretDataPath;
+        [SerializeField] private string _borderDataPath;
         private static EnemySpawnData _enemySpawnData;
         private static LevelSpawnData _levelSpawnData;
         [SerializeField] private string _blockSnakeDataPath;
@@ -186,6 +187,8 @@ namespace Snake_box
                 return _turretData;
             }
         }
+
+        public BordersData BordersData => Load<BordersData>("Data/" + Instance._borderDataPath);
 
         #endregion
 
