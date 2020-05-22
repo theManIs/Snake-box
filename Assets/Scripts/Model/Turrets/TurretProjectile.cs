@@ -6,7 +6,7 @@
 
         public float CarryingDamage = 10;
         public ArmorTypes PiercingArmor = ArmorTypes.Bare;
-        private int _bulletSpeed = 50;
+        private int _bulletSpeed = 10;
 
         #endregion
 

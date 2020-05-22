@@ -9,7 +9,8 @@ namespace Snake_box
     {
         #region Fields
 
-        private static readonly GameObject TurretShellPrefab = Resources.Load<GameObject>("Prefabs/Turrets/TurretFireball");
+//        private static readonly GameObject TurretShellPrefab = Resources.Load<GameObject>("Prefabs/Turrets/TurretFireball");
+        private static readonly GameObject TurretShellPrefab = Resources.Load<GameObject>("Prefabs/Turrets/Bullet/Prefabs/Bullet762");
         private static TurretProjectileController _turretProjectileController; 
 
         #endregion
