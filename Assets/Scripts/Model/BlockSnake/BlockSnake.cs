@@ -7,7 +7,8 @@ namespace Snake_box
     public sealed class BlockSnake : MonoBehaviour
     {
         #region Fields
-       
+
+        public Transform _spawnPoint;
         private TurretController _turretController;
         private BlockSnakeData _blockSnakeData;
         private bool _turret;
@@ -32,7 +33,7 @@ namespace Snake_box
         {
             if (!_turret)
             {
-                Data.Instance.TurretData.AddNewWithParent(gameObject.transform);
+                Data.Instance.TurretData.AddNewWithParent(_spawnPoint);
                 _turret = true;
             }
         }

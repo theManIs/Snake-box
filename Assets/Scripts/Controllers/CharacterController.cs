@@ -11,8 +11,8 @@
         }
         public void Execute()
         {
-            _characterData.CharacterBehaviour.RegenerationArmor();
-            _characterData.CharacterBehaviour.Collision();
+            _characterData._characterBehaviour.RegenerationArmor();
+            _characterData._characterBehaviour.Collision();
         }       
     }
 }

@@ -23,6 +23,7 @@ namespace Snake_box
         [SerializeField] private Button _forceFieldBar;
         [SerializeField] private Button [] _buttonPlus;
         [SerializeField] private Button[] _buttonTurretsType;
+        CharacterBehaviour _characterData = Data.Instance.Character._characterBehaviour;
         private int _selectButtonsIndex;
         private bool _isPause;
 
@@ -65,8 +66,8 @@ namespace Snake_box
 
         private void Update()
         {
-            ShowCount(_hpBar,Data.Instance.Character.CharacterBehaviour._snakeHp,  Color.green, Color.red);
-            ShowCount(_forceFieldBar, Data.Instance.Character.CharacterBehaviour._snakeArmorCurrent, Color.blue, Color.blue);
+            ShowCount(_hpBar, _characterData.SnakeHp, _characterData.SnakeHpMax,  Color.green, Color.red);
+            ShowCount(_forceFieldBar, _characterData.SnakeArmorCurrent, _characterData.SnakeArmorMax, Color.blue, Color.blue);
         }
 
         #endregion
@@ -77,8 +78,7 @@ namespace Snake_box
 
         private void AddTurret(int i)
         {
-            var _characterData = Data.Instance.Character;
-            _characterData.CharacterBehaviour.GetBlock(_selectButtonsIndex).AddTurret();
+            _characterData.GetBlock(_selectButtonsIndex).AddTurret();
             _buttonPlus[_selectButtonsIndex].image.sprite = _buttonTurretsType[i].image.sprite;
             _panelTurretsType.SetActive(false);
         }
@@ -89,7 +89,7 @@ namespace Snake_box
              _buttonPlus[numberButton + 1].interactable = true;// включаем след. кнопку
             }
             _buttonPlus[numberButton].image.sprite = _spriteBlock;// меняем спрайт плюса на спрайт блока    
-            Data.Instance.Character.CharacterBehaviour.AddBlock();
+            _characterData.AddBlock();
         }
 
         private void Pause()
@@ -109,9 +109,8 @@ namespace Snake_box
         }
 
         private void AddBlock(int numberButton)//метод добавления турели если его нет то  
-        {
-           var _characterData = Data.Instance.Character;
-            if (_characterData.CharacterBehaviour.GetBlock(numberButton))// если есть блок то активируем панель для выбопв турели
+        {           
+            if (_characterData.GetBlock(numberButton))// если есть блок то активируем панель для выбопв турели
             {
                 _panelTurretsType.SetActive (true);
                 _selectButtonsIndex = numberButton;
@@ -134,7 +133,7 @@ namespace Snake_box
         public void GetEndLevelText()
         {
             _pause.interactable = false;      
-            if (Services.Instance.LevelService.IsTargetDestroed==true)
+            if (Services.Instance.LevelService.IsTargetDestroed==true&& Services.Instance.LevelService.IsSnakeAlive==false)
             {
                 _textEndGame.text = "Congratulations!You Loser!";               
             }
@@ -145,17 +144,21 @@ namespace Snake_box
             Services.Instance.TimeService.SetTimeScale(0);
         }
 
-        public void ShowCount(Button _button, float count, Color fullColor, Color halfColor)
+        public void ShowCount(Button button, float currentCount,float maxCount, Color fullColor, Color halfColor)
         {
-            _button.image.fillAmount = count / 100;
-            if (count > 60)
+            Debug.Log(currentCount);
+            currentCount = currentCount/ maxCount;
+            Debug.Log(currentCount);
+
+            button.image.fillAmount = currentCount;
+            if (currentCount > 60)
             {
-                _button.image.color = fullColor;
+                button.image.color = fullColor;
             }
 
             else
             {
-                _button.image.color = halfColor;
+                button.image.color = halfColor;
             }
         }
 
