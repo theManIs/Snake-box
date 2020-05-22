@@ -6,6 +6,8 @@ namespace Snake_box
 {
     public sealed class CharacterBehaviour : MonoBehaviour
     {
+        private const float TELEPORTATION_OFFSET = 0.1f;
+
         #region Fields       
 
         [SerializeField] private float _radius;
@@ -118,6 +120,19 @@ namespace Snake_box
             transform.position += transform.forward*(_characterData.GetSpeed() / (_positions.Count + _characterData.GetSlow()));
             Collision();
             ResetPosition();
+        }
+
+        public void TeleportIfOutOfBorder()
+        {
+            BordersData bordersData = Data.Instance.BordersData;
+            if (transform.position.x < bordersData.LeftBorderX)
+                transform.position = new Vector3(bordersData.RightBorderX - TELEPORTATION_OFFSET, transform.position.y, transform.position.z);
+            if (transform.position.x > bordersData.RightBorderX)
+                transform.position = new Vector3(bordersData.LeftBorderX + TELEPORTATION_OFFSET, transform.position.y, transform.position.z);
+            if (transform.position.y < bordersData.BottomBorderY)
+                transform.position = new Vector3(transform.position.x , bordersData.TopBorderY - TELEPORTATION_OFFSET, transform.position.z);
+            if (transform.position.y > bordersData.TopBorderY)
+                transform.position = new Vector3(transform.position.x, bordersData.BottomBorderY + TELEPORTATION_OFFSET, transform.position.z);
         }
 
         #endregion
