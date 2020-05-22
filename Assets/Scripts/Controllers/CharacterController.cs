@@ -10,7 +10,7 @@
             _characterData.Initialization();
         }
         public void Execute()
-        {
+        {            
             _characterData._characterBehaviour.RegenerationArmor();
             _characterData._characterBehaviour.Collision();
             _characterData._characterBehaviour.ResetPosition();

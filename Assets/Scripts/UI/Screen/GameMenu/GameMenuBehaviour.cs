@@ -64,7 +64,7 @@ namespace Snake_box
         private void Update()
         {
            Bar.ShowCount(_hpBar, _characterBehaviour.SnakeHp, _characterBehaviour.SnakeHpMax, Color.green, Color.red);
-           Bar.ShowCount(_forceFieldBar, _characterBehaviour.SnakeArmorCurrent, _characterBehaviour.SnakeArmorMax, Color.blue, Color.blue);
+           Bar.ShowCount(_forceFieldBar, _characterBehaviour.SnakeArmorCurrent, _characterBehaviour.SnakeArmorMax, Color.blue, Color.yellow);
         }
 
         #endregion
