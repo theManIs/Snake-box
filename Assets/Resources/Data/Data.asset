@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b35a38e01754311b96a8bea7176388e, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  _shakeDataPath: 
-  _locationPath: Locations/LocationData
-  _itemDataPath: Items/ItemData
+  _shakeDataPath: Snake/ShakesData
+  _characterDataPath: Character/CharacterData
+  _enemySpawnDataPath: Enemy/EnemySpawnData
+  _levelSpawnDataPath: Enemy/LevelSpawnData
+  _simpleEnemyDataPath: Enemy/SimpleEnemyData
+  _slowEnemyDataPath: Enemy/SlowEnemyData
+  _fastEnemyDataPath: Enemy/FastEnemyData
+  _flyingEnemyDataPath: Enemy/FlyingEnemyData
+  _LevelDataPath: Level/LevelData
+  _turretDataPath: Turret/TurretData
+  _borderDataPath: Level/BordersData
+  _blockSnakeDataPath: BlockSnake/BlockSnakeData

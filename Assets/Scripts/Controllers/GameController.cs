@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public sealed class GameController : MonoBehaviour
     {
@@ -18,7 +19,7 @@ namespace ExampleTemplate
         {
             _controllers = new Controllers();
             Initialization();
-            //ScreenInterface.GetInstance().Execute(ScreenType.MainMenu);
+            ScreenInterface.GetInstance().Execute(ScreenType.GameMenu);
         }
 
         private void Update()

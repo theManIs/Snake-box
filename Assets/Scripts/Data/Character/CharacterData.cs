@@ -1,29 +1,27 @@
 ﻿using UnityEngine;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     [CreateAssetMenu(fileName = "CharacterData", menuName = "Data/Character/CharacterData")]
     public sealed class CharacterData : ScriptableObject
     {
-        [SerializeField] private float _speed;
-
-        [HideInInspector] public CharacterBehaviour CharacterBehaviour;
-
-        private ITimeService _timeService;
+        public float _hp; //здоровье змейки без блоков
+        public float _armor;//силовое поле
+        public float _regenerationArmor; //регенирация силового поля 
+        public float _speedRotation;// скорость поворота
+        public float _speed;// скорость 
+        public float _damage;
+        [Range(0, 1000)] public float _slowSpeed; //Замедление
+        [HideInInspector] public CharacterBehaviour _characterBehaviour;  
 
         public void Initialization()
         {
+            Services.Instance.LevelService.IsSnakeAlive = true;
             var characterBehaviour = CustomResources.Load<CharacterBehaviour>
                 (AssetsPathGameObject.GameObjects[GameObjectType.Character]);
-
-            CharacterBehaviour = Instantiate(characterBehaviour);
-            _timeService = Services.Instance.TimeService;
-        }
-
-        public float GetSpeed()
-        {
-            return _speed * _timeService.DeltaTime();
-        }
+            _characterBehaviour = Instantiate(characterBehaviour);
+            
+        }       
     }
 }

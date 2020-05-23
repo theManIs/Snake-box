@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace ExampleTemplate
+namespace Snake_box
 {
     public sealed class ScreenInterface : IDisposable
     {
@@ -53,6 +53,9 @@ namespace ExampleTemplate
                 case ScreenType.MainMenu:
                     _currentWindow = _screenFactory.GetMainMenu();
                     break;
+                case ScreenType.TestMenu:
+                    _currentWindow = _screenFactory.GeTestMenu();
+                    break;
 
                 default:
                     break;
@@ -75,6 +78,11 @@ namespace ExampleTemplate
                     _screenFactory.GetMainMenu().HideUI += listenerScreen.HideScreen;
                     _screenFactory.GetMainMenu().Hide();
                     break;
+                case ScreenType.TestMenu:
+                    _screenFactory.GeTestMenu().ShowUI += listenerScreen.ShowScreen;
+                    _screenFactory.GeTestMenu().HideUI += listenerScreen.HideScreen;
+                    _screenFactory.GeTestMenu().Hide();
+                    break;
 
                 default:
                     break;
@@ -94,6 +102,11 @@ namespace ExampleTemplate
                     _screenFactory.GetMainMenu().ShowUI -= listenerScreen.ShowScreen;
                     _screenFactory.GetMainMenu().HideUI -= listenerScreen.HideScreen;
                     _screenFactory.GetMainMenu().Hide();
+                    break;
+                case ScreenType.TestMenu:
+                    _screenFactory.GeTestMenu().ShowUI -= listenerScreen.ShowScreen;
+                    _screenFactory.GeTestMenu().HideUI -= listenerScreen.HideScreen;
+                    _screenFactory.GeTestMenu().Hide();
                     break;
 
                 default:
