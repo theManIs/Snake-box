@@ -95,6 +95,26 @@ namespace Snake_box
             {
                 _list.Add(new FlyingEnemy());
             }
+            
+            for (int i = 0; i < wavesettings[_wave].AcceleratingEnemyCount; i++)
+            {
+                _list.Add(new AcceleratingEnemy());
+            }
+            
+            for (int i = 0; i < wavesettings[_wave].InvisibleEnemyCount; i++)
+            {
+                _list.Add(new InvisibleEnemy());
+            }
+            
+            for (int i = 0; i < wavesettings[_wave].SpawningEnemyCount; i++)
+            {
+                _list.Add(new SpawningEnemy());
+            }
+            
+            for (int i = 0; i < wavesettings[_wave].SpikedEnemyCount; i++)
+            {
+                _list.Add(new SpikedEnemy());
+            }
 
             return _list;
         }

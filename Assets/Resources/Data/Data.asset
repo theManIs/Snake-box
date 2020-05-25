@@ -20,6 +20,11 @@ MonoBehaviour:
   _slowEnemyDataPath: Enemy/SlowEnemyData
   _fastEnemyDataPath: Enemy/FastEnemyData
   _flyingEnemyDataPath: Enemy/FlyingEnemyData
+  _acceleratingEnemyDataPath: Enemy/AcceleratingEnemyData
+  _invisibleEnemyDataPath: Enemy/InvisibleEnemyData
+  _spawnedEnemyDataPath: Enemy/SpawnedEnemyData
+  _spawningEnemyDataPath: Enemy/SpawningEnemyData
+  _spikedEnemyDataPath: Enemy/SpikedEnemyData
   _LevelDataPath: Level/LevelData
   _turretDataPath: Turret/TurretData
   _borderDataPath: Level/BordersData
