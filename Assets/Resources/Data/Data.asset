@@ -22,4 +22,5 @@ MonoBehaviour:
   _flyingEnemyDataPath: Enemy/FlyingEnemyData
   _LevelDataPath: Level/LevelData
   _turretDataPath: Turret/TurretData
+  _shellDataPath: Shells/ShellData
   _blockSnakeDataPath: BlockSnake/BlockSnakeData
