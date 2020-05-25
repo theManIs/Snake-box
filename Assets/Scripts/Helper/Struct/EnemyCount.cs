@@ -9,5 +9,9 @@ namespace Snake_box
         public int SlowEnemyCount;
         public int FastEnemyCount;
         public int FlyingEnemyCount;
+        public int AcceleratingEnemyCount;
+        public int InvisibleEnemyCount;
+        public int SpikedEnemyCount;
+        public int SpawningEnemyCount;
     }
 }

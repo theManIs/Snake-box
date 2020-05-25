@@ -11,16 +11,10 @@ namespace Snake_box
         
         #region ClassLifeCycles
 
-        public SimpleEnemy()
+        public SimpleEnemy() : base(Data.Instance.SimpleEnemy)
         {
             _data = Data.Instance.SimpleEnemy;
             Type = EnemyType.Simple;
-            _prefab = _data.Prefab;
-            _spawnRadius = _data.SpawnRadius;
-            _speed = _data.Speed;
-            _hp = _data.Hp;
-            _damage = _data.Damage;
-            _meleeHitRange = _data.MeleeHitRange;
             GetTarget();
         }
 

@@ -16,7 +16,9 @@ namespace Snake_box
 
         Vector3 GetPosition();
 
-        EnemyType GetEnemyType(); 
+        EnemyType GetEnemyType();
+
+        bool IsValidTarget();
 
         #endregion
     }
