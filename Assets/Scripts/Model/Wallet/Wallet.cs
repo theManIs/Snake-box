@@ -17,19 +17,19 @@ namespace Snake_box
 
         public static int CountWorldCoins()///прибавить валюту
         {
-            return PlayerPrefs.GetInt(Key);
+            return Services.Instance.SaveData.GetInt(Key);
         }
 
         public static void PutWorldCoins(int count)///прибавить валюту
         {
-            PlayerPrefs.SetInt(Key, PlayerPrefs.GetInt(Key)+count);
+            Services.Instance.SaveData.SetInt(Key, Services.Instance.SaveData.GetInt(Key) + count);           
         }
 
         public static void TakeWorldCoins(int count)
         {
             if (count <= CountWorldCoins())
             {
-                PlayerPrefs.SetInt(Key, PlayerPrefs.GetInt(Key) - count);//отнять валюту
+                Services.Instance.SaveData.SetInt(Key, Services.Instance.SaveData.GetInt(Key)- count);  
             }            
         }
 

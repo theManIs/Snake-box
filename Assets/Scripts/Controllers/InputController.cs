@@ -11,6 +11,10 @@ namespace Snake_box
         private KeyCode _right = KeyCode.D;
         private KeyCode _up = KeyCode.W;
         private KeyCode _down = KeyCode.S;
+        private KeyCode _h = KeyCode.H;
+        private KeyCode _j = KeyCode.J;
+        private KeyCode _k = KeyCode.K;
+        private KeyCode _l = KeyCode.L;
 
         #endregion
 
@@ -52,19 +56,19 @@ namespace Snake_box
             {
                 _characterData._characterBehaviour.SetDamage(50);
             }
-            if (Input.GetKey( KeyCode.H))///ТЕСТ начесление монет уровня
+            if (Input.GetKey(_h))///ТЕСТ начесление монет уровня
             {
                 Wallet.PutLocalCoins(30);
             }
-            if (Input.GetKey(KeyCode.J))///ТЕСТ пакупка(растрата) монет уровня
+            if (Input.GetKey(_j))///ТЕСТ пакупка(растрата) монет уровня
             {
                 Wallet.TakeLocalCoins(50);
             }
-            if (Input.GetKey(KeyCode.K))///ТЕСТ начесление монет постоянных
+            if (Input.GetKey(_k))///ТЕСТ начесление монет постоянных
             {
                 Wallet.PutWorldCoins(30);
             }
-            if (Input.GetKey(KeyCode.L))///ТЕСТ пакупка(растрата) монет постоянных
+            if (Input.GetKey(_l))///ТЕСТ пакупка(растрата) монет постоянных
             {
                 Wallet.TakeWorldCoins(50);
             }
