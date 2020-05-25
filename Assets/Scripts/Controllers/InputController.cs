@@ -42,8 +42,8 @@ namespace Snake_box
             {
                 direction = Direction.Down;
             }
-            _characterData.CharacterBehaviour.Move(direction);
-            _characterData.CharacterBehaviour.TeleportIfOutOfBorder();
+            _characterData._characterBehaviour.Move(direction);
+            _characterData._characterBehaviour.TeleportIfOutOfBorder();
             if (Input.GetKeyDown(AxisManager.SPACE))
             {               
                 _characterData._characterBehaviour.SetDamage(50);/// добавление ячейки - хвост
@@ -51,7 +51,23 @@ namespace Snake_box
             if (Input.GetKey(AxisManager.ESCAPE))
             {
                 SceneManager.LoadScene(0);
-            }           
+            }
+            if (Input.GetKey( KeyCode.H))
+            {
+                Wallet.PutLocalCoins(30);
+            }
+            if (Input.GetKey(KeyCode.J))
+            {
+                Wallet.TakeLocalCoins(50);
+            }
+            if (Input.GetKey(KeyCode.K))
+            {
+                Wallet.PutWorldCoins(30);
+            }
+            if (Input.GetKey(KeyCode.L))
+            {
+                Wallet.TakeWorldCoins(50);
+            }
         }
 
         #endregion

@@ -2,7 +2,14 @@
 {
     public sealed class CharacterController : IExecute
     {
-        private readonly CharacterData _characterData;     
+        #region Fields       
+
+        private readonly CharacterData _characterData;
+
+        #endregion
+
+
+        #region Methods
 
         public CharacterController()
         {
@@ -14,6 +21,8 @@
             _characterData._characterBehaviour.RegenerationArmor();
             _characterData._characterBehaviour.Collision();
             _characterData._characterBehaviour.ResetPosition();
-        }       
+        }
+
+        #endregion
     }
 }

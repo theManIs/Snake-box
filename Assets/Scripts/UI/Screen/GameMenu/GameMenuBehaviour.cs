@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 namespace Snake_box
@@ -8,18 +9,20 @@ namespace Snake_box
     {
         #region Fields
 
-        [SerializeField] private Sprite _spriteBlock;
+        [SerializeField] private GameObject _worldCoins;
+        [SerializeField] private GameObject _localCoins;
         [SerializeField] private GameObject _panelTurretsType;
         [SerializeField] private GameObject _panelPause;
+        [SerializeField] private Sprite _spriteBlock;
         [SerializeField] private Button _headSnake; 
         [SerializeField] private Button _pause;
         [SerializeField] private Button _mainMenu;
         [SerializeField] private Button _reset;
-        [SerializeField] private Text _textEndGame;
         [SerializeField] private Button _hpBar;
         [SerializeField] private Button _forceFieldBar;
         [SerializeField] private Button [] _buttonPlus;
         [SerializeField] private Button[] _buttonTurretsType;
+        [SerializeField] private Text _textEndGame;
         CharacterBehaviour _characterBehaviour = Data.Instance.Character._characterBehaviour;
         private int _selectButtonsIndex;
         private bool _isPause;
@@ -63,7 +66,9 @@ namespace Snake_box
 
         private void Update()
         {
-           Bar.ShowCount(_hpBar, _characterBehaviour.SnakeHp, _characterBehaviour.SnakeHpMax, Color.green, Color.red);
+            _worldCoins.GetComponent<TextMeshProUGUI>().text = Wallet.CountWorldCoins().ToString();
+            _localCoins.GetComponent<TextMeshProUGUI>().text = Wallet.CountLocalCoins().ToString();
+            Bar.ShowCount(_hpBar, _characterBehaviour.SnakeHp, _characterBehaviour.SnakeHpMax, Color.green, Color.red);
            Bar.ShowCount(_forceFieldBar, _characterBehaviour.SnakeArmorCurrent, _characterBehaviour.SnakeArmorMax, Color.blue, Color.yellow);
         }
 

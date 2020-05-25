@@ -63,6 +63,7 @@ namespace Snake_box
 
         public void EndLevel()
         {
+            Wallet.ResetLocalCoins();
             var panel = GameObject.FindWithTag(TagManager.GetTag(TagType.PanelEndLevel));
             panel.transform.GetChild(0).gameObject.SetActive(true);
             panel.GetComponentInParent<GameMenuBehaviour>().GetEndLevelText();

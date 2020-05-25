@@ -5,7 +5,7 @@ using TMPro;
 
 namespace Snake_box
 {
-    public sealed class Bar : MonoBehaviour
+    public sealed class Bar
     {
 
         #region Methods
