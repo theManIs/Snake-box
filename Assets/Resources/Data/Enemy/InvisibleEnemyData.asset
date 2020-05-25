@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb8c2db31d94462dabc57dec97cc3554, type: 3}
   m_Name: InvisibleEnemyData
   m_EditorClassIdentifier: 
-  ArmorType: 0
-  Prefab: {fileID: 0}
-  Hp: 0
-  Speed: 0
-  Damage: 0
-  SpawnRadius: 0
+  ArmorType: 1
+  Prefab: {fileID: 5058968977680414830, guid: 796c9aacf5d197246b8aff8236df6438, type: 3}
+  Hp: 100
+  Speed: 1
+  Damage: 1
+  SpawnRadius: 50
   SizePack: 0
   PackValue: 0
-  InvisibleTime: 0
+  MeleeHitRange: 1
+  InvisibleTime: 3

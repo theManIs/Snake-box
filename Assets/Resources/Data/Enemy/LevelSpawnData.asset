@@ -20,10 +20,10 @@ MonoBehaviour:
     SlowEnemyCount: 0
     FastEnemyCount: 0
     FlyingEnemyCount: 0
-    AcceleratingEnemyCount: 0
+    AcceleratingEnemyCount: 1
     InvisibleEnemyCount: 0
     SpikedEnemyCount: 0
-    SpawningEnemyCount: 1
+    SpawningEnemyCount: 0
   - SimpleEnemyCount: 0
     SlowEnemyCount: 0
     FastEnemyCount: 0

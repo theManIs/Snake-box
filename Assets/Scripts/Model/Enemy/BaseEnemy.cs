@@ -102,7 +102,7 @@ namespace Snake_box
 
         #region Methods
 
-        private void HitCheck()
+        protected virtual void HitCheck()
         {
             Collider[] colliders = new Collider[10];
             Physics.OverlapSphereNonAlloc(_transform.position, _meleeHitRange, colliders);
@@ -118,7 +118,11 @@ namespace Snake_box
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Player)))
                     {
-                        //Data.Instance.Character.SetHp(-_damage);
+                        Data.Instance.Character._characterBehaviour.SetArmor(_damage);
+                    }
+                    else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Block)))
+                    {
+                        Data.Instance.Character._characterBehaviour.SetDamage(_damage);        
                     }
                 }
 
