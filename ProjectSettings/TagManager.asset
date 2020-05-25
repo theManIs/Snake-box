@@ -13,6 +13,7 @@ TagManager:
   - Block
   - Spawn
   - PanelEndLevel
+  - Enemy
   layers:
   - Default
   - TransparentFX

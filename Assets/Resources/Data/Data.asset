@@ -23,4 +23,5 @@ MonoBehaviour:
   _LevelDataPath: Level/LevelData
   _turretDataPath: Turret/TurretData
   _shellDataPath: Shells/ShellData
+  _borderDataPath: Level/BordersData
   _blockSnakeDataPath: BlockSnake/BlockSnakeData

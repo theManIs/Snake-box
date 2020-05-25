@@ -26,10 +26,11 @@ namespace Snake_box
         public bool IsLevelSpawnEnded { get; set; }
         public bool IsLevelStarted { get; set; }
         public bool IsTargetDestroed { get; set; }
+        public bool IsSnakeAlive { get; set; }
 
         #endregion
 
-        
+
         #region ClassLifeCycles
 
         public LevelService()
