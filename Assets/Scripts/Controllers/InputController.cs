@@ -44,27 +44,27 @@ namespace Snake_box
             }
             _characterData._characterBehaviour.Move(direction);
             _characterData._characterBehaviour.TeleportIfOutOfBorder();
-            if (Input.GetKeyDown(AxisManager.SPACE))
-            {               
-                _characterData._characterBehaviour.SetDamage(50);/// добавление ячейки - хвост
-            }
             if (Input.GetKey(AxisManager.ESCAPE))
             {
                 SceneManager.LoadScene(0);
             }
-            if (Input.GetKey( KeyCode.H))
+            if (Input.GetKeyDown(AxisManager.SPACE))///ТЕСТ Нанесение Урона змейке
+            {
+                _characterData._characterBehaviour.SetDamage(50);
+            }
+            if (Input.GetKey( KeyCode.H))///ТЕСТ начесление монет уровня
             {
                 Wallet.PutLocalCoins(30);
             }
-            if (Input.GetKey(KeyCode.J))
+            if (Input.GetKey(KeyCode.J))///ТЕСТ пакупка(растрата) монет уровня
             {
                 Wallet.TakeLocalCoins(50);
             }
-            if (Input.GetKey(KeyCode.K))
+            if (Input.GetKey(KeyCode.K))///ТЕСТ начесление монет постоянных
             {
                 Wallet.PutWorldCoins(30);
             }
-            if (Input.GetKey(KeyCode.L))
+            if (Input.GetKey(KeyCode.L))///ТЕСТ пакупка(растрата) монет постоянных
             {
                 Wallet.TakeWorldCoins(50);
             }

@@ -67,7 +67,6 @@ namespace Snake_box
 
         public void AddBlock()// добавление блока
         {
-            Debug.Log(_blocksSnakes.Count);
             if (_blocksSnakes.Count < 4)
             {
                 _blockSnakeData = Data.Instance.BlockSnake;

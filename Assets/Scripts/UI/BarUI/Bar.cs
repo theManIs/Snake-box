@@ -12,10 +12,10 @@ namespace Snake_box
 
         public static void ShowCount(Button button, float currentCount, float maxCount, Color fullColor, Color halfColor)
         {
-            button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = currentCount.ToString();
+            button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text =((int)currentCount).ToString();
             currentCount = currentCount / maxCount;
             button.image.fillAmount = currentCount;
-            button.image.color = (currentCount >= 0.6) ? fullColor : halfColor;           
+            button.image.color = (currentCount >= 0.6) ? fullColor : halfColor;
         }
 
         #endregion

@@ -39,7 +39,8 @@ namespace Snake_box
             _snakeArmorCurrent -= damage;
             if (_snakeArmorCurrent < 0)// если защита отрицательная 
             {
-                SetDamage(_snakeArmorCurrent); /// то урон переносится на HP
+                SetDamage(-_snakeArmorCurrent); /// то урон переносится на HP
+                _snakeArmorCurrent = 0;
             }
         }
 
