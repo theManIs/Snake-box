@@ -132,6 +132,11 @@ namespace Snake_box
                 transform.position = new Vector3(transform.position.x, bordersData.BottomBorderY + TELEPORTATION_OFFSET, transform.position.z);
         }
 
+        public void SetDamage(IDamageAddressee damageAddressee)
+        {
+            damageAddressee.RegisterDamage(_damage,ArmorTypes.None);
+        }
+
         #endregion
     }
 }
