@@ -1,7 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -19,8 +16,11 @@ namespace Snake_box
         [SerializeField] private Button _mainMenu;
         [SerializeField] private Button _reset;
         [SerializeField] private Text _textEndGame;
+        [SerializeField] private Button _hpBar;
+        [SerializeField] private Button _forceFieldBar;
         [SerializeField] private Button [] _buttonPlus;
         [SerializeField] private Button[] _buttonTurretsType;
+        CharacterBehaviour _characterBehaviour = Data.Instance.Character._characterBehaviour;
         private int _selectButtonsIndex;
         private bool _isPause;
 
@@ -61,19 +61,24 @@ namespace Snake_box
             _pause.onClick.RemoveListener(Pause);
         }
 
+        private void Update()
+        {
+           Bar.ShowCount(_hpBar, _characterBehaviour.SnakeHp, _characterBehaviour.SnakeHpMax, Color.green, Color.red);
+           Bar.ShowCount(_forceFieldBar, _characterBehaviour.SnakeArmorCurrent, _characterBehaviour.SnakeArmorMax, Color.blue, Color.yellow);
+        }
+
         #endregion
 
 
-        #region Methods               
-
+        #region Methods  
 
         private void AddTurret(int i)
         {
-            var _characterData = Data.Instance.Character;
-            _characterData.CharacterBehaviour.GetBlock(_selectButtonsIndex).AddTurret();
+            _characterBehaviour.GetBlock(_selectButtonsIndex).AddTurret();
             _buttonPlus[_selectButtonsIndex].image.sprite = _buttonTurretsType[i].image.sprite;
             _panelTurretsType.SetActive(false);
         }
+
         private void ChangeSprite(int numberButton)//меняем спрайт плюса на спрайт блока и активируем след кнопку плусик
         {
             if (_buttonPlus.Length > numberButton+1)
@@ -81,7 +86,7 @@ namespace Snake_box
              _buttonPlus[numberButton + 1].interactable = true;// включаем след. кнопку
             }
             _buttonPlus[numberButton].image.sprite = _spriteBlock;// меняем спрайт плюса на спрайт блока    
-            Data.Instance.Character.CharacterBehaviour.AddBlock();
+            _characterBehaviour.AddBlock();
         }
 
         private void Pause()
@@ -101,9 +106,8 @@ namespace Snake_box
         }
 
         private void AddBlock(int numberButton)//метод добавления турели если его нет то  
-        {
-           var _characterData = Data.Instance.Character;
-            if (_characterData.CharacterBehaviour.GetBlock(numberButton))// если есть блок то активируем панель для выбопв турели
+        {           
+            if (_characterBehaviour.GetBlock(numberButton))// если есть блок то активируем панель для выбопв турели
             {
                 _panelTurretsType.SetActive (true);
                 _selectButtonsIndex = numberButton;
@@ -126,7 +130,7 @@ namespace Snake_box
         public void GetEndLevelText()
         {
             _pause.interactable = false;      
-            if (Services.Instance.LevelService.IsTargetDestroed==true)
+            if (Services.Instance.LevelService.IsTargetDestroed==true&& Services.Instance.LevelService.IsSnakeAlive==false)
             {
                 _textEndGame.text = "Congratulations!You Loser!";               
             }
@@ -135,9 +139,9 @@ namespace Snake_box
                 _textEndGame.text = "Congratulations!";               
             }
             Services.Instance.TimeService.SetTimeScale(0);
-        }
-
+        }        
 
         #endregion
+
     }
 }

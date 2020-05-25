@@ -27,4 +27,5 @@ MonoBehaviour:
   _spikedEnemyDataPath: Enemy/SpikedEnemyData
   _LevelDataPath: Level/LevelData
   _turretDataPath: Turret/TurretData
+  _borderDataPath: Level/BordersData
   _blockSnakeDataPath: BlockSnake/BlockSnakeData

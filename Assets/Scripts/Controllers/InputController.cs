@@ -42,10 +42,11 @@ namespace Snake_box
             {
                 direction = Direction.Down;
             }
-            _characterData.CharacterBehaviour.Move(direction);
+            _characterData._characterBehaviour.Move(direction);
+            _characterData._characterBehaviour.TeleportIfOutOfBorder();
             if (Input.GetKeyDown(AxisManager.SPACE))
             {               
-                _characterData.CharacterBehaviour.AddBlock();/// добавление ячейки - хвост
+                _characterData._characterBehaviour.SetDamage(50);/// добавление ячейки - хвост
             }
             if (Input.GetKey(AxisManager.ESCAPE))
             {

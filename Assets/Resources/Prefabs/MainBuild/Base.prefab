@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 6601483105184412585}
   m_Layer: 0
   m_Name: Base
-  m_TagString: Base
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
