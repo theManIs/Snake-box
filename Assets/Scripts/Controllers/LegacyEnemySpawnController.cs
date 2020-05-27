@@ -3,9 +3,9 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
-namespace Snake_box
+namespace Snake_box.Legacy
 {
-    public sealed class EnemySpawnController : IInitialization, IExecute
+    public sealed class LegacyEnemySpawnController : IInitialization, IExecute
     {
         #region Fields
 
@@ -26,7 +26,7 @@ namespace Snake_box
 
         #region ClassLifeCycle
 
-        public EnemySpawnController()
+        public LegacyEnemySpawnController()
         {
             _levelService = Services.Instance.LevelService;
         }
