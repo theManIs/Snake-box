@@ -12,4 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab35c33e3734ce947aa73315299123e0, type: 3}
   m_Name: Level1EnemySpawnList
   m_EditorClassIdentifier: 
-  _enemies: []
+  _enemies:
+  - _enemyType: 2
+    _spawnTiming: 1
+    _spawnPointId: 0
+  - _enemyType: 2
+    _spawnTiming: 1.5
+    _spawnPointId: 0
+  - _enemyType: 2
+    _spawnTiming: 2
+    _spawnPointId: 0
+  - _enemyType: 1
+    _spawnTiming: 7
+    _spawnPointId: 0
+  - _enemyType: 1
+    _spawnTiming: 7.5
+    _spawnPointId: 0
+  - _enemyType: 1
+    _spawnTiming: 8
+    _spawnPointId: 0
+  - _enemyType: 3
+    _spawnTiming: 13
+    _spawnPointId: 0
+  - _enemyType: 3
+    _spawnTiming: 13.5
+    _spawnPointId: 0
+  - _enemyType: 3
+    _spawnTiming: 14
+    _spawnPointId: 0

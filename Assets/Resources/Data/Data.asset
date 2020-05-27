@@ -29,3 +29,4 @@ MonoBehaviour:
   _turretDataPath: Turret/TurretData
   _borderDataPath: Level/BordersData
   _blockSnakeDataPath: BlockSnake/BlockSnakeData
+  _allSpawnListsDataPath: EnemySpawn/AllSpawnListsData
