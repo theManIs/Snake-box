@@ -29,7 +29,7 @@ namespace Snake_box
             throw new System.NotImplementedException();
         }
 
-        public void Spawn()
+        public void Spawn(Vector3 position)
         {
             throw new System.NotImplementedException();
         }

@@ -29,9 +29,8 @@ namespace Snake_box
         [SerializeField] private string _LevelDataPath;
         [SerializeField] private string _turretDataPath;
         [SerializeField] private string _borderDataPath;
-        private static EnemySpawnData _enemySpawnData;
-        private static LevelSpawnData _levelSpawnData;
         [SerializeField] private string _blockSnakeDataPath;
+        [SerializeField] private string _allSpawnListsDataPath;
         private static ShakesData _shake;
         private static CharacterData _characterData;
         private static SimpleEnemyData _simpleEnemyData;
@@ -91,19 +90,6 @@ namespace Snake_box
                 }
 
                 return _characterData;
-            }
-        }
-
-        public EnemySpawnData EnemySpawn
-        {
-            get
-            {
-                if (_enemySpawnData == null)
-                {
-                    _enemySpawnData = Load<EnemySpawnData>("Data/" + Instance._enemySpawnDataPath);
-                }
-
-                return _enemySpawnData;
             }
         }
 
@@ -224,19 +210,6 @@ namespace Snake_box
             }
         }
 
-        public LevelSpawnData LevelSpawn
-        {
-            get
-            {
-                if (_levelSpawnData == null)
-                {
-                    _levelSpawnData = Load<LevelSpawnData>("Data/" + Instance._levelSpawnDataPath);
-                }
-
-                return _levelSpawnData;
-            }
-        }
-
         public LevelData LevelData
         {
             get
@@ -264,6 +237,8 @@ namespace Snake_box
         }
 
         public BordersData BordersData => Load<BordersData>("Data/" + Instance._borderDataPath);
+
+        public AllSpawnListsData AllSpawnListsData => Load<AllSpawnListsData>("Data/" + Instance._allSpawnListsDataPath);
 
         #endregion
 
