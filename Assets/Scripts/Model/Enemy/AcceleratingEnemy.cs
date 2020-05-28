@@ -30,9 +30,9 @@ namespace Snake_box
 
         #region IEnemy
 
-        public override void Spawn()
+        public override void Spawn(Vector3 position)
         {
-            base.Spawn();
+            base.Spawn(position);
             _navMeshAgent.acceleration = _accelerating;
             _navMeshAgent.speed = _maxSpeed;
             CustomDebug.Log(_navMeshAgent.acceleration);

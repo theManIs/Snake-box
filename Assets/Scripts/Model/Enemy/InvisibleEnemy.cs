@@ -29,9 +29,9 @@ namespace Snake_box
 
         #region IEnemy
 
-        public override void Spawn()
+        public override void Spawn(Vector3 position)
         {
-            base.Spawn();
+            base.Spawn(position);
             _render = _enemyObject.GetComponent<MeshRenderer>();
         }
 
