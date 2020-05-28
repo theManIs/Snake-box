@@ -6,6 +6,7 @@ namespace Snake_box
     public sealed class InputController : IExecute
     {
         #region Private Data
+        [SerializeField] private float _minDistanceForSwipe;
 
         private KeyCode _left = KeyCode.A;
         private KeyCode _right = KeyCode.D;
@@ -16,9 +17,14 @@ namespace Snake_box
         private KeyCode _k = KeyCode.K;
         private KeyCode _l = KeyCode.L;
 
-        #endregion
-
         private readonly CharacterData _characterData;
+#if UNITY_IOS || UNITY_ANDROID
+        private Vector2 _fingerDownPosition;
+        private Vector2 _fingerUpPosition;
+
+        private Vector2 _fingerMovement => _fingerUpPosition - _fingerDownPosition;
+#endif
+        #endregion
 
         public InputController()
         {
@@ -29,7 +35,8 @@ namespace Snake_box
 
         public void Execute()
         {
-            Direction direction = Direction.None;          
+            Direction direction = Direction.None;
+#if UNITY_STANDALONE || UNITY_WEBGL || UNITY_EDITOR || UNITY_WSA
             if (Input.GetKeyDown(_left))
             {
                 direction = Direction.Left;
@@ -46,6 +53,41 @@ namespace Snake_box
             {
                 direction = Direction.Down;
             }
+#endif
+#if UNITY_IOS || UNITY_ANDROID
+            if (Input.touchCount > 0)
+            {
+                var touch = Input.touches[0];
+                switch(touch.phase)
+                {
+                    case TouchPhase.Began:
+                        _fingerDownPosition = touch.position;
+                        _fingerUpPosition = touch.position;
+                        break;
+                    case TouchPhase.Moved:
+                    case TouchPhase.Ended:
+                        _fingerUpPosition = touch.position;
+                        if(_fingerMovement.sqrMagnitude >= _minDistanceForSwipe * _minDistanceForSwipe)
+                        {
+                            if(Mathf.Abs(_fingerMovement.x) > Mathf.Abs(_fingerMovement.y))
+                            {
+                                if (_fingerMovement.x > 0)
+                                    direction = Direction.Right;
+                                else
+                                    direction = Direction.Left;
+                            }
+                            else
+                            {
+                                if (_fingerMovement.y > 0)
+                                    direction = Direction.Up;
+                                else
+                                    direction = Direction.Down;
+                            }
+                        }
+                        break;
+                }
+            }
+#endif
             _characterData._characterBehaviour.Move(direction);
             _characterData._characterBehaviour.TeleportIfOutOfBorder();
             if (Input.GetKey(AxisManager.ESCAPE))
@@ -74,6 +116,6 @@ namespace Snake_box
             }
         }
 
-        #endregion
+#endregion
     }
 }
