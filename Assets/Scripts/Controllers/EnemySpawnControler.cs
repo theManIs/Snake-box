@@ -22,7 +22,7 @@ namespace Snake_box
 
         public void Execute()
         {
-            while (!IsSpawningFinished && _enemiesToSpawnQueue.Peek().SpawnTiming <= Timer.Instance.TimeSinceLevelStart)
+            while (!IsSpawningFinished && _enemiesToSpawnQueue.Peek().SpawnTiming <= TimerController.Instance.TimeSinceLevelStart)
             {
                 SpawnNextEnemy();
             }

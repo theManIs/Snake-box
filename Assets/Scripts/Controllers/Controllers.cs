@@ -25,7 +25,7 @@ namespace Snake_box
         public Controllers()
         {
             _initializations = new IInitialization[1];
-            _initializations[0] = new Timer();
+            _initializations[0] = new TimerController();
             _executeControllers = new IExecute[7];
             _executeControllers[0] = new TimeRemainingController();
             _executeControllers[1] = new InputController();
