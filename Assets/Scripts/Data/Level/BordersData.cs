@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Snake_box
 {
@@ -7,12 +8,12 @@ namespace Snake_box
     {
         [SerializeField] private float _leftBorderX;
         [SerializeField] private float _rightBorderX;
-        [SerializeField] private float _topBorderY;
-        [SerializeField] private float _bottomBorderY;
+        [SerializeField] private float _topBorderZ;
+        [SerializeField] private float _bottomBorderZ;
 
         public float LeftBorderX => _leftBorderX;
         public float RightBorderX => _rightBorderX;
-        public float TopBorderY => _topBorderY;
-        public float BottomBorderY => _bottomBorderY;
+        public float TopBorderZ => _topBorderZ;
+        public float BottomBorderZ => _bottomBorderZ;
     } 
 }
