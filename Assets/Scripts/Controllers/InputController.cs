@@ -6,7 +6,6 @@ namespace Snake_box
     public sealed class InputController : IExecute
     {
         #region Private Data
-        [SerializeField] private float _minDistanceForSwipe;
 
         private KeyCode _left = KeyCode.A;
         private KeyCode _right = KeyCode.D;
@@ -19,6 +18,8 @@ namespace Snake_box
 
         private readonly CharacterData _characterData;
 #if UNITY_IOS || UNITY_ANDROID
+        private float _minDistanceForSwipe = 20;
+
         private Vector2 _fingerDownPosition;
         private Vector2 _fingerUpPosition;
 
