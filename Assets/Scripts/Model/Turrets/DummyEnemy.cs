@@ -17,6 +17,10 @@ namespace Snake_box
 
         public Vector3 GetPosition() => transform.position;
         public EnemyType GetEnemyType() => EnemyType.Fast;
+        public bool IsValidTarget()
+        {
+            throw new System.NotImplementedException();
+        }
 
         public ArmorTypes GetArmorType() => ArmorType;
 
@@ -25,7 +29,7 @@ namespace Snake_box
             throw new System.NotImplementedException();
         }
 
-        public void Spawn()
+        public void Spawn(Vector3 position)
         {
             throw new System.NotImplementedException();
         }

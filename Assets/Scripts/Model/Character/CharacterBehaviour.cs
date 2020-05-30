@@ -67,7 +67,6 @@ namespace Snake_box
 
         public void AddBlock()// добавление блока
         {
-            Debug.Log(_blocksSnakes.Count);
             if (_blocksSnakes.Count < 4)
             {
                 _blockSnakeData = Data.Instance.BlockSnake;
@@ -131,6 +130,11 @@ namespace Snake_box
                 transform.position = new Vector3(transform.position.x , bordersData.TopBorderY - TELEPORTATION_OFFSET, transform.position.z);
             if (transform.position.y > bordersData.TopBorderY)
                 transform.position = new Vector3(transform.position.x, bordersData.BottomBorderY + TELEPORTATION_OFFSET, transform.position.z);
+        }
+
+        public void SetDamage(IDamageAddressee damageAddressee)
+        {
+            damageAddressee.RegisterDamage(_damage,ArmorTypes.None);
         }
 
         #endregion
