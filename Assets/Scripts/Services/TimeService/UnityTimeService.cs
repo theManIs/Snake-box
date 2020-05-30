@@ -8,8 +8,6 @@ namespace Snake_box
     {
         #region Fields
 
-        public static UnityTimeService Instance { get; private set; }
-
         private int _deltaTimeResetFrame;
         private float _levelStartTime;
 
@@ -19,11 +17,6 @@ namespace Snake_box
 
         public UnityTimeService()
         {
-            if (Instance == null)
-                Instance = this;
-            else
-                throw new InvalidOperationException();
-
             _levelStartTime = Time.time;
         }
 
