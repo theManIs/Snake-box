@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 7551110187785512198}
   m_Layer: 0
   m_Name: Prefabs_BlockSnake_BlockSnake
-  m_TagString: BlockSnacke
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

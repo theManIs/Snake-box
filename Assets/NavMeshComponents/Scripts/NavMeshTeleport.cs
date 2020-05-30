@@ -25,7 +25,6 @@ public class NavMeshTeleport : MonoBehaviour
     IEnumerator Teleport(NavMeshAgent agent)
     {
         OffMeshLinkData data = agent.currentOffMeshLinkData;
-        Debug.Log("Im Teleport");
         Vector3 endpos = data.endPos + Vector3.up * agent.baseOffset;
         agent.transform.position = endpos;
         yield return null;

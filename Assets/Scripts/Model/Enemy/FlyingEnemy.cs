@@ -11,16 +11,10 @@ namespace Snake_box
         
         #region ClassLifeCycle
 
-        public FlyingEnemy()
+        public FlyingEnemy() : base(Data.Instance.FlyingEnemy)
         {
             _data = Data.Instance.FlyingEnemy;
             Type = EnemyType.Flying;
-            _prefab = _data.Prefab;
-            _spawnRadius = _data.SpawnRadius;
-            _speed = _data.Speed;
-            _hp = _data.Hp;
-            _damage = _data.Damage;
-            _meleeHitRange = _data.MeleeHitRange;
             GetTarget();
         }
 
