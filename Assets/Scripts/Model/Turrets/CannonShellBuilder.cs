@@ -1,6 +1,4 @@
-﻿using System;
-using Assets.Scripts.Model.Turrets;
-using UnityEngine;
+﻿using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Snake_box
@@ -9,8 +7,8 @@ namespace Snake_box
     {
         #region Fields
 
-        private static readonly GameObject TurretShellPrefab = Resources.Load<GameObject>("Prefabs/Turrets/Bullet/Prefabs/Bullet762");
-        private static TurretProjectileController _turretProjectileController; 
+//        private static readonly GameObject TurretShellPrefab = Resources.Load<GameObject>("Prefabs/Turrets/Bullet/Prefabs/Bullet762");
+        private static TurretProjectileController _turretProjectileController;
 
         #endregion
 
@@ -26,10 +24,11 @@ namespace Snake_box
 
         public override void Build(Transform firePoint, IEnemy enemy)
         {
-            GameObject prefabObject = Object.Instantiate(TurretShellPrefab, Vector3.zero, TurretShellPrefab.transform.rotation);
+            GameObject prefabObject = Object.Instantiate(ProjectilePreferences.ProjectilePrefab, Vector3.zero, ProjectilePreferences.ProjectilePrefab.transform.rotation);
             TurretProjectile turretProjectile = new TurretProjectile();
 
             turretProjectile.SetGameObject(prefabObject);
+            turretProjectile.SetProjectilePreferences(ProjectilePreferences);
             turretProjectile.SetFirePoint(firePoint);
             turretProjectile.SetTarget(enemy);
             turretProjectile.SetLookRotation(enemy.GetTransform());

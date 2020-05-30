@@ -18,20 +18,26 @@ namespace Snake_box
         public int ObjectId;
         private float _journeyDistance;
         private bool _targetLocked = false;
-        private Vector3 _angleLock = new Vector3(90, 0, 0);
+        private ProjectilePreferences _projectilePreferences;
+
+        #endregion
+
+
+        #region Properties
+
+        public Vector3 AngleLock => _projectilePreferences.AngleLock;
+        public float CarryingDamage => _projectilePreferences.ProjectileDamage;
+        public int BulletSpeed => _projectilePreferences.ProjectileSpeed;
+        public ArmorTypes ArmorPiecing => _projectilePreferences.ArmorPiercing;
 
         #endregion
 
 
         #region Methods
 
-        public abstract ArmorTypes GetArmorType();
-
-        public abstract float GetCarryingDamage();
-
         public abstract void Execute();
 
-        public abstract int GetBulletSpeed();
+        public void SetProjectilePreferences(ProjectilePreferences projectilePreferences) => _projectilePreferences = projectilePreferences;
 
         public void SetTarget(IEnemy enemyTransform)
         {
@@ -51,7 +57,7 @@ namespace Snake_box
 
                 Vector3 direction3d = lookAt.position - _projectileInstance.transform.position;
                 Vector3 eulerAngles = Quaternion.LookRotation(direction3d).eulerAngles;
-                eulerAngles.x = _angleLock.x;
+                eulerAngles.x = AngleLock.x;
                 _projectileInstance.transform.rotation = Quaternion.Euler(eulerAngles);
             }
         }
@@ -96,14 +102,14 @@ namespace Snake_box
             DecommissionIfTargetDown();
 
             if (_projectileInstance == null 
-                || Math.Abs(GetBulletSpeed()) <= 0 
+                || Math.Abs(BulletSpeed) <= 0 
                 || _targetToPursue == null 
                 || Math.Abs(_journeyDistance) <= 0.0f
                 || _targetToPursue.AmIDestroyed())
                 return;
 
             float projectileLifespan = Time.time - _timeStart;
-            float coveredDistance = projectileLifespan * GetBulletSpeed();
+            float coveredDistance = projectileLifespan * BulletSpeed;
             float interpolation = coveredDistance / _journeyDistance;
 
             _projectileInstance.transform.position = 
@@ -120,7 +126,7 @@ namespace Snake_box
             if (!_targetToPursue.AmIDestroyed())
             {
                 if (_targetToPursue is IDamageAddressee ida) 
-                    ida.RegisterDamage(GetCarryingDamage(), GetArmorType());
+                    ida.RegisterDamage(CarryingDamage, ArmorPiecing);
             }
 
             ToDispose = true;
