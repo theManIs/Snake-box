@@ -8,6 +8,9 @@ namespace Snake_box
     {
         #region Fields
 
+        public int PlainTurretRange = 20;
+        public int PlainTurretCooldown = 250;
+
         private List<TurretBaseAbs> _turretList = new List<TurretBaseAbs>();
 
         #endregion
