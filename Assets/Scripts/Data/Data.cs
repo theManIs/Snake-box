@@ -30,8 +30,8 @@ namespace Snake_box
         [SerializeField] private string _borderDataPath;
         [SerializeField] private string _turretDataPath;
         [SerializeField] private string _shellDataPath;
-        private static EnemySpawnData _enemySpawnData;
-        private static LevelSpawnData _levelSpawnData;
+        //private static EnemySpawnData _enemySpawnData;  //кто тут последний шаманил?
+        //private static LevelSpawnData _levelSpawnData;  //если нужно - пофиксить ошибки, если нет удалите 
         [SerializeField] private string _blockSnakeDataPath;
         [SerializeField] private string _allSpawnListsDataPath;
         private static ShakesData _shake;

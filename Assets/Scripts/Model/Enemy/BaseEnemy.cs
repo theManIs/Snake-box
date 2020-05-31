@@ -119,6 +119,7 @@ namespace Snake_box
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Player)))
                     {
                         Data.Instance.Character._characterBehaviour.SetArmor(_damage);
+                        Data.Instance.Character._characterBehaviour.SetDamage(this);
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Block)))
                     {
