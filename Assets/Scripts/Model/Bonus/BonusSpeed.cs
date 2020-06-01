@@ -26,13 +26,13 @@
         public override void Use()
         {
             base.Use();
-            Data.Instance.Character.CharacterBehaviour.SnakeSpeed += _speed;
+            Services.Instance.LevelService.CharacterBehaviour.SnakeSpeed += _speed;
             _spawnInvoker.AddTimeRemaining();
         }
 
         public void StopEffect()
         {
-            Data.Instance.Character.CharacterBehaviour.SnakeSpeed -= _speed;
+            Services.Instance.LevelService.CharacterBehaviour.SnakeSpeed -= _speed;
             _spawnInvoker.RemoveTimeRemaining();
         }
 

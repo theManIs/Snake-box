@@ -13,13 +13,7 @@ namespace Snake_box
         private KeyCode _down = KeyCode.S;        
 
         #endregion
-
-        private readonly CharacterData _characterData;
-
-        public InputController()
-        {
-            _characterData = Data.Instance.Character;           
-        }
+        
 
         #region IExecute
 
@@ -42,8 +36,8 @@ namespace Snake_box
             {
                 direction = Direction.Down;
             }
-            _characterData.CharacterBehaviour.Move(direction);
-            _characterData.CharacterBehaviour.TeleportIfOutOfBorder();
+            Services.Instance.LevelService.CharacterBehaviour.InputMove(direction);
+            Services.Instance.LevelService.CharacterBehaviour.TeleportIfOutOfBorder();
             if (Input.GetKey(AxisManager.ESCAPE))
             {
                 SceneManager.LoadScene(0);

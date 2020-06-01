@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f6a24a95d2fa9243b0f224481205146, type: 3}
   m_Name: BlockSnakeData
   m_EditorClassIdentifier: 
-  _hpBlock: 100
+  HpBlock: 100
+  SlowSnake: 1

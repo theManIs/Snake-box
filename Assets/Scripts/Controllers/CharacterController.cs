@@ -1,27 +1,32 @@
-﻿namespace Snake_box
+﻿using UnityEngine;
+namespace Snake_box
 {
-    public sealed class CharacterController : IExecute
+    public sealed class CharacterController : IExecute, IInitialization
     {
-        #region Fields       
-
-        private readonly CharacterData _characterData;
+        #region Fields  
+        
+        private CharacterBehaviour _characterBehaviour;
 
         #endregion
 
 
-        #region Methods
+        #region Methods        
 
-        public CharacterController()
+        public void Initialization()
         {
-            _characterData = Data.Instance.Character;
-            _characterData.Initialization();
-        }
+            Services.Instance.LevelService.IsSnakeAlive = true;
+            var characterBehaviour = CustomResources.Load<CharacterBehaviour>
+                (AssetsPathGameObject.GameObjects[GameObjectType.Character]);
+            _characterBehaviour = Object.Instantiate(characterBehaviour);
+            Services.Instance.LevelService.CharacterBehaviour = _characterBehaviour;
+        }        
 
         public void Execute()
         {
-            _characterData.CharacterBehaviour.RegenerationArmor();
-            _characterData.CharacterBehaviour.Collision();
-            _characterData.CharacterBehaviour.ResetPosition();
+            _characterBehaviour.ConstantMove();
+            _characterBehaviour.RegenerationArmor();
+            _characterBehaviour.Collision();
+            _characterBehaviour.ResetPosition();
         }
 
         #endregion

@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 715a66ab18a45af42876cd750d982751, type: 3}
   m_Name: CharacterData
   m_EditorClassIdentifier: 
-  SlowSpeed: 0
-  CharacterBehaviour: {fileID: 0}
   Hp: 300
   Armor: 100
   RegenerationArmor: 1
   SpeedRotation: 8
-  Speed: 10
+  Speed: 12
   Damage: 5

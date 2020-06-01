@@ -6,7 +6,8 @@ namespace Snake_box
     [CreateAssetMenu(fileName = "BlockSnakeData", menuName = "Data/BlockSnake/BlockSnake")]
     public sealed class BlockSnakeData : ScriptableObject
     {
-        [SerializeField] private float _hpBlock;//увиличения здоровья змейки при добовление блока
+        public float HpBlock;//увиличения здоровья змейки при добовление блока
+        public float SlowSnake;
         private BlockSnake _blockSnake;
 
         public BlockSnake Initialization()
@@ -18,7 +19,7 @@ namespace Snake_box
 
         public float GetHp()
         {
-            return _hpBlock;
+            return HpBlock;
         }
     }
 }

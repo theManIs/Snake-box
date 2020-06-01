@@ -8,14 +8,13 @@ namespace Snake_box
 
         #region Fields     
 
-        protected float _snakeHp;
-        protected float _snakeArmorCurrent;
-        protected float _armorMax;
-        protected float _snakeHpMax;
-        protected float _snakeArmorGeneration = 1;
-        protected float _damage;
-        protected float _speed;
-        protected float _slowSpeed;
+        protected float _baseArmor;///Базовое кол-во Щита
+        protected float _currentArmor;//Текущее кол-во Щита
+        protected float _snakeArmorGeneration;//Время регенерации щита
+        protected float _baseSnakeHp;///Базовое кол-во Здоровья
+        protected float _currentSnakeHp;//Текущее кол-во Здоровья
+        protected float _damage;//урон
+        protected float _speed;//скорость
         private Direction _direction = Direction.Up;
 
         #endregion
@@ -23,11 +22,13 @@ namespace Snake_box
 
         #region Properties
 
-        public float SnakeSpeed { get { return _speed; } set => _speed = value; }
-        public float SnakeHp { get { return _snakeHp; } set => _snakeHp = value; }
-        public float SnakeHpMax { get { return _snakeHpMax; } }
-        public float SnakeArmorCurrent { get { return _snakeArmorCurrent; } }
-        public float SnakeArmorMax { get { return _armorMax; } }
+        public float SnakeSpeed { get => _speed;  set => _speed = value; }
+        public float BaseSnakeHp { get => _baseSnakeHp;  set => _baseSnakeHp = value; }
+        public float CurrentSnakeHp { get => _currentSnakeHp;  set => _currentSnakeHp = value; }
+        public float BaseSnakeArmor { get => _baseArmor;  set => _baseArmor = value; }
+        public float CurrentSnakeArmor { get => _currentArmor;  set => _currentArmor = value; }
+        public float SnakeArmorGeneration { get => _snakeArmorGeneration; set => _snakeArmorGeneration = value; }
+        public float Damage { get => _damage; set => _damage = value; }
 
         #endregion
 
@@ -36,18 +37,18 @@ namespace Snake_box
 
         public void SetArmor(float damage)///нанесения урона с зашитой
         {
-            _snakeArmorCurrent -= damage;
-            if (_snakeArmorCurrent < 0)// если защита отрицательная 
+            _currentArmor -= damage;
+            if (_currentArmor < 0)// если защита отрицательная 
             {
-                SetDamage(-_snakeArmorCurrent); /// то урон переносится на HP
-                _snakeArmorCurrent = 0;
+                SetDamage(-_currentArmor); /// то урон переносится на HP
+                _currentArmor = 0;
             }
         }
 
         public void SetDamage(float damage)///нанесения урона без зашиты
         {
-            _snakeHp -= damage;
-            if (_snakeHp <= 0)
+            _currentSnakeHp -= damage;
+            if (_currentSnakeHp <= 0)
             {
                 Die();
             }

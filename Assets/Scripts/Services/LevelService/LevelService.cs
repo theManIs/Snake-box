@@ -13,6 +13,7 @@ namespace Snake_box
         public List<IEnemy> ActiveEnemies = new List<IEnemy>();
         public List<BaseBonus> ActiveBonus = new List<BaseBonus>();
         private readonly LevelData _levelData;
+        public CharacterBehaviour CharacterBehaviour;
         public MainBuild MainBuilds = new MainBuild();
 
         #endregion

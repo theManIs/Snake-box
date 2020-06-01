@@ -117,11 +117,11 @@ namespace Snake_box
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Player)))
                     {
-                        Data.Instance.Character.CharacterBehaviour.SetArmor(_damage);
+                        Services.Instance.LevelService.CharacterBehaviour.SetArmor(_damage);
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Block)))
                     {
-                        Data.Instance.Character.CharacterBehaviour.SetDamage(_damage);        
+                        Services.Instance.LevelService.CharacterBehaviour.SetDamage(_damage);        
                     }
                 }
 

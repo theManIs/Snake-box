@@ -28,17 +28,17 @@ namespace Snake_box
 
         private void Awake()
         {
+            _blockSnakeData = Data.Instance.BlockSnake;
             _timeService = Services.Instance.TimeService;
             _sizeBlock = (gameObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.sqrMagnitude);// размер
             _characterData = Data.Instance.Character;
             _positions.Add(gameObject.transform.position);//позиция головы
-            _snakeArmorCurrent = _characterData.Armor;
-            _armorMax = _characterData.Armor;
-            _snakeHp = _characterData.Hp;
-            _snakeHpMax = _characterData.Hp;
+            _currentArmor = _characterData.Armor;
+            _baseArmor = _characterData.Armor;
+            _currentSnakeHp = _characterData.Hp;
+            _baseSnakeHp = _characterData.Hp;
             _damage = _characterData.Damage;
-            _speed = _characterData.Speed;
-            _slowSpeed = _characterData.SlowSpeed; 
+            _speed = _characterData.Speed;            
         }
 
         #endregion
@@ -78,15 +78,15 @@ namespace Snake_box
 
         public void AddBlock()// добавление блока
         {
-            if (_blocksSnakes.Count < 4)
-            {
-                _blockSnakeData = Data.Instance.BlockSnake;
+            if (_blocksSnakes.Count < 4)            {
+                
                 var block = _blockSnakeData.Initialization();
                 block.transform.SetParent(gameObject.transform);
                 block.transform.position = _positions[_positions.Count - 1];
                 _blocksSnakes.Add(block);
                 _positions.Add(block.transform.position);
-                _snakeHp += _blockSnakeData.GetHp();
+                _currentSnakeHp += _blockSnakeData.GetHp();
+                _baseSnakeHp += _blockSnakeData.GetHp();
             }
         }
 
@@ -118,19 +118,23 @@ namespace Snake_box
             else return null;
         }
 
-        public void Move(Direction direction)//движение
+        public void ConstantMove()//постоянное движение
+        {
+            transform.rotation = _direction.ToQuaternion();
+            transform.position += transform.forward * ((_speed - (_positions.Count * _blockSnakeData.SlowSnake)) * _timeService.DeltaTime());
+        }
+
+        public void InputMove(Direction direction)//движение
         {
             if (direction != Direction.None && !direction.IsOpposite(_direction))
-                _direction = direction;
-            transform.rotation = _direction.ToQuaternion();
-            transform.position += transform.forward * ((_speed * _timeService.DeltaTime()) / (_positions.Count + _slowSpeed));           
+                _direction = direction;                       
         }  
 
         public void RegenerationArmor()
         {
-            if (_snakeArmorCurrent < _armorMax)
+            if (_currentArmor < _baseArmor)
             {
-                _snakeArmorCurrent = _snakeArmorCurrent + (_snakeArmorGeneration * _timeService.DeltaTime());
+                _currentArmor = _currentArmor + (SnakeArmorGeneration * _timeService.DeltaTime());
             }
         }
 

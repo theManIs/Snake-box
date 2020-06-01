@@ -19,7 +19,7 @@ namespace Snake_box
         public override void Use()
         {
             base.Use();
-            Data.Instance.Character.CharacterBehaviour.SnakeHp += _hpSnake;
+            Services.Instance.LevelService.CharacterBehaviour.CurrentSnakeHp += _hpSnake;
         }
     }
 }
