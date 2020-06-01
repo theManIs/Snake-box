@@ -54,7 +54,7 @@ namespace Snake_box
 
         #region IEnemy
 
-        public virtual void Spawn()
+        public virtual void Spawn(Vector3 position)
         {
             if (_levelService.Target == null || _levelService.Spawn == null)
             {
@@ -62,7 +62,7 @@ namespace Snake_box
             }
             _spawnCenter = _levelService.Spawn;
             _target = _levelService.Target.transform;
-            _enemyObject = GameObject.Instantiate(_prefab, GetSpawnPoint(_spawnCenter), Quaternion.identity);
+            _enemyObject = GameObject.Instantiate(_prefab, position, Quaternion.identity);
             _navMeshAgent = _enemyObject.GetComponent<NavMeshAgent>();
             _navMeshAgent.speed = _speed;
             _transform = _enemyObject.transform;
@@ -153,7 +153,7 @@ namespace Snake_box
                 if (_levelService.ActiveEnemies.Contains(this))
                     _levelService.ActiveEnemies.Remove(this);
                 Object.Destroy(_enemyObject);
-                if (_levelService.ActiveEnemies.Count == 0)
+                if (_levelService.ActiveEnemies.Count == 0 && Services.Instance.LevelService.IsLevelSpawnEnded)
                 {
                     _levelService.EndLevel();
                 }

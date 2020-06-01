@@ -1,49 +1,47 @@
+using System.Collections.Generic;
+
+
 namespace Snake_box
 {
     public sealed class Controllers : IInitialization, ICleanUp
     {
         #region Fields
         
-        private readonly IExecute[] _executeControllers;
-        private readonly ICleanUp[] _cleanUps;
-        private readonly IInitialization[] _initializations;
+        private readonly List<IExecute> _executeControllers;
+        private readonly List<ICleanUp> _cleanUps;
+        private readonly List<IInitialization> _initializations;
 
         #endregion
 
 
         #region Properties
         
-        public int Length => _executeControllers.Length;
+        public int Length => _executeControllers.Count;
 
         public IExecute this[int index] => _executeControllers[index];
-        
+
         #endregion
-        
+
 
         #region ClassLifeCycles
-        
+
         public Controllers()
         {
-            _initializations = new IInitialization[1];
-            _executeControllers = new IExecute[7];
-            _executeControllers[0] = new TimeRemainingController();
-            _executeControllers[1] = new CharacterController();
-            _executeControllers[2] = new EnemySpawnController();
-            _executeControllers[3] = new EnemyController();
-            _executeControllers[4] = new TurretController();
-            _executeControllers[5] = new TurretProjectileController();
-            _executeControllers[6] = new InputController();
-            _initializations[0] = new BonusSpawnController();            
+            _initializations = new List<IInitialization>();
+            
+            _executeControllers = new List<IExecute>();
+            _executeControllers.Add(new TimeRemainingController());
+            _executeControllers.Add(new CharacterController());
+            _executeControllers.Add(new InputController());
+            _executeControllers.Add(new EnemySpawnControler());
+            _executeControllers.Add(new EnemyController());
+            _executeControllers.Add(new TurretController());
+            _executeControllers.Add(new TurretProjectileController());
 
-            //            _initializations = new IInitialization[0];
-            //            _executeControllers = new IExecute[3];
-            //            _executeControllers[0] = new TimeRemainingController();
-            //            _executeControllers[1] = new TurretController();
-            //            _executeControllers[2] = new TurretProjectileController();
+            _initializations.Add(new BonusSpawnController());
 
-
-            _cleanUps = new ICleanUp[1];
-            _cleanUps[0] = new TimeRemainingCleanUp();
+            _cleanUps = new List<ICleanUp>();
+            _cleanUps.Add(new TimeRemainingCleanUp());
         }
         
         #endregion
@@ -53,13 +51,13 @@ namespace Snake_box
 
         public void Initialization()
         {
-            for (var i = 0; i < _initializations.Length; i++)
+            for (var i = 0; i < _initializations.Count; i++)
             {
                 var initialization = _initializations[i];
                 initialization.Initialization();
             }
             
-            for (var i = 0; i < _executeControllers.Length; i++)
+            for (var i = 0; i < _executeControllers.Count; i++)
             {
                 var execute = _executeControllers[i];
                 if (execute is IInitialization initialization)
@@ -76,7 +74,7 @@ namespace Snake_box
 
         public void Cleaner()
         {
-            for (var index = 0; index < _cleanUps.Length; index++)
+            for (var index = 0; index < _cleanUps.Count; index++)
             {
                 var cleanUp = _cleanUps[index];
                 cleanUp.Cleaner();

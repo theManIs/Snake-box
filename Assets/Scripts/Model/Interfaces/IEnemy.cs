@@ -8,7 +8,7 @@ namespace Snake_box
 
         void OnUpdate();
 
-        void Spawn();
+        void Spawn(Vector3 position);
 
         Transform GetTransform();
 

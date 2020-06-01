@@ -17,16 +17,22 @@ namespace Snake_box
         #region Fields
 
         public GameObject TurretInstance;
-        private Quaternion _haltTurretRotation;
         public string TurretSpritePath = "Prefabs/Turrets/Turret3D";
-        public float TurretRange = 15;
-        public float Cooldown = 250;
+        public EnemyType PreferredArmorType = EnemyType.None;
+        public TurretBehaviour TurretBehaviour;
+
+        private List<IEnemy> _dummyEnemies = new List<IEnemy>();
+        private Quaternion _haltTurretRotation;
         //todo use TimeRemaining
         private float _frameRateLock = 0;
 
-        public EnemyType PreferredArmorType = EnemyType.None;
-        private List<IEnemy> _dummyEnemies = new List<IEnemy>();
-        public TurretBehaviour TurretBehaviour;
+        #endregion
+
+
+        #region Properties
+
+        public float Cooldown => Data.Instance.TurretData.PlainTurretCooldown;
+        public float TurretRange => Data.Instance.TurretData.PlainTurretRange;
 
         #endregion
 
@@ -63,6 +69,7 @@ namespace Snake_box
             TurretInstance.transform.parent = parentTransform;
             TurretInstance.transform.localPosition = Vector3.zero;
         }
+
         public override void Execute()
         {
             RecoilEnemies();
@@ -112,18 +119,12 @@ namespace Snake_box
             if (nearestEnemy == null)
                 return;
 
-//            Vector3 direction3d = nearestEnemy.GetPosition() - TurretInstance.transform.position;
-//            float angle = Mathf.Atan2(direction3d.y, direction3d.x) * Mathf.Rad2Deg;
-//            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            Vector3 lookAngles = Quaternion.LookRotation(nearestEnemy.GetPosition() - TurretInstance.transform.position).eulerAngles;
+            lookAngles.x = _haltTurretRotation.eulerAngles.x;
+            lookAngles.z = _haltTurretRotation.eulerAngles.z;
+            lookAngles.y = lookAngles.y + _haltTurretRotation.eulerAngles.y;
 
-            TurretInstance.transform.rotation.SetLookRotation(nearestEnemy.GetPosition(), Vector3.up);
-//            Vector3 direction3d = nearestEnemy.GetPosition() - TurretInstance.transform.position;
-//            float angle = Mathf.Atan2(direction3d.y, direction3d.x) * Mathf.Rad2Deg;
-//            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-//            Quaternion rotation = RotateAroundAxis(nearestEnemy.GetPosition(), TurretInstance.transform.position, TurretInstance.transform.rotation);
-
-//            TurretInstance.transform.rotation = Quaternion.Slerp(TurretInstance.transform.rotation, rotation, 1);
+            TurretInstance.transform.rotation = Quaternion.Euler(lookAngles);
         }
 
         private void CollectKilledEnemies() => _dummyEnemies = _dummyEnemies.Where((element) => !element.AmIDestroyed()).ToList();

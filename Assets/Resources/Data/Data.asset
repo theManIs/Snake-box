@@ -28,8 +28,10 @@ MonoBehaviour:
   _spikedEnemyDataPath: Enemy/SpikedEnemyData
   _LevelDataPath: Level/LevelData
   _turretDataPath: Turret/TurretData
-  _borderDataPath: Level/BordersData
+  _shellDataPath: Shells/ShellData
   _blockSnakeDataPath: BlockSnake/BlockSnakeData
   _bonusCoinsDataPath: Bonus/BonusCoinsData
   _bonusHpSnakeDataPath: Bonus/BonusHpSnakeData
   _bonusSpeedDataPath: Bonus/BonusSpeedData
+  _bordersDataPath: Level/BordersData
+  _allSpawnListsDataPath: EnemySpawn/AllSpawnListsData

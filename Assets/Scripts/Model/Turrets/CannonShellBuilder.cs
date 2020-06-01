@@ -9,7 +9,6 @@ namespace Snake_box
     {
         #region Fields
 
-//        private static readonly GameObject TurretShellPrefab = Resources.Load<GameObject>("Prefabs/Turrets/TurretFireball");
         private static readonly GameObject TurretShellPrefab = Resources.Load<GameObject>("Prefabs/Turrets/Bullet/Prefabs/Bullet762");
         private static TurretProjectileController _turretProjectileController; 
 
@@ -33,6 +32,7 @@ namespace Snake_box
             turretProjectile.SetGameObject(prefabObject);
             turretProjectile.SetFirePoint(firePoint);
             turretProjectile.SetTarget(enemy);
+            turretProjectile.SetLookRotation(enemy.GetTransform());
             turretProjectile.SetSelfDestruct(5);
             turretProjectile.CountDistance();
 

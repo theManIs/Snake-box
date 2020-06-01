@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-// using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -40,6 +38,10 @@ namespace Snake_box
         private static BonusSpeedData _bonusSpeedData;
         private static EnemySpawnData _enemySpawnData;
         private static LevelSpawnData _levelSpawnData;
+        [SerializeField] private string _shellDataPath;
+        [SerializeField] private string _blockSnakeDataPath;
+        [SerializeField] private string _bordersDataPath;
+        [SerializeField] private string _allSpawnListsDataPath;
         private static ShakesData _shake;
         private static CharacterData _characterData;
         private static SimpleEnemyData _simpleEnemyData;
@@ -54,6 +56,9 @@ namespace Snake_box
         private static LevelData _levelData;
         private static BlockSnakeData _blockSnake;
         private static TurretData _turretData;
+        private static BordersData _bordersData;
+        private static AllSpawnListsData _allSpawnListsData;
+        private static ShellData _shellData;
         private static readonly Lazy<Data> _instance = new Lazy<Data>(() => Load<Data>("Data/" + typeof(Data).Name));
         
         #endregion
@@ -151,19 +156,6 @@ namespace Snake_box
                 }
 
                 return _characterData;
-            }
-        }
-
-        public EnemySpawnData EnemySpawn
-        {
-            get
-            {
-                if (_enemySpawnData == null)
-                {
-                    _enemySpawnData = Load<EnemySpawnData>("Data/" + Instance._enemySpawnDataPath);
-                }
-
-                return _enemySpawnData;
             }
         }
 
@@ -284,19 +276,6 @@ namespace Snake_box
             }
         }
 
-        public LevelSpawnData LevelSpawn
-        {
-            get
-            {
-                if (_levelSpawnData == null)
-                {
-                    _levelSpawnData = Load<LevelSpawnData>("Data/" + Instance._levelSpawnDataPath);
-                }
-
-                return _levelSpawnData;
-            }
-        }
-
         public LevelData LevelData
         {
             get
@@ -323,7 +302,38 @@ namespace Snake_box
             }
         }
 
-        public BordersData BordersData => Load<BordersData>("Data/" + Instance._borderDataPath);
+        public BordersData BordersData
+        {
+            get
+            { 
+                if(_bordersData == null)
+                    _bordersData = Load<BordersData>("Data/" + Instance._bordersDataPath);
+                return _bordersData;
+            }
+        }
+
+        public ShellData ShellData
+        {
+            get
+            {
+                if (_shellData == null)
+                {
+                    _shellData = Load<ShellData>("Data/" + Instance._shellDataPath);
+                }
+
+                return _shellData;
+            }
+        }
+
+        public AllSpawnListsData AllSpawnListsData
+        {
+            get
+            {
+                if (_allSpawnListsData == null)
+                    _allSpawnListsData = Load<AllSpawnListsData>("Data/" + Instance._allSpawnListsDataPath);
+                return _allSpawnListsData;
+            }
+        }
 
         #endregion
 

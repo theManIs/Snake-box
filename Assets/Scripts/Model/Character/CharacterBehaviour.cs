@@ -127,7 +127,9 @@ namespace Snake_box
         public void InputMove(Direction direction)//движение
         {
             if (direction != Direction.None && !direction.IsOpposite(_direction))
-                _direction = direction;                       
+                _direction = direction;
+           
+            TeleportIfOutOfBorder();
         }  
 
         public void RegenerationArmor()
@@ -145,10 +147,10 @@ namespace Snake_box
                 transform.position = new Vector3(bordersData.RightBorderX - TELEPORTATION_OFFSET, transform.position.y, transform.position.z);
             if (transform.position.x > bordersData.RightBorderX)
                 transform.position = new Vector3(bordersData.LeftBorderX + TELEPORTATION_OFFSET, transform.position.y, transform.position.z);
-            if (transform.position.y < bordersData.BottomBorderY)
-                transform.position = new Vector3(transform.position.x , bordersData.TopBorderY - TELEPORTATION_OFFSET, transform.position.z);
-            if (transform.position.y > bordersData.TopBorderY)
-                transform.position = new Vector3(transform.position.x, bordersData.BottomBorderY + TELEPORTATION_OFFSET, transform.position.z);
+            if (transform.position.z < bordersData.BottomBorderZ)
+                transform.position = new Vector3(transform.position.x , transform.position.y, bordersData.TopBorderZ - TELEPORTATION_OFFSET);
+            if (transform.position.z > bordersData.TopBorderZ)
+                transform.position = new Vector3(transform.position.x, transform.position.y, bordersData.BottomBorderZ + TELEPORTATION_OFFSET);
         }
 
         public void SetDamage(IDamageAddressee damageAddressee)
