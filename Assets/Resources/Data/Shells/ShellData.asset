@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7fff2eec9fecf540b8c3b727a02546f, type: 3}
-  m_Name: TurretData
+  m_Script: {fileID: 11500000, guid: 45fc29316a9e3154eb0b6646a05c4b6e, type: 3}
+  m_Name: ShellData
   m_EditorClassIdentifier: 
-  PlainTurretRange: 20
-  PlainTurretCooldown: 250
+  PlainShellSpeed: 50
+  PlainShellDamage: 10

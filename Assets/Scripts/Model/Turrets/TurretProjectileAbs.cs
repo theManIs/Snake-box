@@ -18,6 +18,7 @@ namespace Snake_box
         public int ObjectId;
         private float _journeyDistance;
         private bool _targetLocked = false;
+        private Vector3 _angleLock = new Vector3(90, 0, 0);
 
         #endregion
 
@@ -38,6 +39,23 @@ namespace Snake_box
             _targetLocked = true;
         }
 
+        public void SetLookRotation(Transform lookAt)
+        {
+            if (_projectileInstance)
+            {
+//                _projectileInstance.transform.LookAt(lookAt);
+//
+//                Vector3 eulerAngles = _projectileInstance.transform.rotation.eulerAngles;
+//                eulerAngles.x = _angleLock.x;
+//                _projectileInstance.transform.rotation = Quaternion.Euler(eulerAngles);
+
+                Vector3 direction3d = lookAt.position - _projectileInstance.transform.position;
+                Vector3 eulerAngles = Quaternion.LookRotation(direction3d).eulerAngles;
+                eulerAngles.x = _angleLock.x;
+                _projectileInstance.transform.rotation = Quaternion.Euler(eulerAngles);
+            }
+        }
+
         public void CountDistance()
         {
             if (_firePoint && _targetToPursue != null)
@@ -49,7 +67,7 @@ namespace Snake_box
             _firePoint = firePoint;
 
             _projectileInstance.transform.position = _firePoint.position;
-            _projectileInstance.transform.rotation = _firePoint.rotation;
+//            _projectileInstance.transform.rotation = _firePoint.rotation;
         }
 
         public void SetGameObject(GameObject gm)
