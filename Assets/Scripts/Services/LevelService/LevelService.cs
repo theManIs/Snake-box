@@ -11,7 +11,9 @@ namespace Snake_box
         #region Fields
 
         public List<IEnemy> ActiveEnemies = new List<IEnemy>();
+        public List<BaseBonus> ActiveBonus = new List<BaseBonus>();
         private readonly LevelData _levelData;
+        public MainBuild MainBuilds = new MainBuild();
 
         #endregion
 
@@ -34,8 +36,8 @@ namespace Snake_box
         #region ClassLifeCycles
 
         public LevelService()
-        {
-            SceneManager.sceneLoaded += (arg0, mode) => LevelStart(); 
+        {            
+            SceneManager.sceneLoaded += (arg0, mode) => LevelStart();
             _levelData = Data.Instance.LevelData;
             IsWaveEnded = false;
             IsLevelSpawnEnded = false;
@@ -48,7 +50,7 @@ namespace Snake_box
 
 
         #region Methods
-        
+
         public void LoadLevel(int lvl)
         {
             CurrentLevel = lvl;
@@ -68,12 +70,13 @@ namespace Snake_box
             panel.transform.GetChild(0).gameObject.SetActive(true);
             panel.GetComponentInParent<GameMenuBehaviour>().GetEndLevelText();
             ActiveEnemies.Clear();
+            ActiveEnemies.Clear();
             Data.Instance.TurretData.ClearTurretList();          
             
         }
 
         private void LevelStart()
-        {
+        {            
             FindGameObject();
             IsLevelStarted = true;
             IsSpawnNeed = true;
@@ -86,6 +89,7 @@ namespace Snake_box
                 surface.BuildNavMesh();
             }
         }
+
         public void FindGameObject()
         {
             Target = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Target));

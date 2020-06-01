@@ -16,11 +16,12 @@
             _characterData = Data.Instance.Character;
             _characterData.Initialization();
         }
+
         public void Execute()
-        {            
-            _characterData._characterBehaviour.RegenerationArmor();
-            _characterData._characterBehaviour.Collision();
-            _characterData._characterBehaviour.ResetPosition();
+        {
+            _characterData.CharacterBehaviour.RegenerationArmor();
+            _characterData.CharacterBehaviour.Collision();
+            _characterData.CharacterBehaviour.ResetPosition();
         }
 
         #endregion

@@ -18,13 +18,13 @@ namespace Snake_box
         protected float _slowSpeed;
         private Direction _direction = Direction.Up;
 
-
         #endregion
 
 
         #region Properties
 
-        public float SnakeHp { get { return _snakeHp; } }
+        public float SnakeSpeed { get { return _speed; } set => _speed = value; }
+        public float SnakeHp { get { return _snakeHp; } set => _snakeHp = value; }
         public float SnakeHpMax { get { return _snakeHpMax; } }
         public float SnakeArmorCurrent { get { return _snakeArmorCurrent; } }
         public float SnakeArmorMax { get { return _armorMax; } }

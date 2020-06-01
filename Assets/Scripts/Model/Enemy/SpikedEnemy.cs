@@ -1,4 +1,3 @@
-using ExampleTemplate;
 using UnityEngine;
 
 namespace Snake_box
@@ -49,22 +48,22 @@ namespace Snake_box
                     {
                         if (colliders[i].CompareTag(TagManager.GetTag(TagType.Player)))
                         {
-                            Data.Instance.Character._characterBehaviour.SetArmor(_damage);
+                            Data.Instance.Character.CharacterBehaviour.SetArmor(_damage);
                         }
                         else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Block)))
                         {
-                            Data.Instance.Character._characterBehaviour.SetDamage(_damage);
+                            Data.Instance.Character.CharacterBehaviour.SetDamage(_damage);
                         }
                     }
                     else
                     {
                         if (colliders[i].CompareTag(TagManager.GetTag(TagType.Player)))
                         {
-                            Data.Instance.Character._characterBehaviour.SetDamage(_damage);
+                            Data.Instance.Character.CharacterBehaviour.SetDamage(_damage);
                         }
                         else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Block)))
                         {
-                            Data.Instance.Character._characterBehaviour.SetDamage(_damage+_bonusDamage);
+                            Data.Instance.Character.CharacterBehaviour.SetDamage(_damage+_bonusDamage);
                         }
                     }
                 }

@@ -14,7 +14,8 @@ namespace Snake_box
             var blocksnake = CustomResources.Load<BlockSnake>(AssetsPathGameObject.GameObjects[GameObjectType.BlockSnake]);
             _blockSnake =Instantiate(blocksnake);
             return _blockSnake;
-        }
+        } 
+
         public float GetHp()
         {
             return _hpBlock;

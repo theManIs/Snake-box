@@ -12,7 +12,8 @@ namespace Snake_box
     public sealed class Data : ScriptableObject
     {
         #region Fields
-        
+
+        [SerializeField] private string _mainBuildDataPath;
         [SerializeField] private string _shakeDataPath;
         [SerializeField] private string _characterDataPath;
         [SerializeField] private string _enemySpawnDataPath;
@@ -29,9 +30,16 @@ namespace Snake_box
         [SerializeField] private string _LevelDataPath;
         [SerializeField] private string _turretDataPath;
         [SerializeField] private string _borderDataPath;
+        [SerializeField] private string _blockSnakeDataPath;
+        [SerializeField] private string _bonusCoinsDataPath;
+        [SerializeField] private string _bonusHpSnakeDataPath;
+        [SerializeField] private string _bonusSpeedDataPath;
+        private static MainBuildData _mainBuildData;
+        private static BonusCoinsData _bonusCoinsData;
+        private static BonusHpSnakeData _bonusHpSnakeData;
+        private static BonusSpeedData _bonusSpeedData;
         private static EnemySpawnData _enemySpawnData;
         private static LevelSpawnData _levelSpawnData;
-        [SerializeField] private string _blockSnakeDataPath;
         private static ShakesData _shake;
         private static CharacterData _characterData;
         private static SimpleEnemyData _simpleEnemyData;
@@ -54,6 +62,58 @@ namespace Snake_box
         #region Properties
 
         public static Data Instance => _instance.Value;
+
+        public MainBuildData MainBuildData
+        {
+            get
+            {
+                if (_mainBuildData == null)
+                {
+                    _mainBuildData = Load<MainBuildData>("Data/" + Instance._mainBuildDataPath);
+                }
+
+                return _mainBuildData;
+            }
+        }
+
+        public BonusCoinsData BonusCoinsData
+        {
+            get
+            {
+                if (_bonusCoinsData == null)
+                {
+                    _bonusCoinsData = Load<BonusCoinsData>("Data/" + Instance._bonusCoinsDataPath);
+                }
+
+                return _bonusCoinsData;
+            }
+        }
+
+        public BonusHpSnakeData BonusHpSnakeData
+        {
+            get
+            {
+                if (_bonusHpSnakeData == null)
+                {
+                    _bonusHpSnakeData = Load<BonusHpSnakeData>("Data/" + Instance._bonusHpSnakeDataPath);
+                }
+
+                return _bonusHpSnakeData;
+            }
+        }
+
+        public BonusSpeedData BonusSpeedData
+        {
+            get
+            {
+                if (_bonusSpeedData == null)
+                {
+                    _bonusSpeedData = Load<BonusSpeedData>("Data/" + Instance._bonusSpeedDataPath);
+                }
+
+                return _bonusSpeedData;
+            }
+        }
 
         public BlockSnakeData BlockSnake
         {

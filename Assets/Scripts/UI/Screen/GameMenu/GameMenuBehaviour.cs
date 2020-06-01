@@ -23,7 +23,7 @@ namespace Snake_box
         [SerializeField] private Button [] _buttonPlus;
         [SerializeField] private Button[] _buttonTurretsType;
         [SerializeField] private Text _textEndGame;
-        CharacterBehaviour _characterBehaviour = Data.Instance.Character._characterBehaviour;
+        CharacterBehaviour _characterBehaviour = Data.Instance.Character.CharacterBehaviour;
         private int _selectButtonsIndex;
         private bool _isPause;
 
@@ -34,7 +34,7 @@ namespace Snake_box
 
         private void OnEnable()
         {
-            //_headSnake.onClick.AddListener(OpenActivites);//создать метод для активауии чего нибудь
+            _headSnake.onClick.AddListener(SnakeHeadButton);
             _buttonPlus[0].onClick.AddListener(delegate { AddBlock(0); });
             _buttonPlus[1].onClick.AddListener(delegate { AddBlock(1); });
             _buttonPlus[2].onClick.AddListener(delegate { AddBlock(2); });
@@ -50,7 +50,7 @@ namespace Snake_box
 
         private void OnDisable()
         {
-            //_headSnake.onClick.RemoveListener(OpenActivites);
+            _headSnake.onClick.RemoveListener(SnakeHeadButton);
             _buttonPlus[0].onClick.RemoveListener(delegate { AddBlock(0); });
             _buttonPlus[1].onClick.RemoveListener(delegate { AddBlock(1); });
             _buttonPlus[2].onClick.RemoveListener(delegate { AddBlock(2); });
@@ -76,6 +76,11 @@ namespace Snake_box
 
 
         #region Methods  
+
+        private void SnakeHeadButton()
+        {
+            _characterBehaviour.UseBonus();
+        }
 
         private void AddTurret(int i)
         {

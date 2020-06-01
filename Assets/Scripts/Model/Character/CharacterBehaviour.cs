@@ -17,7 +17,9 @@ namespace Snake_box
         private readonly List<Vector3> _positions = new List<Vector3>();// позиции блоков 
         private float _sizeBlock;       
         private Direction _direction = Direction.Up;
-        private ITimeService _timeService;
+        private ITimeService _timeService;       
+        private bool hasSkill;
+        private BonusData _bonus;
 
         #endregion      
 
@@ -30,19 +32,28 @@ namespace Snake_box
             _sizeBlock = (gameObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.sqrMagnitude);// размер
             _characterData = Data.Instance.Character;
             _positions.Add(gameObject.transform.position);//позиция головы
-            _snakeArmorCurrent = _characterData._armor;
-            _armorMax = _characterData._armor;
-            _snakeHp = _characterData._hp;
-            _snakeHpMax = _characterData._hp;
-            _damage = _characterData._damage;
-            _speed = _characterData._speed;
-            _slowSpeed = _characterData._slowSpeed;
+            _snakeArmorCurrent = _characterData.Armor;
+            _armorMax = _characterData.Armor;
+            _snakeHp = _characterData.Hp;
+            _snakeHpMax = _characterData.Hp;
+            _damage = _characterData.Damage;
+            _speed = _characterData.Speed;
+            _slowSpeed = _characterData.SlowSpeed; 
         }
 
         #endregion
 
 
         #region Methods
+
+        public void UseBonus()
+        {
+            //if (hasSkill)
+            //{               
+            //    _bonus.Use(gameObject.GetComponent<CharacterBehaviour>());
+            //    hasSkill = false;
+            //}            
+        }
 
         public void ResetPosition()///выставление блока
         {
@@ -86,11 +97,15 @@ namespace Snake_box
             {
                 if (tagCollider[i].CompareTag(TagManager.GetTag(TagType.Bonus)))
                 {
-                    Destroy(tagCollider[i].transform.gameObject);
-                }               
-                if (tagCollider[i].CompareTag(TagManager.GetTag(TagType.Wall)))
-                {
-                }
+                    hasSkill = true;
+                    for (int b = 0; b < Services.Instance.LevelService.ActiveBonus.Count; b++)
+                    {
+                        if (Services.Instance.LevelService.ActiveBonus[b].GetTransform() == tagCollider[i].transform)
+                        {                           
+                            Services.Instance.LevelService.ActiveBonus[b].Use();
+                        }
+                    }
+                } 
             }
         }
 

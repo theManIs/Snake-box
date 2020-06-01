@@ -1,4 +1,3 @@
-using ExampleTemplate;
 using UnityEngine;
 using UnityEngine.AI;
 using Object = UnityEngine.Object;
@@ -113,16 +112,16 @@ namespace Snake_box
                 {
                     if (colliders[i].CompareTag(TagManager.GetTag(TagType.Target)))
                     {
-                        var mainBuilding = colliders[i].GetComponent<MainBuild>();
+                        var mainBuilding = Services.Instance.LevelService.MainBuilds ;
                         mainBuilding.GetDamage(_damage);
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Player)))
                     {
-                        Data.Instance.Character._characterBehaviour.SetArmor(_damage);
+                        Data.Instance.Character.CharacterBehaviour.SetArmor(_damage);
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Block)))
                     {
-                        Data.Instance.Character._characterBehaviour.SetDamage(_damage);        
+                        Data.Instance.Character.CharacterBehaviour.SetDamage(_damage);        
                     }
                 }
 
