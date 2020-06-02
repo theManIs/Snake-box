@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leftBorderX: -30
   _rightBorderX: 30
-  _topBorderY: 50
-  _bottomBorderY: -50
+  _topBorderZ: 50
+  _bottomBorderZ: -50
