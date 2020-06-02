@@ -56,9 +56,7 @@ namespace Snake_box
         public void EndLevel()
         {
             Wallet.ResetLocalCoins();
-            var panel = GameObject.FindWithTag(TagManager.GetTag(TagType.PanelEndLevel));
-            panel.transform.GetChild(0).gameObject.SetActive(true);
-            panel.GetComponentInParent<GameMenuBehaviour>().GetEndLevelText();
+            SetPanelEndLevelActive(true);
             ActiveEnemies.Clear();
             Data.Instance.TurretData.ClearTurretList();          
             
@@ -66,6 +64,7 @@ namespace Snake_box
 
         private void LevelStart()
         {
+            SetPanelEndLevelActive(false);
             FindGameObject();
             IsLevelSpawnEnded = false;
             IsTargetDestroed = false;
@@ -75,9 +74,20 @@ namespace Snake_box
                 surface.BuildNavMesh();
             }
         }
+
         public void FindGameObject()
         {
             Target = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Target));
+        }
+
+        public void SetPanelEndLevelActive(bool isActive)
+        {
+            var panel = GameObject.FindWithTag(TagManager.GetTag(TagType.PanelEndLevel));
+            if (panel == null)
+                return;
+            panel.transform.GetChild(0).gameObject.SetActive(isActive);
+            if(isActive)
+                panel.GetComponentInParent<GameMenuBehaviour>().GetEndLevelText();
         }
 
         #endregion
