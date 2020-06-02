@@ -16,7 +16,7 @@ namespace Snake_box
 
         #region UnityMethods
 
-        private void Start()
+        private void Awake()
         {
             Services.Instance.LevelLoadService.LevelLoaded += Initialize;
         }
