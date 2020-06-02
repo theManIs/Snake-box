@@ -15,12 +15,10 @@ namespace Snake_box
         protected NavMeshAgent _navMeshAgent;
         protected GameObject _prefab;
         protected GameObject _enemyObject;
-        protected GameObject _spawnCenter;
         protected Transform _transform;
         protected Transform _target;
         protected LevelService _levelService = Services.Instance.LevelService;
         protected float _hp;
-        protected float _spawnRadius;
         protected float _speed;
         protected float _damage;
         protected float _meleeHitRange;
@@ -35,7 +33,6 @@ namespace Snake_box
         public BaseEnemy(BaseEnemyData data)
         {
             _prefab = data.Prefab;
-            _spawnRadius = data.SpawnRadius;
             _speed = data.Speed;
             _hp = data.Hp;
             _damage = data.Damage;
@@ -57,11 +54,10 @@ namespace Snake_box
 
         public virtual void Spawn(Vector3 position)
         {
-            if (_levelService.Target == null || _levelService.Spawn == null)
+            if (_levelService.Target == null)
             {
                _levelService.FindGameObject(); 
             }
-            _spawnCenter = _levelService.Spawn;
             _target = _levelService.Target.transform;
             _enemyObject = GameObject.Instantiate(_prefab, position, Quaternion.identity);
             _navMeshAgent = _enemyObject.GetComponent<NavMeshAgent>();
@@ -134,30 +130,23 @@ namespace Snake_box
             _target = GameObject.FindWithTag(TagManager.GetTag(TagType.Target)).transform;
         }
 
-        protected virtual Vector3 GetSpawnPoint(GameObject center)
-        {
-            var volume = center.GetComponent<NavMeshModifierVolume>();
-            var sizeX = volume.size.x;
-            var sizeZ = volume.size.z;
-            var position = volume.transform.position;
-            var randomPos = new Vector3(position.x - Random.Range(-sizeX / 2, sizeX / 2), position.y,
-                position.z - Random.Range(-sizeZ / 2, sizeZ / 2));
-            NavMesh.SamplePosition(randomPos, out var hit, _spawnRadius, NavMesh.GetAreaFromName("Spawn"));
-            return hit.position;
-        }
-
         protected virtual void GetDamage(float damage)
         {
             _hp -= damage;
             if (_hp <= 0)
             {
-                if (_levelService.ActiveEnemies.Contains(this))
-                    _levelService.ActiveEnemies.Remove(this);
-                Object.Destroy(_enemyObject);
-                if (_levelService.ActiveEnemies.Count == 0 && Services.Instance.LevelService.IsLevelSpawnEnded)
-                {
-                    _levelService.EndLevel();
-                }
+                Destroy();
+            }
+        }
+
+        public void Destroy()
+        {
+            if (_levelService.ActiveEnemies.Contains(this))
+                _levelService.ActiveEnemies.Remove(this);
+            Object.Destroy(_enemyObject);
+            if (_levelService.ActiveEnemies.Count == 0 && Services.Instance.LevelService.IsLevelSpawnEnded)
+            {
+                _levelService.EndLevel();
             }
         }
 

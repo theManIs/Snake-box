@@ -24,7 +24,7 @@ namespace Snake_box
         
         #region ICleanUp
 
-        public void Cleaner()
+        public void Clean()
         {
             _timeRemainings.Clear();
         }

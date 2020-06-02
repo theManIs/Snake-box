@@ -31,3 +31,4 @@ MonoBehaviour:
   _blockSnakeDataPath: BlockSnake/BlockSnakeData
   _bordersDataPath: Level/BordersData
   _allSpawnListsDataPath: EnemySpawn/AllSpawnListsData
+  _levelPrefabsDataPath: Level/LevelPrefabs
