@@ -20,6 +20,7 @@ namespace Snake_box
 
         public GameObject Target { get; private set; }
         public GameObject Spawn { get; private set; }
+        public string CurrentLevelName { get; set; }
         public int CurrentLevel { get; private set; }
         public bool IsSpawnNeed { get; set; }
         public bool IsWaveEnded { get; set; }

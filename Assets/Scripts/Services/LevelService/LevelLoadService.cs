@@ -14,6 +14,7 @@ namespace Snake_box
             if (_currentLevel != null)
                 GameObject.Destroy(_currentLevel);
             _currentLevel = GameObject.Instantiate(Data.Instance.LevelPrefabs[name]);
+            Services.Instance.LevelService.CurrentLevelName = name;
             LevelLoaded?.Invoke();
         }
     } 

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: LevelPrefabs
   m_EditorClassIdentifier: 
   _levelNamePrefabPairs:
-  - Name: Level 1
-    Prefab: {fileID: 0}
+  - Name: Level1
+    Prefab: {fileID: 1420863234788314843, guid: 1b4a027675f2ae940810d192cb6b16f6,
+      type: 3}
