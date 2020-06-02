@@ -8,24 +8,24 @@ namespace Snake_box
 {
 	public class EnemySpawnControler : IExecute, IInitialization
 	{
-        public static EnemySpawnControler Instance;
-
         private Vector3[] _spawnPoints;
         private Queue<SingleEnemySpawnData> _enemiesToSpawnQueue;
         
         /// <summary>
         /// Возвращает истинну, если все враги из списка были заспауненны
         /// </summary>
-        public bool IsSpawningFinished => _enemiesToSpawnQueue.Count == 0;
+        private bool isSpawningFinished => _enemiesToSpawnQueue.Count == 0;
 
         #region IExecute
 
         public void Execute()
         {
-            while (!IsSpawningFinished && _enemiesToSpawnQueue.Peek().SpawnTiming <= TimerController.Instance.TimeSinceLevelStart)
+            while (!isSpawningFinished && _enemiesToSpawnQueue.Peek().SpawnTiming <= Services.Instance.TimeService.TimeSinceLevelStart())
             {
                 SpawnNextEnemy();
             }
+            if (isSpawningFinished)
+                Services.Instance.LevelService.IsLevelSpawnEnded = true;
         }
 
         #endregion
@@ -67,11 +67,6 @@ namespace Snake_box
             {
                 _spawnPoints[spawnPointIds[i]] = spawnPoints[i].transform.position;
             }
-
-            if (Instance == null)
-                Instance = this;
-            else
-                throw new InvalidOperationException();
         }
 
         #endregion

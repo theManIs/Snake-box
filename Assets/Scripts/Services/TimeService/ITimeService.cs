@@ -10,5 +10,6 @@
         long Timestamp();
         void SetTimeScale(float timeScale);        
         void ResetDeltaTime();
+        float TimeSinceLevelStart();
     }
 }

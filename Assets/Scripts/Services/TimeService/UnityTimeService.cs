@@ -9,12 +9,21 @@ namespace Snake_box
         #region Fields
 
         private int _deltaTimeResetFrame;
+        private float _levelStartTime;
 
         #endregion
 
+        #region ClassLifeCycles
+
+        public UnityTimeService()
+        {
+            _levelStartTime = Time.time;
+        }
+
+        #endregion
 
         #region Methods
-        
+
         public float DeltaTime() => _deltaTimeResetFrame == Time.frameCount ? 0.0f : Time.deltaTime;
         public float UnscaledDeltaTime() => _deltaTimeResetFrame == Time.frameCount ? 0.0f : Time.unscaledDeltaTime;
         public float FixedDeltaTime() => _deltaTimeResetFrame == Time.frameCount ? 0.0f : Time.fixedDeltaTime;
@@ -23,6 +32,7 @@ namespace Snake_box
         public long Timestamp() => DateTime.Now.ToUnixTimestamp(); //todo UtcNow
         public void SetTimeScale(float timeScale) => Time.timeScale = timeScale;
         public void ResetDeltaTime() => _deltaTimeResetFrame = Time.frameCount;
+        public float TimeSinceLevelStart() => Time.time - _levelStartTime;
 
         #endregion
     }
