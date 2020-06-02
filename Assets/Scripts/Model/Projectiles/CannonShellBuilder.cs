@@ -32,11 +32,19 @@ namespace Snake_box
             turretProjectile.SetFirePoint(firePoint);
             turretProjectile.SetTarget(enemy);
             turretProjectile.SetLookRotation(enemy.GetTransform());
-            turretProjectile.SetSelfDestruct(5);
+            turretProjectile.SetSelfDestruct(1);
             turretProjectile.CountDistance();
 
             _turretProjectileController.AddShell(turretProjectile);
-        } 
+        }
+
+        public override void BuildMulti(Transform firePoint, IEnemy enemy, int pack)
+        {
+            for (int i = 0; i < pack; i++)
+            {
+                Build(firePoint, enemy);
+            }
+        }
 
         #endregion
     }

@@ -9,6 +9,7 @@ namespace Snake_box
         #region Methods
 
         public abstract void Build(Transform firePoint, IEnemy enemy);
+        public abstract void BuildMulti(Transform firePoint, IEnemy enemy, int pack);
 
         public ProjectileBuilderAbs SetProjectilePreferences(ProjectilePreferences projectilePreferences)
         {

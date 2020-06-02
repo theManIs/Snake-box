@@ -24,6 +24,7 @@ MonoBehaviour:
     TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
       type: 3}
     ArmorPiercing: 2
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
     ProjectilePreferences:
       ProjectilePrefab: {fileID: 7798697648108561833, guid: e38bc884a07db1d44aef29384092ba36,
         type: 3}
@@ -36,16 +37,19 @@ MonoBehaviour:
     StartLevel: 1
     BaseLevelModifier: 2
     Range: 20
-    Cooldown: 250
+    Cooldown: 1000
     Price: 134
-    ThumbnailPrefab: {fileID: 0}
+    ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
+      type: 3}
     PreferableEnemy: 0
-    TurretPrefab: {fileID: 0}
+    TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
+      type: 3}
     ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/FirePoint
     ProjectilePreferences:
       ProjectilePrefab: {fileID: 7798697648108561833, guid: e38bc884a07db1d44aef29384092ba36,
         type: 3}
-      ProjectileSpeed: 50
+      ProjectileSpeed: 2
       ProjectileDamage: 10
       ProjectileFollowsTarget: 1
       AngleLock: {x: 90, y: 0, z: 0}
@@ -62,6 +66,7 @@ MonoBehaviour:
     TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
       type: 3}
     ArmorPiercing: 2
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
     ProjectilePreferences:
       ProjectilePrefab: {fileID: 7798697648108561833, guid: e38bc884a07db1d44aef29384092ba36,
         type: 3}
@@ -80,6 +85,7 @@ MonoBehaviour:
     PreferableEnemy: 0
     TurretPrefab: {fileID: 0}
     ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
     ProjectilePreferences:
       ProjectilePrefab: {fileID: 0}
       ProjectileSpeed: 50
@@ -99,6 +105,7 @@ MonoBehaviour:
     TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
       type: 3}
     ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
     ProjectilePreferences:
       ProjectilePrefab: {fileID: 189120, guid: 08a80c502ec6039459be2468ae2a76e3, type: 3}
       ProjectileSpeed: 50
@@ -116,6 +123,7 @@ MonoBehaviour:
     PreferableEnemy: 0
     TurretPrefab: {fileID: 0}
     ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
     ProjectilePreferences:
       ProjectilePrefab: {fileID: 0}
       ProjectileSpeed: 50
@@ -135,6 +143,7 @@ MonoBehaviour:
     TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
       type: 3}
     ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
     ProjectilePreferences:
       ProjectilePrefab: {fileID: 158606, guid: 903c77b00708d27458132b11307f5741, type: 3}
       ProjectileSpeed: 8
@@ -154,9 +163,10 @@ MonoBehaviour:
     TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
       type: 3}
     ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/FirePoint
     ProjectilePreferences:
       ProjectilePrefab: {fileID: 158606, guid: 903c77b00708d27458132b11307f5741, type: 3}
-      ProjectileSpeed: 10
+      ProjectileSpeed: 8
       ProjectileDamage: 10
       ProjectileFollowsTarget: 1
       AngleLock: {x: 0, y: 90, z: 0}
@@ -171,6 +181,7 @@ MonoBehaviour:
     PreferableEnemy: 0
     TurretPrefab: {fileID: 0}
     ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
     ProjectilePreferences:
       ProjectilePrefab: {fileID: 0}
       ProjectileSpeed: 50
@@ -188,6 +199,7 @@ MonoBehaviour:
     PreferableEnemy: 0
     TurretPrefab: {fileID: 0}
     ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
     ProjectilePreferences:
       ProjectilePrefab: {fileID: 0}
       ProjectileSpeed: 50
@@ -205,6 +217,7 @@ MonoBehaviour:
     PreferableEnemy: 0
     TurretPrefab: {fileID: 0}
     ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
     ProjectilePreferences:
       ProjectilePrefab: {fileID: 0}
       ProjectileSpeed: 50
@@ -222,6 +235,7 @@ MonoBehaviour:
     PreferableEnemy: 0
     TurretPrefab: {fileID: 0}
     ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
     ProjectilePreferences:
       ProjectilePrefab: {fileID: 0}
       ProjectileSpeed: 50
@@ -239,6 +253,7 @@ MonoBehaviour:
     PreferableEnemy: 0
     TurretPrefab: {fileID: 0}
     ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
     ProjectilePreferences:
       ProjectilePrefab: {fileID: 0}
       ProjectileSpeed: 50
@@ -256,6 +271,7 @@ MonoBehaviour:
     PreferableEnemy: 0
     TurretPrefab: {fileID: 0}
     ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
     ProjectilePreferences:
       ProjectilePrefab: {fileID: 0}
       ProjectileSpeed: 50
@@ -273,6 +289,7 @@ MonoBehaviour:
     PreferableEnemy: 0
     TurretPrefab: {fileID: 0}
     ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
     ProjectilePreferences:
       ProjectilePrefab: {fileID: 0}
       ProjectileSpeed: 50

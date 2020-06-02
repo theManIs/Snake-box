@@ -19,6 +19,7 @@ namespace Snake_box
         public TurretProjectileAbs TurretShell;
         public GameObject TurretPrefab;
         public ArmorTypes ArmorPiercing;
+        public string FirePointHierarchy = "TurretShift/FirePoint";
         public ProjectilePreferences ProjectilePreferences;
     }
 }

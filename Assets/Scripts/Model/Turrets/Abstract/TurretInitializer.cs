@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
-using Assets.Scripts.Model.Turrets;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Quaternion = UnityEngine.Quaternion;
@@ -20,9 +17,9 @@ namespace Snake_box
         public GameObject TurretInstance;
         //todo remove sprite path
         public string TurretSpritePath = "Prefabs/Turrets/Turret3D";
-        public TurretBehaviour TurretBehaviour;
 
         protected TurretPreferences TurretPreferences;
+        protected Transform FirePoint;
 
         private List<IEnemy> _dummyEnemies = new List<IEnemy>();
         private Quaternion _haltTurretRotation;
@@ -38,18 +35,6 @@ namespace Snake_box
         public float TurretRange => TurretPreferences.Range;
         public GameObject TurretPrefab => TurretPreferences.TurretPrefab;
         public EnemyType PreferredArmorType => TurretPreferences.PreferableEnemy;
-        public ArmorTypes ArmorPiercing => TurretPreferences.ArmorPiercing;
-
-        #endregion
-
-
-        #region ClassLifeCycle
-
-        //todo remove this method completely
-        public TurretInitializer()
-        {
-            Initialization();
-        }
 
         #endregion
 
@@ -59,13 +44,9 @@ namespace Snake_box
         public void Initialization()
         {
             GameObject turretResource =  TurretPreferences != null && TurretPrefab != null ? TurretPrefab : Resources.Load<GameObject>(TurretSpritePath);
-
-            if (turretResource != null)
-            {
-                TurretInstance = Object.Instantiate(turretResource, Vector3.zero, turretResource.transform.rotation);
-                _haltTurretRotation = TurretInstance.transform.rotation;
-                TurretBehaviour = TurretInstance.GetComponent<TurretBehaviour>();
-            }
+            TurretInstance = Object.Instantiate(turretResource, Vector3.zero, turretResource.transform.rotation);
+            _haltTurretRotation = TurretInstance.transform.rotation;
+            FirePoint = TurretPreferences != null ? TurretInstance.transform.Find(TurretPreferences.FirePointHierarchy) : TurretInstance.transform;
         }
 
 
@@ -102,7 +83,7 @@ namespace Snake_box
                 if (nearestEnemy == null)
                     return;
 
-                GetProjectile().Build(TurretBehaviour.FirePoint, nearestEnemy);
+                GetProjectile().BuildMulti(FirePoint, nearestEnemy, 25);
 
                 _frameRateLock = Time.frameCount + Mathf.Round(Random.value * 10);
             }

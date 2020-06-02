@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 
 namespace Snake_box
@@ -117,6 +118,54 @@ namespace Snake_box
 
             if (interpolation >= 1 || _timeToBeDestructedAfter < projectileLifespan)
                 Decommission();
+        }
+
+        public Vector3 FinalPosition = Vector3.zero;
+
+
+        public void MoveInCone()
+        {
+            DecommissionIfTargetDown();
+
+            if (_projectileInstance == null
+                || Math.Abs(BulletSpeed) <= 0
+                || _targetToPursue == null
+                || Math.Abs(_journeyDistance) <= 0.0f
+                || _targetToPursue.AmIDestroyed())
+                return;
+
+            if (FinalPosition == Vector3.zero)
+                FinalPosition = _targetToPursue.GetPosition();
+
+            float projectileLifespan = Time.time - _timeStart;
+            float coveredDistance = projectileLifespan * BulletSpeed;
+            float interpolation = coveredDistance / _journeyDistance;
+            Vector3 direction3d = FinalPosition - _firePoint.transform.position;
+            float activationDistance = 1;
+
+            if (_projectileInstance.GetComponent<Rigidbody>() == null)
+            {
+                Rigidbody rb = _projectileInstance.AddComponent<Rigidbody>();
+                rb.useGravity = false;
+                rb.velocity = (direction3d.normalized + new Vector3(Random.value * 0.5f - 0.25f, 0, Random.value * 0.5f - 0.25f)) * 2;
+            }
+
+//            _projectileInstance.transform.position =
+//                Vector3.Lerp(_firePoint.transform.position, FinalPosition, interpolation);
+
+//            if (interpolation >= 1 || _timeToBeDestructedAfter < projectileLifespan)
+//                Decommission();
+            
+            Ray hitRay = new Ray(_projectileInstance.transform.position, direction3d);
+
+            if (Physics.Raycast(hitRay, out RaycastHit hitInfo, activationDistance))
+            {
+                Debug.Log(hitInfo.collider.gameObject.name);
+            }
+
+
+//            if (_timeToBeDestructedAfter < projectileLifespan)
+//                Decommission();
         }
 
         public bool IsToDispose() => ToDispose;

@@ -131,8 +131,8 @@ GameObject:
   m_Component:
   - component: {fileID: 15923886}
   - component: {fileID: 15923889}
-  - component: {fileID: 15923888}
   - component: {fileID: 15923887}
+  - component: {fileID: 15923888}
   m_Layer: 0
   m_Name: KnobEnemy (16)
   m_TagString: Untagged
@@ -167,32 +167,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &15923888
-BoxCollider2D:
+--- !u!65 &15923888
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15923885}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: -0.000000074505806, z: -0.00000071525574}
 --- !u!212 &15923889
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -345,8 +332,8 @@ GameObject:
   m_Component:
   - component: {fileID: 454037651}
   - component: {fileID: 454037654}
-  - component: {fileID: 454037653}
   - component: {fileID: 454037652}
+  - component: {fileID: 454037653}
   m_Layer: 0
   m_Name: KnobEnemy (1)
   m_TagString: Untagged
@@ -381,32 +368,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &454037653
-BoxCollider2D:
+--- !u!65 &454037653
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454037650}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0.00000020861626, z: 0.00000023841858}
 --- !u!212 &454037654
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -467,8 +441,8 @@ GameObject:
   m_Component:
   - component: {fileID: 460642474}
   - component: {fileID: 460642477}
-  - component: {fileID: 460642476}
   - component: {fileID: 460642475}
+  - component: {fileID: 460642476}
   m_Layer: 0
   m_Name: KnobEnemy (9)
   m_TagString: Untagged
@@ -503,32 +477,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &460642476
-BoxCollider2D:
+--- !u!65 &460642476
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460642473}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0.00000011920929, z: -0.00000023841858}
 --- !u!212 &460642477
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -589,8 +550,8 @@ GameObject:
   m_Component:
   - component: {fileID: 467486610}
   - component: {fileID: 467486613}
-  - component: {fileID: 467486612}
   - component: {fileID: 467486611}
+  - component: {fileID: 467486612}
   m_Layer: 0
   m_Name: KnobEnemy (5)
   m_TagString: Untagged
@@ -625,32 +586,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &467486612
-BoxCollider2D:
+--- !u!65 &467486612
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467486609}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: -0.000000074505806, z: -0.00000071525574}
 --- !u!212 &467486613
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -711,8 +659,8 @@ GameObject:
   m_Component:
   - component: {fileID: 580506984}
   - component: {fileID: 580506987}
-  - component: {fileID: 580506986}
   - component: {fileID: 580506985}
+  - component: {fileID: 580506986}
   m_Layer: 0
   m_Name: KnobEnemy (13)
   m_TagString: Untagged
@@ -747,32 +695,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &580506986
-BoxCollider2D:
+--- !u!65 &580506986
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580506983}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0.00000023841858, z: -0.00000047683716}
 --- !u!212 &580506987
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -833,8 +768,8 @@ GameObject:
   m_Component:
   - component: {fileID: 625706271}
   - component: {fileID: 625706270}
-  - component: {fileID: 625706269}
   - component: {fileID: 625706272}
+  - component: {fileID: 625706269}
   m_Layer: 0
   m_Name: KnobEnemy
   m_TagString: Untagged
@@ -842,32 +777,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &625706269
-BoxCollider2D:
+--- !u!65 &625706269
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625706268}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0.00000017881393, z: 0.00000023841858}
 --- !u!212 &625706270
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -955,8 +877,8 @@ GameObject:
   m_Component:
   - component: {fileID: 710890933}
   - component: {fileID: 710890936}
-  - component: {fileID: 710890935}
   - component: {fileID: 710890934}
+  - component: {fileID: 710890935}
   m_Layer: 0
   m_Name: KnobEnemy (20)
   m_TagString: Untagged
@@ -991,32 +913,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &710890935
-BoxCollider2D:
+--- !u!65 &710890935
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710890932}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0.00000011920929, z: -0.00000023841858}
 --- !u!212 &710890936
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1077,8 +986,8 @@ GameObject:
   m_Component:
   - component: {fileID: 763020197}
   - component: {fileID: 763020200}
-  - component: {fileID: 763020199}
   - component: {fileID: 763020198}
+  - component: {fileID: 763020199}
   m_Layer: 0
   m_Name: KnobEnemy (15)
   m_TagString: Untagged
@@ -1113,32 +1022,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &763020199
-BoxCollider2D:
+--- !u!65 &763020199
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763020196}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &763020200
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1199,8 +1095,8 @@ GameObject:
   m_Component:
   - component: {fileID: 792373335}
   - component: {fileID: 792373338}
-  - component: {fileID: 792373337}
   - component: {fileID: 792373336}
+  - component: {fileID: 792373337}
   m_Layer: 0
   m_Name: KnobEnemy (11)
   m_TagString: Untagged
@@ -1235,32 +1131,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &792373337
-BoxCollider2D:
+--- !u!65 &792373337
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792373334}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0.00000017881393, z: 0.00000023841858}
 --- !u!212 &792373338
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1321,8 +1204,8 @@ GameObject:
   m_Component:
   - component: {fileID: 818083443}
   - component: {fileID: 818083446}
-  - component: {fileID: 818083445}
   - component: {fileID: 818083444}
+  - component: {fileID: 818083445}
   m_Layer: 0
   m_Name: KnobEnemy (12)
   m_TagString: Untagged
@@ -1357,32 +1240,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &818083445
-BoxCollider2D:
+--- !u!65 &818083445
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 818083442}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0.00000020861626, z: 0.00000023841858}
 --- !u!212 &818083446
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1473,8 +1343,8 @@ GameObject:
   m_Component:
   - component: {fileID: 953235894}
   - component: {fileID: 953235897}
-  - component: {fileID: 953235896}
   - component: {fileID: 953235895}
+  - component: {fileID: 953235896}
   m_Layer: 0
   m_Name: KnobEnemy (8)
   m_TagString: Untagged
@@ -1509,32 +1379,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &953235896
-BoxCollider2D:
+--- !u!65 &953235896
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953235893}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0.00000023841858, z: 0}
 --- !u!212 &953235897
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1595,8 +1452,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1076817021}
   - component: {fileID: 1076817024}
-  - component: {fileID: 1076817023}
   - component: {fileID: 1076817022}
+  - component: {fileID: 1076817023}
   m_Layer: 0
   m_Name: KnobEnemy (17)
   m_TagString: Untagged
@@ -1631,32 +1488,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &1076817023
-BoxCollider2D:
+--- !u!65 &1076817023
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076817020}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: -0.00000023841858}
 --- !u!212 &1076817024
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1717,8 +1561,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1130737232}
   - component: {fileID: 1130737235}
-  - component: {fileID: 1130737234}
   - component: {fileID: 1130737233}
+  - component: {fileID: 1130737234}
   m_Layer: 0
   m_Name: KnobEnemy (3)
   m_TagString: Untagged
@@ -1753,32 +1597,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &1130737234
-BoxCollider2D:
+--- !u!65 &1130737234
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1130737231}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: -0.00000011920929, z: -0.00000071525574}
 --- !u!212 &1130737235
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1882,8 +1713,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1186111254}
   - component: {fileID: 1186111257}
-  - component: {fileID: 1186111256}
   - component: {fileID: 1186111255}
+  - component: {fileID: 1186111256}
   m_Layer: 0
   m_Name: KnobEnemy (4)
   m_TagString: Untagged
@@ -1918,32 +1749,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &1186111256
-BoxCollider2D:
+--- !u!65 &1186111256
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186111253}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &1186111257
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2004,8 +1822,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1197656479}
   - component: {fileID: 1197656482}
-  - component: {fileID: 1197656481}
   - component: {fileID: 1197656480}
+  - component: {fileID: 1197656481}
   m_Layer: 0
   m_Name: KnobEnemy (6)
   m_TagString: Untagged
@@ -2040,32 +1858,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &1197656481
-BoxCollider2D:
+--- !u!65 &1197656481
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197656478}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: -0.00000023841858}
 --- !u!212 &1197656482
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2126,8 +1931,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1201143624}
   - component: {fileID: 1201143627}
-  - component: {fileID: 1201143626}
   - component: {fileID: 1201143625}
+  - component: {fileID: 1201143626}
   m_Layer: 0
   m_Name: KnobEnemy (14)
   m_TagString: Untagged
@@ -2162,32 +1967,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &1201143626
-BoxCollider2D:
+--- !u!65 &1201143626
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201143623}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: -0.00000011920929, z: -0.00000071525574}
 --- !u!212 &1201143627
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2248,8 +2040,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1220770296}
   - component: {fileID: 1220770299}
-  - component: {fileID: 1220770298}
   - component: {fileID: 1220770297}
+  - component: {fileID: 1220770298}
   m_Layer: 0
   m_Name: KnobEnemy (19)
   m_TagString: Untagged
@@ -2284,32 +2076,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &1220770298
-BoxCollider2D:
+--- !u!65 &1220770298
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220770295}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0.00000023841858, z: 0}
 --- !u!212 &1220770299
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2370,8 +2149,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1359526721}
   - component: {fileID: 1359526724}
-  - component: {fileID: 1359526723}
   - component: {fileID: 1359526722}
+  - component: {fileID: 1359526723}
   m_Layer: 0
   m_Name: KnobEnemy (2)
   m_TagString: Untagged
@@ -2406,32 +2185,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &1359526723
-BoxCollider2D:
+--- !u!65 &1359526723
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359526720}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0.00000023841858, z: -0.00000047683716}
 --- !u!212 &1359526724
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2492,8 +2258,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1411849572}
   - component: {fileID: 1411849575}
-  - component: {fileID: 1411849574}
   - component: {fileID: 1411849573}
+  - component: {fileID: 1411849574}
   m_Layer: 0
   m_Name: KnobEnemy (18)
   m_TagString: Untagged
@@ -2528,32 +2294,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &1411849574
-BoxCollider2D:
+--- !u!65 &1411849574
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411849571}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: -0.00000023841858, z: -0.00000047683716}
 --- !u!212 &1411849575
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2614,8 +2367,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1527314070}
   - component: {fileID: 1527314073}
-  - component: {fileID: 1527314072}
   - component: {fileID: 1527314071}
+  - component: {fileID: 1527314072}
   m_Layer: 0
   m_Name: KnobEnemy (7)
   m_TagString: Untagged
@@ -2650,32 +2403,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &1527314072
-BoxCollider2D:
+--- !u!65 &1527314072
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527314069}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: -0.00000023841858, z: -0.00000047683716}
 --- !u!212 &1527314073
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2766,8 +2506,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1874987039}
   - component: {fileID: 1874987042}
-  - component: {fileID: 1874987041}
   - component: {fileID: 1874987040}
+  - component: {fileID: 1874987041}
   m_Layer: 0
   m_Name: KnobEnemy (21)
   m_TagString: Untagged
@@ -2802,32 +2542,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &1874987041
-BoxCollider2D:
+--- !u!65 &1874987041
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874987038}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: -0.00000071525574}
 --- !u!212 &1874987042
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2971,8 +2698,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1908966667}
   - component: {fileID: 1908966670}
-  - component: {fileID: 1908966669}
   - component: {fileID: 1908966668}
+  - component: {fileID: 1908966669}
   m_Layer: 0
   m_Name: KnobEnemy (10)
   m_TagString: Untagged
@@ -3007,32 +2734,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorType: 1
---- !u!61 &1908966669
-BoxCollider2D:
+--- !u!65 &1908966669
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908966666}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: -0.00000071525574}
 --- !u!212 &1908966670
 SpriteRenderer:
   m_ObjectHideFlags: 0

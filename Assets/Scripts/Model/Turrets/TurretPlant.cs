@@ -30,6 +30,8 @@ namespace Snake_box
 
         public TurretBaseAbs AddPlasmaTurret() => AddAndReturn(typeof(PlasmaTurret));
 
+        public TurretBaseAbs AddShotgunTurret() => AddAndReturn(typeof(ShotgunTurret));
+
         private TurretBaseAbs AddAndReturn(Type turretType)
         {
             TurretBaseAbs newTurret;
@@ -42,6 +44,8 @@ namespace Snake_box
                 newTurret = new LaserTurret().Build(_turretData.LaserTurret);
             else if (turretType == typeof(PlasmaTurret))
                 newTurret = new PlasmaTurret().Build(_turretData.PlasmaTurret);
+            else if (turretType == typeof(ShotgunTurret))
+                newTurret = new ShotgunTurret().Build(_turretData.ShotgunTurret);
             else
                 newTurret = new CannonTurret().Build(_turretData.CannonTurret);
 
