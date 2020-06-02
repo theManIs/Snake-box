@@ -83,13 +83,13 @@ namespace Snake_box
                 if (nearestEnemy == null)
                     return;
 
-                GetProjectile().BuildMulti(FirePoint, nearestEnemy, 25);
+                GetProjectile().Build(FirePoint, nearestEnemy);
 
                 _frameRateLock = Time.frameCount + Mathf.Round(Random.value * 10);
             }
         }
 
-        private ProjectileBuilderAbs GetProjectile() => new CannonShellBuilder().SetProjectilePreferences(TurretPreferences.ProjectilePreferences);
+        protected virtual ProjectileBuilderAbs GetProjectile() => new CannonShellBuilder().SetProjectilePreferences(TurretPreferences.ProjectilePreferences);
 
         private Quaternion RotateAroundAxis(Vector3 pointA, Vector3 pointB, Quaternion startRotation)
         {

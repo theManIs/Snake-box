@@ -24,7 +24,7 @@ MonoBehaviour:
     TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
       type: 3}
     ArmorPiercing: 2
-    FirePointHierarchy: TurretShift/TurretShift/FirePoint
+    FirePointHierarchy: TurretShift/FirePoint
     ProjectilePreferences:
       ProjectilePrefab: {fileID: 7798697648108561833, guid: e38bc884a07db1d44aef29384092ba36,
         type: 3}

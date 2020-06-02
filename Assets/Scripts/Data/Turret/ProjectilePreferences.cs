@@ -12,5 +12,6 @@ namespace Snake_box
         public bool ProjectileFollowsTarget = true;
         public Vector3 AngleLock = new Vector3(90, 0, 0);
         public ArmorTypes ArmorPiercing = ArmorTypes.None;
+        public int NumberOfPeaces = 10;
     }
 }
