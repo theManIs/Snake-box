@@ -12,6 +12,8 @@ namespace Snake_box
         private KeyCode _up = KeyCode.W;
         private KeyCode _down = KeyCode.S;        
 
+        #endregion
+        
         private readonly CharacterData _characterData;
 #if UNITY_IOS || UNITY_ANDROID
         private float _minDistanceForSwipe = 20;
@@ -21,7 +23,6 @@ namespace Snake_box
 
         private Vector2 _fingerMovement => _fingerUpPosition - _fingerDownPosition;
 #endif
-        #endregion
 
         public InputController()
         {
@@ -85,7 +86,7 @@ namespace Snake_box
                 }
             }
 #endif
-            _characterData._characterBehaviour.Move(direction);
+            Services.Instance.LevelService.CharacterBehaviour.InputMove(direction);
             if (Input.GetKey(AxisManager.ESCAPE))
             {
                 SceneManager.LoadScene(0);
