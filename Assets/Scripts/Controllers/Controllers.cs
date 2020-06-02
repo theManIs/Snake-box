@@ -70,12 +70,12 @@ namespace Snake_box
         
         #region ICleanUp
 
-        public void Cleaner()
+        public void Clean()
         {
             for (var index = 0; index < _cleanUps.Count; index++)
             {
                 var cleanUp = _cleanUps[index];
-                cleanUp.Cleaner();
+                cleanUp.Clean();
             }
         }
 

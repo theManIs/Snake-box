@@ -2,6 +2,6 @@
 {
     public interface ICleanUp
     {
-        void Cleaner();
+        void Clean();
     }
 }

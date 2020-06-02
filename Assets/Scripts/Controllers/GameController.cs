@@ -43,7 +43,7 @@ namespace Snake_box
 
         public void Cleaner()
         {
-            _controllers.Cleaner();
+            _controllers.Clean();
         }
 
         public void Initialization()
