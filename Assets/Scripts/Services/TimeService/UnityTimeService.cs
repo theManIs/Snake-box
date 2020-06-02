@@ -17,7 +17,7 @@ namespace Snake_box
 
         public UnityTimeService()
         {
-            _levelStartTime = Time.time;
+            Services.Instance.LevelLoadService.LevelLoaded += ResetLevelStartTime;
         }
 
         #endregion
@@ -33,6 +33,8 @@ namespace Snake_box
         public void SetTimeScale(float timeScale) => Time.timeScale = timeScale;
         public void ResetDeltaTime() => _deltaTimeResetFrame = Time.frameCount;
         public float TimeSinceLevelStart() => Time.time - _levelStartTime;
+
+        private void ResetLevelStartTime() => _levelStartTime = Time.time;
 
         #endregion
     }

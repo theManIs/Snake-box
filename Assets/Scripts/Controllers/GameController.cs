@@ -19,6 +19,7 @@ namespace Snake_box
         private void Awake()
         {
             Services.Instance.LevelLoadService.LevelLoaded += Initialize;
+            Services.Instance.LevelLoadService.LevelUnloaded += Clean;
         }
 
         private void Initialize()
@@ -41,7 +42,7 @@ namespace Snake_box
 
         #endregion
 
-        public void Cleaner()
+        public void Clean()
         {
             _controllers.Clean();
         }

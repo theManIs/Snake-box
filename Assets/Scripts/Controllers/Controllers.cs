@@ -77,6 +77,15 @@ namespace Snake_box
                 var cleanUp = _cleanUps[index];
                 cleanUp.Clean();
             }
+
+            for (var i = 0; i < _executeControllers.Count; i++)
+            {
+                var execute = _executeControllers[i];
+                if (execute is ICleanUp cleanUp)
+                {
+                    cleanUp.Clean();
+                }
+            }
         }
 
         #endregion

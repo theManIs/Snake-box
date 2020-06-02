@@ -5,26 +5,20 @@ namespace Snake_box
 {
     public sealed class Services
     {
-        #region Fields
-        
-        private static readonly Lazy<Services> _instance = new Lazy<Services>();
-
-        #endregion
-
-
         #region ClassLifeCycles
 
-        public Services()
+        static Services()
         {
-            Initialize();
+            Instance = new Services();
+            Instance.Initialize();
         }
 
         #endregion
-        
-        
+
+
         #region Properties
 
-        public static Services Instance => _instance.Value;
+        public static Services Instance { get; }
         public CameraServices CameraServices { get; private set; }
         public ITimeService TimeService { get; private set; }
         public PhysicsService PhysicsService { get; private set; }
@@ -40,13 +34,13 @@ namespace Snake_box
         
         private void Initialize()
         {
+            LevelLoadService = new LevelLoadService();
             CameraServices = new CameraServices();
             TimeService = new UnityTimeService();
             PhysicsService = new PhysicsService(CameraServices);
             SaveData = new PrefsService();
             JsonService = new JsonService();
             LevelService = new LevelService();
-            LevelLoadService = new LevelLoadService();
         }
         
         #endregion

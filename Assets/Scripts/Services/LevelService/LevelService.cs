@@ -43,6 +43,7 @@ namespace Snake_box
             IsTargetDestroed = false;
             if (!SceneManager.GetActiveScene().name.Equals(Data.Instance.LevelData.Menu))
                 IsSpawnNeed = true;
+            Services.Instance.LevelLoadService.LevelLoaded += LevelStart;
         }
 
         #endregion

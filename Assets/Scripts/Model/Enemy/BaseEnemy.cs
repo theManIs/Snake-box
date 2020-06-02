@@ -151,13 +151,18 @@ namespace Snake_box
             _hp -= damage;
             if (_hp <= 0)
             {
-                if (_levelService.ActiveEnemies.Contains(this))
-                    _levelService.ActiveEnemies.Remove(this);
-                Object.Destroy(_enemyObject);
-                if (_levelService.ActiveEnemies.Count == 0 && Services.Instance.LevelService.IsLevelSpawnEnded)
-                {
-                    _levelService.EndLevel();
-                }
+                Destroy();
+            }
+        }
+
+        public void Destroy()
+        {
+            if (_levelService.ActiveEnemies.Contains(this))
+                _levelService.ActiveEnemies.Remove(this);
+            Object.Destroy(_enemyObject);
+            if (_levelService.ActiveEnemies.Count == 0 && Services.Instance.LevelService.IsLevelSpawnEnded)
+            {
+                _levelService.EndLevel();
             }
         }
 
