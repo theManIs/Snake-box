@@ -31,6 +31,7 @@ namespace Snake_box
         public ISaveData SaveData { get; private set; }
         public JsonService JsonService { get; private set; }
         public LevelService LevelService { get; private set; }
+        public LevelLoadService LevelLoadService { get; private set; }
         
         #endregion
         
@@ -45,6 +46,7 @@ namespace Snake_box
             SaveData = new PrefsService();
             JsonService = new JsonService();
             LevelService = new LevelService();
+            LevelLoadService = new LevelLoadService();
         }
         
         #endregion
