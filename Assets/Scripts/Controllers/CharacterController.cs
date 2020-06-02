@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 namespace Snake_box
 {
-    public sealed class CharacterController : IExecute, IInitialization
+    public sealed class CharacterController : IExecute, ICleanUp, IInitialization    
     {
         #region Fields  
         
@@ -20,6 +20,15 @@ namespace Snake_box
             _characterBehaviour = Object.Instantiate(characterBehaviour);
             Services.Instance.LevelService.CharacterBehaviour = _characterBehaviour;
         }        
+
+            _characterData = Data.Instance.Character;
+            _characterData.Initialization();
+        }
+
+        public void Clean()
+        {
+            GameController.Destroy(_characterData._characterBehaviour.gameObject);
+        }
 
         public void Execute()
         {

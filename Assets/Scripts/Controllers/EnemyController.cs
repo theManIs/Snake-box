@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Snake_box
 {
-    public sealed class EnemyController : IExecute, IInitialization
+    public sealed class EnemyController : IExecute, IInitialization, ICleanUp
     {
         #region Fields
 
         private readonly LevelService _levelService;
-        private readonly List<IEnemy> _enemies;
-        
+        private List<IEnemy> _enemies => Services.Instance.LevelService.ActiveEnemies;
+
 
         #endregion
 
@@ -19,13 +19,20 @@ namespace Snake_box
         public EnemyController()
         {
             _levelService = Services.Instance.LevelService;
-            _enemies = Services.Instance.LevelService.ActiveEnemies;
         }
-        
+
+        public void Clean()
+        {
+            var enemies = _enemies.ToArray();
+
+            foreach (var enemy in enemies)
+                ((BaseEnemy)enemy).Destroy();
+        }
+
 
         #endregion
 
-        
+
         #region IExecute
 
         public void Execute()

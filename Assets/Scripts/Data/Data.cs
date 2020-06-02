@@ -35,6 +35,7 @@ namespace Snake_box
         [SerializeField] private string _shellDataPath;
         [SerializeField] private string _bordersDataPath;
         [SerializeField] private string _allSpawnListsDataPath;
+        [SerializeField] private string _levelPrefabsDataPath;
         private static MainBuildData _mainBuildData;
         private static BonusCoinsData _bonusCoinsData;
         private static BonusHpSnakeData _bonusHpSnakeData;
@@ -56,6 +57,7 @@ namespace Snake_box
         private static BordersData _bordersData;
         private static AllSpawnListsData _allSpawnListsData;
         private static ShellData _shellData;
+        private static LevelPrefabs _levelPrefabs;
         private static readonly Lazy<Data> _instance = new Lazy<Data>(() => Load<Data>("Data/" + typeof(Data).Name));
         
         #endregion
@@ -329,6 +331,16 @@ namespace Snake_box
                 if (_allSpawnListsData == null)
                     _allSpawnListsData = Load<AllSpawnListsData>("Data/" + Instance._allSpawnListsDataPath);
                 return _allSpawnListsData;
+            }
+        }
+
+        public LevelPrefabs LevelPrefabs
+        {
+            get
+            {
+                if (_levelPrefabs == null)
+                    _levelPrefabs = Load<LevelPrefabs>("Data/" + Instance._levelPrefabsDataPath);
+                return _levelPrefabs;
             }
         }
 

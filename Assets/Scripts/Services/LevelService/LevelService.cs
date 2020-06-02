@@ -22,12 +22,8 @@ namespace Snake_box
         #region Properties
 
         public GameObject Target { get; private set; }
-        public GameObject Spawn { get; private set; }
-        public int CurrentLevel { get; private set; }
-        public bool IsSpawnNeed { get; set; }
-        public bool IsWaveEnded { get; set; }
+        public string CurrentLevelName { get; set; }
         public bool IsLevelSpawnEnded { get; set; }
-        public bool IsLevelStarted { get; set; }
         public bool IsTargetDestroed { get; set; }
         public bool IsSnakeAlive { get; set; }
 
@@ -40,11 +36,9 @@ namespace Snake_box
         {            
             SceneManager.sceneLoaded += (arg0, mode) => LevelStart();
             _levelData = Data.Instance.LevelData;
-            IsWaveEnded = false;
             IsLevelSpawnEnded = false;
             IsTargetDestroed = false;
-            if (!SceneManager.GetActiveScene().name.Equals(Data.Instance.LevelData.Menu))
-                IsSpawnNeed = true;
+            Services.Instance.LevelLoadService.LevelLoaded += LevelStart;
         }
 
         #endregion
@@ -54,22 +48,18 @@ namespace Snake_box
 
         public void LoadLevel(int lvl)
         {
-            CurrentLevel = lvl;
             SceneManager.LoadScene(_levelData.Level[lvl]);
         }
 
         public void LoadMenu()
         {
-            CurrentLevel = -1;
             SceneManager.LoadScene(Data.Instance.LevelData.Menu);
         }
 
         public void EndLevel()
         {
             Wallet.ResetLocalCoins();
-            var panel = GameObject.FindWithTag(TagManager.GetTag(TagType.PanelEndLevel));
-            panel.transform.GetChild(0).gameObject.SetActive(true);
-            panel.GetComponentInParent<GameMenuBehaviour>().GetEndLevelText();
+            SetPanelEndLevelActive(true);
             ActiveEnemies.Clear();
             ActiveEnemies.Clear();
             Data.Instance.TurretData.ClearTurretList();          
@@ -77,11 +67,9 @@ namespace Snake_box
         }
 
         private void LevelStart()
-        {            
+        {
+            SetPanelEndLevelActive(false);
             FindGameObject();
-            IsLevelStarted = true;
-            IsSpawnNeed = true;
-            IsWaveEnded = false;
             IsLevelSpawnEnded = false;
             IsTargetDestroed = false;
             if (GameObject.FindObjectOfType<NavMeshSurface>())
@@ -94,10 +82,17 @@ namespace Snake_box
         public void FindGameObject()
         {
             Target = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Target));
-            Spawn = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Spawn));
         }
 
-
+        public void SetPanelEndLevelActive(bool isActive)
+        {
+            var panel = GameObject.FindWithTag(TagManager.GetTag(TagType.PanelEndLevel));
+            if (panel == null)
+                return;
+            panel.transform.GetChild(0).gameObject.SetActive(isActive);
+            if(isActive)
+                panel.GetComponentInParent<GameMenuBehaviour>().GetEndLevelText();
+        }
 
         #endregion
 

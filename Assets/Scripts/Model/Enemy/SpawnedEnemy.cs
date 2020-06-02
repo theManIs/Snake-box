@@ -26,13 +26,12 @@ namespace Snake_box
 
         #region IEnemy
 
-        public void Spawn(Vector3 spawnpos)
+        public override void Spawn(Vector3 spawnpos)
         {
-            if (_levelService.Target == null || _levelService.Spawn == null)
+            if (_levelService.Target == null)
             {
                 _levelService.FindGameObject(); 
             }
-            _spawnCenter = _levelService.Spawn;
             _target = _levelService.Target.transform;
             _enemyObject = GameObject.Instantiate(_prefab, spawnpos, Quaternion.identity);
             _navMeshAgent = _enemyObject.GetComponent<NavMeshAgent>();
