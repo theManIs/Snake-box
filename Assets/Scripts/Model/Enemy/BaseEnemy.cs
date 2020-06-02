@@ -154,7 +154,7 @@ namespace Snake_box
                 if (_levelService.ActiveEnemies.Contains(this))
                     _levelService.ActiveEnemies.Remove(this);
                 Object.Destroy(_enemyObject);
-                if (_levelService.ActiveEnemies.Count == 0 && EnemySpawnControler.Instance.IsSpawningFinished)
+                if (_levelService.ActiveEnemies.Count == 0 && Services.Instance.LevelService.IsLevelSpawnEnded)
                 {
                     _levelService.EndLevel();
                 }
