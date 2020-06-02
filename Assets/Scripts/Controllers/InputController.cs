@@ -90,7 +90,6 @@ namespace Snake_box
             }
 #endif
             _characterData._characterBehaviour.Move(direction);
-            _characterData._characterBehaviour.TeleportIfOutOfBorder();
             if (Input.GetKey(AxisManager.ESCAPE))
             {
                 SceneManager.LoadScene(0);
