@@ -6,20 +6,20 @@ namespace Snake_box
     [CreateAssetMenu(fileName = "AllSpawnListsData", menuName = "Data/Spawn/AllSpawnListsData")]
     public class AllSpawnListsData : ScriptableObject
     {
-        [SerializeField] private LevelEnemySpawnListPair[] _spawnLists;
+        [SerializeField] private LevelTypeEnemySpawnListPair[] _spawnLists;
 
-        public EnemySpawnList GetEnemySpawnListByLevelName(string name)
+        public EnemySpawnList GetEnemySpawnListByLevelType(LevelType levelType)
         {
-            if (!HasSpawnListForLevel(name))
-                throw new System.ArgumentException($"Для уровня {name} нет списка спауна");
-            return _spawnLists.Single(x => x.LevelName == name).EnemySpawnList;
+            if (!HasSpawnListForLevel(levelType))
+                throw new System.ArgumentException($"Для уровня {levelType} нет списка спауна");
+            return _spawnLists.Single(x => x.LevelType == levelType).EnemySpawnList;
         }
 
-        public bool HasSpawnListForLevel(string levelName)
+        public bool HasSpawnListForLevel(LevelType levelType)
         {
             foreach (var pair in _spawnLists)
             {
-                if (pair.LevelName == levelName && pair.EnemySpawnList != null)
+                if (pair.LevelType == levelType && pair.EnemySpawnList != null)
                     return true;
             }
             return false;
