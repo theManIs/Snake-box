@@ -5,9 +5,9 @@ using UnityEngine;
 namespace Snake_box
 {
     [Serializable]
-    public struct LevelNamePrefabPair
+    public struct LevelTypePrefabPair
     {
-        public string Name;
+        public LevelType LevelType;
         public GameObject Prefab;
     }
 

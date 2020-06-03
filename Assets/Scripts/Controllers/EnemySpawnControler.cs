@@ -34,7 +34,7 @@ namespace Snake_box
         {
             //Инициализация списка спауна
             //Получаем Scriptable Object список спауна
-            var enemySpawnList = Data.Instance.AllSpawnListsData.GetEnemySpawnListByLevelName(Services.Instance.LevelService.CurrentLevelName);
+            var enemySpawnList = Data.Instance.AllSpawnListsData.GetEnemySpawnListByLevelType(Services.Instance.LevelService.CurrentLevel);
             //Извлекаем из него массив элементов - записей о спауне отдельных врагов
             var singleEnemySpawnDatas = enemySpawnList.Enemies;
             //Сортируем его по таймингу спауна по ворастанию

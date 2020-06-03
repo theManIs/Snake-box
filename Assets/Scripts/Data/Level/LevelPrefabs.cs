@@ -8,23 +8,23 @@ namespace Snake_box
     [CreateAssetMenu(fileName = "LevelPrefabs", menuName = "Data/Level/LevelPrefabs")]
     public class LevelPrefabs : ScriptableObject
     {
-        [SerializeField] private LevelNamePrefabPair[] _levelNamePrefabPairs;
+        [SerializeField] private LevelTypePrefabPair[] _levelTypePrefabPairs;
 
-        public GameObject this[string name]
+        public GameObject this[LevelType levelType]
         {
             get
             {
-                if (!LevelExists(name))
-                    throw new ArgumentException($"Уровня с именем {name} не существует");
-                return _levelNamePrefabPairs.Single(x => x.Name == name).Prefab;
+                if (!LevelExists(levelType))
+                    throw new ArgumentException($"Уровня {levelType} не существует");
+                return _levelTypePrefabPairs.Single(x => x.LevelType == levelType).Prefab;
             }
         }
 
-        public bool LevelExists(string name)
+        public bool LevelExists(LevelType levelType)
         {
-            foreach (var pair in _levelNamePrefabPairs)
+            foreach (var pair in _levelTypePrefabPairs)
             {
-                if (pair.Name == name)
+                if (pair.LevelType == levelType)
                     return true;
             }
             return false;
