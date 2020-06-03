@@ -55,7 +55,6 @@ namespace Snake_box
 
         public void EndLevel()
         {
-            Wallet.ResetLocalCoins();
             SetPanelEndLevelActive(true);
             ActiveEnemies.Clear();
             Data.Instance.TurretData.ClearTurretList();          
