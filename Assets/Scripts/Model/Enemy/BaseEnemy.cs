@@ -24,13 +24,14 @@ namespace Snake_box
         protected float _meleeHitRange;
         protected bool _isNeedNavMeshUpdate = false;
         protected bool _isValidTarget;
+        protected int _killReward;
 
         #endregion
 
 
         #region ClassLifeCycle
 
-        public BaseEnemy(BaseEnemyData data)
+        protected BaseEnemy(BaseEnemyData data)
         {
             _prefab = data.Prefab;
             _speed = data.Speed;
@@ -38,6 +39,7 @@ namespace Snake_box
             _damage = data.Damage;
             _armor = data.ArmorType;
             _meleeHitRange = data.MeleeHitRange;
+            _killReward = data.KillReward;
         }
 
         #endregion
@@ -144,6 +146,7 @@ namespace Snake_box
             if (_levelService.ActiveEnemies.Contains(this))
                 _levelService.ActiveEnemies.Remove(this);
             Object.Destroy(_enemyObject);
+            Wallet.PutLocalCoins(_killReward);
             if (_levelService.ActiveEnemies.Count == 0 && Services.Instance.LevelService.IsLevelSpawnEnded)
             {
                 _levelService.EndLevel();
