@@ -35,11 +35,11 @@ namespace Snake_box
         [SerializeField] private string _shellDataPath;
         [SerializeField] private string _bordersDataPath;
         [SerializeField] private string _allSpawnListsDataPath;
-        [SerializeField] private string _levelPrefabsDataPath;
         private static MainBuildData _mainBuildData;
         private static BonusCoinsData _bonusCoinsData;
         private static BonusHpSnakeData _bonusHpSnakeData;
         private static BonusSpeedData _bonusSpeedData;
+        [SerializeField] private string _levelPrefabsDataPath;
         private static ShakesData _shake;
         private static CharacterData _characterData;
         private static SimpleEnemyData _simpleEnemyData;

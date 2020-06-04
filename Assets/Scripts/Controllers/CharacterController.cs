@@ -19,15 +19,11 @@ namespace Snake_box
                 (AssetsPathGameObject.GameObjects[GameObjectType.Character]);
             _characterBehaviour = Object.Instantiate(characterBehaviour);
             Services.Instance.LevelService.CharacterBehaviour = _characterBehaviour;
-        }        
-
-            _characterData = Data.Instance.Character;
-            _characterData.Initialization();
         }
 
         public void Clean()
         {
-            GameController.Destroy(_characterData._characterBehaviour.gameObject);
+            GameController.Destroy(_characterBehaviour.gameObject);
         }
 
         public void Execute()
