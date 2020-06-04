@@ -40,6 +40,7 @@ namespace Snake_box
             _damage = _characterData._damage;
             _speed = _characterData._speed;
             _slowSpeed = _characterData._slowSpeed;
+            _ramCooldown = _characterData._ramCooldown;
         }
 
         #endregion
