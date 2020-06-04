@@ -11,6 +11,7 @@ namespace Snake_box
         public float RegenerationArmor; //регенирация силового поля 
         public float SpeedRotation;// скорость поворота
         public float Speed;// скорость 
-        public float Damage;           
+        public float Damage;
+        public float SlowBlockSpeed;
     }
 }

@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+
+
 namespace Snake_box
 {
     public sealed class CharacterController : IExecute, ICleanUp, IInitialization    

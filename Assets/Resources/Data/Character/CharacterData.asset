@@ -18,3 +18,4 @@ MonoBehaviour:
   SpeedRotation: 8
   Speed: 12
   Damage: 5
+  SlowBlockSpeed: 1

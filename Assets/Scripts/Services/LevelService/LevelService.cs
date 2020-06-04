@@ -14,6 +14,7 @@ namespace Snake_box
         public List<BaseBonus> ActiveBonus = new List<BaseBonus>();
         private readonly LevelData _levelData;
         public CharacterBehaviour CharacterBehaviour;
+        public List <BlockSnake> BlockSnakes= new List< BlockSnake>();
         public MainBuild MainBuilds = new MainBuild();
 
         #endregion

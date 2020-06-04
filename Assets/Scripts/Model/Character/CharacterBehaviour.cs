@@ -12,7 +12,6 @@ namespace Snake_box
 
         [SerializeField] private float _radius;
         private CharacterData _characterData;
-        private BlockSnakeData _blockSnakeData;
         private readonly List<BlockSnake> _blocksSnakes = new List<BlockSnake>();//блоки
         private readonly List<Vector3> _positions = new List<Vector3>();// позиции блоков 
         private float _sizeBlock;       
@@ -20,15 +19,17 @@ namespace Snake_box
         private ITimeService _timeService;       
         private bool hasSkill;
         private BonusData _bonus;
+        private GameObject _player;//переделать через сервис
+        private float _slowSnake;
 
-        #endregion      
+        #endregion
 
 
         #region Unity Method
 
         private void Awake()
         {
-            _blockSnakeData = Data.Instance.BlockSnake;
+            _player = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Player));
             _timeService = Services.Instance.TimeService;
             _sizeBlock = (gameObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.sqrMagnitude);// размер
             _characterData = Data.Instance.Character;
@@ -38,7 +39,9 @@ namespace Snake_box
             _currentSnakeHp = _characterData.Hp;
             _baseSnakeHp = _characterData.Hp;
             _damage = _characterData.Damage;
-            _speed = _characterData.Speed;            
+            _speed = _characterData.Speed;
+            _snakeArmorGeneration = _characterData.RegenerationArmor;
+            _slowSnake = _characterData.SlowBlockSpeed;
         }
 
         #endregion
@@ -62,8 +65,8 @@ namespace Snake_box
             {
                 for (int i = 0; i < _blocksSnakes.Count; i++)// перебираем блоки
                 {
-                    _blocksSnakes[i].transform.position = Vector3.Lerp(_positions[i + 1], _positions[i], distance / _sizeBlock);
-                    _blocksSnakes[i].transform.rotation = transform.rotation;
+                    _blocksSnakes[i].GetTransform().position = Vector3.Lerp(_positions[i + 1], _positions[i], distance / _sizeBlock);
+                    _blocksSnakes[i].GetTransform().rotation = transform.rotation;
                 }
             }
             if (distance > _sizeBlock) ///проверяем дистанцию длля перемещения
@@ -80,13 +83,13 @@ namespace Snake_box
         {
             if (_blocksSnakes.Count < 4)            {
                 
-                var block = _blockSnakeData.Initialization();
-                block.transform.SetParent(gameObject.transform);
-                block.transform.position = _positions[_positions.Count - 1];
+                var block = new BlockSnake();
+                block.Spawn(_player);
+                block.GetTransform().position = _positions[_positions.Count - 1];
                 _blocksSnakes.Add(block);
-                _positions.Add(block.transform.position);
-                _currentSnakeHp += _blockSnakeData.GetHp();
-                _baseSnakeHp += _blockSnakeData.GetHp();
+                _positions.Add(block.GetTransform().position);
+                _currentSnakeHp += block.GetHp();
+                _baseSnakeHp += block.GetHp();
             }
         }
 
@@ -121,7 +124,7 @@ namespace Snake_box
         public void ConstantMove()//постоянное движение
         {
             transform.rotation = _direction.ToQuaternion();
-            transform.position += transform.forward * ((_speed - (_positions.Count * _blockSnakeData.SlowSnake)) * _timeService.DeltaTime());
+            transform.position += transform.forward * ((_speed - (_positions.Count * _slowSnake)) * _timeService.DeltaTime());
         }
 
         public void InputMove(Direction direction)//движение
