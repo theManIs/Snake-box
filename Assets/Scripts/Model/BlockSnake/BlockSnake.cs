@@ -39,7 +39,6 @@ namespace Snake_box
             Services.Instance.LevelService.BlockSnakes.Add(this);
         }
 
-
         #endregion
 
 

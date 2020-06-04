@@ -81,8 +81,8 @@ namespace Snake_box
 
         public void AddBlock()// добавление блока
         {
-            if (_blocksSnakes.Count < 4)            {
-                
+            if (_blocksSnakes.Count < 4)
+            {                
                 var block = new BlockSnake();
                 block.Spawn(_player);
                 block.GetTransform().position = _positions[_positions.Count - 1];
