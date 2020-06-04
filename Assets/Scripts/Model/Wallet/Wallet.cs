@@ -8,10 +8,19 @@ namespace Snake_box
         #region Fields       
 
         private const string Key = "WorldCoins";
-        private static int _localCoins;
+        private const int INITIAL_LOCAL_COINS = 20;
+        private static int _localCoins = INITIAL_LOCAL_COINS;
 
         #endregion
 
+        #region ClassLifeCycles
+
+        static Wallet()
+        {
+            Services.Instance.LevelLoadService.LevelLoaded += ResetLocalCoins;
+        }
+
+        #endregion
 
         #region Methods
 
@@ -53,7 +62,7 @@ namespace Snake_box
 
         public static void  ResetLocalCoins()///прибавить валюту
         {
-            _localCoins = 0;
+            _localCoins = INITIAL_LOCAL_COINS;
         }
 
         #endregion

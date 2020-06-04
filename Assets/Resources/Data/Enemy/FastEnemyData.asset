@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d246ea771edf4184b949cbd0bb0b813c, type: 3}
   m_Name: FastEnemyData
   m_EditorClassIdentifier: 
+  ArmorType: 0
   Prefab: {fileID: 5058968977680414830, guid: 796c9aacf5d197246b8aff8236df6438, type: 3}
   Hp: 1
   Speed: 50
   Damage: 1
-  SpawnRadius: 50
   SizePack: 0
   PackValue: 0
   MeleeHitRange: 0.5
+  KillReward: 5
