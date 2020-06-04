@@ -16,27 +16,3 @@ MonoBehaviour:
   - _enemyType: 2
     _spawnTiming: 1
     _spawnPointId: 0
-  - _enemyType: 2
-    _spawnTiming: 1.5
-    _spawnPointId: 0
-  - _enemyType: 2
-    _spawnTiming: 2
-    _spawnPointId: 0
-  - _enemyType: 1
-    _spawnTiming: 7
-    _spawnPointId: 0
-  - _enemyType: 1
-    _spawnTiming: 7.5
-    _spawnPointId: 0
-  - _enemyType: 1
-    _spawnTiming: 8
-    _spawnPointId: 0
-  - _enemyType: 3
-    _spawnTiming: 13
-    _spawnPointId: 0
-  - _enemyType: 3
-    _spawnTiming: 13.5
-    _spawnPointId: 0
-  - _enemyType: 3
-    _spawnTiming: 14
-    _spawnPointId: 0
