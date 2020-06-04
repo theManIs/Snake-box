@@ -106,9 +106,6 @@ namespace Snake_box
 
         protected virtual void HitCheck()
         {
-            if (_currentHitCooldown > 0)
-                return;
-
             Collider[] colliders = new Collider[10];
             Physics.OverlapSphereNonAlloc(_transform.position, _meleeHitRange, colliders);
 
@@ -118,19 +115,29 @@ namespace Snake_box
                 {
                     if (colliders[i].CompareTag(TagManager.GetTag(TagType.Target)))
                     {
-                        var mainBuilding = colliders[i].GetComponent<MainBuild>();
-                        mainBuilding.GetDamage(_damage);
-                        _currentHitCooldown = _hitCooldown;
+                        if (_currentHitCooldown == 0)
+                        {
+                            var mainBuilding = colliders[i].GetComponent<MainBuild>();
+                            mainBuilding.GetDamage(_damage);
+                            _currentHitCooldown = _hitCooldown;
+                        }
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Player)))
                     {
-                        Data.Instance.Character._characterBehaviour.SetArmor(_damage);
-                        _currentHitCooldown = _hitCooldown;
+                        if (_currentHitCooldown == 0)
+                        {
+                            Data.Instance.Character._characterBehaviour.SetArmor(_damage);
+                            _currentHitCooldown = _hitCooldown;
+                        }
+                        Data.Instance.Character._characterBehaviour.RamEnemy(this);
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Block)))
                     {
-                        Data.Instance.Character._characterBehaviour.SetDamage(_damage);
-                        _currentHitCooldown = _hitCooldown;
+                        if (_currentHitCooldown == 0)
+                        {
+                            Data.Instance.Character._characterBehaviour.SetDamage(_damage);
+                            _currentHitCooldown = _hitCooldown;
+                        }
                     }
                 }
 
