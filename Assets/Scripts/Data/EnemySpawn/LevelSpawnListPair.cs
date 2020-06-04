@@ -4,12 +4,12 @@ using UnityEngine;
 namespace Snake_box
 {
     [Serializable]
-    public class LevelEnemySpawnListPair
+    public class LevelTypeEnemySpawnListPair
     {
-        [SerializeField] private string _levelName;
+        [SerializeField] private LevelType _levelType;
         [SerializeField] private EnemySpawnList _enemySpawnList;
 
-        public string LevelName => _levelName;
+        public LevelType LevelType => _levelType;
         public EnemySpawnList EnemySpawnList => _enemySpawnList;
     } 
 }

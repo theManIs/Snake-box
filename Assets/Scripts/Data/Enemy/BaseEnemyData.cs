@@ -14,5 +14,6 @@ namespace Snake_box
         public float SizePack;
         public float PackValue;
         public float MeleeHitRange;
+        public int KillReward;
     }
 }

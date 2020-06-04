@@ -23,7 +23,7 @@ namespace Snake_box
         #region Properties
 
         public GameObject Target { get; private set; }
-        public string CurrentLevelName { get; set; }
+        public LevelType CurrentLevel { get; set; }
         public bool IsLevelSpawnEnded { get; set; }
         public bool IsTargetDestroed { get; set; }
         public bool IsSnakeAlive { get; set; }
@@ -59,7 +59,6 @@ namespace Snake_box
 
         public void EndLevel()
         {
-            Wallet.ResetLocalCoins();
             SetPanelEndLevelActive(true);
             ActiveEnemies.Clear();
             ActiveEnemies.Clear();

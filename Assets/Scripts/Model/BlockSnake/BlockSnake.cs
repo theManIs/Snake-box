@@ -8,6 +8,9 @@ namespace Snake_box
     {
         #region Fields
 
+        private const int TURRET_PRICE = 20;
+        
+        private TurretController _turretController;
         private BlockSnakeData _blockSnakeData;
         private bool _turret;
         private float _hpBlock;//увиличения здоровья змейки при добовление блока
@@ -44,9 +47,10 @@ namespace Snake_box
 
         public void AddTurret()
         {
-            if (!_turret)
+            if (!_turret && Wallet.CountLocalCoins() >= TURRET_PRICE)
             {
                 Data.Instance.TurretData.AddNewWithParent(_prefab.transform);
+                Wallet.TakeLocalCoins(TURRET_PRICE);                
                 _turret = true;
             }
         }

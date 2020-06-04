@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class LoadLevelOnStartup : MonoBehaviour
 {
-    [SerializeField] private string _levelName;
+    [SerializeField] private LevelType _levelType;
 
     private void Start()
     {
-        Services.Instance.LevelLoadService.LoadLevel(_levelName);
+        Services.Instance.LevelLoadService.LoadLevel(_levelType);
     }
 }
