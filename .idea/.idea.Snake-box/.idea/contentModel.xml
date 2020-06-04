@@ -47,7 +47,6 @@
           <e p="Controllers" t="Include">
             <e p="CharacterController.cs" t="Include" />
             <e p="Controllers.cs" t="Include" />
-            <e p="DummyController.cs" t="Include" />
             <e p="EnemyController.cs" t="Include" />
             <e p="EnemySpawnControler.cs" t="Include" />
             <e p="GameController.cs" t="Include" />
@@ -57,7 +56,6 @@
               <e p="IExecute.cs" t="Include" />
               <e p="IInitialization.cs" t="Include" />
             </e>
-            <e p="TimerController.cs" t="Include" />
             <e p="TimeRemaining" t="Include">
               <e p="ITimeRemaining.cs" t="Include" />
               <e p="TimeRemaining.cs" t="Include" />
@@ -95,6 +93,8 @@
             <e p="Level" t="Include">
               <e p="BordersData.cs" t="Include" />
               <e p="LevelData.cs" t="Include" />
+              <e p="LevelPrefabs.cs" t="Include" />
+              <e p="LevelTypePrefabPair.cs" t="Include" />
             </e>
             <e p="Shakes" t="Include">
               <e p="SerializeShakeData.cs" t="Include" />
@@ -199,11 +199,17 @@
               <e p="Wallet.cs" t="Include" />
             </e>
           </e>
+          <e p="OnSceneLevelLoaders" t="Include">
+            <e p="LoadLevelOnButtonPress.cs" t="Include" />
+            <e p="LoadLevelOnButtonPressEditor.cs" t="Include" />
+            <e p="LoadLevelOnStartup.cs" t="Include" />
+          </e>
           <e p="Services" t="Include">
             <e p="CameraService" t="Include">
               <e p="CameraServices.cs" t="Include" />
             </e>
             <e p="LevelService" t="Include">
+              <e p="LevelLoadService.cs" t="Include" />
               <e p="LevelService.cs" t="Include" />
             </e>
             <e p="LocalizationService" t="Include">
@@ -228,6 +234,7 @@
             <e p="ArmorType.cs" t="Include" />
             <e p="EnemyType.cs" t="Include" />
             <e p="GameObjectType.cs" t="Include" />
+            <e p="LevelType.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
             <e p="BarUI" t="Include">

@@ -25,6 +25,7 @@ namespace Snake_box
         protected bool _isNeedNavMeshUpdate = false;
         protected bool _isValidTarget;
         protected int _killReward;
+        private TimeRemaining _stoping;
 
         #endregion
 
@@ -40,6 +41,7 @@ namespace Snake_box
             _armor = data.ArmorType;
             _meleeHitRange = data.MeleeHitRange;
             _killReward = data.KillReward;
+            _stoping = new TimeRemaining(StopDancing,3f);
         }
 
         #endregion
@@ -118,10 +120,12 @@ namespace Snake_box
                     {
                         Data.Instance.Character._characterBehaviour.SetArmor(_damage);
                         Data.Instance.Character._characterBehaviour.SetDamage(this);
+                        _stoping.AddTimeRemaining();
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Block)))
                     {
-                        Data.Instance.Character._characterBehaviour.SetDamage(_damage);        
+                        Data.Instance.Character._characterBehaviour.SetDamage(_damage);
+                        _stoping.AddTimeRemaining();
                     }
                 }
 
@@ -154,6 +158,14 @@ namespace Snake_box
             }
         }
 
+
+        public void StopDancing()
+        {
+            if (_enemyObject != null)
+            {
+                _enemyObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            }
+        }
         #endregion
 
 
