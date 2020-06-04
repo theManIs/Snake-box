@@ -22,6 +22,8 @@ namespace Snake_box
         protected float _speed;
         protected float _damage;
         protected float _meleeHitRange;
+        protected float _hitCooldown;
+        protected float _currentHitCooldown = 0;
         protected bool _isNeedNavMeshUpdate = false;
         protected bool _isValidTarget;
         protected int _killReward;
@@ -40,6 +42,7 @@ namespace Snake_box
             _armor = data.ArmorType;
             _meleeHitRange = data.MeleeHitRange;
             _killReward = data.KillReward;
+            _hitCooldown = data.HitCooldown;
         }
 
         #endregion
@@ -81,6 +84,7 @@ namespace Snake_box
                 _isNeedNavMeshUpdate = false;
             }
 
+            DecreaseCurrentHitCooldown();
             HitCheck();
         }
 
@@ -102,6 +106,9 @@ namespace Snake_box
 
         protected virtual void HitCheck()
         {
+            if (_currentHitCooldown > 0)
+                return;
+
             Collider[] colliders = new Collider[10];
             Physics.OverlapSphereNonAlloc(_transform.position, _meleeHitRange, colliders);
 
@@ -113,14 +120,17 @@ namespace Snake_box
                     {
                         var mainBuilding = colliders[i].GetComponent<MainBuild>();
                         mainBuilding.GetDamage(_damage);
+                        _currentHitCooldown = _hitCooldown;
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Player)))
                     {
                         Data.Instance.Character._characterBehaviour.SetArmor(_damage);
+                        _currentHitCooldown = _hitCooldown;
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Block)))
                     {
-                        Data.Instance.Character._characterBehaviour.SetDamage(_damage);        
+                        Data.Instance.Character._characterBehaviour.SetDamage(_damage);
+                        _currentHitCooldown = _hitCooldown;
                     }
                 }
 
@@ -151,6 +161,13 @@ namespace Snake_box
             {
                 _levelService.EndLevel();
             }
+        }
+
+        private void DecreaseCurrentHitCooldown()
+        {
+            _currentHitCooldown -= Services.Instance.TimeService.DeltaTime();
+            if (_currentHitCooldown < 0)
+                _currentHitCooldown = 0;
         }
 
         #endregion
