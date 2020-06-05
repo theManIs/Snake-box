@@ -13,5 +13,6 @@ namespace Snake_box
         public float Speed;// скорость 
         public float Damage;
         public float SlowBlockSpeed;
+        public float RamCooldown;
     }
 }

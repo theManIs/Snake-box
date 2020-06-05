@@ -29,11 +29,12 @@ namespace Snake_box
         }
 
         public void Execute()
-        {            
-            _characterData._characterBehaviour.RegenerationArmor();
-            _characterData._characterBehaviour.Collision();
-            _characterData._characterBehaviour.ResetPosition();
-            _characterData._characterBehaviour.DecreaseRamCooldown();
+        {
+            _characterBehaviour.ConstantMove();
+            _characterBehaviour.RegenerationArmor();
+            _characterBehaviour.Collision();
+            _characterBehaviour.ResetPosition();
+            _characterBehaviour.DecreaseRamCooldown();
         }
 
         #endregion

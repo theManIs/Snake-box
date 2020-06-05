@@ -43,8 +43,8 @@ namespace Snake_box
             _baseSnakeHp = _characterData.Hp;
             _damage = _characterData.Damage;
             _speed = _characterData.Speed;
-            
-            _ramCooldown = _characterData._ramCooldown;
+            _snakeArmorGeneration = _characterData.RegenerationArmor;
+            _ramCooldown = _characterData.RamCooldown;
         }
 
         #endregion
@@ -133,8 +133,7 @@ namespace Snake_box
         public void InputMove(Direction direction)//движение
         {
             if (direction != Direction.None && !direction.IsOpposite(_direction))
-                _direction = direction;
-           
+                _direction = direction;           
             TeleportIfOutOfBorder();
         }  
 

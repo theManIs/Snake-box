@@ -140,11 +140,7 @@ namespace Snake_box
                             _currentHitCooldown = _hitCooldown;
                         }
                     }
-                }
-                              
-                    }
-                }
-
+                }  
             }
         }
 
@@ -192,5 +188,6 @@ namespace Snake_box
         }
 
         #endregion
-    }
+    }  
 }
+
