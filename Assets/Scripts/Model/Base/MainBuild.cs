@@ -27,7 +27,7 @@ namespace ExampleTemplate
         
         #region Methods
 
-        public void GetDamage(float damage)
+        public void GetDamage(float damage = 1)
         {
             _hp -= damage;
             if (_hp <= 0)
