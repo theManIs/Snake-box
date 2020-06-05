@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -20,7 +21,9 @@ namespace Snake_box
         private bool hasSkill;
         private BonusData _bonus;
         private GameObject _player;//переделать через сервис
-        private float _slowSnake;
+        private float _slowSnake;        
+        private float _ramCooldown;
+        private float _currentRamCooldown = 0;
 
         #endregion
 
@@ -40,8 +43,8 @@ namespace Snake_box
             _baseSnakeHp = _characterData.Hp;
             _damage = _characterData.Damage;
             _speed = _characterData.Speed;
-            _snakeArmorGeneration = _characterData.RegenerationArmor;
-            _slowSnake = _characterData.SlowBlockSpeed;
+            
+            _ramCooldown = _characterData._ramCooldown;
         }
 
         #endregion
@@ -159,6 +162,22 @@ namespace Snake_box
         public void SetDamage(IDamageAddressee damageAddressee)
         {
             damageAddressee.RegisterDamage(_damage,ArmorTypes.None);
+        }
+
+        public void RamEnemy(BaseEnemy enemy)
+        {
+            if (_currentRamCooldown == 0)
+            {
+                enemy.RegisterDamage(_damage, ArmorTypes.None);
+                _currentRamCooldown = _ramCooldown;
+            }
+        }
+
+        public void DecreaseRamCooldown()
+        {
+            _currentRamCooldown -= Services.Instance.TimeService.DeltaTime();
+            if (_currentRamCooldown < 0)
+                _currentRamCooldown = 0;
         }
 
         #endregion

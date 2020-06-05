@@ -13,30 +13,42 @@ MonoBehaviour:
   m_Name: Level1EnemySpawnList
   m_EditorClassIdentifier: 
   _enemies:
-  - _enemyType: 2
+  - _enemyType: 1
     _spawnTiming: 1
     _spawnPointId: 0
+  - _enemyType: 1
+    _spawnTiming: 5
+    _spawnPointId: 0
   - _enemyType: 2
-    _spawnTiming: 1.5
+    _spawnTiming: 20
     _spawnPointId: 0
   - _enemyType: 2
-    _spawnTiming: 2
+    _spawnTiming: 20.5
+    _spawnPointId: 0
+  - _enemyType: 2
+    _spawnTiming: 21
     _spawnPointId: 0
   - _enemyType: 1
-    _spawnTiming: 7
+    _spawnTiming: 22
     _spawnPointId: 0
   - _enemyType: 1
-    _spawnTiming: 7.5
+    _spawnTiming: 27
     _spawnPointId: 0
   - _enemyType: 1
-    _spawnTiming: 8
+    _spawnTiming: 26
     _spawnPointId: 0
-  - _enemyType: 3
-    _spawnTiming: 13
+  - _enemyType: 1
+    _spawnTiming: 27.5
     _spawnPointId: 0
-  - _enemyType: 3
-    _spawnTiming: 13.5
+  - _enemyType: 1
+    _spawnTiming: 28
     _spawnPointId: 0
-  - _enemyType: 3
-    _spawnTiming: 14
+  - _enemyType: 1
+    _spawnTiming: 28.5
+    _spawnPointId: 0
+  - _enemyType: 1
+    _spawnTiming: 29
+    _spawnPointId: 0
+  - _enemyType: 1
+    _spawnTiming: 29.5
     _spawnPointId: 0
