@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ArmorType: 0
   Prefab: {fileID: 5058968977680414830, guid: b6238541d2a656c458b3e004d9cab7a0, type: 3}
-  Hp: 1
-  Speed: 9
-  Damage: 1
+  Hp: 30
+  Speed: 8
+  Damage: 4
   SizePack: 0
   PackValue: 0
-  MeleeHitRange: 1
+  MeleeHitRange: 1.5
+  HitCooldown: 0.1
   KillReward: 10

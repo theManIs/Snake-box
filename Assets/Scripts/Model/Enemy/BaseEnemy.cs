@@ -2,7 +2,6 @@ using ExampleTemplate;
 using UnityEngine;
 using UnityEngine.AI;
 using Object = UnityEngine.Object;
-using Random = UnityEngine.Random;
 
 
 namespace Snake_box
@@ -157,7 +156,6 @@ namespace Snake_box
                 _levelService.EndLevel();
             }
         }
-
 
         public void StopDancing()
         {

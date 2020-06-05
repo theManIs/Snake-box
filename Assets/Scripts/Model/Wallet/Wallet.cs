@@ -8,7 +8,7 @@ namespace Snake_box
         #region Fields       
 
         private const string Key = "WorldCoins";
-        private const int INITIAL_LOCAL_COINS = 20;
+        private const int INITIAL_LOCAL_COINS = 0;
         private static int _localCoins = INITIAL_LOCAL_COINS;
 
         #endregion
