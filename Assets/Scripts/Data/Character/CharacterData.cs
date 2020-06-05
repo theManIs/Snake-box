@@ -12,6 +12,7 @@ namespace Snake_box
         public float _speedRotation;// скорость поворота
         public float _speed;// скорость 
         public float _damage;
+        public float _ramCooldown;
         [Range(0, 1000)] public float _slowSpeed; //Замедление
         [HideInInspector] public CharacterBehaviour _characterBehaviour;  
 
