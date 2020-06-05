@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ArmorType: 0
   Prefab: {fileID: 5058968977680414830, guid: 796c9aacf5d197246b8aff8236df6438, type: 3}
-  Hp: 15
+  Hp: 10
   Speed: 15
   Damage: 4
   SizePack: 0
