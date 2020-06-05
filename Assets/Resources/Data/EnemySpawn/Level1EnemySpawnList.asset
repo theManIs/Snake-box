@@ -29,19 +29,13 @@ MonoBehaviour:
     _spawnTiming: 21
     _spawnPointId: 0
   - _enemyType: 1
-    _spawnTiming: 25
-    _spawnPointId: 0
-  - _enemyType: 1
-    _spawnTiming: 25.5
-    _spawnPointId: 0
-  - _enemyType: 1
-    _spawnTiming: 26
-    _spawnPointId: 0
-  - _enemyType: 1
-    _spawnTiming: 26.5
+    _spawnTiming: 22
     _spawnPointId: 0
   - _enemyType: 1
     _spawnTiming: 27
+    _spawnPointId: 0
+  - _enemyType: 1
+    _spawnTiming: 26
     _spawnPointId: 0
   - _enemyType: 1
     _spawnTiming: 27.5
@@ -51,4 +45,10 @@ MonoBehaviour:
     _spawnPointId: 0
   - _enemyType: 1
     _spawnTiming: 28.5
+    _spawnPointId: 0
+  - _enemyType: 1
+    _spawnTiming: 29
+    _spawnPointId: 0
+  - _enemyType: 1
+    _spawnTiming: 29.5
     _spawnPointId: 0
