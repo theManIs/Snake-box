@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -18,8 +19,10 @@ namespace Snake_box
         private float _sizeBlock;       
         private Direction _direction = Direction.Up;
         private ITimeService _timeService;
+        private float _ramCooldown;
+        private float _currentRamCooldown = 0;
 
-        #endregion      
+        #endregion
 
 
         #region Unity Method
@@ -37,6 +40,7 @@ namespace Snake_box
             _damage = _characterData._damage;
             _speed = _characterData._speed;
             _slowSpeed = _characterData._slowSpeed;
+            _ramCooldown = _characterData._ramCooldown;
         }
 
         #endregion
@@ -91,6 +95,10 @@ namespace Snake_box
                 if (tagCollider[i].CompareTag(TagManager.GetTag(TagType.Wall)))
                 {
                 }
+                if (tagCollider[i].CompareTag(TagManager.GetTag(TagType.Enemy)))
+                {
+
+                }
             }
         }
 
@@ -136,6 +144,22 @@ namespace Snake_box
         public void SetDamage(IDamageAddressee damageAddressee)
         {
             damageAddressee.RegisterDamage(_damage,ArmorTypes.None);
+        }
+
+        public void RamEnemy(BaseEnemy enemy)
+        {
+            if (_currentRamCooldown == 0)
+            {
+                enemy.RegisterDamage(_damage, ArmorTypes.None);
+                _currentRamCooldown = _ramCooldown;
+            }
+        }
+
+        public void DecreaseRamCooldown()
+        {
+            _currentRamCooldown -= Services.Instance.TimeService.DeltaTime();
+            if (_currentRamCooldown < 0)
+                _currentRamCooldown = 0;
         }
 
         #endregion

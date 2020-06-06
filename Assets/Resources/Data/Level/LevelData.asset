@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Menu: TestMainMenu
   Level:
-  - SnakeTest
+  - Level1

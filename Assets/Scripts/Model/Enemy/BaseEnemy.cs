@@ -15,32 +15,34 @@ namespace Snake_box
         protected NavMeshAgent _navMeshAgent;
         protected GameObject _prefab;
         protected GameObject _enemyObject;
-        protected GameObject _spawnCenter;
         protected Transform _transform;
         protected Transform _target;
         protected LevelService _levelService = Services.Instance.LevelService;
         protected float _hp;
-        protected float _spawnRadius;
         protected float _speed;
         protected float _damage;
         protected float _meleeHitRange;
+        protected float _hitCooldown;
+        protected float _currentHitCooldown = 0;
         protected bool _isNeedNavMeshUpdate = false;
         protected bool _isValidTarget;
+        protected int _killReward;
 
         #endregion
 
 
         #region ClassLifeCycle
 
-        public BaseEnemy(BaseEnemyData data)
+        protected BaseEnemy(BaseEnemyData data)
         {
             _prefab = data.Prefab;
-            _spawnRadius = data.SpawnRadius;
             _speed = data.Speed;
             _hp = data.Hp;
             _damage = data.Damage;
             _armor = data.ArmorType;
             _meleeHitRange = data.MeleeHitRange;
+            _killReward = data.KillReward;
+            _hitCooldown = data.HitCooldown;
         }
 
         #endregion
@@ -57,11 +59,10 @@ namespace Snake_box
 
         public virtual void Spawn(Vector3 position)
         {
-            if (_levelService.Target == null || _levelService.Spawn == null)
+            if (_levelService.Target == null)
             {
                _levelService.FindGameObject(); 
             }
-            _spawnCenter = _levelService.Spawn;
             _target = _levelService.Target.transform;
             _enemyObject = GameObject.Instantiate(_prefab, position, Quaternion.identity);
             _navMeshAgent = _enemyObject.GetComponent<NavMeshAgent>();
@@ -83,6 +84,7 @@ namespace Snake_box
                 _isNeedNavMeshUpdate = false;
             }
 
+            DecreaseCurrentHitCooldown();
             HitCheck();
         }
 
@@ -113,16 +115,29 @@ namespace Snake_box
                 {
                     if (colliders[i].CompareTag(TagManager.GetTag(TagType.Target)))
                     {
-                        var mainBuilding = colliders[i].GetComponent<MainBuild>();
-                        mainBuilding.GetDamage(_damage);
+                        if (_currentHitCooldown == 0)
+                        {
+                            var mainBuilding = colliders[i].GetComponent<MainBuild>();
+                            mainBuilding.GetDamage(_damage);
+                            _currentHitCooldown = _hitCooldown;
+                        }
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Player)))
                     {
-                        Data.Instance.Character._characterBehaviour.SetArmor(_damage);
+                        if (_currentHitCooldown == 0)
+                        {
+                            Data.Instance.Character._characterBehaviour.SetArmor(_damage);
+                            _currentHitCooldown = _hitCooldown;
+                        }
+                        Data.Instance.Character._characterBehaviour.RamEnemy(this);
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Block)))
                     {
-                        Data.Instance.Character._characterBehaviour.SetDamage(_damage);        
+                        if (_currentHitCooldown == 0)
+                        {
+                            Data.Instance.Character._characterBehaviour.SetDamage(_damage);
+                            _currentHitCooldown = _hitCooldown;
+                        }
                     }
                 }
 
@@ -134,31 +149,32 @@ namespace Snake_box
             _target = GameObject.FindWithTag(TagManager.GetTag(TagType.Target)).transform;
         }
 
-        protected virtual Vector3 GetSpawnPoint(GameObject center)
-        {
-            var volume = center.GetComponent<NavMeshModifierVolume>();
-            var sizeX = volume.size.x;
-            var sizeZ = volume.size.z;
-            var position = volume.transform.position;
-            var randomPos = new Vector3(position.x - Random.Range(-sizeX / 2, sizeX / 2), position.y,
-                position.z - Random.Range(-sizeZ / 2, sizeZ / 2));
-            NavMesh.SamplePosition(randomPos, out var hit, _spawnRadius, NavMesh.GetAreaFromName("Spawn"));
-            return hit.position;
-        }
-
         protected virtual void GetDamage(float damage)
         {
             _hp -= damage;
             if (_hp <= 0)
             {
-                if (_levelService.ActiveEnemies.Contains(this))
-                    _levelService.ActiveEnemies.Remove(this);
-                Object.Destroy(_enemyObject);
-                if (_levelService.ActiveEnemies.Count == 0 && Services.Instance.LevelService.IsLevelSpawnEnded)
-                {
-                    _levelService.EndLevel();
-                }
+                Destroy();
             }
+        }
+
+        public void Destroy()
+        {
+            if (_levelService.ActiveEnemies.Contains(this))
+                _levelService.ActiveEnemies.Remove(this);
+            Object.Destroy(_enemyObject);
+            Wallet.PutLocalCoins(_killReward);
+            if (_levelService.ActiveEnemies.Count == 0 && Services.Instance.LevelService.IsLevelSpawnEnded)
+            {
+                _levelService.EndLevel();
+            }
+        }
+
+        private void DecreaseCurrentHitCooldown()
+        {
+            _currentHitCooldown -= Services.Instance.TimeService.DeltaTime();
+            if (_currentHitCooldown < 0)
+                _currentHitCooldown = 0;
         }
 
         #endregion

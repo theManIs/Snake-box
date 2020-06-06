@@ -1,6 +1,6 @@
 ﻿namespace Snake_box
 {
-    public sealed class CharacterController : IExecute
+    public sealed class CharacterController : IExecute, ICleanUp
     {
         #region Fields       
 
@@ -16,11 +16,18 @@
             _characterData = Data.Instance.Character;
             _characterData.Initialization();
         }
+
+        public void Clean()
+        {
+            GameController.Destroy(_characterData._characterBehaviour.gameObject);
+        }
+
         public void Execute()
         {            
             _characterData._characterBehaviour.RegenerationArmor();
             _characterData._characterBehaviour.Collision();
             _characterData._characterBehaviour.ResetPosition();
+            _characterData._characterBehaviour.DecreaseRamCooldown();
         }
 
         #endregion
