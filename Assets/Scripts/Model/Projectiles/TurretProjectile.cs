@@ -4,8 +4,8 @@
     {
         #region TurretProjectileAbs
 
-//        public override void Execute() => MoveAutoTarget();
-        public override void Execute() => MoveInCone();
+        public override void Execute() => MoveAutoTarget();
+//        public override void Execute() => MoveInCone();
 
         #endregion
     }
