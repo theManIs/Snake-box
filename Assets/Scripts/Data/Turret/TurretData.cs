@@ -8,25 +8,54 @@ namespace Snake_box
     {
         #region Fields
 
-        public int PlainTurretRange = 20;
-        public int PlainTurretCooldown = 250;
+        public TurretPreferences CannonTurret = new TurretPreferences();
+        public TurretPreferences ShotgunTurret = new TurretPreferences();
+        public TurretPreferences MachineGunTurret = new TurretPreferences();
+        public TurretPreferences FrostTurret = new TurretPreferences();
+        public TurretPreferences FrostGunTurret = new TurretPreferences();
+        public TurretPreferences FreezerTurret = new TurretPreferences();
+        public TurretPreferences PlasmaTurret = new TurretPreferences();
+        public TurretPreferences LaserTurret = new TurretPreferences();
+        public TurretPreferences PlasmaRailTurret = new TurretPreferences();
+        public TurretPreferences GrenadeTurret = new TurretPreferences();
+        public TurretPreferences IncendiaryTurret = new TurretPreferences();
+        public TurretPreferences RocketTurret = new TurretPreferences();
+        public TurretPreferences AirTurret = new TurretPreferences();
+        public TurretPreferences AirTunnelTurret = new TurretPreferences();
+        public TurretPreferences AirWaveTurret = new TurretPreferences();
 
-        private List<TurretBaseAbs> _turretList = new List<TurretBaseAbs>();
+        public List<TurretBaseAbs> TurretList = new List<TurretBaseAbs>();
+        public TurretPlant TurretPlant;
+
+        #endregion
+
+        #region ClassLifeCycle
+
+        public TurretData() => TurretPlant = new TurretPlant(this); 
 
         #endregion
 
 
         #region Methods
 
+        /// <summary>
+        /// deprecated
+        /// </summary>
+        /// <returns></returns>
         public TurretBaseAbs AddNewTurret()
         {
-            TurretBaseAbs newTurret = new TurretInitializer();
+            TurretBaseAbs newTurret = TurretPlant.AddCannonTurret().Build(CannonTurret);
 
-            _turretList.Add(newTurret);
+            TurretList.Add(newTurret);
 
             return newTurret;
         }
 
+        /// <summary>
+        /// deprecated
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <returns></returns>
         public TurretBaseAbs AddNewWithParent(Transform parent)
         {
             TurretBaseAbs newTurret = AddNewTurret();
@@ -36,9 +65,9 @@ namespace Snake_box
             return newTurret;
         }
 
-        public List<TurretBaseAbs> GetTurretList() => _turretList; 
+        public List<TurretBaseAbs> GetTurretList() => TurretList;
 
-        public void ClearTurretList() => _turretList.Clear();
+        public void ClearTurretList() => TurretList.Clear();
 
         #endregion
     }
