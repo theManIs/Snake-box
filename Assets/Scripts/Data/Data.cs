@@ -46,9 +46,7 @@ namespace Snake_box
         private static BlockSnakeData _blockSnake;
         private static TurretData _turretData;
         private static BordersData _bordersData;
-        private static AllSpawnListsData _allSpawnListsData;
         private static ShellData _shellData;
-        private static LevelPrefabs _levelPrefabs;
         private static readonly Lazy<Data> _instance = new Lazy<Data>(() => Load<Data>("Data/" + typeof(Data).Name));
         
         #endregion
@@ -260,26 +258,6 @@ namespace Snake_box
                 }
 
                 return _shellData;
-            }
-        }
-
-        public AllSpawnListsData AllSpawnListsData
-        {
-            get
-            {
-                if (_allSpawnListsData == null)
-                    _allSpawnListsData = Load<AllSpawnListsData>("Data/" + Instance._allSpawnListsDataPath);
-                return _allSpawnListsData;
-            }
-        }
-
-        public LevelPrefabs LevelPrefabs
-        {
-            get
-            {
-                if (_levelPrefabs == null)
-                    _levelPrefabs = Load<LevelPrefabs>("Data/" + Instance._levelPrefabsDataPath);
-                return _levelPrefabs;
             }
         }
 
