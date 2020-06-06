@@ -18,7 +18,8 @@ namespace Snake_box
                 {TagType.Wall, "Wall"},
                 {TagType.Target, "Target"},
                 {TagType.Spawn, "Spawn"},
-                {TagType.PanelEndLevel, "PanelEndLevel"}
+                {TagType.PanelEndLevel, "PanelEndLevel"},
+                {TagType.Enemy, "Enemy"}
             };
         }
 

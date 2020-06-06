@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6b73c1c5718554f96df335586c0f3b, type: 3}
   m_Name: AllSpawnListsData
   m_EditorClassIdentifier: 
-  SpawnLists:
-  - _levelName: Level1
+  _spawnLists:
+  - _levelType: 1
     _enemySpawnList: {fileID: 11400000, guid: 46b5c7e37b3a5aa40af105abacdcd628, type: 2}
