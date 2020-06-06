@@ -43,16 +43,6 @@ namespace Snake_box
 
         #region Methods
         
-        public void LoadLevel(int lvl)
-        {
-            SceneManager.LoadScene(_levelData.Level[lvl]);
-        }
-
-        public void LoadMenu()
-        {
-            SceneManager.LoadScene(Data.Instance.LevelData.Menu);
-        }
-
         public void EndLevel()
         {
             SetPanelEndLevelActive(true);

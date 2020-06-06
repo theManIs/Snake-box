@@ -43,8 +43,8 @@ namespace Snake_box
             _buttonTurretsType[1].onClick.AddListener(delegate { AddTurret(1); });
             _buttonTurretsType[2].onClick.AddListener(delegate { AddTurret(2); });
             _buttonTurretsType[3].onClick.AddListener(delegate { AddTurret(3); });
-            _mainMenu.onClick.AddListener(delegate { Services.Instance.TimeService.SetTimeScale(1); Services.Instance.LevelService.LoadMenu(); });
-            _reset.onClick.AddListener(delegate { Services.Instance.TimeService.SetTimeScale(1); Services.Instance.LevelService.LoadLevel(0); });
+            _mainMenu.onClick.AddListener(delegate { });
+            _reset.onClick.AddListener(delegate { });
             _pause.onClick.AddListener(Pause);
         }
 
@@ -59,8 +59,8 @@ namespace Snake_box
             _buttonTurretsType[1].onClick.RemoveListener(delegate { AddTurret(1); });
             _buttonTurretsType[2].onClick.RemoveListener(delegate { AddTurret(2); });
             _buttonTurretsType[3].onClick.RemoveListener(delegate { AddTurret(3); });
-            _mainMenu.onClick.RemoveListener(delegate { Services.Instance.LevelService.LoadLevel(0); });
-            _reset.onClick.RemoveListener(delegate { Services.Instance.LevelService.LoadMenu(); });
+            _mainMenu.onClick.RemoveListener(delegate { });
+            _reset.onClick.RemoveListener(delegate { });
             _pause.onClick.RemoveListener(Pause);
         }
 
