@@ -43,7 +43,7 @@ namespace Snake_box
             _meleeHitRange = data.MeleeHitRange;
             _killReward = data.KillReward;
             _hitCooldown = data.HitCooldown;
-            _stoping = new TimeRemaining(StopDancing,3f);
+            _stoping = new TimeRemaining(StopDancing, 1f);
         }
 
         #endregion
