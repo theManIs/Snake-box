@@ -11,7 +11,11 @@ namespace Snake_box
         #region Fields
 
         public List<IEnemy> ActiveEnemies = new List<IEnemy>();
+        public List<BaseBonus> ActiveBonus = new List<BaseBonus>();
         private readonly LevelData _levelData;
+        public CharacterBehaviour CharacterBehaviour;
+        public List <BlockSnake> BlockSnakes= new List< BlockSnake>();
+        public MainBuild MainBuilds = new MainBuild();
 
         #endregion
 

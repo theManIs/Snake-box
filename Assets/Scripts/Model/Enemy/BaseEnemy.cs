@@ -1,4 +1,3 @@
-using ExampleTemplate;
 using UnityEngine;
 using UnityEngine.AI;
 using Object = UnityEngine.Object;
@@ -115,8 +114,8 @@ namespace Snake_box
                 {
                     if (colliders[i].CompareTag(TagManager.GetTag(TagType.Target)))
                     {
-                        var mainBuilding = colliders[i].GetComponent<MainBuild>();
-                        mainBuilding.GetDamage();
+                        var mainBuilding = Services.Instance.LevelService.MainBuilds;
+                        mainBuilding.GetDamage(_damage);
                         if (_levelService.ActiveEnemies.Contains(this))
                             _levelService.ActiveEnemies.Remove(this);
                         Object.Destroy(_enemyObject);
@@ -129,23 +128,24 @@ namespace Snake_box
                     {
                         if (_currentHitCooldown == 0)
                         {
-                            Data.Instance.Character._characterBehaviour.SetArmor(_damage);
+                            Services.Instance.LevelService.CharacterBehaviour.SetArmor(_damage);
                             _currentHitCooldown = _hitCooldown;
                         }
-                        Data.Instance.Character._characterBehaviour.RamEnemy(this);
+                        Services.Instance.LevelService.CharacterBehaviour.RamEnemy(this);
                         _stoping.AddTimeRemaining();
+                       
+                       
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Block)))
                     {
                         if (_currentHitCooldown == 0)
                         {
-                            Data.Instance.Character._characterBehaviour.SetDamage(_damage);
+                            Services.Instance.LevelService.CharacterBehaviour.SetDamage(_damage);
                             _currentHitCooldown = _hitCooldown;
                         }
                         _stoping.AddTimeRemaining();
                     }
-                }
-
+                }  
             }
         }
 
@@ -201,5 +201,6 @@ namespace Snake_box
         }
 
         #endregion
-    }
+    }  
 }
+

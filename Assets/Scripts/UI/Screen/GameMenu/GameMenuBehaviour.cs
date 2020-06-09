@@ -23,7 +23,7 @@ namespace Snake_box
         [SerializeField] private Button [] _buttonPlus;
         [SerializeField] private Button[] _buttonTurretsType;
         [SerializeField] private Text _textEndGame;
-        CharacterBehaviour _characterBehaviour = Data.Instance.Character._characterBehaviour;
+        CharacterBehaviour _characterBehaviour = Services.Instance.LevelService.CharacterBehaviour;
         private int _selectButtonsIndex;
         private bool _isPause;
 
@@ -34,7 +34,7 @@ namespace Snake_box
 
         private void OnEnable()
         {
-            //_headSnake.onClick.AddListener(OpenActivites);//создать метод для активауии чего нибудь
+            _headSnake.onClick.AddListener(SnakeHeadButton);
             _buttonPlus[0].onClick.AddListener(delegate { AddBlock(0); });
             _buttonPlus[1].onClick.AddListener(delegate { AddBlock(1); });
             _buttonPlus[2].onClick.AddListener(delegate { AddBlock(2); });
@@ -50,7 +50,7 @@ namespace Snake_box
 
         private void OnDisable()
         {
-            //_headSnake.onClick.RemoveListener(OpenActivites);
+            _headSnake.onClick.RemoveListener(SnakeHeadButton);
             _buttonPlus[0].onClick.RemoveListener(delegate { AddBlock(0); });
             _buttonPlus[1].onClick.RemoveListener(delegate { AddBlock(1); });
             _buttonPlus[2].onClick.RemoveListener(delegate { AddBlock(2); });
@@ -68,14 +68,19 @@ namespace Snake_box
         {
             _worldCoins.GetComponent<TextMeshProUGUI>().text = Wallet.CountWorldCoins().ToString();
             _localCoins.GetComponent<TextMeshProUGUI>().text = Wallet.CountLocalCoins().ToString();
-            Bar.ShowCount(_hpBar, _characterBehaviour.SnakeHp, _characterBehaviour.SnakeHpMax, Color.green, Color.red);
-           Bar.ShowCount(_forceFieldBar, _characterBehaviour.SnakeArmorCurrent, _characterBehaviour.SnakeArmorMax, Color.blue, Color.yellow);
+            Bar.ShowCount(_hpBar, _characterBehaviour.CurrentSnakeHp, _characterBehaviour.BaseSnakeHp, Color.green, Color.red);
+            Bar.ShowCount(_forceFieldBar, _characterBehaviour.CurrentSnakeArmor, _characterBehaviour.BaseSnakeArmor, Color.blue, Color.yellow);
         }
 
         #endregion
 
 
         #region Methods  
+
+        private void SnakeHeadButton()
+        {
+            _characterBehaviour.UseBonus();
+        }
 
         private void AddTurret(int i)
         {
@@ -112,7 +117,7 @@ namespace Snake_box
 
         private void AddBlock(int numberButton)//метод добавления турели если его нет то  
         {           
-            if (_characterBehaviour.GetBlock(numberButton))// если есть блок то активируем панель для выбопв турели
+            if (_characterBehaviour.GetBlock(numberButton)!=null)// если есть блок то активируем панель для выбопв турели
             {
                 _panelTurretsType.SetActive (true);
                 _selectButtonsIndex = numberButton;

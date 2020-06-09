@@ -12,6 +12,7 @@
         Base   = 7,//База        
         Spawn  = 8,
         PanelEndLevel = 9,
-        Enemy  = 10
+        Enemy  = 10,
+        BonusPoint = 11
     }
 }

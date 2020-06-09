@@ -14,6 +14,7 @@ TagManager:
   - Spawn
   - PanelEndLevel
   - Enemy
+  - BonusPoint
   layers:
   - Default
   - TransparentFX

@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 3047432035517823926}
   - component: {fileID: 5014013385066997607}
   - component: {fileID: 4969572268359046726}
-  - component: {fileID: 7551110187785512198}
   m_Layer: 0
   m_Name: Prefabs_BlockSnake_BlockSnake
   m_TagString: Block
@@ -91,7 +90,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c573e975fded8334194802fe04ecc8ad, type: 2}
+  - {fileID: 2100000, guid: d517150b9e3f44e4ba04240b5942bfc4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -125,16 +124,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7551110187785512198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7306610413661998193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97fc4da1674132647801e4f9d1ab671e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawnPoint: {fileID: 4477777017302707536}
