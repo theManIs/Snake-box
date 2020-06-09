@@ -115,7 +115,7 @@ namespace Snake_box
                     if (colliders[i].CompareTag(TagManager.GetTag(TagType.Target)))
                     {
                         var mainBuilding = Services.Instance.LevelService.MainBuilds;
-                        mainBuilding.GetDamage();
+                        mainBuilding.GetDamage(_damage);
                         if (_levelService.ActiveEnemies.Contains(this))
                             _levelService.ActiveEnemies.Remove(this);
                         Object.Destroy(_enemyObject);
