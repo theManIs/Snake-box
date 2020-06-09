@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
 using Object = UnityEngine.Object;
-using Random = UnityEngine.Random;
 
 
 namespace Snake_box
@@ -26,6 +25,7 @@ namespace Snake_box
         protected bool _isNeedNavMeshUpdate = false;
         protected bool _isValidTarget;
         protected int _killReward;
+        private TimeRemaining _stoping;
 
         #endregion
 
@@ -42,6 +42,7 @@ namespace Snake_box
             _meleeHitRange = data.MeleeHitRange;
             _killReward = data.KillReward;
             _hitCooldown = data.HitCooldown;
+            _stoping = new TimeRemaining(StopDancing, 1f);
         }
 
         #endregion
@@ -82,7 +83,6 @@ namespace Snake_box
                     _navMeshAgent.SetDestination(_target.transform.position);
                 _isNeedNavMeshUpdate = false;
             }
-
             DecreaseCurrentHitCooldown();
             HitCheck();
         }
@@ -114,12 +114,14 @@ namespace Snake_box
                 {
                     if (colliders[i].CompareTag(TagManager.GetTag(TagType.Target)))
                     {
-                       
-                        if (_currentHitCooldown == 0)
+                        var mainBuilding = Services.Instance.LevelService.MainBuilds;
+                        mainBuilding.GetDamage();
+                        if (_levelService.ActiveEnemies.Contains(this))
+                            _levelService.ActiveEnemies.Remove(this);
+                        Object.Destroy(_enemyObject);
+                        if (_levelService.ActiveEnemies.Count == 0 && Services.Instance.LevelService.IsLevelSpawnEnded)
                         {
-                            var mainBuilding = Services.Instance.LevelService.MainBuilds;
-                            mainBuilding.GetDamage(_damage);
-                            _currentHitCooldown = _hitCooldown;
+                            _levelService.EndLevel();
                         }
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Player)))
@@ -130,6 +132,8 @@ namespace Snake_box
                             _currentHitCooldown = _hitCooldown;
                         }
                         Services.Instance.LevelService.CharacterBehaviour.RamEnemy(this);
+                        _stoping.AddTimeRemaining();
+                       
                        
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Block)))
@@ -139,6 +143,7 @@ namespace Snake_box
                             Services.Instance.LevelService.CharacterBehaviour.SetDamage(_damage);
                             _currentHitCooldown = _hitCooldown;
                         }
+                        _stoping.AddTimeRemaining();
                     }
                 }  
             }
@@ -167,6 +172,14 @@ namespace Snake_box
             if (_levelService.ActiveEnemies.Count == 0 && Services.Instance.LevelService.IsLevelSpawnEnded)
             {
                 _levelService.EndLevel();
+            }
+        }
+
+        private void StopDancing()
+        {
+            if (_enemyObject != null)
+            {
+                _enemyObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
 

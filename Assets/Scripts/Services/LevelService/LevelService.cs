@@ -34,8 +34,8 @@ namespace Snake_box
         #region ClassLifeCycles
 
         public LevelService()
-        {            
-            SceneManager.sceneLoaded += (arg0, mode) => LevelStart();
+        {
+            SceneManager.sceneLoaded += (arg0, mode) => LevelStart(); 
             _levelData = Data.Instance.LevelData;
             IsLevelSpawnEnded = false;
             IsTargetDestroed = false;
@@ -46,21 +46,10 @@ namespace Snake_box
 
 
         #region Methods
-
-        public void LoadLevel(int lvl)
-        {
-            SceneManager.LoadScene(_levelData.Level[lvl]);
-        }
-
-        public void LoadMenu()
-        {
-            SceneManager.LoadScene(Data.Instance.LevelData.Menu);
-        }
-
+        
         public void EndLevel()
         {
             SetPanelEndLevelActive(true);
-            ActiveEnemies.Clear();
             ActiveEnemies.Clear();
             Data.Instance.TurretData.ClearTurretList();          
             
