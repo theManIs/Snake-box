@@ -19,6 +19,6 @@ MonoBehaviour:
   Damage: 1
   SizePack: 0
   PackValue: 0
-  MeleeHitRange: 2.2
+  MeleeHitRange: 2.6
   HitCooldown: 0
   KillReward: 15
