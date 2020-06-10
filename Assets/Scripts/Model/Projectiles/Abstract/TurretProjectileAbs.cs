@@ -143,11 +143,7 @@ namespace Snake_box
         {
             DecommissionIfExpired();
 
-            if (_projectileInstance == null
-                || Math.Abs(BulletSpeed) <= 0
-                || _targetToPursue == null
-                || Math.Abs(_journeyDistance) <= 0.0f
-                || _targetToPursue.AmIDestroyed())
+            if (_projectileInstance == null)
                 return;
 
             if (FinalPosition == Vector3.zero)
@@ -174,19 +170,72 @@ namespace Snake_box
                     Collider enemyCollider = activeEnemy.GetTransform().GetComponent<Collider>();
 
                     if (enemyCollider == hitInfo.collider)
+                    {
+
                         DecommissionWithEnemy(activeEnemy);
+
+                        Debug.Log(activeEnemy.GetTransform().name);
+                    }
                 }
 
             }
+        }
 
+        public void MoveInSphere()
+        {
+            DecommissionIfExpired();
 
+            if (_projectileInstance == null)
+                return;
+
+            _targetToPursue = null;
+
+//            if (FinalPosition == Vector3.zero)
+//                FinalPosition = _targetToPursue.GetPosition();
+
+//            Vector3 direction3d = FinalPosition - _firePoint.transform.position;
+//
+//            if (_projectileInstance.GetComponent<Rigidbody>() == null)
+//            {
+//                Rigidbody rb = _projectileInstance.AddComponent<Rigidbody>();
+//                rb.useGravity = false;
+//                rb.velocity = (direction3d.normalized + new Vector3(Random.value * 0.5f - 0.25f, 0, Random.value * 0.5f - 0.25f)) * 0;
+//            }
+
+            Ray hitRay = new Ray(_projectileInstance.transform.position, _projectileInstance.transform.forward);
+            RaycastHit[] hitInfoAll = Physics.SphereCastAll
+                    (hitRay, _projectilePreferences.ActivationDistance / 2, _projectilePreferences.ActivationDistance / 2);
+            _projectileInstance.transform.parent = _firePoint;
+            if (hitInfoAll.Length > 0)
+            {
+                foreach (IEnemy activeEnemy in ActiveEnemies)
+                {
+                    if (activeEnemy.AmIDestroyed())
+                        continue;
+
+                    Collider enemyCollider = activeEnemy.GetTransform().GetComponent<Collider>();
+
+                    foreach (RaycastHit hit in hitInfoAll)
+                    {
+//                        Debug.Log("thrhough collider hit: " + hit.collider.gameObject.name + " distance: " + Vector3.Distance(hit.point, _projectileInstance.transform.position));
+                        
+                        if (enemyCollider == hit.collider)
+                        {
+                            DecommissionWithEnemy(activeEnemy);
+
+                            Debug.Log(activeEnemy.GetTransform().name);
+                        }
+                    }
+                }
+
+            }
         }
 
         public bool IsToDispose() => ToDispose;
 
         protected void Decommission()
         {
-            if (!_targetToPursue.AmIDestroyed())
+            if (_targetToPursue != null && !_targetToPursue.AmIDestroyed())
             {
                 if (_targetToPursue is IDamageAddressee ida) 
                     ida.RegisterDamage(CarryingDamage, ArmorPiecing);
