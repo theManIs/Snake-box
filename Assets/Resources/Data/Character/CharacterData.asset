@@ -17,7 +17,7 @@ MonoBehaviour:
   _regenerationArmor: 1
   _speedRotation: 8.43
   _speed: 20
-  _damage: 1
+  _damage: 10
   _ramCooldown: 0.1
   _slowSpeed: 1.5
   _characterBehaviour: {fileID: 0}

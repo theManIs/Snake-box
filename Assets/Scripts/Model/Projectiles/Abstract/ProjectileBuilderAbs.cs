@@ -10,20 +10,22 @@ namespace Snake_box
 
         #region Methods
 
+        protected virtual TurretProjectileAbs ProjectileInstance => new CannonProjectile();
+
         protected void BaseBuild(Transform firePoint, IEnemy enemy)
         {
             GameObject prefabObject = Object.Instantiate(ProjectilePreferences.ProjectilePrefab, Vector3.zero, ProjectilePreferences.ProjectilePrefab.transform.rotation);
-            TurretProjectile turretProjectile = new TurretProjectile();
+            TurretProjectileAbs cannonProjectile = ProjectileInstance;
 
-            turretProjectile.SetGameObject(prefabObject);
-            turretProjectile.SetProjectilePreferences(ProjectilePreferences);
-            turretProjectile.SetFirePoint(firePoint);
-            turretProjectile.SetTarget(enemy);
-            turretProjectile.SetLookRotation(enemy.GetTransform());
-            turretProjectile.SetSelfDestruct(1);
-            turretProjectile.CountDistance();
+            cannonProjectile.SetGameObject(prefabObject);
+            cannonProjectile.SetProjectilePreferences(ProjectilePreferences);
+            cannonProjectile.SetFirePoint(firePoint);
+            cannonProjectile.SetTarget(enemy);
+            cannonProjectile.SetLookRotation(enemy.GetTransform());
+            cannonProjectile.SetSelfDestruct(ProjectilePreferences.SelfDestructAfter);
+            cannonProjectile.CountDistance();
 
-            _turretProjectileController.AddShell(turretProjectile);
+            _turretProjectileController.AddShell(cannonProjectile);
         }
 
         public abstract void Build(Transform firePoint, IEnemy enemy);
