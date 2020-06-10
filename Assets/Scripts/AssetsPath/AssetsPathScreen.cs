@@ -24,7 +24,7 @@ namespace Snake_box
             {
                 ScreenType.MainMenu, new ScreenPath
                 {
-                    Screen = "GUI/Screen/MainMenu/GUI_Screen_MainMenu",
+                    Screen = "GUI/Screen/MainMenu/GUI_Screen_MainMenu_MainMenu",
                     Elements = new Dictionary<ScreenElementType, string>
                     {
                           { ScreenElementType.None, "" }
@@ -34,14 +34,14 @@ namespace Snake_box
             {
                 ScreenType.GameMenu, new ScreenPath
                 {
-                    Screen = "GUI/Screen/GameMenu/GUI_Screen_GameMenu",
+                    Screen = "GUI/Screen/GameMenu/GUI_Screen_GameMenu_GameMenu",
                     Elements = new Dictionary<ScreenElementType, string>()
                 }
             },
             {
                 ScreenType.TestMenu, new ScreenPath
                 {
-                    Screen = "GUI/Screen/TestMenu/TestGUI_Screen_MainMenu",
+                    Screen = "GUI/Screen/TestMenu/GUI_Screen_TestMenu__TestMainMenu",
                     Elements = new Dictionary<ScreenElementType, string>()
                     {
                           { ScreenElementType.None, "" }

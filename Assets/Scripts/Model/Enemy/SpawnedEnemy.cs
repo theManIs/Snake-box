@@ -35,7 +35,7 @@ namespace Snake_box
             _target = _levelService.Target.transform;
             _enemyObject = GameObject.Instantiate(_prefab, spawnpos, Quaternion.identity);
             _navMeshAgent = _enemyObject.GetComponent<NavMeshAgent>();
-            _navMeshAgent.speed = _speed;
+            _navMeshAgent.speed = _speed;            
             _transform = _enemyObject.transform;
             _isNeedNavMeshUpdate = true;
             _isValidTarget = true;

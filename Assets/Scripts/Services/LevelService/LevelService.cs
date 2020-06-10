@@ -11,7 +11,11 @@ namespace Snake_box
         #region Fields
 
         public List<IEnemy> ActiveEnemies = new List<IEnemy>();
+        public List<BaseBonus> ActiveBonus = new List<BaseBonus>();
         private readonly LevelData _levelData;
+        public CharacterBehaviour CharacterBehaviour;
+        public List <BlockSnake> BlockSnakes= new List< BlockSnake>();
+        public MainBuild MainBuilds = new MainBuild();
 
         #endregion
 
@@ -43,16 +47,6 @@ namespace Snake_box
 
         #region Methods
         
-        public void LoadLevel(int lvl)
-        {
-            SceneManager.LoadScene(_levelData.Level[lvl]);
-        }
-
-        public void LoadMenu()
-        {
-            SceneManager.LoadScene(Data.Instance.LevelData.Menu);
-        }
-
         public void EndLevel()
         {
             SetPanelEndLevelActive(true);

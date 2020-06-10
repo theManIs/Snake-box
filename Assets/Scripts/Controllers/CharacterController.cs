@@ -1,33 +1,40 @@
-﻿namespace Snake_box
-{
-    public sealed class CharacterController : IExecute, ICleanUp
-    {
-        #region Fields       
+﻿using UnityEngine;
 
-        private readonly CharacterData _characterData;
+
+namespace Snake_box
+{
+    public sealed class CharacterController : IExecute, ICleanUp, IInitialization    
+    {
+        #region Fields  
+        
+        private CharacterBehaviour _characterBehaviour;
 
         #endregion
 
 
-        #region Methods
+        #region Methods        
 
-        public CharacterController()
+        public void Initialization()
         {
-            _characterData = Data.Instance.Character;
-            _characterData.Initialization();
+            Services.Instance.LevelService.IsSnakeAlive = true;
+            var characterBehaviour = CustomResources.Load<CharacterBehaviour>
+                (AssetsPathGameObject.GameObjects[GameObjectType.Character]);
+            _characterBehaviour = Object.Instantiate(characterBehaviour);
+            Services.Instance.LevelService.CharacterBehaviour = _characterBehaviour;
         }
 
         public void Clean()
         {
-            GameController.Destroy(_characterData._characterBehaviour.gameObject);
+            GameController.Destroy(_characterBehaviour.gameObject);
         }
 
         public void Execute()
-        {            
-            _characterData._characterBehaviour.RegenerationArmor();
-            _characterData._characterBehaviour.Collision();
-            _characterData._characterBehaviour.ResetPosition();
-            _characterData._characterBehaviour.DecreaseRamCooldown();
+        {
+            _characterBehaviour.ConstantMove();
+            _characterBehaviour.RegenerationArmor();
+            _characterBehaviour.Collision();
+            _characterBehaviour.ResetPosition();
+            _characterBehaviour.DecreaseRamCooldown();
         }
 
         #endregion
