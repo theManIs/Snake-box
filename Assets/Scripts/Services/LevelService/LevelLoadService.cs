@@ -22,5 +22,7 @@ namespace Snake_box
             Time.timeScale = 1;
             LevelLoaded?.Invoke();
         }
+
+        public void ReloadLevel() => LoadLevel(Services.Instance.LevelService.CurrentLevel);
     } 
 }

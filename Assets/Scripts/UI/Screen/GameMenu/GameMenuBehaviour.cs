@@ -44,7 +44,7 @@ namespace Snake_box
             _buttonTurretsType[2].onClick.AddListener(delegate { AddTurret(2); });
             _buttonTurretsType[3].onClick.AddListener(delegate { AddTurret(3); });
             _mainMenu.onClick.AddListener(delegate { });
-            _reset.onClick.AddListener(delegate { });
+            _reset.onClick.AddListener(Services.Instance.LevelLoadService.ReloadLevel);
             _pause.onClick.AddListener(Pause);
         }
 
