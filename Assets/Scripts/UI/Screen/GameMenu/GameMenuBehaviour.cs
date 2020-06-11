@@ -140,7 +140,7 @@ namespace Snake_box
         public void GetEndLevelText()
         {
             _pause.interactable = false;      
-            if (Services.Instance.LevelService.IsTargetDestroed==true&& Services.Instance.LevelService.IsSnakeAlive==false)
+            if (Services.Instance.LevelService.IsTargetDestroed==true || Services.Instance.LevelService.IsSnakeAlive==false)
             {
                 _textEndGame.text = "Congratulations!You Loser!";               
             }
