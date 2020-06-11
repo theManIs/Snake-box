@@ -53,7 +53,7 @@ namespace Snake_box
             return _mainMenu;
         }
 
-        public MainMenuBehaviour GeTestMenu()
+        public MainMenuBehaviour GetTestMenu()
         {
             if (_testMenu == null)
             {

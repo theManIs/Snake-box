@@ -43,7 +43,7 @@ namespace Snake_box
             _buttonTurretsType[1].onClick.AddListener(delegate { AddTurret(1); });
             _buttonTurretsType[2].onClick.AddListener(delegate { AddTurret(2); });
             _buttonTurretsType[3].onClick.AddListener(delegate { AddTurret(3); });
-            _mainMenu.onClick.AddListener(delegate { });
+            _mainMenu.onClick.AddListener(delegate { SetPanelEndLevelActive(false); ScreenInterface.GetInstance().Execute(ScreenType.TestMenu); });
             _reset.onClick.AddListener(Services.Instance.LevelLoadService.ReloadLevel);
             _pause.onClick.AddListener(Pause);
         }
@@ -59,8 +59,8 @@ namespace Snake_box
             _buttonTurretsType[1].onClick.RemoveListener(delegate { AddTurret(1); });
             _buttonTurretsType[2].onClick.RemoveListener(delegate { AddTurret(2); });
             _buttonTurretsType[3].onClick.RemoveListener(delegate { AddTurret(3); });
-            _mainMenu.onClick.RemoveListener(Services.Instance.LevelLoadService.ReloadLevel);
-            _reset.onClick.RemoveListener(delegate { });
+            _mainMenu.onClick.RemoveListener(delegate { SetPanelEndLevelActive(false); ScreenInterface.GetInstance().Execute(ScreenType.TestMenu); });
+            _reset.onClick.RemoveListener(Services.Instance.LevelLoadService.ReloadLevel);
             _pause.onClick.RemoveListener(Pause);
         }
 
@@ -149,7 +149,17 @@ namespace Snake_box
                 _textEndGame.text = "Congratulations!";               
             }
             Services.Instance.TimeService.SetTimeScale(0);
-        }        
+        }
+
+        public void SetPanelEndLevelActive(bool isActive)
+        {
+            var panel = GameObject.FindWithTag(TagManager.GetTag(TagType.PanelEndLevel));
+            if (panel == null)
+                return;
+            panel.transform.GetChild(0).gameObject.SetActive(isActive);
+            if (isActive)
+                panel.GetComponentInParent<GameMenuBehaviour>().GetEndLevelText();
+        }
 
         #endregion
 
