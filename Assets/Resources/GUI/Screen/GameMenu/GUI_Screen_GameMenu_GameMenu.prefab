@@ -2495,12 +2495,12 @@ PrefabInstance:
     - target: {fileID: 6402416304644584032, guid: d6f25d191ea40cf4e8037e87cd672fc9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 33.223
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6402416304644584032, guid: d6f25d191ea40cf4e8037e87cd672fc9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -123.14
+      value: -178.7
       objectReference: {fileID: 0}
     - target: {fileID: 6402416304644584032, guid: d6f25d191ea40cf4e8037e87cd672fc9,
         type: 3}
@@ -2516,6 +2516,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.3294
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402416304644584032, guid: d6f25d191ea40cf4e8037e87cd672fc9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 76.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402416304644584032, guid: d6f25d191ea40cf4e8037e87cd672fc9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 421.6
       objectReference: {fileID: 0}
     - target: {fileID: 6495817492553490960, guid: d6f25d191ea40cf4e8037e87cd672fc9,
         type: 3}
@@ -2542,9 +2552,29 @@ PrefabInstance:
       propertyPath: m_Text
       value: Arnold was right!
       objectReference: {fileID: 0}
+    - target: {fileID: 7134392306060837217, guid: d6f25d191ea40cf4e8037e87cd672fc9,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 7134392306060837217, guid: d6f25d191ea40cf4e8037e87cd672fc9,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134392306060837217, guid: d6f25d191ea40cf4e8037e87cd672fc9,
+        type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7636418123495815798, guid: d6f25d191ea40cf4e8037e87cd672fc9,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636418123495815800, guid: d6f25d191ea40cf4e8037e87cd672fc9,
+        type: 3}
+      propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7636418123495815801, guid: d6f25d191ea40cf4e8037e87cd672fc9,
