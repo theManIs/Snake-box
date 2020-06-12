@@ -13,5 +13,7 @@ namespace Snake_box
         public Vector3 AngleLock = new Vector3(90, 0, 0);
         public ArmorTypes ArmorPiercing = ArmorTypes.None;
         public int NumberOfPeaces = 10;
+        public float ActivationDistance = 0.1f;
+        public float SelfDestructAfter = 5;
     }
 }

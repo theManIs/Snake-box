@@ -2,6 +2,10 @@
 {
     public class ShotgunTurret : TurretInitializer
     {
-        protected override ProjectileBuilderAbs GetProjectile() => new ShotgunShellBuilder().SetProjectilePreferences(TurretPreferences.ProjectilePreferences);
+        #region Methods
+
+        protected override ProjectileBuilderAbs GetProjectile() => new ShotgunShellBuilder().SetProjectilePreferences(TurretPreferences.ProjectilePreferences); 
+
+        #endregion
     }
 }

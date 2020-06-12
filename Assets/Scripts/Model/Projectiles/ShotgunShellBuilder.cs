@@ -6,6 +6,8 @@ namespace Snake_box
     {
         #region ProjectileBuilderAbs
 
+        protected override TurretProjectileAbs ProjectileInstance => new ShotgunProjectile();
+
         public override void Build(Transform firePoint, IEnemy enemy)
         {
             for (int i = 0; i < ProjectilePreferences.NumberOfPeaces; i++)

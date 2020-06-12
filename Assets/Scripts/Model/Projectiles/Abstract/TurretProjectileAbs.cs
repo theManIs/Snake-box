@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -30,6 +31,7 @@ namespace Snake_box
         public float CarryingDamage => _projectilePreferences.ProjectileDamage;
         public int BulletSpeed => _projectilePreferences.ProjectileSpeed;
         public ArmorTypes ArmorPiecing => _projectilePreferences.ArmorPiercing;
+        public List<IEnemy> ActiveEnemies => Services.Instance.LevelService.ActiveEnemies;
 
         #endregion
 
@@ -122,26 +124,32 @@ namespace Snake_box
 
         public Vector3 FinalPosition = Vector3.zero;
 
+        private void DecommissionIfExpired()
+        {
+            float projectileLifespan = Time.time - _timeStart;
+
+            if (_timeToBeDestructedAfter < projectileLifespan)
+                Decommission();
+        }
+
+        private void DecommissionWithEnemy(IEnemy activeEnemy)
+        {
+            _targetToPursue = activeEnemy;
+
+            Decommission();
+        }
 
         public void MoveInCone()
         {
-            DecommissionIfTargetDown();
+            DecommissionIfExpired();
 
-            if (_projectileInstance == null
-                || Math.Abs(BulletSpeed) <= 0
-                || _targetToPursue == null
-                || Math.Abs(_journeyDistance) <= 0.0f
-                || _targetToPursue.AmIDestroyed())
+            if (_projectileInstance == null)
                 return;
 
             if (FinalPosition == Vector3.zero)
                 FinalPosition = _targetToPursue.GetPosition();
 
-            float projectileLifespan = Time.time - _timeStart;
-            float coveredDistance = projectileLifespan * BulletSpeed;
-            float interpolation = coveredDistance / _journeyDistance;
             Vector3 direction3d = FinalPosition - _firePoint.transform.position;
-            float activationDistance = 1;
 
             if (_projectileInstance.GetComponent<Rigidbody>() == null)
             {
@@ -150,29 +158,84 @@ namespace Snake_box
                 rb.velocity = (direction3d.normalized + new Vector3(Random.value * 0.5f - 0.25f, 0, Random.value * 0.5f - 0.25f)) * 2;
             }
 
-//            _projectileInstance.transform.position =
-//                Vector3.Lerp(_firePoint.transform.position, FinalPosition, interpolation);
+            Ray hitRay = new Ray(_projectileInstance.transform.position, _projectileInstance.transform.forward);
 
-//            if (interpolation >= 1 || _timeToBeDestructedAfter < projectileLifespan)
-//                Decommission();
-            
-            Ray hitRay = new Ray(_projectileInstance.transform.position, direction3d);
-
-            if (Physics.Raycast(hitRay, out RaycastHit hitInfo, activationDistance))
+            if (Physics.Raycast(hitRay, out RaycastHit hitInfo, _projectilePreferences.ActivationDistance))
             {
-                Debug.Log(hitInfo.collider.gameObject.name);
+                foreach (IEnemy activeEnemy in ActiveEnemies)
+                {
+                    if (activeEnemy.AmIDestroyed())
+                        continue;
+
+                    Collider enemyCollider = activeEnemy.GetTransform().GetComponent<Collider>();
+
+                    if (enemyCollider == hitInfo.collider)
+                    {
+
+                        DecommissionWithEnemy(activeEnemy);
+
+                        Debug.Log(activeEnemy.GetTransform().name);
+                    }
+                }
+
             }
+        }
 
+        public void MoveInSphere()
+        {
+            DecommissionIfExpired();
 
-//            if (_timeToBeDestructedAfter < projectileLifespan)
-//                Decommission();
+            if (_projectileInstance == null)
+                return;
+
+            _targetToPursue = null;
+
+//            if (FinalPosition == Vector3.zero)
+//                FinalPosition = _targetToPursue.GetPosition();
+
+//            Vector3 direction3d = FinalPosition - _firePoint.transform.position;
+//
+//            if (_projectileInstance.GetComponent<Rigidbody>() == null)
+//            {
+//                Rigidbody rb = _projectileInstance.AddComponent<Rigidbody>();
+//                rb.useGravity = false;
+//                rb.velocity = (direction3d.normalized + new Vector3(Random.value * 0.5f - 0.25f, 0, Random.value * 0.5f - 0.25f)) * 0;
+//            }
+
+            Ray hitRay = new Ray(_projectileInstance.transform.position, _projectileInstance.transform.forward);
+            RaycastHit[] hitInfoAll = Physics.SphereCastAll
+                    (hitRay, _projectilePreferences.ActivationDistance / 2, _projectilePreferences.ActivationDistance / 2);
+            _projectileInstance.transform.parent = _firePoint;
+            if (hitInfoAll.Length > 0)
+            {
+                foreach (IEnemy activeEnemy in ActiveEnemies)
+                {
+                    if (activeEnemy.AmIDestroyed())
+                        continue;
+
+                    Collider enemyCollider = activeEnemy.GetTransform().GetComponent<Collider>();
+
+                    foreach (RaycastHit hit in hitInfoAll)
+                    {
+//                        Debug.Log("thrhough collider hit: " + hit.collider.gameObject.name + " distance: " + Vector3.Distance(hit.point, _projectileInstance.transform.position));
+                        
+                        if (enemyCollider == hit.collider)
+                        {
+                            DecommissionWithEnemy(activeEnemy);
+
+                            Debug.Log(activeEnemy.GetTransform().name);
+                        }
+                    }
+                }
+
+            }
         }
 
         public bool IsToDispose() => ToDispose;
 
         protected void Decommission()
         {
-            if (!_targetToPursue.AmIDestroyed())
+            if (_targetToPursue != null && !_targetToPursue.AmIDestroyed())
             {
                 if (_targetToPursue is IDamageAddressee ida) 
                     ida.RegisterDamage(CarryingDamage, ArmorPiecing);

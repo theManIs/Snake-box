@@ -1,6 +1,6 @@
 ﻿namespace Snake_box
 {
-    public sealed class TurretProjectile : TurretProjectileAbs
+    public sealed class CannonProjectile : TurretProjectileAbs
     {
         #region TurretProjectileAbs
 
