@@ -55,6 +55,9 @@ TagManager:
   - name: Enemy
     uniqueID: 1938851775
     locked: 0
+  - name: Base
+    uniqueID: 2325175913
+    locked: 0
   - name: Snake
     uniqueID: 3303830023
     locked: 0
