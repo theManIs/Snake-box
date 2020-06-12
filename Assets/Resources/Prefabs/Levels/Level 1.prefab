@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1420863232957381313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1008602405263338530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5eaa28536c5bb0745930a52b82359bbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hp: 3
 --- !u!1 &1420863233931752252
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,11 +929,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshData
       value: 
+      objectReference: {fileID: 23800000, guid: 0563a7e6c42de414897636a4ea3e081f,
+        type: 2}
+    - target: {fileID: 1580539155808094188, guid: 3a7e9ae2aa1362b4cbc84cae7382b7e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656598186404668277, guid: 3a7e9ae2aa1362b4cbc84cae7382b7e2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7919481421247815712, guid: 3a7e9ae2aa1362b4cbc84cae7382b7e2,
         type: 3}
       propertyPath: m_Name
       value: Level 1 Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919481421247815714, guid: 3a7e9ae2aa1362b4cbc84cae7382b7e2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7919481421247815716, guid: 3a7e9ae2aa1362b4cbc84cae7382b7e2,
         type: 3}
@@ -1002,6 +1005,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919481421247815716, guid: 3a7e9ae2aa1362b4cbc84cae7382b7e2,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a7e9ae2aa1362b4cbc84cae7382b7e2, type: 3}
@@ -1436,3 +1444,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1420863234554538850}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1420863232957381313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eaa28536c5bb0745930a52b82359bbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
