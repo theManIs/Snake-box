@@ -116,7 +116,9 @@ namespace Snake_box
         }
 
         private void AddBlock(int numberButton)//метод добавления турели если его нет то  
-        {           
+        {
+            if(_characterBehaviour == null)
+                _characterBehaviour = Services.Instance.LevelService.CharacterBehaviour;
             if (_characterBehaviour.GetBlock(numberButton)!=null)// если есть блок то активируем панель для выбопв турели
             {
                 _panelTurretsType.SetActive (true);
