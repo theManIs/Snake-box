@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d2ec1d368503344ab8dbc305fe5265, type: 3}
   m_Name: BordersData
   m_EditorClassIdentifier: 
-  _leftBorderX: -30
-  _rightBorderX: 30
+  _leftBorderX: -29
+  _rightBorderX: 29
   _topBorderZ: 50
   _bottomBorderZ: -50
