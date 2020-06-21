@@ -17,4 +17,4 @@ MonoBehaviour:
     Prefab: {fileID: 1420863234788314843, guid: 1b4a027675f2ae940810d192cb6b16f6,
       type: 3}
     EnemySpawnList: {fileID: 11400000, guid: 46b5c7e37b3a5aa40af105abacdcd628, type: 2}
-    InitialMoney: 0
+    InitialMoney: 100
