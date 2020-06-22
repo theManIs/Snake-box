@@ -32,11 +32,13 @@ namespace Snake_box
         [SerializeField] private string _bonusCoinsDataPath;
         [SerializeField] private string _bonusHpSnakeDataPath;
         [SerializeField] private string _bonusSpeedDataPath;
+        [SerializeField] private string _bonusFireDataPath;
         [SerializeField] private string _shellDataPath;
         [SerializeField] private string _bordersDataPath;
         [SerializeField] private string _allSpawnListsDataPath;
         private static MainBuildData _mainBuildData;
         private static BonusCoinsData _bonusCoinsData;
+        private static BonusFireData _bonusFireData;
         private static BonusHpSnakeData _bonusHpSnakeData;
         private static BonusSpeedData _bonusSpeedData;
         [SerializeField] private string _levelPrefabsDataPath;
@@ -76,7 +78,21 @@ namespace Snake_box
 
                 return _mainBuildData;
             }
-        }
+        } 
+
+        public BonusFireData BonusFireData
+        {
+
+            get
+            {
+                if (_bonusFireData == null)
+                {
+                    _bonusFireData = Load<BonusFireData>("Data/" + Instance._bonusFireDataPath);
+                }
+
+                return _bonusFireData;
+            }
+        } 
 
         public BonusCoinsData BonusCoinsData
         {

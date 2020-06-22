@@ -19,6 +19,7 @@ namespace Snake_box
             _bonusList.Add(new BonusCoins());
             _bonusList.Add(new BonusHpSnake());
             _bonusList.Add(new BonusSpeed());
+            _bonusList.Add(new BonusFire());
         }
 
         #endregion
