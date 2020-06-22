@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81eb5e6cc0a4d3d49b121d1e75c4bdf2, type: 3}
+  m_Name: BonusFireData
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 0}
+  Prefab: {fileID: 2875831412041698105, guid: 4e8194c7a4d97cf4dbef3feaf9996b82, type: 3}
+  LifeTime: 10
+  BulletCount: 300
