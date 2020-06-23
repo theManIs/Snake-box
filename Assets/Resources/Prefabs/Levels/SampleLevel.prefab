@@ -907,7 +907,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 00c6151f306d6e247a3cd58a61a23206,
+      objectReference: {fileID: 23800000, guid: be72215cda1069a468f17aa509ccd762,
         type: 2}
     - target: {fileID: 1580539155808094188, guid: 3a7e9ae2aa1362b4cbc84cae7382b7e2,
         type: 3}
@@ -922,7 +922,7 @@ PrefabInstance:
     - target: {fileID: 7919481421247815712, guid: 3a7e9ae2aa1362b4cbc84cae7382b7e2,
         type: 3}
       propertyPath: m_Name
-      value: Level 1 Floor
+      value: Sample Level Floor
       objectReference: {fileID: 0}
     - target: {fileID: 7919481421247815714, guid: 3a7e9ae2aa1362b4cbc84cae7382b7e2,
         type: 3}
