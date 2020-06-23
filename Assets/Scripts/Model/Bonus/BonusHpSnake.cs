@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-
-namespace Snake_box
+﻿namespace Snake_box
 {
     public class BonusHpSnake : BaseBonus
 {
