@@ -54,7 +54,7 @@ namespace Snake_box
 
         private void StartGameButtonClick()
         {
-            Services.Instance.LevelLoadService.LoadLevel(LevelType.Level1);
+            Services.Instance.LevelLoadService.LoadLevel(LevelType.LevelA);
         }
 
         private void ShowSettingsButtonClick()
