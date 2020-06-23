@@ -70,3 +70,6 @@ TagManager:
   - name: Bullet
     uniqueID: 392402011
     locked: 0
+  - name: Finger
+    uniqueID: 3395799837
+    locked: 0
