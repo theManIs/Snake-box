@@ -3,7 +3,7 @@
     public enum LevelType
     {
         None      = 0,
-        Level1    = 1,
+        LevelA    = 1,
         LevelB    = 2,
         LevelC    = 3,
         LevelD    = 4,

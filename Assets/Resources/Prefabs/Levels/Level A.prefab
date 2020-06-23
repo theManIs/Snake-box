@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1420863234788314836}
   m_Layer: 0
-  m_Name: Level 1
+  m_Name: Level A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1345,7 +1345,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 00c6151f306d6e247a3cd58a61a23206,
+      objectReference: {fileID: 23800000, guid: a1dd4f4735479ae4f8c089257c644d0c,
         type: 2}
     - target: {fileID: 1580539155808094188, guid: 3a7e9ae2aa1362b4cbc84cae7382b7e2,
         type: 3}
@@ -1360,7 +1360,7 @@ PrefabInstance:
     - target: {fileID: 7919481421247815712, guid: 3a7e9ae2aa1362b4cbc84cae7382b7e2,
         type: 3}
       propertyPath: m_Name
-      value: Level 1 Floor
+      value: LevelA Floor
       objectReference: {fileID: 0}
     - target: {fileID: 7919481421247815714, guid: 3a7e9ae2aa1362b4cbc84cae7382b7e2,
         type: 3}
