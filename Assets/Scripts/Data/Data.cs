@@ -36,6 +36,7 @@ namespace Snake_box
         [SerializeField] private string _shellDataPath;
         [SerializeField] private string _bordersDataPath;
         [SerializeField] private string _allSpawnListsDataPath;
+        [SerializeField] private string _spriteDisctionaryDataPath;
         private static MainBuildData _mainBuildData;
         private static BonusCoinsData _bonusCoinsData;
         private static BonusFireData _bonusFireData;
@@ -58,6 +59,7 @@ namespace Snake_box
         private static TurretData _turretData;
         private static BordersData _bordersData;
         private static ShellData _shellData;
+        private static SpriteDictonary _spriteDictonary;
         private static readonly Lazy<Data> _instance = new Lazy<Data>(() => Load<Data>("Data/" + typeof(Data).Name));
         
         #endregion
@@ -335,6 +337,16 @@ namespace Snake_box
                 }
 
                 return _shellData;
+            }
+        }
+
+        public SpriteDictonary SpriteDictonary
+        {
+            get
+            {
+                if(_spriteDictonary == null)
+                    _spriteDictonary = Load<SpriteDictonary>("Data/" + Instance._spriteDisctionaryDataPath);
+                return _spriteDictonary;
             }
         }
 
