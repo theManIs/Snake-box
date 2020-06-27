@@ -5,7 +5,7 @@ namespace Snake_box
 {
 	public class FlyingIconsController : IExecute, IInitialization, ICleanUp
 	{
-        private const float FLYING_ICONS_SPEED = 10;
+        private const float FLYING_ICONS_SPEED = 100;
 
 		private List<FlyingIcon> _flyingIcons = new List<FlyingIcon>();
 

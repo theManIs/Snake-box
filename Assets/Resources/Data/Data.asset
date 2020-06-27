@@ -37,4 +37,5 @@ MonoBehaviour:
   _shellDataPath: Shells/ShellData
   _bordersDataPath: Level/BordersData
   _allSpawnListsDataPath: EnemySpawn/AllSpawnListsData
+  _spriteDictionaryDataPath: Sprites/SpriteDictionary
   _levelPrefabsDataPath: Level/LevelPrefabs
