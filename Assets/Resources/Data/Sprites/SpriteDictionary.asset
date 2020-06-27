@@ -15,3 +15,5 @@ MonoBehaviour:
   pairs:
   - Name: money
     Sprite: {fileID: 21300000, guid: aabaec2dbf4885b4a93630eb667fbc4f, type: 3}
+  - Name: block
+    Sprite: {fileID: 21300000, guid: 821e5c012b0d3c046af94c0be3aefe52, type: 3}

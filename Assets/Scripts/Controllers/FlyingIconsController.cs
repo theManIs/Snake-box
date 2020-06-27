@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Snake_box
@@ -17,7 +18,7 @@ namespace Snake_box
             var flyingIcons = _flyingIcons.ToArray();
             foreach(FlyingIcon icon in flyingIcons)
             {
-                Vector3 direction = icon.Destination.position - icon.GameObject.transform.position;
+                Vector3 direction = icon.Destination.position - PositionWithY1(icon.GameObject.transform);
                 if(direction.sqrMagnitude <= translationDistance * translationDistance)
                 {
                     Object.Destroy(icon.GameObject);
@@ -25,12 +26,8 @@ namespace Snake_box
                 }
                 else
                 {
-                    //var translation = (direction.normalized * translationDistance);
-                    //var position = icon.GameObject.transform.position;
-                    //position.x += translation.x;
-                    //position.z += translation.z;
-                    //icon.GameObject.transform.position = position;
                     icon.GameObject.transform.Translate(direction.normalized * translationDistance, Space.World);
+                    icon.GameObject.transform.position = new Vector3(icon.GameObject.transform.position.x, 1, icon.GameObject.transform.position.z);
                 }
 
             }
@@ -63,6 +60,13 @@ namespace Snake_box
         #region Methods
 
         private void AddFlyingIconToList(FlyingIcon flyingIcon) => _flyingIcons.Add(flyingIcon);
+
+        private Vector3 PositionWithY1(Transform transform)
+        {
+            Vector3 result = transform.position;
+            result.y = 1;
+            return result;
+        }
 
         #endregion
     }

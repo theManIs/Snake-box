@@ -27,6 +27,11 @@ namespace Snake_box
 
         #endregion
 
+        #region Propeties
+
+        public GameObject Player => _player;
+
+        #endregion
 
         #region Unity Method
 
@@ -93,6 +98,7 @@ namespace Snake_box
                 _positions.Add(block.GetTransform().position);
                 _currentSnakeHp += block.GetHp();
                 _baseSnakeHp += block.GetHp();
+                Services.Instance.FlyingIconsService.CreateFlyingBlock();
             }
         }
 

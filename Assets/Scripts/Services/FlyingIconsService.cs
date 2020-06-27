@@ -8,6 +8,7 @@ namespace Snake_box
         public event Action<FlyingIcon> FlyingIconAdded;
 
         private readonly Transform _flyingCoinsDestination = GameObject.Find("Flying Coins Destination").transform;
+        private readonly Transform _flyingBlocksAndTurretsStart = GameObject.Find("Flying Blocks and Turrets Start").transform;
 
         public void CreateFlyingIcon(Sprite sprite, Vector3 startPosition, Transform destination, float scale = 1f)
         {
@@ -28,6 +29,9 @@ namespace Snake_box
         }
 
         public void CreateFlyingMoney(Vector3 startPosition) => CreateFlyingIcon(Data.Instance.SpriteDictonary.GetSprite("money") , startPosition, _flyingCoinsDestination);
+
+        public void CreateFlyingBlock() => CreateFlyingIcon(Data.Instance.SpriteDictonary.GetSprite("block"), _flyingBlocksAndTurretsStart.position, 
+            Services.Instance.LevelService.CharacterBehaviour.Player.transform);
     }
 
 }
