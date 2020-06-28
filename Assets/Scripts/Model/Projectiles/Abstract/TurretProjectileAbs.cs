@@ -241,6 +241,14 @@ namespace Snake_box
                     ida.RegisterDamage(CarryingDamage, ArmorPiecing);
             }
 
+            if (_projectilePreferences.ExplosionEffect)
+            {
+                Transform explosionEffect = Object.Instantiate(_projectilePreferences.ExplosionEffect,
+                    _projectileInstance.transform.position, _projectileInstance.transform.rotation);
+
+                Object.Destroy(explosionEffect.gameObject, 1);
+            }
+
             ToDispose = true;
 
             Object.Destroy(_projectileInstance.gameObject);

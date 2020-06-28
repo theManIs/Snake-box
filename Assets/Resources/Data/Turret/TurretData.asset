@@ -36,6 +36,7 @@ MonoBehaviour:
       NumberOfPeaces: 10
       ActivationDistance: 0.1
       SelfDestructAfter: 5
+      ExplosionEffect: {fileID: 400000, guid: 4c5a17ca1f9fec84e941441ebb8be079, type: 3}
   ShotgunTurret:
     StartLevel: 1
     BaseLevelModifier: 2
@@ -60,6 +61,7 @@ MonoBehaviour:
       NumberOfPeaces: 10
       ActivationDistance: 0.1
       SelfDestructAfter: 5
+      ExplosionEffect: {fileID: 0}
   MachineGunTurret:
     StartLevel: 1
     BaseLevelModifier: 2
@@ -84,6 +86,7 @@ MonoBehaviour:
       NumberOfPeaces: 10
       ActivationDistance: 0.1
       SelfDestructAfter: 5
+      ExplosionEffect: {fileID: 0}
   FrostTurret:
     StartLevel: 1
     BaseLevelModifier: 2
@@ -108,6 +111,7 @@ MonoBehaviour:
       NumberOfPeaces: 20
       ActivationDistance: 0.1
       SelfDestructAfter: 5
+      ExplosionEffect: {fileID: 0}
   FrostGunTurret:
     StartLevel: 1
     BaseLevelModifier: 2
@@ -131,6 +135,7 @@ MonoBehaviour:
       NumberOfPeaces: 10
       ActivationDistance: 0.1
       SelfDestructAfter: 5
+      ExplosionEffect: {fileID: 0}
   FreezerTurret:
     StartLevel: 1
     BaseLevelModifier: 2
@@ -152,6 +157,7 @@ MonoBehaviour:
       NumberOfPeaces: 10
       ActivationDistance: 0.1
       SelfDestructAfter: 5
+      ExplosionEffect: {fileID: 0}
   PlasmaTurret:
     StartLevel: 1
     BaseLevelModifier: 2
@@ -175,6 +181,7 @@ MonoBehaviour:
       NumberOfPeaces: 10
       ActivationDistance: 0.1
       SelfDestructAfter: 5
+      ExplosionEffect: {fileID: 0}
   LaserTurret:
     StartLevel: 1
     BaseLevelModifier: 2
@@ -198,6 +205,7 @@ MonoBehaviour:
       NumberOfPeaces: 10
       ActivationDistance: 0.1
       SelfDestructAfter: 5
+      ExplosionEffect: {fileID: 0}
   PlasmaRailTurret:
     StartLevel: 1
     BaseLevelModifier: 2
@@ -219,6 +227,7 @@ MonoBehaviour:
       NumberOfPeaces: 10
       ActivationDistance: 0.1
       SelfDestructAfter: 5
+      ExplosionEffect: {fileID: 0}
   GrenadeTurret:
     StartLevel: 1
     BaseLevelModifier: 2
@@ -240,6 +249,7 @@ MonoBehaviour:
       NumberOfPeaces: 10
       ActivationDistance: 0.1
       SelfDestructAfter: 5
+      ExplosionEffect: {fileID: 0}
   IncendiaryTurret:
     StartLevel: 1
     BaseLevelModifier: 2
@@ -261,6 +271,7 @@ MonoBehaviour:
       NumberOfPeaces: 10
       ActivationDistance: 0.1
       SelfDestructAfter: 5
+      ExplosionEffect: {fileID: 0}
   RocketTurret:
     StartLevel: 1
     BaseLevelModifier: 2
@@ -282,6 +293,7 @@ MonoBehaviour:
       NumberOfPeaces: 10
       ActivationDistance: 0.1
       SelfDestructAfter: 5
+      ExplosionEffect: {fileID: 0}
   AirTurret:
     StartLevel: 1
     BaseLevelModifier: 2
@@ -303,6 +315,7 @@ MonoBehaviour:
       NumberOfPeaces: 10
       ActivationDistance: 0.1
       SelfDestructAfter: 5
+      ExplosionEffect: {fileID: 0}
   AirTunnelTurret:
     StartLevel: 1
     BaseLevelModifier: 2
@@ -324,6 +337,7 @@ MonoBehaviour:
       NumberOfPeaces: 10
       ActivationDistance: 0.1
       SelfDestructAfter: 5
+      ExplosionEffect: {fileID: 0}
   AirWaveTurret:
     StartLevel: 1
     BaseLevelModifier: 2
@@ -348,3 +362,4 @@ MonoBehaviour:
       NumberOfPeaces: 1
       ActivationDistance: 2
       SelfDestructAfter: 5
+      ExplosionEffect: {fileID: 0}
