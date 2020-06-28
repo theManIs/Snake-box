@@ -51,6 +51,7 @@ namespace Snake_box
                 Data.Instance.TurretData.AddNewWithParent(_prefab.transform);
                 Wallet.TakeLocalCoins(TURRET_PRICE);                
                 _turret = true;
+                Services.Instance.FlyingIconsService.CreateFlyingTurret();
             }
         }
 

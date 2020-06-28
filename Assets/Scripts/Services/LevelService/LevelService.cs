@@ -12,6 +12,7 @@ namespace Snake_box
 
         public List<IEnemy> ActiveEnemies = new List<IEnemy>();
         public List<BaseBonus> ActiveBonus = new List<BaseBonus>();
+        public List<BonusBullet> ActiveBonusBullet = new List<BonusBullet>();
         private readonly LevelData _levelData;
         public CharacterBehaviour CharacterBehaviour;
         public List <BlockSnake> BlockSnakes= new List< BlockSnake>();
@@ -73,15 +74,7 @@ namespace Snake_box
             Target = GameObject.FindGameObjectWithTag(TagManager.GetTag(TagType.Target));
         }
 
-        public void SetPanelEndLevelActive(bool isActive)
-        {
-            var panel = GameObject.FindWithTag(TagManager.GetTag(TagType.PanelEndLevel));
-            if (panel == null)
-                return;
-            panel.transform.GetChild(0).gameObject.SetActive(isActive);
-            if(isActive)
-                panel.GetComponentInParent<GameMenuBehaviour>().GetEndLevelText();
-        }
+        public void SetPanelEndLevelActive(bool isActive) => ScreenInterface.GetInstance().ScreenFactory.GetGameMenu().SetPanelEndLevelActive(isActive);
 
         #endregion
 

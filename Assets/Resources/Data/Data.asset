@@ -33,7 +33,9 @@ MonoBehaviour:
   _bonusCoinsDataPath: Bonus/BonusCoinsData
   _bonusHpSnakeDataPath: Bonus/BonusHpSnakeData
   _bonusSpeedDataPath: Bonus/BonusSpeedData
+  _bonusFireDataPath: Bonus/BonusFireData
   _shellDataPath: Shells/ShellData
   _bordersDataPath: Level/BordersData
   _allSpawnListsDataPath: EnemySpawn/AllSpawnListsData
+  _spriteDictionaryDataPath: Sprites/SpriteDictionary
   _levelPrefabsDataPath: Level/LevelPrefabs

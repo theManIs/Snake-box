@@ -10,7 +10,7 @@ namespace Snake_box
         private GameObject[] _spawnPoints;//точки споуна бонусов
         private TimeRemaining _spawnInvoker;
         private BonusList _bonuses;//список всех бонусов
-        private int _spawnTime = 15;
+        private int _spawnTime= 25;       
 
         #endregion
 
@@ -32,7 +32,7 @@ namespace Snake_box
         {
             int random = Random.Range(0, _bonuses._bonusList.Count);
             int point = Random.Range(0, _spawnPoints.Length);
-            _bonuses._bonusList[random].Spawn(_spawnPoints[point].transform.position);
+            _bonuses._bonusList[3].Spawn(_spawnPoints[21].transform.position);         ///загружается 3(random) бонус в 5(point) точке   
         }
 
         #endregion

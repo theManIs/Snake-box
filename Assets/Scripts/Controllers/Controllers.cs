@@ -37,6 +37,8 @@ namespace Snake_box
             _executeControllers.Add(new EnemyController());
             _executeControllers.Add(new TurretController());
             _executeControllers.Add(new TurretProjectileController());
+            _executeControllers.Add(new BonusFireController());
+            _executeControllers.Add(new FlyingIconsController());
 
             _initializations.Add(new BonusSpawnController());
 

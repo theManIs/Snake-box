@@ -32,11 +32,14 @@ namespace Snake_box
         [SerializeField] private string _bonusCoinsDataPath;
         [SerializeField] private string _bonusHpSnakeDataPath;
         [SerializeField] private string _bonusSpeedDataPath;
+        [SerializeField] private string _bonusFireDataPath;
         [SerializeField] private string _shellDataPath;
         [SerializeField] private string _bordersDataPath;
         [SerializeField] private string _allSpawnListsDataPath;
+        [SerializeField] private string _spriteDictionaryDataPath;
         private static MainBuildData _mainBuildData;
         private static BonusCoinsData _bonusCoinsData;
+        private static BonusFireData _bonusFireData;
         private static BonusHpSnakeData _bonusHpSnakeData;
         private static BonusSpeedData _bonusSpeedData;
         [SerializeField] private string _levelPrefabsDataPath;
@@ -56,6 +59,7 @@ namespace Snake_box
         private static TurretData _turretData;
         private static BordersData _bordersData;
         private static ShellData _shellData;
+        private static SpriteDictionary _spriteDictonary;
         private static readonly Lazy<Data> _instance = new Lazy<Data>(() => Load<Data>("Data/" + typeof(Data).Name));
         
         #endregion
@@ -76,7 +80,21 @@ namespace Snake_box
 
                 return _mainBuildData;
             }
-        }
+        } 
+
+        public BonusFireData BonusFireData
+        {
+
+            get
+            {
+                if (_bonusFireData == null)
+                {
+                    _bonusFireData = Load<BonusFireData>("Data/" + Instance._bonusFireDataPath);
+                }
+
+                return _bonusFireData;
+            }
+        } 
 
         public BonusCoinsData BonusCoinsData
         {
@@ -319,6 +337,16 @@ namespace Snake_box
                 }
 
                 return _shellData;
+            }
+        }
+
+        public SpriteDictionary SpriteDictonary
+        {
+            get
+            {
+                if(_spriteDictonary == null)
+                    _spriteDictonary = Load<SpriteDictionary>("Data/" + Instance._spriteDictionaryDataPath);
+                return _spriteDictonary;
             }
         }
 

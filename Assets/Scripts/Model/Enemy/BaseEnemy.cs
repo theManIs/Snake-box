@@ -169,6 +169,7 @@ namespace Snake_box
                 _levelService.ActiveEnemies.Remove(this);
             Object.Destroy(_enemyObject);
             Wallet.PutLocalCoins(_killReward);
+            Services.Instance.FlyingIconsService.CreateFlyingMoney(_enemyObject.transform.position);
             if (_levelService.ActiveEnemies.Count == 0 && Services.Instance.LevelService.IsLevelSpawnEnded)
             {
                 _levelService.EndLevel();
