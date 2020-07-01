@@ -22,13 +22,16 @@ namespace Snake_box
         private bool _targetLocked = false;
         private ProjectilePreferences _projectilePreferences;
 
+        protected float ProjectileDamageMod;
+        protected float AbilityLevel;
+
         #endregion
 
 
         #region Properties
 
         public Vector3 AngleLock => _projectilePreferences.AngleLock;
-        public float CarryingDamage => _projectilePreferences.ProjectileDamage;
+        public float CarryingDamage => _projectilePreferences.ProjectileDamage * ProjectileDamageMod;
         public int BulletSpeed => _projectilePreferences.ProjectileSpeed;
         public ArmorTypes ArmorPiecing => _projectilePreferences.ArmorPiercing;
         public List<IEnemy> ActiveEnemies => Services.Instance.LevelService.ActiveEnemies;
@@ -37,6 +40,10 @@ namespace Snake_box
 
 
         #region Methods
+
+        public void SetProjectileDamageMod(float newProjectileDamageMod) => ProjectileDamageMod = newProjectileDamageMod;
+
+        public void SetAbilityLevel(int newAbilityLevel) => AbilityLevel = newAbilityLevel;
 
         public abstract void Execute();
 
