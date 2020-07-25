@@ -4,15 +4,9 @@
     <e p="C:\Users\Nameless\.Rider2019.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Nameless\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Snake-box.-1613701068.00" t="ExcludeRecursive" />
     <e p="D:\Snake-box" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Materials" t="Include">
-          <e p="Particle" t="Include">
-            <e p="WhiteBomb" t="Include">
-              <e p="Lighting.cs" t="Include" />
-            </e>
-          </e>
-        </e>
         <e p="NavMeshComponents" t="Include">
           <e p="Editor" t="Include">
             <e p="NavMeshAssetManager.cs" t="Include" />
@@ -30,6 +24,17 @@
             <e p="NavMeshTeleport.cs" t="Include" />
           </e>
         </e>
+        <e p="PolygonApocalypse" t="Include">
+          <e p="Materials" t="Include">
+            <e p="Misc" t="Include">
+              <e p="Shader" t="Include">
+                <e p="POLYGON_Triplanar.shader" t="Include" />
+                <e p="POLYGON_Zombies.shader" t="Include" />
+                <e p="SkyGradient.shader" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
         <e p="Resources" t="Include">
           <e p="GUI" t="Include">
             <e p="Screen" t="Include">
@@ -45,10 +50,13 @@
             <e p="AssetsPathScreen.cs" t="Include" />
           </e>
           <e p="Controllers" t="Include">
+            <e p="BonusFireController.cs" t="Include" />
+            <e p="BonusSpawnController.cs" t="Include" />
             <e p="CharacterController.cs" t="Include" />
             <e p="Controllers.cs" t="Include" />
             <e p="EnemyController.cs" t="Include" />
             <e p="EnemySpawnControler.cs" t="Include" />
+            <e p="FlyingIconsController.cs" t="Include" />
             <e p="GameController.cs" t="Include" />
             <e p="InputController.cs" t="Include" />
             <e p="Interfaces" t="Include">
@@ -63,10 +71,19 @@
               <e p="TimeRemainingController.cs" t="Include" />
               <e p="TimeRemainingExtensions.cs" t="Include" />
             </e>
+            <e p="TurretController.cs" t="Include" />
+            <e p="TurretProjectileController.cs" t="Include" />
           </e>
           <e p="Data" t="Include">
             <e p="BlockSnake" t="Include">
               <e p="BlockSnakeData.cs" t="Include" />
+            </e>
+            <e p="Bonus" t="Include">
+              <e p="BonusCoinsData.cs" t="Include" />
+              <e p="BonusData.cs" t="Include" />
+              <e p="BonusFireData.cs" t="Include" />
+              <e p="BonusHpSnakeData.cs" t="Include" />
+              <e p="BonusSpeedData.cs" t="Include" />
             </e>
             <e p="Character" t="Include">
               <e p="CharacterData.cs" t="Include" />
@@ -85,33 +102,43 @@
               <e p="SpikedEnemyData.cs" t="Include" />
             </e>
             <e p="EnemySpawn" t="Include">
-              <e p="AllSpawnListsData.cs" t="Include" />
               <e p="EnemySpawnList.cs" t="Include" />
-              <e p="LevelSpawnListPair.cs" t="Include" />
               <e p="SingleEnemySpawnData.cs" t="Include" />
             </e>
             <e p="Level" t="Include">
               <e p="BordersData.cs" t="Include" />
               <e p="LevelData.cs" t="Include" />
-              <e p="LevelPrefabs.cs" t="Include" />
-              <e p="LevelTypePrefabPair.cs" t="Include" />
+              <e p="SingleLevelData.cs" t="Include" />
+            </e>
+            <e p="MainBuild" t="Include">
+              <e p="MainBuildData.cs" t="Include" />
             </e>
             <e p="Shakes" t="Include">
               <e p="SerializeShakeData.cs" t="Include" />
               <e p="ShakeInfo.cs" t="Include" />
               <e p="ShakesData.cs" t="Include" />
             </e>
+            <e p="Sprites" t="Include">
+              <e p="SpriteDictionary.cs" t="Include" />
+              <e p="SpriteDictionarypair.cs" t="Include" />
+            </e>
             <e p="Turret" t="Include">
+              <e p="ProjectilePreferences.cs" t="Include" />
               <e p="ShellData.cs" t="Include" />
               <e p="TurretData.cs" t="Include" />
+              <e p="TurretPreferences.cs" t="Include" />
             </e>
             <e p="Type" t="Include">
               <e p="ShakeType.cs" t="Include" />
             </e>
           </e>
+          <e p="Editor" t="Include">
+            <e p="LoadLevelOnButtonPressEditor.cs" t="Include" />
+          </e>
           <e p="Enum" t="Include">
             <e p="Direction.cs" t="Include" />
           </e>
+          <e p="Finger.cs" t="Include" />
           <e p="Helper" t="Include">
             <e p="Ciphers" t="Include">
               <e p="CaesarCipher.cs" t="Include" />
@@ -151,11 +178,17 @@
             </e>
           </e>
           <e p="Model" t="Include">
-            <e p="Base" t="Include">
-              <e p="MainBuild.cs" t="Include" />
-            </e>
             <e p="BlockSnake" t="Include">
               <e p="BlockSnake.cs" t="Include" />
+            </e>
+            <e p="Bonus" t="Include">
+              <e p="BaseBonus.cs" t="Include" />
+              <e p="BonusBullet.cs" t="Include" />
+              <e p="BonusCoins.cs" t="Include" />
+              <e p="BonusFire.cs" t="Include" />
+              <e p="BonusHpSnake.cs" t="Include" />
+              <e p="BonusList.cs" t="Include" />
+              <e p="BonusSpeed.cs" t="Include" />
             </e>
             <e p="Character" t="Include">
               <e p="BaseCharacter.cs" t="Include" />
@@ -173,27 +206,53 @@
               <e p="SpawningEnemy.cs" t="Include" />
               <e p="SpikedEnemy.cs" t="Include" />
             </e>
+            <e p="FlyingIcon.cs" t="Include" />
             <e p="Interfaces" t="Include">
               <e p="IEnemy.cs" t="Include" />
             </e>
-            <e p="Turrets" t="Include">
-              <e p="ArmorTypes.cs" t="Include" />
-              <e p="CannonShellBuilder.cs" t="Include" />
-              <e p="DummyEnemy.cs" t="Include" />
-              <e p="DummySceneCreator.cs" t="Include" />
-              <e p="IDamageAddressee.cs" t="Include" />
-              <e p="IDummyEnemy.cs" t="Include" />
-              <e p="ProjectileBuilderAbs.cs" t="Include" />
-              <e p="TurretBaseAbs.cs" t="Include" />
-              <e p="TurretBehaviour.cs" t="Include" />
-              <e p="TurretController.cs" t="Include" />
-              <e p="TurretInitializer.cs" t="Include" />
-              <e p="TurretProjectile.cs" t="Include" />
-              <e p="TurretProjectileAbs.cs" t="Include" />
-              <e p="TurretProjectileController.cs" t="Include" />
+            <e p="MainBuild" t="Include">
+              <e p="MainBuild.cs" t="Include" />
             </e>
-            <e p="UiTest" t="Include">
-              <e p="UiTest.cs" t="Include" />
+            <e p="Projectiles" t="Include">
+              <e p="Abstract" t="Include">
+                <e p="ProjectileBuilderAbs.cs" t="Include" />
+                <e p="SphereShellBuilder.cs" t="Include" />
+                <e p="TurretProjectileAbs.cs" t="Include" />
+              </e>
+              <e p="CannonShellBuilder.cs" t="Include" />
+              <e p="ShotgunShellBuilder.cs" t="Include" />
+              <e p="SpecificProjectiles" t="Include">
+                <e p="CannonProjectile.cs" t="Include" />
+                <e p="ShotgunProjectile.cs" t="Include" />
+                <e p="SphereProjectile.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Turrets" t="Include">
+              <e p="Abstract" t="Include">
+                <e p="IDamageAddressee.cs" t="Include" />
+                <e p="TurretBaseAbs.cs" t="Include" />
+                <e p="TurretInitializer.cs" t="Include" />
+              </e>
+              <e p="DummyThings" t="Include">
+                <e p="DummyEnemy.cs" t="Include" />
+                <e p="DummySceneCreator.cs" t="Include" />
+                <e p="IDummyEnemy.cs" t="Include" />
+                <e p="OnDrawGizmosClass.cs" t="Include" />
+              </e>
+              <e p="Enum" t="Include">
+                <e p="ArmorTypes.cs" t="Include" />
+              </e>
+              <e p="SpecificTurrets" t="Include">
+                <e p="AirWaveTurret.cs" t="Include" />
+                <e p="CannonTurret.cs" t="Include" />
+                <e p="FrostGunTurret.cs" t="Include" />
+                <e p="FrostTurret.cs" t="Include" />
+                <e p="LaserTurret.cs" t="Include" />
+                <e p="MachinegunTurret.cs" t="Include" />
+                <e p="PlasmaTurret.cs" t="Include" />
+                <e p="ShotgunTurret.cs" t="Include" />
+              </e>
+              <e p="TurretPlant.cs" t="Include" />
             </e>
             <e p="Wallet" t="Include">
               <e p="Wallet.cs" t="Include" />
@@ -201,13 +260,13 @@
           </e>
           <e p="OnSceneLevelLoaders" t="Include">
             <e p="LoadLevelOnButtonPress.cs" t="Include" />
-            <e p="LoadLevelOnButtonPressEditor.cs" t="Include" />
             <e p="LoadLevelOnStartup.cs" t="Include" />
           </e>
           <e p="Services" t="Include">
             <e p="CameraService" t="Include">
               <e p="CameraServices.cs" t="Include" />
             </e>
+            <e p="FlyingIconsService.cs" t="Include" />
             <e p="LevelService" t="Include">
               <e p="LevelLoadService.cs" t="Include" />
               <e p="LevelService.cs" t="Include" />
@@ -232,6 +291,7 @@
           </e>
           <e p="Type" t="Include">
             <e p="ArmorType.cs" t="Include" />
+            <e p="BonusType.cs" t="Include" />
             <e p="EnemyType.cs" t="Include" />
             <e p="GameObjectType.cs" t="Include" />
             <e p="LevelType.cs" t="Include" />
@@ -260,6 +320,12 @@
               <e p="ScreenType.cs" t="Include" />
             </e>
           </e>
+        </e>
+        <e p="SimpleApocalypse" t="Include">
+          <e p="_Materials" t="Include">
+            <e p="UnlitVertexColour_Alpha.shader" t="Include" />
+          </e>
+          <e p="ReadMe.txt" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
