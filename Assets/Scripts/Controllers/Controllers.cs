@@ -28,15 +28,19 @@ namespace Snake_box
         public Controllers()
         {
             _initializations = new List<IInitialization>();
-
+            
             _executeControllers = new List<IExecute>();
             _executeControllers.Add(new TimeRemainingController());
+            _executeControllers.Add(new CharacterController());
             _executeControllers.Add(new InputController());
             _executeControllers.Add(new EnemySpawnControler());
             _executeControllers.Add(new EnemyController());
             _executeControllers.Add(new TurretController());
             _executeControllers.Add(new TurretProjectileController());
-            _executeControllers.Add(new CharacterController());
+            _executeControllers.Add(new BonusFireController());
+            _executeControllers.Add(new FlyingIconsController());
+
+            _initializations.Add(new BonusSpawnController());
 
             _cleanUps = new List<ICleanUp>();
             _cleanUps.Add(new TimeRemainingCleanUp());

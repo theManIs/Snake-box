@@ -17,10 +17,12 @@ namespace Snake_box
                 GameObject.Destroy(_currentLevel);
                 LevelUnloaded?.Invoke();
             }
-            _currentLevel = GameObject.Instantiate(Data.Instance.LevelPrefabs[levelType]);
+            _currentLevel = GameObject.Instantiate(Data.Instance.LevelData.GetPrefab(levelType));
             Services.Instance.LevelService.CurrentLevel = levelType;
             Time.timeScale = 1;
             LevelLoaded?.Invoke();
         }
+
+        public void ReloadLevel() => LoadLevel(Services.Instance.LevelService.CurrentLevel);
     } 
 }

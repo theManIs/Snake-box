@@ -23,7 +23,7 @@ namespace Snake_box
         [SerializeField] private Button [] _buttonPlus;
         [SerializeField] private Button[] _buttonTurretsType;
         [SerializeField] private Text _textEndGame;
-        CharacterBehaviour _characterBehaviour = Data.Instance.Character._characterBehaviour;
+        CharacterBehaviour _characterBehaviour = Services.Instance.LevelService.CharacterBehaviour;
         private int _selectButtonsIndex;
         private bool _isPause;
 
@@ -34,7 +34,7 @@ namespace Snake_box
 
         private void OnEnable()
         {
-            //_headSnake.onClick.AddListener(OpenActivites);//создать метод для активауии чего нибудь
+            _headSnake.onClick.AddListener(SnakeHeadButton);
             _buttonPlus[0].onClick.AddListener(delegate { AddBlock(0); });
             _buttonPlus[1].onClick.AddListener(delegate { AddBlock(1); });
             _buttonPlus[2].onClick.AddListener(delegate { AddBlock(2); });
@@ -43,14 +43,14 @@ namespace Snake_box
             _buttonTurretsType[1].onClick.AddListener(delegate { AddTurret(1); });
             _buttonTurretsType[2].onClick.AddListener(delegate { AddTurret(2); });
             _buttonTurretsType[3].onClick.AddListener(delegate { AddTurret(3); });
-            _mainMenu.onClick.AddListener(delegate { Services.Instance.TimeService.SetTimeScale(1); Services.Instance.LevelService.LoadMenu(); });
-            _reset.onClick.AddListener(delegate { Services.Instance.TimeService.SetTimeScale(1); Services.Instance.LevelService.LoadLevel(0); });
+            _mainMenu.onClick.AddListener(delegate { SetPanelEndLevelActive(false); ScreenInterface.GetInstance().Execute(ScreenType.TestMenu); });
+            _reset.onClick.AddListener(Services.Instance.LevelLoadService.ReloadLevel);
             _pause.onClick.AddListener(Pause);
         }
 
         private void OnDisable()
         {
-            //_headSnake.onClick.RemoveListener(OpenActivites);
+            _headSnake.onClick.RemoveListener(SnakeHeadButton);
             _buttonPlus[0].onClick.RemoveListener(delegate { AddBlock(0); });
             _buttonPlus[1].onClick.RemoveListener(delegate { AddBlock(1); });
             _buttonPlus[2].onClick.RemoveListener(delegate { AddBlock(2); });
@@ -59,8 +59,8 @@ namespace Snake_box
             _buttonTurretsType[1].onClick.RemoveListener(delegate { AddTurret(1); });
             _buttonTurretsType[2].onClick.RemoveListener(delegate { AddTurret(2); });
             _buttonTurretsType[3].onClick.RemoveListener(delegate { AddTurret(3); });
-            _mainMenu.onClick.RemoveListener(delegate { Services.Instance.LevelService.LoadLevel(0); });
-            _reset.onClick.RemoveListener(delegate { Services.Instance.LevelService.LoadMenu(); });
+            _mainMenu.onClick.RemoveListener(delegate { SetPanelEndLevelActive(false); ScreenInterface.GetInstance().Execute(ScreenType.TestMenu); });
+            _reset.onClick.RemoveListener(Services.Instance.LevelLoadService.ReloadLevel);
             _pause.onClick.RemoveListener(Pause);
         }
 
@@ -68,14 +68,19 @@ namespace Snake_box
         {
             _worldCoins.GetComponent<TextMeshProUGUI>().text = Wallet.CountWorldCoins().ToString();
             _localCoins.GetComponent<TextMeshProUGUI>().text = Wallet.CountLocalCoins().ToString();
-            Bar.ShowCount(_hpBar, _characterBehaviour.SnakeHp, _characterBehaviour.SnakeHpMax, Color.green, Color.red);
-           Bar.ShowCount(_forceFieldBar, _characterBehaviour.SnakeArmorCurrent, _characterBehaviour.SnakeArmorMax, Color.blue, Color.yellow);
+            Bar.ShowCount(_hpBar, _characterBehaviour.CurrentSnakeHp, _characterBehaviour.BaseSnakeHp, Color.green, Color.red);
+            Bar.ShowCount(_forceFieldBar, _characterBehaviour.CurrentSnakeArmor, _characterBehaviour.BaseSnakeArmor, Color.blue, Color.yellow);
         }
 
         #endregion
 
 
         #region Methods  
+
+        private void SnakeHeadButton()
+        {
+            _characterBehaviour.UseBonus();
+        }
 
         private void AddTurret(int i)
         {
@@ -111,8 +116,10 @@ namespace Snake_box
         }
 
         private void AddBlock(int numberButton)//метод добавления турели если его нет то  
-        {           
-            if (_characterBehaviour.GetBlock(numberButton))// если есть блок то активируем панель для выбопв турели
+        {
+            if(_characterBehaviour == null)
+                _characterBehaviour = Services.Instance.LevelService.CharacterBehaviour;
+            if (_characterBehaviour.GetBlock(numberButton)!=null)// если есть блок то активируем панель для выбопв турели
             {
                 _panelTurretsType.SetActive (true);
                 _selectButtonsIndex = numberButton;
@@ -135,7 +142,7 @@ namespace Snake_box
         public void GetEndLevelText()
         {
             _pause.interactable = false;      
-            if (Services.Instance.LevelService.IsTargetDestroed==true&& Services.Instance.LevelService.IsSnakeAlive==false)
+            if (Services.Instance.LevelService.IsTargetDestroed==true || Services.Instance.LevelService.IsSnakeAlive==false)
             {
                 _textEndGame.text = "Congratulations!You Loser!";               
             }
@@ -144,7 +151,17 @@ namespace Snake_box
                 _textEndGame.text = "Congratulations!";               
             }
             Services.Instance.TimeService.SetTimeScale(0);
-        }        
+        }
+
+        public void SetPanelEndLevelActive(bool isActive)
+        {
+            var panel = GameObject.FindWithTag(TagManager.GetTag(TagType.PanelEndLevel));
+            if (panel == null)
+                return;
+            panel.transform.GetChild(0).gameObject.SetActive(isActive);
+            if (isActive)
+                panel.GetComponentInParent<GameMenuBehaviour>().GetEndLevelText();
+        }
 
         #endregion
 

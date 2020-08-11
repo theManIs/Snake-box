@@ -14,6 +14,7 @@ TagManager:
   - Spawn
   - PanelEndLevel
   - Enemy
+  - BonusPoint
   layers:
   - Default
   - TransparentFX
@@ -48,6 +49,30 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1619499633
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Wall
+    uniqueID: 2913946333
+    locked: 0
+  - name: Enemy
+    uniqueID: 1938851775
+    locked: 0
+  - name: Base
+    uniqueID: 2325175913
+    locked: 0
+  - name: Snake
+    uniqueID: 3303830023
+    locked: 0
+  - name: Bullet
+    uniqueID: 392402011
+    locked: 0
+  - name: Flying Icon
+    uniqueID: 2150897229
+    locked: 0
+  - name: Finger
+    uniqueID: 3395799837
     locked: 0

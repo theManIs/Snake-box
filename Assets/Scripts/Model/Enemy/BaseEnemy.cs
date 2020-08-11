@@ -1,8 +1,6 @@
-using ExampleTemplate;
 using UnityEngine;
 using UnityEngine.AI;
 using Object = UnityEngine.Object;
-using Random = UnityEngine.Random;
 
 
 namespace Snake_box
@@ -27,6 +25,7 @@ namespace Snake_box
         protected bool _isNeedNavMeshUpdate = false;
         protected bool _isValidTarget;
         protected int _killReward;
+        private TimeRemaining _stoping;
 
         #endregion
 
@@ -43,6 +42,7 @@ namespace Snake_box
             _meleeHitRange = data.MeleeHitRange;
             _killReward = data.KillReward;
             _hitCooldown = data.HitCooldown;
+            _stoping = new TimeRemaining(StopDancing, 1f);
         }
 
         #endregion
@@ -83,7 +83,6 @@ namespace Snake_box
                     _navMeshAgent.SetDestination(_target.transform.position);
                 _isNeedNavMeshUpdate = false;
             }
-
             DecreaseCurrentHitCooldown();
             HitCheck();
         }
@@ -115,32 +114,38 @@ namespace Snake_box
                 {
                     if (colliders[i].CompareTag(TagManager.GetTag(TagType.Target)))
                     {
-                        if (_currentHitCooldown == 0)
+                        var mainBuilding = Services.Instance.LevelService.MainBuilds;
+                        mainBuilding.GetDamage(_damage);
+                        if (_levelService.ActiveEnemies.Contains(this))
+                            _levelService.ActiveEnemies.Remove(this);
+                        Object.Destroy(_enemyObject);
+                        if (_levelService.ActiveEnemies.Count == 0 && Services.Instance.LevelService.IsLevelSpawnEnded)
                         {
-                            var mainBuilding = colliders[i].GetComponent<MainBuild>();
-                            mainBuilding.GetDamage(_damage);
-                            _currentHitCooldown = _hitCooldown;
+                            _levelService.EndLevel();
                         }
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Player)))
                     {
                         if (_currentHitCooldown == 0)
                         {
-                            Data.Instance.Character._characterBehaviour.SetArmor(_damage);
+                            Services.Instance.LevelService.CharacterBehaviour.SetArmor(_damage);
                             _currentHitCooldown = _hitCooldown;
                         }
-                        Data.Instance.Character._characterBehaviour.RamEnemy(this);
+                        Services.Instance.LevelService.CharacterBehaviour.RamEnemy(this);
+                        _stoping.AddTimeRemaining();
+                       
+                       
                     }
                     else if (colliders[i].CompareTag(TagManager.GetTag(TagType.Block)))
                     {
                         if (_currentHitCooldown == 0)
                         {
-                            Data.Instance.Character._characterBehaviour.SetDamage(_damage);
+                            Services.Instance.LevelService.CharacterBehaviour.SetDamage(_damage);
                             _currentHitCooldown = _hitCooldown;
                         }
+                        _stoping.AddTimeRemaining();
                     }
-                }
-
+                }  
             }
         }
 
@@ -164,9 +169,18 @@ namespace Snake_box
                 _levelService.ActiveEnemies.Remove(this);
             Object.Destroy(_enemyObject);
             Wallet.PutLocalCoins(_killReward);
+            Services.Instance.FlyingIconsService.CreateFlyingMoney(_enemyObject.transform.position);
             if (_levelService.ActiveEnemies.Count == 0 && Services.Instance.LevelService.IsLevelSpawnEnded)
             {
                 _levelService.EndLevel();
+            }
+        }
+
+        private void StopDancing()
+        {
+            if (_enemyObject != null)
+            {
+                _enemyObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
 
@@ -188,5 +202,6 @@ namespace Snake_box
         }
 
         #endregion
-    }
+    }  
 }
+

@@ -12,5 +12,339 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7fff2eec9fecf540b8c3b727a02546f, type: 3}
   m_Name: TurretData
   m_EditorClassIdentifier: 
-  PlainTurretRange: 20
-  PlainTurretCooldown: 250
+  CannonTurret:
+    StartLevel: 1
+    BaseLevelModifier: 2
+    Range: 25
+    Cooldown: 250
+    Price: 134
+    ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
+      type: 3}
+    PreferableEnemy: 1
+    TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
+      type: 3}
+    ArmorPiercing: 2
+    FirePointHierarchy: TurretShift/FirePoint
+    ProjectilePreferences:
+      ProjectilePrefab: {fileID: 7798697648108561833, guid: e38bc884a07db1d44aef29384092ba36,
+        type: 3}
+      ProjectileSpeed: 50
+      ProjectileDamage: 10
+      ProjectileFollowsTarget: 1
+      AngleLock: {x: 0, y: 0, z: 0}
+      ArmorPiercing: 0
+      NumberOfPeaces: 10
+      ActivationDistance: 0.1
+      SelfDestructAfter: 5
+  ShotgunTurret:
+    StartLevel: 1
+    BaseLevelModifier: 2
+    Range: 20
+    Cooldown: 1000
+    Price: 134
+    ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
+      type: 3}
+    PreferableEnemy: 0
+    TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
+      type: 3}
+    ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/FirePoint
+    ProjectilePreferences:
+      ProjectilePrefab: {fileID: 7798697648108561833, guid: e38bc884a07db1d44aef29384092ba36,
+        type: 3}
+      ProjectileSpeed: 2
+      ProjectileDamage: 10
+      ProjectileFollowsTarget: 1
+      AngleLock: {x: 0, y: 0, z: 0}
+      ArmorPiercing: 0
+      NumberOfPeaces: 10
+      ActivationDistance: 0.1
+      SelfDestructAfter: 5
+  MachineGunTurret:
+    StartLevel: 1
+    BaseLevelModifier: 2
+    Range: 15
+    Cooldown: 50
+    Price: 134
+    ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
+      type: 3}
+    PreferableEnemy: 4
+    TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
+      type: 3}
+    ArmorPiercing: 2
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
+    ProjectilePreferences:
+      ProjectilePrefab: {fileID: 7798697648108561833, guid: e38bc884a07db1d44aef29384092ba36,
+        type: 3}
+      ProjectileSpeed: 50
+      ProjectileDamage: 10
+      ProjectileFollowsTarget: 1
+      AngleLock: {x: 90, y: 0, z: 0}
+      ArmorPiercing: 0
+      NumberOfPeaces: 10
+      ActivationDistance: 0.1
+      SelfDestructAfter: 5
+  FrostTurret:
+    StartLevel: 1
+    BaseLevelModifier: 2
+    Range: 20
+    Cooldown: 499
+    Price: 134
+    ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
+      type: 3}
+    PreferableEnemy: 2
+    TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
+      type: 3}
+    ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/FirePoint
+    ProjectilePreferences:
+      ProjectilePrefab: {fileID: 7796823075655074970, guid: d2acf189c27fbf84da2a3ee39888728c,
+        type: 3}
+      ProjectileSpeed: 50
+      ProjectileDamage: 10
+      ProjectileFollowsTarget: 1
+      AngleLock: {x: 0, y: 0, z: 0}
+      ArmorPiercing: 0
+      NumberOfPeaces: 20
+      ActivationDistance: 0.1
+      SelfDestructAfter: 5
+  FrostGunTurret:
+    StartLevel: 1
+    BaseLevelModifier: 2
+    Range: 20
+    Cooldown: 250
+    Price: 134
+    ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
+      type: 3}
+    PreferableEnemy: 2
+    TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
+      type: 3}
+    ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/FirePoint
+    ProjectilePreferences:
+      ProjectilePrefab: {fileID: 189120, guid: 08a80c502ec6039459be2468ae2a76e3, type: 3}
+      ProjectileSpeed: 50
+      ProjectileDamage: 10
+      ProjectileFollowsTarget: 1
+      AngleLock: {x: 0, y: 90, z: 0}
+      ArmorPiercing: 0
+      NumberOfPeaces: 10
+      ActivationDistance: 0.1
+      SelfDestructAfter: 5
+  FreezerTurret:
+    StartLevel: 1
+    BaseLevelModifier: 2
+    Range: 20
+    Cooldown: 250
+    Price: 134
+    ThumbnailPrefab: {fileID: 0}
+    PreferableEnemy: 0
+    TurretPrefab: {fileID: 0}
+    ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
+    ProjectilePreferences:
+      ProjectilePrefab: {fileID: 0}
+      ProjectileSpeed: 50
+      ProjectileDamage: 10
+      ProjectileFollowsTarget: 1
+      AngleLock: {x: 90, y: 0, z: 0}
+      ArmorPiercing: 0
+      NumberOfPeaces: 10
+      ActivationDistance: 0.1
+      SelfDestructAfter: 5
+  PlasmaTurret:
+    StartLevel: 1
+    BaseLevelModifier: 2
+    Range: 25
+    Cooldown: 300
+    Price: 134
+    ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
+      type: 3}
+    PreferableEnemy: 3
+    TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
+      type: 3}
+    ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/FirePoint
+    ProjectilePreferences:
+      ProjectilePrefab: {fileID: 158606, guid: 903c77b00708d27458132b11307f5741, type: 3}
+      ProjectileSpeed: 8
+      ProjectileDamage: 10
+      ProjectileFollowsTarget: 1
+      AngleLock: {x: 0, y: 90, z: 0}
+      ArmorPiercing: 0
+      NumberOfPeaces: 10
+      ActivationDistance: 0.1
+      SelfDestructAfter: 5
+  LaserTurret:
+    StartLevel: 1
+    BaseLevelModifier: 2
+    Range: 20
+    Cooldown: 5
+    Price: 134
+    ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
+      type: 3}
+    PreferableEnemy: 4
+    TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
+      type: 3}
+    ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/FirePoint
+    ProjectilePreferences:
+      ProjectilePrefab: {fileID: 158606, guid: 903c77b00708d27458132b11307f5741, type: 3}
+      ProjectileSpeed: 8
+      ProjectileDamage: 10
+      ProjectileFollowsTarget: 1
+      AngleLock: {x: 0, y: 90, z: 0}
+      ArmorPiercing: 0
+      NumberOfPeaces: 10
+      ActivationDistance: 0.1
+      SelfDestructAfter: 5
+  PlasmaRailTurret:
+    StartLevel: 1
+    BaseLevelModifier: 2
+    Range: 20
+    Cooldown: 250
+    Price: 134
+    ThumbnailPrefab: {fileID: 0}
+    PreferableEnemy: 0
+    TurretPrefab: {fileID: 0}
+    ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
+    ProjectilePreferences:
+      ProjectilePrefab: {fileID: 0}
+      ProjectileSpeed: 50
+      ProjectileDamage: 10
+      ProjectileFollowsTarget: 1
+      AngleLock: {x: 90, y: 0, z: 0}
+      ArmorPiercing: 0
+      NumberOfPeaces: 10
+      ActivationDistance: 0.1
+      SelfDestructAfter: 5
+  GrenadeTurret:
+    StartLevel: 1
+    BaseLevelModifier: 2
+    Range: 20
+    Cooldown: 250
+    Price: 134
+    ThumbnailPrefab: {fileID: 0}
+    PreferableEnemy: 0
+    TurretPrefab: {fileID: 0}
+    ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
+    ProjectilePreferences:
+      ProjectilePrefab: {fileID: 0}
+      ProjectileSpeed: 50
+      ProjectileDamage: 10
+      ProjectileFollowsTarget: 1
+      AngleLock: {x: 90, y: 0, z: 0}
+      ArmorPiercing: 0
+      NumberOfPeaces: 10
+      ActivationDistance: 0.1
+      SelfDestructAfter: 5
+  IncendiaryTurret:
+    StartLevel: 1
+    BaseLevelModifier: 2
+    Range: 20
+    Cooldown: 250
+    Price: 134
+    ThumbnailPrefab: {fileID: 0}
+    PreferableEnemy: 0
+    TurretPrefab: {fileID: 0}
+    ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
+    ProjectilePreferences:
+      ProjectilePrefab: {fileID: 0}
+      ProjectileSpeed: 50
+      ProjectileDamage: 10
+      ProjectileFollowsTarget: 1
+      AngleLock: {x: 90, y: 0, z: 0}
+      ArmorPiercing: 0
+      NumberOfPeaces: 10
+      ActivationDistance: 0.1
+      SelfDestructAfter: 5
+  RocketTurret:
+    StartLevel: 1
+    BaseLevelModifier: 2
+    Range: 20
+    Cooldown: 250
+    Price: 134
+    ThumbnailPrefab: {fileID: 0}
+    PreferableEnemy: 0
+    TurretPrefab: {fileID: 0}
+    ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
+    ProjectilePreferences:
+      ProjectilePrefab: {fileID: 0}
+      ProjectileSpeed: 50
+      ProjectileDamage: 10
+      ProjectileFollowsTarget: 1
+      AngleLock: {x: 90, y: 0, z: 0}
+      ArmorPiercing: 0
+      NumberOfPeaces: 10
+      ActivationDistance: 0.1
+      SelfDestructAfter: 5
+  AirTurret:
+    StartLevel: 1
+    BaseLevelModifier: 2
+    Range: 20
+    Cooldown: 250
+    Price: 134
+    ThumbnailPrefab: {fileID: 0}
+    PreferableEnemy: 0
+    TurretPrefab: {fileID: 0}
+    ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
+    ProjectilePreferences:
+      ProjectilePrefab: {fileID: 0}
+      ProjectileSpeed: 50
+      ProjectileDamage: 10
+      ProjectileFollowsTarget: 1
+      AngleLock: {x: 90, y: 0, z: 0}
+      ArmorPiercing: 0
+      NumberOfPeaces: 10
+      ActivationDistance: 0.1
+      SelfDestructAfter: 5
+  AirTunnelTurret:
+    StartLevel: 1
+    BaseLevelModifier: 2
+    Range: 20
+    Cooldown: 250
+    Price: 134
+    ThumbnailPrefab: {fileID: 0}
+    PreferableEnemy: 0
+    TurretPrefab: {fileID: 0}
+    ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/TurretShift/FirePoint
+    ProjectilePreferences:
+      ProjectilePrefab: {fileID: 0}
+      ProjectileSpeed: 50
+      ProjectileDamage: 10
+      ProjectileFollowsTarget: 1
+      AngleLock: {x: 90, y: 0, z: 0}
+      ArmorPiercing: 0
+      NumberOfPeaces: 10
+      ActivationDistance: 0.1
+      SelfDestructAfter: 5
+  AirWaveTurret:
+    StartLevel: 1
+    BaseLevelModifier: 2
+    Range: 3
+    Cooldown: 510
+    Price: 134
+    ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
+      type: 3}
+    PreferableEnemy: 0
+    TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
+      type: 3}
+    ArmorPiercing: 0
+    FirePointHierarchy: TurretShift/Weapon
+    ProjectilePreferences:
+      ProjectilePrefab: {fileID: 7796823075655074970, guid: d2acf189c27fbf84da2a3ee39888728c,
+        type: 3}
+      ProjectileSpeed: 0
+      ProjectileDamage: 10
+      ProjectileFollowsTarget: 0
+      AngleLock: {x: 0, y: 0, z: 0}
+      ArmorPiercing: 0
+      NumberOfPeaces: 1
+      ActivationDistance: 2
+      SelfDestructAfter: 5
