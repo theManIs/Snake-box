@@ -13,7 +13,8 @@ namespace Snake_box
         public float Range = 20;
         [Range(5, 1000)]
         public float Cooldown = 250;
-        public float Price = 134;
+        public float UpdatePrice = 134;
+        public float BuyPrice = 134;
         public GameObject ThumbnailPrefab;
         public EnemyType PreferableEnemy;
         public TurretProjectileAbs TurretShell;

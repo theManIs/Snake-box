@@ -15,5 +15,6 @@ namespace Snake_box
         public int NumberOfPeaces = 10;
         public float ActivationDistance = 0.1f;
         public float SelfDestructAfter = 5;
+        public Transform ExplosionEffect;
     }
 }
