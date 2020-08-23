@@ -13,6 +13,7 @@
         LevelH    = 8,
         LevelI    = 9,
         LevelJ    = 10,
-        LevelK    = 11
-    } 
+        LevelK    = 11,
+        Game3     = 12
+    }  
 }

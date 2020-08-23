@@ -33,7 +33,7 @@ namespace Snake_box
             _characterBehaviour.ConstantMove();
             _characterBehaviour.RegenerationArmor();
             _characterBehaviour.Collision();
-            _characterBehaviour.ResetPosition();
+            //_characterBehaviour.ResetPosition();
             _characterBehaviour.DecreaseRamCooldown();
         }
 
