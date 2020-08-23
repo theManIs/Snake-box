@@ -31,10 +31,12 @@ namespace Snake_box
 
         #region Properties
 
-        public float Cooldown => TurretPreferences.Cooldown;
-        public float TurretRange => TurretPreferences.Range;
+        public float Cooldown => TurretPreferences.Cooldown * FireRateMod;
+        public float TurretRange => TurretPreferences.Range * TurretDistanceMod;
         public GameObject TurretPrefab => TurretPreferences.TurretPrefab;
         public EnemyType PreferredArmorType => TurretPreferences.PreferableEnemy;
+        public float BuyCost => TurretPreferences.BuyPrice * DecreaseBuyCost;
+        public float UpdateCost => TurretPreferences.UpdatePrice * DecreaseUpgradeCost;
 
         #endregion
 
@@ -89,7 +91,9 @@ namespace Snake_box
             }
         }
 
-        protected virtual ProjectileBuilderAbs GetProjectile() => new CannonShellBuilder().SetProjectilePreferences(TurretPreferences.ProjectilePreferences);
+        protected virtual ProjectileBuilderAbs GetProjectile() =>
+            new CannonShellBuilder().SetProjectilePreferences(TurretPreferences.ProjectilePreferences)
+                .SetDamageAndAbility(TurretDistanceMod, AbilityLevel, ProjectileDamageMod);
 
         private Quaternion RotateAroundAxis(Vector3 pointA, Vector3 pointB, Quaternion startRotation)
         {

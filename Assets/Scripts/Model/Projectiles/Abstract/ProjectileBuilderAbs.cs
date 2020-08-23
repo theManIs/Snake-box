@@ -4,13 +4,30 @@ namespace Snake_box
 {
     public abstract class ProjectileBuilderAbs
     {
+        #region Fields
+
+        protected int AbilityLevel = 1;
+        protected float TurretDistanceMod = 1;
+        protected float ProjectileDamageMod = 1;
+
         protected ProjectilePreferences ProjectilePreferences;
         protected static TurretProjectileController _turretProjectileController;
-        public static void SetTurretProjectileController(TurretProjectileController tpc) => _turretProjectileController = tpc; 
+
+        #endregion
+
+
+        #region Properties
+
+        public static void SetTurretProjectileController(TurretProjectileController tpc) => _turretProjectileController = tpc;
+
+        #endregion
+
 
         #region Methods
 
         protected virtual TurretProjectileAbs ProjectileInstance => new CannonProjectile();
+
+        public abstract void Build(Transform firePoint, IEnemy enemy);
 
         protected void BaseBuild(Transform firePoint, IEnemy enemy)
         {
@@ -24,15 +41,24 @@ namespace Snake_box
             cannonProjectile.SetLookRotation(enemy.GetTransform());
             cannonProjectile.SetSelfDestruct(ProjectilePreferences.SelfDestructAfter);
             cannonProjectile.CountDistance();
+            cannonProjectile.SetAbilityLevel(AbilityLevel);
+            cannonProjectile.SetProjectileDamageMod(ProjectileDamageMod);
 
             _turretProjectileController.AddShell(cannonProjectile);
         }
 
-        public abstract void Build(Transform firePoint, IEnemy enemy);
-
         public ProjectileBuilderAbs SetProjectilePreferences(ProjectilePreferences projectilePreferences)
         {
             ProjectilePreferences = projectilePreferences;
+
+            return this;
+        }
+
+        public ProjectileBuilderAbs SetDamageAndAbility(float newTurretDistanceMod, int newAbilityLevel, float newProjectileDamageMod)
+        {
+            AbilityLevel = newAbilityLevel;
+            TurretDistanceMod = newTurretDistanceMod;
+            ProjectileDamageMod = newProjectileDamageMod; 
 
             return this;
         }

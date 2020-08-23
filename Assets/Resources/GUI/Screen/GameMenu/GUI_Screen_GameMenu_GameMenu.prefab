@@ -2957,6 +2957,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WorldCoins
       objectReference: {fileID: 0}
+    - target: {fileID: 1814334360704880011, guid: f9dee48c0b9fda145b4a2198c4d16b5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5012179455740368390, guid: f9dee48c0b9fda145b4a2198c4d16b5e,
         type: 3}
       propertyPath: m_Sprite
@@ -3047,7 +3052,7 @@ PrefabInstance:
     - target: {fileID: 372866449676495131, guid: f9dee48c0b9fda145b4a2198c4d16b5e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 866
+      value: 1020
       objectReference: {fileID: 0}
     - target: {fileID: 372866449676495131, guid: f9dee48c0b9fda145b4a2198c4d16b5e,
         type: 3}
