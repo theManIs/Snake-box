@@ -15,6 +15,7 @@ TagManager:
   - PanelEndLevel
   - Enemy
   - BonusPoint
+  - TurretPoint
   layers:
   - Default
   - TransparentFX

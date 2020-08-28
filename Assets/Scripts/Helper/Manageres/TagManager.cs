@@ -19,8 +19,8 @@ namespace Snake_box
                 {TagType.Target, "Target"},
                 {TagType.Spawn, "Spawn"},
                 {TagType.PanelEndLevel, "PanelEndLevel"},
-                {TagType.BonusPoint, "BonusPoint"},                
- 
+                {TagType.BonusPoint, "BonusPoint"},
+                 {TagType.TurretPoint, "TurretPoint"},
                 {TagType.Enemy, "Enemy"}
             };
         }

@@ -10,10 +10,12 @@ namespace Snake_box
         private KeyCode _left = KeyCode.A;
         private KeyCode _right = KeyCode.D;
         private KeyCode _up = KeyCode.W;
-        private KeyCode _down = KeyCode.S;        
+        private KeyCode _down = KeyCode.S;
+        private KeyCode _e = KeyCode.E;
+
 
         #endregion
-        
+
         private readonly CharacterData _characterData;
 #if UNITY_IOS || UNITY_ANDROID
         private float _minDistanceForSwipe = 20;
@@ -50,6 +52,14 @@ namespace Snake_box
             if (Input.GetKeyDown(_down))
             {
                 direction = Direction.Down;
+            }
+            if (Input.GetKeyDown(_e))
+            {
+                var point = Services.Instance.LevelService.CharacterBehaviour.GetPoint();
+                if (point != null)
+                {
+                    Data.Instance.TurretData.AddNewWithParent(point);
+                } 
             }
 #endif
 #if UNITY_IOS || UNITY_ANDROID
