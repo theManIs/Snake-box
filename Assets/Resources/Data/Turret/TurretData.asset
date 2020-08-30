@@ -17,11 +17,12 @@ MonoBehaviour:
     BaseLevelModifier: 2
     Range: 25
     Cooldown: 250
-    Price: 134
+    UpdatePrice: 134
+    BuyPrice: 134
     ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
       type: 3}
     PreferableEnemy: 1
-    TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
+    TurretPrefab: {fileID: 1904041790429094, guid: 027cd57972e60824ca74f44e0d80ea9a,
       type: 3}
     ArmorPiercing: 2
     FirePointHierarchy: TurretShift/FirePoint
@@ -42,11 +43,12 @@ MonoBehaviour:
     BaseLevelModifier: 2
     Range: 20
     Cooldown: 1000
-    Price: 134
+    UpdatePrice: 134
+    BuyPrice: 134
     ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
       type: 3}
     PreferableEnemy: 0
-    TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
+    TurretPrefab: {fileID: 1962457702341656, guid: aab8f459d9f6f1840a3731182032078d,
       type: 3}
     ArmorPiercing: 0
     FirePointHierarchy: TurretShift/FirePoint
@@ -67,7 +69,8 @@ MonoBehaviour:
     BaseLevelModifier: 2
     Range: 15
     Cooldown: 50
-    Price: 134
+    UpdatePrice: 134
+    BuyPrice: 134
     ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
       type: 3}
     PreferableEnemy: 4
@@ -92,11 +95,12 @@ MonoBehaviour:
     BaseLevelModifier: 2
     Range: 20
     Cooldown: 499
-    Price: 134
+    UpdatePrice: 134
+    BuyPrice: 134
     ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
       type: 3}
     PreferableEnemy: 2
-    TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
+    TurretPrefab: {fileID: 1467590972069000, guid: d91ede30c57f9e64cb6e7ac51e28ff35,
       type: 3}
     ArmorPiercing: 0
     FirePointHierarchy: TurretShift/FirePoint
@@ -117,7 +121,8 @@ MonoBehaviour:
     BaseLevelModifier: 2
     Range: 20
     Cooldown: 250
-    Price: 134
+    UpdatePrice: 134
+    BuyPrice: 134
     ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
       type: 3}
     PreferableEnemy: 2
@@ -141,7 +146,8 @@ MonoBehaviour:
     BaseLevelModifier: 2
     Range: 20
     Cooldown: 250
-    Price: 134
+    UpdatePrice: 134
+    BuyPrice: 134
     ThumbnailPrefab: {fileID: 0}
     PreferableEnemy: 0
     TurretPrefab: {fileID: 0}
@@ -163,7 +169,8 @@ MonoBehaviour:
     BaseLevelModifier: 2
     Range: 25
     Cooldown: 300
-    Price: 134
+    UpdatePrice: 134
+    BuyPrice: 134
     ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
       type: 3}
     PreferableEnemy: 3
@@ -187,11 +194,12 @@ MonoBehaviour:
     BaseLevelModifier: 2
     Range: 20
     Cooldown: 5
-    Price: 134
+    UpdatePrice: 134
+    BuyPrice: 134
     ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
       type: 3}
     PreferableEnemy: 4
-    TurretPrefab: {fileID: 7882820195712338625, guid: 53605eb690014b04a87a15f8953144b5,
+    TurretPrefab: {fileID: 1274019000965958, guid: af169be12f376ce46a3e6b4bee8b8ffe,
       type: 3}
     ArmorPiercing: 0
     FirePointHierarchy: TurretShift/FirePoint
@@ -211,7 +219,8 @@ MonoBehaviour:
     BaseLevelModifier: 2
     Range: 20
     Cooldown: 250
-    Price: 134
+    UpdatePrice: 134
+    BuyPrice: 134
     ThumbnailPrefab: {fileID: 0}
     PreferableEnemy: 0
     TurretPrefab: {fileID: 0}
@@ -233,7 +242,8 @@ MonoBehaviour:
     BaseLevelModifier: 2
     Range: 20
     Cooldown: 250
-    Price: 134
+    UpdatePrice: 134
+    BuyPrice: 134
     ThumbnailPrefab: {fileID: 0}
     PreferableEnemy: 0
     TurretPrefab: {fileID: 0}
@@ -255,7 +265,8 @@ MonoBehaviour:
     BaseLevelModifier: 2
     Range: 20
     Cooldown: 250
-    Price: 134
+    UpdatePrice: 134
+    BuyPrice: 134
     ThumbnailPrefab: {fileID: 0}
     PreferableEnemy: 0
     TurretPrefab: {fileID: 0}
@@ -277,7 +288,8 @@ MonoBehaviour:
     BaseLevelModifier: 2
     Range: 20
     Cooldown: 250
-    Price: 134
+    UpdatePrice: 134
+    BuyPrice: 134
     ThumbnailPrefab: {fileID: 0}
     PreferableEnemy: 0
     TurretPrefab: {fileID: 0}
@@ -299,7 +311,8 @@ MonoBehaviour:
     BaseLevelModifier: 2
     Range: 20
     Cooldown: 250
-    Price: 134
+    UpdatePrice: 134
+    BuyPrice: 134
     ThumbnailPrefab: {fileID: 0}
     PreferableEnemy: 0
     TurretPrefab: {fileID: 0}
@@ -321,7 +334,8 @@ MonoBehaviour:
     BaseLevelModifier: 2
     Range: 20
     Cooldown: 250
-    Price: 134
+    UpdatePrice: 134
+    BuyPrice: 134
     ThumbnailPrefab: {fileID: 0}
     PreferableEnemy: 0
     TurretPrefab: {fileID: 0}
@@ -343,7 +357,8 @@ MonoBehaviour:
     BaseLevelModifier: 2
     Range: 3
     Cooldown: 510
-    Price: 134
+    UpdatePrice: 134
+    BuyPrice: 134
     ThumbnailPrefab: {fileID: 269974265680797856, guid: 200f07bd5d78bcd4cb26d25e63b7b204,
       type: 3}
     PreferableEnemy: 0

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Snake_box
 {
@@ -35,6 +37,33 @@ namespace Snake_box
         public TurretBaseAbs AddFrostTurret() => AddAndReturn(typeof(FrostTurret));
 
         public TurretBaseAbs AddAirWaveTurret() => AddAndReturn(typeof(AirWaveTurret));
+
+        public void ChangeTurretType(KeyCode keyCode)
+        {
+            List<TurretBaseAbs> localList = new List<TurretBaseAbs>(_turretData.TurretList);
+            Dictionary<KeyCode, Type> buttonsDictionary = new Dictionary<KeyCode, Type>
+            {
+                { KeyCode.F, typeof(FrostTurret) },
+                { KeyCode.C, typeof(CannonTurret) },
+                { KeyCode.V, typeof(LaserTurret) },
+                { KeyCode.G, typeof(ShotgunTurret) },
+            };
+
+            if (localList.Count > 0)
+            {
+                List<TurretBaseAbs> turretBaseAbs = new List<TurretBaseAbs>();
+
+                foreach (TurretBaseAbs tba in localList)
+                {
+                    TurretBaseAbs turret2 = Data.Instance.TurretData.TurretPlant.AddAndReturn(buttonsDictionary[keyCode]);
+
+                    tba.ReplaceTurret(turret2);
+                    turretBaseAbs.Add(turret2);
+                }
+
+                _turretData.TurretList = turretBaseAbs;
+            }
+        }
 
         private TurretBaseAbs AddAndReturn(Type turretType)
         {

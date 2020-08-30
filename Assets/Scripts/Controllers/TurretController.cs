@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Services.InputService;
+using UnityEngine;
 
 
 namespace Snake_box
@@ -29,11 +32,16 @@ namespace Snake_box
 
         public void Execute()
         {
-            SetTurretList(new List<TurretBaseAbs>());
+            SetTurretList();
 
             _turretList = _turretList.Where(x => x != null ? true : false).ToList();
 
             _turretList.ForEach(iExecutable => iExecutable.Execute());
+
+            if (new InputService().IsKeysPressed())
+            {
+                Data.Instance.TurretData.TurretPlant.ChangeTurretType(new InputService().KeyDownIs());
+            }
         }
 
         #endregion
@@ -41,7 +49,7 @@ namespace Snake_box
 
         #region Methods
 
-        private void SetTurretList(List<TurretBaseAbs> tl) => _turretList = Data.Instance.TurretData.GetTurretList();
+        private void SetTurretList() => _turretList = Data.Instance.TurretData.GetTurretList();
 
         #endregion
     }
