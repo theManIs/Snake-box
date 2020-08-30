@@ -79,7 +79,7 @@ namespace Snake_box
         {
             if (_isNeedNavMeshUpdate)
             {
-                if (_target != null)
+                if (_target != null && _navMeshAgent.isOnNavMesh)
                     _navMeshAgent.SetDestination(_target.transform.position);
                 _isNeedNavMeshUpdate = false;
             }

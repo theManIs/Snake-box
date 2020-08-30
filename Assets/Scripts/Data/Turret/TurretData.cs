@@ -44,9 +44,10 @@ namespace Snake_box
         /// <returns></returns>
         public TurretBaseAbs AddNewTurret()
         {
+            Debug.Log("AddNewTurret");
             TurretBaseAbs newTurret = TurretPlant.AddCannonTurret();
 
-            TurretList.Add(newTurret);
+//            TurretList.Add(newTurret);
 
             return newTurret;
         }

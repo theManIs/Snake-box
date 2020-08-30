@@ -21,6 +21,9 @@ namespace Snake_box
 
         public abstract void Execute();
         public abstract void SetParentTransform(Transform transform);
+        public abstract Transform GetParentTransform();
+
+        public abstract void ReleaseTurret();
 
         public abstract TurretBaseAbs Build(TurretPreferences turretPreferences);
 

@@ -63,6 +63,22 @@ namespace Snake_box
             TurretInstance.transform.localPosition = Vector3.zero;
         }
 
+        public override void ReleaseTurret()
+        {
+            //            TurretInstance.SetActive(false);
+            _isDeleted = true;
+
+            TurretInstance.SetActive(false);
+            Object.Destroy(TurretInstance, 5);
+        }
+
+        private bool _isDeleted = false;
+
+        public override Transform GetParentTransform()
+        {
+            return TurretInstance.transform.parent;
+        }
+
         public override void Execute()
         {
             RecoilEnemies();
@@ -78,6 +94,11 @@ namespace Snake_box
 
         public void ContinueShooting()
         {
+            if (_isDeleted)
+            {
+                return;
+            }
+
             if (Time.frameCount - _frameRateLock > Cooldown)
             {
                 IEnemy nearestEnemy = NearestEnemy();
@@ -109,6 +130,12 @@ namespace Snake_box
 
         public void LockTarget()
         {
+
+            if (_isDeleted)
+            {
+                return;
+            }
+
             IEnemy nearestEnemy = NearestEnemy();
 
             if (nearestEnemy == null)
@@ -165,6 +192,12 @@ namespace Snake_box
 
         private void HaltTurret()
         {
+
+            if (_isDeleted)
+            {
+                return;
+            }
+
             IEnemy nearestEnemy = NearestEnemy();
 
             if (nearestEnemy == null)
