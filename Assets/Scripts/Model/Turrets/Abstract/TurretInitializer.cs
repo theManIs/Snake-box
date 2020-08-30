@@ -72,6 +72,12 @@ namespace Snake_box
             Object.Destroy(TurretInstance, 5);
         }
 
+        public override void ReplaceTurret(TurretBaseAbs newOne)
+        {
+            newOne.SetParentTransform(GetParentTransform());
+            ReleaseTurret();
+        }
+
         private bool _isDeleted = false;
 
         public override Transform GetParentTransform()
