@@ -84,7 +84,7 @@ namespace Snake_box
 
         private void AddTurret(int i)
         {
-            _characterBehaviour.GetBlock(_selectButtonsIndex).AddTurret();
+            //_characterBehaviour.GetBlock(_selectButtonsIndex).AddTurret();
             _buttonPlus[_selectButtonsIndex].image.sprite = _buttonTurretsType[i].image.sprite;
             _panelTurretsType.SetActive(false);
         }
@@ -96,7 +96,7 @@ namespace Snake_box
              _buttonPlus[numberButton + 1].interactable = true;// включаем след. кнопку
             }
             _buttonPlus[numberButton].image.sprite = _spriteBlock;// меняем спрайт плюса на спрайт блока    
-            _characterBehaviour.AddBlock();
+            //_characterBehaviour.AddBlock();
         }
 
         private void Pause()
@@ -119,11 +119,11 @@ namespace Snake_box
         {
             if(_characterBehaviour == null)
                 _characterBehaviour = Services.Instance.LevelService.CharacterBehaviour;
-            if (_characterBehaviour.GetBlock(numberButton)!=null)// если есть блок то активируем панель для выбопв турели
-            {
-                _panelTurretsType.SetActive (true);
-                _selectButtonsIndex = numberButton;
-            }
+            //if (_characterBehaviour.GetBlock(numberButton)!=null)// если есть блок то активируем панель для выбопв турели
+            //{
+            //    _panelTurretsType.SetActive (true);
+            //    _selectButtonsIndex = numberButton;
+            //}
             else ChangeSprite(numberButton);
         }
 
