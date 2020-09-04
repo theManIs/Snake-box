@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SimpleEnemyData
   m_EditorClassIdentifier: 
   ArmorType: 0
-  Prefab: {fileID: 5058968977680414830, guid: b6238541d2a656c458b3e004d9cab7a0, type: 3}
+  Prefab: {fileID: 1865598692286518, guid: 12a89c5d816d2534ba0797da05117cdb, type: 3}
   Hp: 30
   Speed: 8
   Damage: 4
