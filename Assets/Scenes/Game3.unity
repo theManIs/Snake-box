@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 07e6af1dbef9e6d4686aee8827dd5ede,
+  m_LightingDataAsset: {fileID: 112000000, guid: ca6103ee424a62f47a279f2749e0a5af,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4

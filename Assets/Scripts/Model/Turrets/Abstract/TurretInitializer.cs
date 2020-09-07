@@ -114,6 +114,11 @@ namespace Snake_box
 
                 GetProjectile().Build(FirePoint, nearestEnemy);
 
+                if (TurretInstance.TryGetComponent(out CustomAnimationClass customAnimationClass))
+                {
+                    customAnimationClass.DoOpenFire();
+                }
+
                 _frameRateLock = Time.frameCount + Mathf.Round(Random.value * 10);
             }
         }
@@ -147,12 +152,15 @@ namespace Snake_box
             if (nearestEnemy == null)
                 return;
 
-            Vector3 lookAngles = Quaternion.LookRotation(nearestEnemy.GetPosition() - TurretInstance.transform.position).eulerAngles;
-            lookAngles.x = _haltTurretRotation.eulerAngles.x;
-            lookAngles.z = _haltTurretRotation.eulerAngles.z;
-            lookAngles.y = lookAngles.y + _haltTurretRotation.eulerAngles.y;
+            if (nearestEnemy.GetPosition() - TurretInstance.transform.position != Vector3.zero)
+            {
+                Vector3 lookAngles = Quaternion.LookRotation(nearestEnemy.GetPosition() - TurretInstance.transform.position).eulerAngles;
+                lookAngles.x = _haltTurretRotation.eulerAngles.x;
+                lookAngles.z = _haltTurretRotation.eulerAngles.z;
+                lookAngles.y = lookAngles.y + _haltTurretRotation.eulerAngles.y;
 
-            TurretInstance.transform.rotation = Quaternion.Euler(lookAngles);
+                TurretInstance.transform.rotation = Quaternion.Euler(lookAngles);
+            }
         }
 
         private void CollectKilledEnemies() => _dummyEnemies = _dummyEnemies.Where((element) => !element.AmIDestroyed()).ToList();
