@@ -27,11 +27,13 @@ namespace Snake_box
         public List<TurretBaseAbs> TurretList = new List<TurretBaseAbs>();
         public TurretPlant TurretPlant;
 
+        public Queue<TurretBaseAbs> _turretQueue = new Queue<TurretBaseAbs>();
+
         #endregion
 
         #region ClassLifeCycle
 
-        public TurretData() => TurretPlant = new TurretPlant(this); 
+        public TurretData() => TurretPlant = new TurretPlant(this);
 
         #endregion
 
@@ -44,7 +46,7 @@ namespace Snake_box
         /// <returns></returns>
         public TurretBaseAbs AddNewTurret()
         {
-            TurretBaseAbs newTurret = TurretPlant.AddCannonTurret();
+            TurretBaseAbs newTurret = _turretQueue.Count > 0 ? _turretQueue.Dequeue() : TurretPlant.AddShotgunTurret();
 
 //            TurretList.Add(newTurret);
 

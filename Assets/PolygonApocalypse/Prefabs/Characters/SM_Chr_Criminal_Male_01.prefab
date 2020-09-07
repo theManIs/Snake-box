@@ -5597,6 +5597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4421881298656014}
   - component: {fileID: 95508259488580428}
+  - component: {fileID: -4325632137681327646}
   m_Layer: 0
   m_Name: SM_Chr_Criminal_Male_01
   m_TagString: Untagged
@@ -5660,7 +5661,7 @@ Animator:
   m_GameObject: {fileID: 1962457702341656}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: ffdfcb810f2918b4f8fe9f917f07bc78, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 022cd8e9b1d113b41905bcb401343e62, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -5669,6 +5670,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-4325632137681327646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962457702341656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5db39cfc8bc9204090fe6f33688fd01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterAnimator: {fileID: 0}
+  OpenFire: 0
+  WasFireOpened: 0
 --- !u!1 &1967717073864684
 GameObject:
   m_ObjectHideFlags: 0
