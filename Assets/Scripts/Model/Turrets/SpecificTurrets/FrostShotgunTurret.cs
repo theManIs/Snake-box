@@ -1,6 +1,6 @@
 ﻿namespace Snake_box
 {
-    public class FrostTurret : TurretInitializer
+    public class FrostShotgunTurret : TurretInitializer
     {
         #region Methods
 

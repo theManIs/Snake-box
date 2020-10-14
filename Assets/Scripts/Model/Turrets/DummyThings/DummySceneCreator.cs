@@ -21,7 +21,7 @@ namespace Snake_box
         {
             _turretController = new TurretController();
             _projectileController = new TurretProjectileController();
-
+//
             _turretController.Initialization();
             _projectileController.Initialization(); 
         }
@@ -32,12 +32,14 @@ namespace Snake_box
             {
                 TurretPlant localPlant = Data.Instance.TurretData.TurretPlant;
                 //                localPlant.AddPlasmaTurret().SetParentTransform(GameObject.Find("TurretPlace1").transform);
-//                localPlant.AddFrostGunTurret().SetParentTransform(GameObject.Find("TurretPlace2").transform);
-//                localPlant.AddShotgunTurret().SetParentTransform(GameObject.Find("TurretPlace1").transform);
-//                localPlant.AddFrostTurret().SetParentTransform(GameObject.Find("TurretPlace1").transform);
-//                localPlant.AddLaserTurret().SetParentTransform(GameObject.Find("TurretPlace2").transform);
-//                localPlant.AddCannonTurret().SetParentTransform(GameObject.Find("TurretPlace2").transform);
-                localPlant.AddAirWaveTurret().SetParentTransform(GameObject.Find("TurretPlace2").transform);
+                //                localPlant.AddFrostGunTurret().SetParentTransform(GameObject.Find("TurretPlace2").transform);
+                //                localPlant.AddShotgunTurret().SetParentTransform(GameObject.Find("TurretPlace1").transform);
+                //                localPlant.AddFrostTurret().SetParentTransform(GameObject.Find("TurretPlace1").transform);
+                //                localPlant.AddLaserTurret().SetParentTransform(GameObject.Find("TurretPlace2").transform);
+                //                localPlant.AddCannonTurret().SetParentTransform(GameObject.Find("TurretPlace2").transform);
+                //                localPlant.AddCannonTurret().SetParentTransform(GameObject.Find("TurretPlace2").transform);
+                //                localPlant.AddAirWaveTurret().SetParentTransform(GameObject.Find("TurretPlace2").transform);
+                Data.Instance.TurretData.AddNewWithParent(GameObject.Find("TurretPlace1").transform);
 
                 Services.Instance.LevelService.ActiveEnemies = new List<IEnemy>(Object.FindObjectsOfType<DummyEnemy>());
                 _initLocker = false;
