@@ -7,6 +7,7 @@ namespace Snake_box
     public class ProjectilePreferences
     {
         public GameObject ProjectilePrefab;
+        public GameObject ShootingVfxPrefab;
         public int ProjectileSpeed = 50;
         public float ProjectileDamage = 10;
         public bool ProjectileFollowsTarget = true;

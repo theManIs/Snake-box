@@ -24,7 +24,8 @@ namespace Snake_box
         private List<IEnemy> _dummyEnemies = new List<IEnemy>();
         private Quaternion _haltTurretRotation;
         //todo use TimeRemaining
-        private float _frameRateLock = 0;
+        private float _frameRateLock = int.MinValue;
+        private Vector3 _startVector3 = new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
 
         #endregion
 
@@ -46,7 +47,7 @@ namespace Snake_box
         public void Initialization()
         {
             GameObject turretResource =  TurretPreferences != null && TurretPrefab != null ? TurretPrefab : Resources.Load<GameObject>(TurretSpritePath);
-            TurretInstance = Object.Instantiate(turretResource, Vector3.zero, turretResource.transform.rotation);
+            TurretInstance = Object.Instantiate(turretResource, _startVector3, turretResource.transform.rotation);
             _haltTurretRotation = TurretInstance.transform.rotation;
             FirePoint = TurretPreferences != null ? TurretInstance.transform.Find(TurretPreferences.FirePointHierarchy) : TurretInstance.transform;
         }

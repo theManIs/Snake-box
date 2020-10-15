@@ -31,6 +31,13 @@ namespace Snake_box
 
         protected void BaseBuild(Transform firePoint, IEnemy enemy)
         {
+            GameObject shootImpact = BaseBuildWithoutShootingImpact(firePoint, enemy);
+
+            ShootingImpact(ProjectilePreferences.ShootingVfxPrefab, shootImpact.transform);
+        }
+
+        protected GameObject BaseBuildWithoutShootingImpact(Transform firePoint, IEnemy enemy)
+        {
             GameObject prefabObject = Object.Instantiate(ProjectilePreferences.ProjectilePrefab, Vector3.zero, ProjectilePreferences.ProjectilePrefab.transform.rotation);
             TurretProjectileAbs cannonProjectile = ProjectileInstance;
 
@@ -45,6 +52,18 @@ namespace Snake_box
             cannonProjectile.SetProjectileDamageMod(ProjectileDamageMod);
 
             _turretProjectileController.AddShell(cannonProjectile);
+
+            return prefabObject;
+        }
+
+        protected void ShootingImpact(GameObject shootingVfxPrefab, Transform projectileTransform)
+        {
+            if (shootingVfxPrefab)
+            {
+                GameObject gm = Object.Instantiate(shootingVfxPrefab, projectileTransform.position, projectileTransform.rotation);
+
+                Object.Destroy(gm, 1);
+            }
         }
 
         public ProjectileBuilderAbs SetProjectilePreferences(ProjectilePreferences projectilePreferences)

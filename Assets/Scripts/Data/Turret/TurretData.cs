@@ -11,7 +11,7 @@ namespace Snake_box
         public TurretPreferences CannonTurret = new TurretPreferences();
         public TurretPreferences ShotgunTurret = new TurretPreferences();
         public TurretPreferences MachineGunTurret = new TurretPreferences();
-        public TurretPreferences FrostTurret = new TurretPreferences();
+        public TurretPreferences FrostShotgunTurret = new TurretPreferences();
         public TurretPreferences FrostGunTurret = new TurretPreferences();
         public TurretPreferences FreezerTurret = new TurretPreferences();
         public TurretPreferences PlasmaTurret = new TurretPreferences();

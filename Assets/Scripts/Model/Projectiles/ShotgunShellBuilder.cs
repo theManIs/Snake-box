@@ -10,8 +10,15 @@ namespace Snake_box
 
         public override void Build(Transform firePoint, IEnemy enemy)
         {
+            GameObject lastPiece = null;
+
             for (int i = 0; i < ProjectilePreferences.NumberOfPeaces; i++)
-                BaseBuild(firePoint, enemy);
+                lastPiece = BaseBuildWithoutShootingImpact(firePoint, enemy);
+
+            if (lastPiece != null)
+            {
+                ShootingImpact(ProjectilePreferences.ShootingVfxPrefab, lastPiece.transform);
+            }
         } 
 
         #endregion
